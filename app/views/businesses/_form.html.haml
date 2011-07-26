@@ -1,0 +1,75 @@
+%fieldset
+  %legend
+    Business information
+
+  %p
+    = form.label :name, t('name_of_business')
+    %br
+    = form.text_field :name
+
+  = form.fields_for :address do |address_form|
+    %p
+      = address_form.label :address, t('address')
+      %br
+      = address_form.text_field :address
+    %p
+      = address_form.label :city, t('city')
+      %br
+      = address_form.text_field :city
+    %p
+      = address_form.label :state, t('state')
+      %br
+      = address_form.text_field :state
+    %p
+      = address_form.label :zip, t('zip')
+      %br
+      = address_form.text_field :zip
+    %p
+      = form.label :contact_name, t('contact_name')
+      %br
+      = form.text_field :contact_name
+    %p
+      = form.label :contact_phone, t('contact_phone')
+      %br
+      = form.text_field :contact_phone
+    %p
+      = form.label :contact_email, t('contact_email')
+      %br
+      = form.text_field :contact_email
+    %p
+      = form.label :contact_email_confirmation, t('contact_email_confirmation')
+      %br
+      = form.text_field :contact_email_confirmation
+    %p
+      = form.label :fax, t('fax_number')
+      %br
+      = form.text_field :fax
+
+%fieldset
+  %legend
+    Billing Address
+  = form.fields_for :billing_address do |billing_address_form|
+    %p
+      = billing_address_form.label :address, t('address')
+      %br
+      = billing_address_form.text_field :address
+
+    %p
+      = billing_address_form.label :city, t('city')
+      %br
+      = billing_address_form.text_field :city
+    %p
+      = billing_address_form.label :state, t('state')
+      %br
+      = billing_address_form.text_field :state
+
+    %p
+      = billing_address_form.label :address, t('country')
+      %br
+      = billing_address_form.country_select :country
+
+    %p
+      = billing_address_form.label :address, t('zip')
+      %br
+      = billing_address_form.text_field :zip
+

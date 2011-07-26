@@ -1,0 +1,5 @@
+.upcoming_events
+  %h2 Upcoming Events
+  %ul
+    - @events.each do |event|
+      %li= event.title

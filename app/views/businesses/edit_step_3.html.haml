@@ -1,0 +1,32 @@
+= render :partial => 'steps'
+= form_for setup_business(@business), :url => user_business_path(current_user, @business), :html => { :multipart => true } do |f|
+  %p
+    = f.fields_for :promotional_media_mp3 do |promotional_media_mp3_form|
+      = promotional_media_mp3_form.label :attachment, t('promotional_media_mp3')
+      %br
+      = promotional_media_mp3_form.file_field :attachment
+      = promotional_media_mp3_form.hidden_field :kind
+    %br
+    = link_to @business.promotional_media_mp3.attachment.original_filename,  attachment_user_business_path(current_user, @business, :attachment_id => @business.promotional_media_mp3) unless @business.promotional_media_mp3.attachment.original_filename.blank?
+  
+  %p
+    = f.fields_for :promotional_media_upload do |promotional_media_upload_form|
+      = promotional_media_upload_form.label :attachment, t('promotional_media_upload')
+      %br
+      = promotional_media_upload_form.file_field :attachment
+      = promotional_media_upload_form.hidden_field :kind
+    %br
+    = link_to @business.promotional_media_upload.attachment.original_filename,  attachment_user_business_path(current_user, @business, :attachment_id => @business.promotional_media_upload) unless @business.promotional_media_upload.attachment.original_filename.blank?
+    %br
+    = f.label :promotional_media_text
+    %br
+    = f.text_area :promotional_media_text
+
+  %hr
+
+  %p
+    = f.label :promotional_media_additional_notes, t('additional_notes')
+    %br
+    = f.text_area :promotional_media_additional_notes, :class => 'simple' 
+
+  = render :partial => 'shared/form_submit', :locals => { :text => t('submit') }

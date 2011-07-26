@@ -1,0 +1,137 @@
+%p
+  Login:
+  =h @user.email
+  
+%p
+  First name:
+  =h @user.first_name  
+
+%p
+  Middle name:
+  =h @user.middle_name
+
+%p
+  Last name:
+  =h @user.last_name
+
+%p
+  Home Phone:
+  =h @user.home_phone
+
+%p
+  Cell name:
+  =h @user.cell_phone
+
+%p
+  Work name:
+  =h @user.work_phone
+  
+%p
+  Address:
+  =h @user.address.address 
+
+%p
+  City:
+  =h @user.address.city 
+  
+%p
+  State:
+  =h @user.address.state 
+%p
+  Zip:
+  =h @user.address.zip 
+  
+%h3 Family Members
+
+%table
+  %tr
+    %th
+      First name
+    %th
+      Last name
+    %th 
+      Relationship
+  -@user.family_members.each do |member|
+    %tr
+      %td
+        = member.first_name
+      %td
+        = member.last_name
+      %td
+        = member.relationship    
+
+-if @user.is_business?
+  %h3 Bussines Details 
+  
+  %p
+    Name of Bussines:
+    =h @user.business.name 
+  %p
+    Contact name:
+    =h @user.business.contact_name 
+  %p
+    Contact Email:
+    =h @user.business.contact_email     
+  %p
+    Contact phone:
+    =h @user.business.contact_phone     
+  %p
+    Address:
+    =h @user.business.address.address
+  %p
+    City:
+    =h @user.business.address.city              
+  %p
+    State:
+    =h @user.business.address.state
+  %p
+    Zip:
+    =h @user.business.address.zip    
+  %p
+    Fax:
+    =h @user.business.fax
+    
+  %h3 Billing address   
+  %p
+    Address:
+    =h @user.business.billing_address.address
+  %p
+    City:
+    =h @user.business.billing_address.city              
+  %p
+    State:
+    =h @user.business.billing_address.state
+  %p
+    Zip:
+    =h @user.business.billing_address.zip      
+  %p
+    Bussines Card
+  = link_to @user.business.business_card.attachment.original_filename,  attachment_user_business_path(current_user, @user.business, :attachment_id => @user.business.business_card) unless @user.business.business_card.attachment.original_filename.blank?
+  %p
+    Bussines logo
+  = link_to @user.business.business_logo.attachment.original_filename,  attachment_user_business_path(current_user, @user.business, :attachment_id => @user.business.business_logo) unless @user.business.business_logo.attachment.original_filename.blank?  
+  %p
+    Web banner
+  = link_to @user.business.web_banner.attachment.original_filename,  user_business_attachment_path(current_user, @user.business, :attachment_id => @user.business.web_banner) unless @user.business.web_banner.attachment.original_filename.blank?      
+  %p 
+    Additional notes:
+    =h @user.business.promotional_info_additional_notes
+  %p 
+    Mp3 file:
+  = link_to @user.business.promotional_media_mp3.attachment.original_filename,  attachment_user_business_path(current_user, @user.business, :attachment_id => @user.business.promotional_media_mp3) unless @user.business.promotional_media_mp3.attachment.original_filename.blank?
+  %p 
+    Text file:
+  = link_to @user.business.promotional_media_upload.attachment.original_filename,  attachment_user_business_path(current_user, @user.business, :attachment_id => @user.business.promotional_media_upload) unless @user.business.promotional_media_upload.attachment.original_filename.blank?
+  %p  
+    Promotional media text:
+    =h @user.business.promotional_media_text    
+  %p  
+    Promotional media additional notes:
+    =h @user.business.promotional_media_additional_notes
+
+
+= button_to 'Confirm' ,user_confirm_path,:class => 'submit',:method => :post
+|
+= link_to 'Edit', edit_account_path
+= image_tag "progress.gif", :class => :progress_spinner
+

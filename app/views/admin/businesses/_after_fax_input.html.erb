@@ -1,0 +1,100 @@
+<% @business = setup_business(@business) -%>
+<% form.fields_for :address do |address_form| -%>
+  <p>
+    <%= address_form.label :address, t('address') -%>
+    <br />
+    <%= address_form.text_field :address -%>
+  </p>
+  <p>
+    <%= address_form.label :city, t('city') -%>
+    <br />
+    <%= address_form.text_field :city -%>
+  </p>
+  <p>
+    <%= address_form.label :state, t('state') -%>
+    <br />
+    <%= address_form.text_field :state -%>
+  </p>
+  <p>
+    <%= address_form.label :zip, t('zip') -%>
+    <br />
+    <%= address_form.text_field :zip -%>
+  </p>
+<% end -%>
+<fieldset>
+  <legend>Promotional Info</legend>
+  <p>
+    <% form.fields_for :business_card do |business_card_form| -%>
+      <%= business_card_form.label :attachment, t('business_card') -%>
+      <br />
+      <%= business_card_form.file_field :attachment -%>
+      <%= business_card_form.hidden_field :kind -%>
+    <% end -%>
+    <br />
+    <%= link_to @business.business_card.attachment.original_filename,  attachment_admin_business_path(@business, :attachment_id => @business.business_card) unless @business.business_card.attachment.original_filename.blank? -%>
+  </p>
+  
+  <p>
+    <% form.fields_for :business_logo do |business_logo_form| -%>
+      <%= business_logo_form.label :attachment, t('business_logo') -%>
+      <br />
+      <%= business_logo_form.file_field :attachment -%>
+      <%= business_logo_form.hidden_field :kind -%>
+    <% end -%>
+    <br />
+    <%= link_to @business.business_logo.attachment.original_filename,  attachment_admin_business_path(@business, :attachment_id => @business.business_logo) unless @business.business_logo.attachment.original_filename.blank? -%>
+  </p>
+
+  <p>
+    <% form.fields_for :web_banner do |web_banner_form| -%>
+      <%= web_banner_form.label :attachment, t('web_banner') -%>
+      <br />
+      <%= web_banner_form.file_field :attachment -%>
+      <%= web_banner_form.hidden_field :kind -%>
+    <% end -%>
+    <br />
+    <%= link_to @business.web_banner.attachment.original_filename,  attachment_admin_business_path(@business, :attachment_id => @business.web_banner) unless @business.web_banner.attachment.original_filename.blank? -%>
+    <br />
+    <%= form.check_box :use_business_card_for_web_banner -%>
+    <%= form.label :use_business_card_for_web_banner, t('use_business_card_for_web_banner') -%>
+  </p>
+
+  <p>
+    <%= form.label :promotional_info_additional_notes, t('additional_notes') -%>
+    <br />
+    <%= form.text_area :promotional_info_additional_notes, :class => 'simple'  -%>
+  </p>
+</fieldset>
+
+<fieldset>
+  <legend>Promotional Media</legend>
+  <p>
+    <% form.fields_for :promotional_media_mp3 do |promotional_media_mp3_form| -%>
+      <%= promotional_media_mp3_form.label :attachment, t('promotional_media_mp3') -%>
+      <br />
+      <%= promotional_media_mp3_form.file_field :attachment -%>
+      <%= promotional_media_mp3_form.hidden_field :kind -%>
+    <% end -%>
+    <br />
+    <%= link_to @business.promotional_media_mp3.attachment.original_filename,  attachment_admin_business_path(@business, :attachment_id => @business.promotional_media_mp3) unless @business.promotional_media_mp3.attachment.original_filename.blank? -%>
+  </p>
+ 
+  <p>
+    <% form.fields_for :promotional_media_upload do |promotional_media_upload_form| -%>
+      <%= promotional_media_upload_form.label :attachment, t('promotional_media_upload') -%>
+      <br />
+      <%= promotional_media_upload_form.file_field :attachment -%>
+      <%= promotional_media_upload_form.hidden_field :kind -%>
+    <% end -%>
+    <br />
+    <%= link_to @business.promotional_media_upload.attachment.original_filename,  attachment_admin_business_path(@business, :attachment_id => @business.promotional_media_upload) unless @business.promotional_media_upload.attachment.original_filename.blank? -%>
+    <br />
+    <%= form.text_area :promotional_media_text -%>
+  </p>
+
+  <p>
+    <%= form.label :promotional_media_additional_notes, t('additional_notes') -%>
+    <br />
+    <%= form.text_area :promotional_media_additional_notes, :class => 'simple' -%>
+  </p>
+</fieldset>

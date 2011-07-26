@@ -1,0 +1,10 @@
+.step_indicator 
+  %p
+    = step_link(1, @business.completed_step.to_i >= 1, params[:step] || 1)
+    >>
+    = step_link(2, @business.completed_step.to_i >= 2, params[:step] || 1)
+    >>
+    = step_link(3, @business.completed_step.to_i >= 3, params[:step] || 1)
+
+
+

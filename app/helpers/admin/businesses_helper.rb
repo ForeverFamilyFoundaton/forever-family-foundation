@@ -1,0 +1,2 @@
+module Admin::BusinessesHelper
+end

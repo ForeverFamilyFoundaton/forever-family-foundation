@@ -1,0 +1,9 @@
+- if @user.is_business and @user.business.blank?
+  = link_to 'Add Business', new_user_business_path(@user), :class => 'large'
+- elsif @user.is_business and !@user.business.blank?
+  = link_to 'Edit Business', edit_user_business_path(@user, @user.business.id), :class => 'large'
+
+= form_for setup_user(@user), :as => :user, :url => account_path do |f|
+  = render "shared/error_messages", :target => @user
+  = render :partial => "form", :object => f
+  = render :partial => 'shared/form_submit', :locals => { :text => t('update') }

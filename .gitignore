@@ -1,0 +1,10 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+config/database.yml
+db/schema.rb
+config/mail.yml
+rerun.txt
+Capfile
+config/deploy.rb

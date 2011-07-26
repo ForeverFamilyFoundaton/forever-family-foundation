@@ -1,0 +1,23 @@
+en:
+  navigation:
+    home: Home
+    global:
+      adg_registration: Afterlife Discussion Group Enrollment
+      signs_of_life_radio: Signs of Life Radio
+      events: Events
+      store: FFF Store
+      volunteers: Volunteers
+      contributers: Contributers
+    user:
+      login: Login
+      register: Register
+      become_a_member: Become a member
+    site:
+      after_life_discussion_group: After life discussion group
+      certified_mediums: Certifed Mediums
+      signs_of_life_newsletter: Signs of life newsletter
+      after_life_science: After life science
+      grief_and_loss: Grief and loss
+      support_and_information: Support and information
+      calendar_of_events: Calendar of events
+      registration: Registration

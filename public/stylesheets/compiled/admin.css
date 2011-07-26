@@ -1,0 +1,19 @@
+/* line 1, ../../../app/stylesheets/admin.scss */
+ul.horizontal {
+  padding: 0px;
+  margin: 0px;
+}
+/* line 4, ../../../app/stylesheets/admin.scss */
+ul.horizontal li {
+  display: inline;
+}
+
+/* line 7, ../../../app/stylesheets/admin.scss */
+.progress_spinner {
+  display: none;
+}
+
+/* line 10, ../../../app/stylesheets/admin.scss */
+textarea.simple {
+  height: 200px;
+}

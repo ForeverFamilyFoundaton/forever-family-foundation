@@ -1,0 +1,6 @@
+= render :partial => 'steps'
+= form_for setup_business(@business), :url => user_business_path(current_user, @business), :method => :put do |f|
+  = render "shared/error_messages", :target => @business
+  = hidden_field_tag :next_step, '2'  
+  = render :partial => "form", :object => f
+  = render :partial => 'shared/form_submit', :locals => { :text => t('submit') }

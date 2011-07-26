@@ -1,0 +1,130 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  site_name: Forever Family Foundation
+  logout: Logout
+  email: Email
+  email_confirmation: Email confirmation
+  password: Password
+  change_password: Change password
+  password_confirmation: Password confirmation
+  edit_my_account: Edit my account
+  edit: Edit
+  update: Update
+  remeber_me: Remeber me
+  admin: Admin
+  first_name: First name
+  middle_name: Middle name
+  last_name: Last name
+  address: Address
+  city: City
+  state: State
+  zip: Zip
+  country: Country
+  home_phone: Home phone
+  cell_phone: Cell phone
+  work_phone: Work phone
+  relationship: Relationship
+  forgot_password: Forgot Password
+  password_reset_mail_subject: Password Reset Instructions
+  reset_password_but: Reset my password
+  update_password_but: Update my password and log me in
+  terms_of_use_acceptance: Yes, I accept the <a href=''>Terms of Use</a>
+  business_reg_acceptance: I am registering a business
+  name_of_business: Name Of Business
+  submit: Submit
+  contact_name: Contact Name
+  contact_email: Contact Email
+  contact_email_confirmation: Contact Email Confirmation
+  contact_phone: Contact Phone
+  fax_number: Fax Number
+
+  business_card: Business Card
+  business_logo: Business Logo
+  web_banner: Web Banner
+  use_business_card_for_web_banner: I don't have a web banner, please use my business card
+  additional_notes: Additional Notes
+  promotional_media_mp3: MP3 File
+  promotional_media_upload: Text file
+  save: Save
+
+  flash:
+    user:
+      create:
+        success: Account registered!
+      update:
+        success: Account updated!
+      login:
+        success: Login successful!
+        required: You must be logged in to access this page
+      logout:
+        success: Logout successful!
+        required: You must be logged out to access this page
+      admin:
+        required: You must be an administrator to access this page
+      password_reset:
+        mail_sent: Instructions to reset your password have been emailed to you. Please check your email.
+        mail_failed: No user was found with that email address
+        success: Password successfully updated
+        token_mismatch: We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process.
+    business:
+      create:
+        success: Business created!
+      update:
+        success: Business updated!
+    adg:
+      user_required: THERE IS NO COST TO ATTEND AN AFTERLIFE DISCUSSION GROUP, HOWEVER IT IS ONLY OPEN TO MEMBERS OF FOREVER FAMILY FOUNDATION.
+      answers_updated: Updated successfully!
+
+  authlogic:
+    error_messages:
+      login_blank: can not be blank
+      login_not_found: is not valid
+      login_invalid: should use only letters, numbers, spaces, and .-_@ please.
+      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+      email_invalid: is not valid
+      email_dup: entered is already taken
+      password_blank: can not be blank
+      password_invalid: is not valid
+      not_active: Your account is not active
+      not_confirmed: Your account is not confirmed
+      not_approved: Your account is not approved
+      no_authentication_details: You did not provide any details for authentication.
+      models:
+        user_session: UserSession (or whatever name you are using)
+        attributes:
+          user_session: (or whatever name you are using)
+          login: login
+          email: email
+          password: password
+          remember_me: remember me
+
+  activerecord:
+    errors:
+      templates:
+        header:
+          one: "1 error prohibited this {{model}} from being saved"
+          other: "{{count}} errors prohibited this {{model}} from being saved"
+        body: "there were problems with the following fields:"
+      messages:
+        accepted: "must be accepted"
+        blank: "can't be blank"
+        confirmation: "and {{attribute}}_confirmation doesn't match."
+        empty: "can't be empty"
+        equal_to: "must be equal to {{count}}"
+        even: "must be even"
+        exclusion: "is reserved"
+        greater_than: "must be greater than {{count}}"
+        greater_than_or_equal_to: "must be greater than or equal to {{count}}"
+        inclusion: "is not included in the list"
+        invalid: "is invalid"
+        less_than: "must be less than {{count}}"
+        less_than_or_equal_to: "must be less than or equal to {{count}}"
+        not_a_number: "is not a number"
+        odd: "must be odd"
+        taken: "is already taken"
+        too_long: "is too long (maximum is {{count}} characters)"
+        too_short: "is too short (minimum is {{count}} characters)"
+        wrong_length: "is the wrong length (should be {{count}} characters)"
+

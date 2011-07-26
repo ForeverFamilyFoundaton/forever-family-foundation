@@ -1,0 +1,285 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 10, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 12, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#layout {
+  clear: both;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -200px;
+}
+/* line 18, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#layout #footer_spacer {
+  height: 200px;
+}
+
+/* line 20, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/layout/_sticky-footer.scss */
+#footer {
+  clear: both;
+  position: relative;
+  height: 200px;
+}
+
+/* line 3, ../../../app/stylesheets/partials/_layout.scss */
+html, body, #container {
+  height: 100%;
+  font-family: Verdana, sans-serif;
+}
+
+/* line 8, ../../../app/stylesheets/partials/_layout.scss */
+body {
+  background: black url("/images/header.jpg") no-repeat top;
+  padding-top: 90px;
+}
+
+/* line 13, ../../../app/stylesheets/partials/_layout.scss */
+#layout {
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+  width: 965px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+/* line 20, ../../../app/stylesheets/partials/_layout.scss */
+#container {
+  padding: 0 15px;
+  width: 950px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 23, ../../../app/stylesheets/partials/_layout.scss */
+#container #footer {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 950px;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #container #footer {
+  overflow-x: hidden;
+}
+/* line 25, ../../../app/stylesheets/partials/_layout.scss */
+#container #sidebar {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 270px;
+  background-color: #fff;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #container #sidebar {
+  overflow-x: hidden;
+}
+/* line 28, ../../../app/stylesheets/partials/_layout.scss */
+#container #content {
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  border-radius: 15px;
+  display: inline;
+  float: left;
+  margin-right: 0;
+  width: 670px;
+  background-color: #fff;
+}
+/* line 147, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html #container #content {
+  overflow-x: hidden;
+}
+/* line 34, ../../../app/stylesheets/partials/_layout.scss */
+#container #content_main {
+  float: left;
+  overflow: hidden;
+  *zoom: 1;
+  margin-top: 40px;
+  padding-right: 15px;
+}
+
+/* line 1, ../../../app/stylesheets/partials/_footer.scss */
+#footer {
+  width: 965px;
+  color: #a09f9f;
+  font: 9px Verdana;
+  margin: auto;
+  text-align: center;
+}
+/* line 7, ../../../app/stylesheets/partials/_footer.scss */
+#footer p {
+  padding: 20px 15px 0;
+  text-align: left;
+}
+/* line 12, ../../../app/stylesheets/partials/_footer.scss */
+#footer ul#footer_nav {
+  padding: 20px 15px 0 15px;
+}
+/* line 14, ../../../app/stylesheets/partials/_footer.scss */
+#footer ul#footer_nav li {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  border-right: 1px solid #aacaf9;
+  margin: 7.5px 0;
+  color: #aacaf9;
+  font-size: 11px;
+}
+/* line 7, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+#footer ul#footer_nav li {
+  *display: inline;
+}
+/* line 20, ../../../app/stylesheets/partials/_footer.scss */
+#footer ul#footer_nav li a {
+  text-decoration: none;
+  padding: 0 15px;
+  color: #aacaf9;
+  font-size: 11px;
+}
+/* line 26, ../../../app/stylesheets/partials/_footer.scss */
+#footer ul#footer_nav li a:hover {
+  text-decoration: underline;
+}
+/* line 30, ../../../app/stylesheets/partials/_footer.scss */
+#footer ul#footer_nav li.last {
+  border: 0;
+}
+/* line 33, ../../../app/stylesheets/partials/_footer.scss */
+#footer ul#footer_nav li.no_link {
+  padding-right: 15px;
+}
+
+/* line 1, ../../../app/stylesheets/partials/_nav.scss */
+.nav {
+  margin: 0;
+  padding: 0;
+}
+/* line 4, ../../../app/stylesheets/partials/_nav.scss */
+.nav li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 9, ../../../app/stylesheets/partials/_nav.scss */
+.nav a {
+  color: #084296;
+  text-decoration: none;
+}
+/* line 12, ../../../app/stylesheets/partials/_nav.scss */
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* line 18, ../../../app/stylesheets/partials/_nav.scss */
+#user_nav, #global_nav {
+  float: left;
+  margin-top: 0;
+  margin-right: 30px;
+}
+/* line 23, ../../../app/stylesheets/partials/_nav.scss */
+#user_nav li, #global_nav li {
+  display: -moz-inline-box;
+  -moz-box-orient: vertical;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  margin: 0;
+  padding: 20px 20px 0 5px;
+  background: url("/images/nav-dot.gif") no-repeat right 25px;
+}
+/* line 7, ../../../../../.rvm/gems/ruby-1.9.2-p290@fff/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/css3/_inline-block.scss */
+#user_nav li, #global_nav li {
+  *display: inline;
+}
+/* line 29, ../../../app/stylesheets/partials/_nav.scss */
+#user_nav li.first, #global_nav li.first {
+  padding-left: 0;
+}
+/* line 32, ../../../app/stylesheets/partials/_nav.scss */
+#user_nav li.last, #global_nav li.last {
+  background-image: none;
+}
+/* line 36, ../../../app/stylesheets/partials/_nav.scss */
+#user_nav li a, #global_nav li a {
+  position: relative;
+  font-size: 13px;
+  font-weight: bold;
+}
+/* line 42, ../../../app/stylesheets/partials/_nav.scss */
+#user_nav li img.current, #global_nav li img.current {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  margin-left: -10px;
+}
+
+/* line 53, ../../../app/stylesheets/partials/_nav.scss */
+#site_nav {
+  float: left;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+/* line 57, ../../../app/stylesheets/partials/_nav.scss */
+#site_nav li {
+  font-size: 14px;
+  padding: 0 0 10px 0;
+}
+/* line 61, ../../../app/stylesheets/partials/_nav.scss */
+#site_nav li a {
+  padding-left: 17px;
+  background: url("/images/nav-star.gif") no-repeat left;
+}
+/* line 67, ../../../app/stylesheets/partials/_nav.scss */
+#site_nav.current {
+  font-weight: bold;
+}
+
+/* line 1, ../../../app/stylesheets/partials/_headers.scss */
+h1 {
+  margin: 0;
+  padding: 0;
+  color: #084296;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* line 1, ../../../app/stylesheets/partials/_home.scss */
+.afterlife {
+  color: #084296;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* line 1, ../../../app/stylesheets/partials/_partners.scss */
+ul#partners {
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 6, ../../../app/stylesheets/partials/_partners.scss */
+ul#partners li {
+  text-align: center;
+  margin: 0;
+  padding: 10px 5px;
+}
+/* line 11, ../../../app/stylesheets/partials/_partners.scss */
+ul#partners li p {
+  font-size: 12px;
+  margin-bottom: 2px;
+}

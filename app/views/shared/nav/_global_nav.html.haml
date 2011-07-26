@@ -1,0 +1,17 @@
+%ul.nav#global_nav
+
+  %li.first
+    = link_to t('navigation.home'), '/'
+  %li
+    = link_to t('navigation.global.signs_of_life_radio'), '/site/signs_of_life_radio'
+  %li
+    = link_to t('navigation.global.events'), events_path
+  %li
+    %a{:href => '/site/store'}
+      = image_tag('/images/nav-indicator.gif', :class => :current)
+      = t('navigation.global.store')
+  %li
+    = link_to t('navigation.global.volunteers'), '/site/volunteers'
+  %li.last
+    = link_to t('navigation.global.contributers'), '/site/contributers'
+

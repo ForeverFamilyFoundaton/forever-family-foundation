@@ -1,0 +1,56 @@
+<% @user.build_address if @user.address.blank? -%>
+<% form.fields_for :address do |address_form| -%>
+  <p>
+    <%= address_form.label :address, t('address') -%>
+    <%= address_form.text_field :address -%>
+  </p>
+  <p>
+    <%= address_form.label :city, t('city') -%>
+    <%= address_form.text_field :city -%>
+  </p>
+  <p>
+    <%= address_form.label :state, t('state') -%>
+    <%= address_form.text_field :state -%>
+  </p>
+  <p>
+    <%= address_form.label :zip, t('zip') -%>
+    <%= address_form.text_field :zip -%>
+  </p>
+<% end -%>
+
+<table>
+  <% @user.family_members.build([{},{},{}]) if @user.family_members.empty? -%>
+  <% @user.family_members << FamilyMember.new if @user.family_members.length == 1 -%>
+  <% @user.family_members << FamilyMember.new if @user.family_members.length == 2 -%>
+  <% form.fields_for :family_members do |family_member_form| -%>
+    <tr>
+      <td>
+        <%= family_member_form.label :first_name, t('first_name') -%>
+      </td>
+      <td>
+        <%= family_member_form.label :last_name, t('last_name') -%>
+      </td>
+      <td>
+        <%= family_member_form.label :relationship, t('relationship') -%>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= family_member_form.text_field :first_name -%>
+      </td>
+      <td> 
+        <%= family_member_form.text_field :last_name -%>
+      </td>
+      <td>
+        <%= family_member_form.text_field :relationship -%>
+      </td>
+    </tr>
+  <% end -%>
+</table>
+
+<% user_profile_preferences = @user.profile_preferences.all -%>
+<% Preference.profile_preferences.each do |profile_preference| %>
+  <%= check_box_tag "user[profile_preference_ids][]", profile_preference.id, user_profile_preferences.include?(profile_preference) -%>
+  <%= profile_preference.name -%>
+  <br />
+<% end -%>

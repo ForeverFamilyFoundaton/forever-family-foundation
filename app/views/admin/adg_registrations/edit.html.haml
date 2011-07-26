@@ -1,0 +1,35 @@
+- form_tag admin_user_adg_registration_path(@user), :method => :put do
+  %table
+    - @adg_questions.each do |adg_question|
+      %tr
+        %td= adg_question.question
+        %td
+          - @adg_answers.blank? ? adg_answer = '' : adg_answer = @adg_answers.assoc(adg_question.id)[1]          
+          - if adg_question.show_radio
+            Yes
+            = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "yes", :onclick => "show_text_area('#{adg_question.id}')", :checked => (@adg_answers.assoc(adg_question.id)[2] == "yes" unless @adg_answers.assoc(adg_question.id).blank?)
+            /
+            No
+            = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "no", :onclick => "hide_text_area('#{adg_question.id}')", :checked => (@adg_answers.assoc(adg_question.id)[2] == "no" unless @adg_answers.assoc(adg_question.id).blank?)
+            - adg_answer.blank? ? display = "hide" : display = ''
+            %div= text_area_tag "adg_registration[answer[#{adg_question.id}]]", adg_answer, :class => "simple #{display}" 
+          - else
+            = text_area_tag "adg_registration[answer[#{adg_question.id}]]", adg_answer, :class => 'simple'
+
+  - user_adg_preferences = @user.adg_preferences.all
+  - Preference.adg_preferences.each do |adg_preference|
+    = check_box_tag "adg_registration[adg_preference_ids][]", adg_preference.id, user_adg_preferences.include?(adg_preference) 
+    = adg_preference.name
+    %br
+    %br
+  = render :partial => 'shared/form_submit', :locals => { :text => t('save') }
+
+:javascript
+  function show_text_area(adg_question_id) {
+    $('adg_registration_answer_'+adg_question_id).show();
+  }
+
+  function hide_text_area(adg_question_id) {
+    $('adg_registration_answer_'+adg_question_id).hide();
+  }
+

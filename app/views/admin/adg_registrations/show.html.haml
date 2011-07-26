@@ -1,0 +1,14 @@
+- @adg_answers.each do |adg_answer|
+  %p
+    = adg_answer.question
+    %br
+    = "#{ "#{adg_answer.radio_val.capitalize} -" unless adg_answer.radio_val.blank?} #{adg_answer.answer}"
+- user_adg_preferences = @user.adg_preferences.all
+- Preference.adg_preferences.each do |adg_preference|
+  = adg_preference.name
+  = user_adg_preferences.include?(adg_preference) ? " - Yes" : " - No"
+  %br
+  %br
+%br
+= link_to "Edit", edit_admin_user_adg_registration_path(@user)
+
