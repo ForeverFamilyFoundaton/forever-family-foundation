@@ -21,7 +21,9 @@ ActiveAdmin.setup do |config|
   #
   # To set no namespace by default, use:
   #   config.default_namespace = false
-  config.default_namespace = :admin
+  #
+  # Default:
+  # config.default_namespace = :admin
 
 
   # == User Authentication
@@ -32,7 +34,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the controller.
-  config.authentication_method = :authenticate_user!
+  config.authentication_method = :authenticate_admin_user!
 
 
   # == Current User
@@ -42,17 +44,38 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # to return the currently logged in user.
-  config.current_user_method = :current_user
-  
+  config.current_user_method = :current_admin_user
 
-  # == Admin Notes
-  # 
-  # Admin notes allow you to add notes to any model
+
+  # == Logging Out
   #
-  # Admin notes are enabled by default, but can be disabled
-  # by uncommenting this line:
+  # Active Admin displays a logout link on each screen. These
+  # settings configure the location and method used for the link.
   #
-  config.admin_notes = true
+  # This setting changes the path where the link points to. If it's
+  # a string, the strings is used as the path. If it's a Symbol, we
+  # will call the method to return the path.
+  #
+  # Default:
+  # config.logout_link_path = :destroy_admin_user_session_path
+
+  # This setting changes the http method used when rendering the
+  # link. For example :get, :delete, :put, etc..
+  #
+  # Default:
+  # config.logout_link_method = :get
+
+
+  # == Admin Comments
+  #
+  # Admin comments allow you to add comments to any model for admin use
+  #
+  # Admin comments are enabled by default in the default
+  # namespace only. You can turn them on in a namesapce
+  # by adding them to the comments array.
+  #
+  # Default:
+  # config.allow_comments_in = [:admin]
 
 
   # == Controller Filters
@@ -65,7 +88,7 @@ ActiveAdmin.setup do |config|
 
   # == Register Stylesheets & Javascripts
   #
-  # We recomend using the built in Active Admin layout and loading
+  # We recommend using the built in Active Admin layout and loading
   # up your own stylesheets / javascripts to customize the look
   # and feel.
   #

@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:index]
+  skip_before_filter :authenticate_admin_user!, :only => [:index]
   before_filter :get_events
   
   def index; end
