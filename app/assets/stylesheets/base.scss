@@ -1,31 +1,8 @@
-@import 'blueprint';
-@import 'compass';
-
-$content-width: 950px;
-$padd-top: 20px;
-$padd-sides: 15px;
-
-$default-border-radius: 15px;
-
-$page-width: $content-width + $padd-sides;
-
-//colors
-$light-blue: #aacaf9;
-$dark-blue: #084296;
+@import "blueprint";
 @import "compass";
 @import "compass/layout.scss";
 
-// This import applies a global reset to any page that imports this stylesheet.
-@import "blueprint/reset";
-
-
-// Import all the default blueprint modules so that we can access their mixins.
-@import "blueprint";
-
-// Import the non-default scaffolding module.
-@import "blueprint/scaffolding";
-
-
+@import "vars";
 @import "partials/layout";
 @import "partials/footer";
 @import "partials/nav";

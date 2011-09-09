@@ -8,3 +8,4 @@ config/mail.yml
 rerun.txt
 Capfile
 config/deploy.rb
+fff.csv
