@@ -14,9 +14,6 @@ class CreateCmsPages < ActiveRecord::Migration
       t.integer :parent_id      
       t.timestamps
     end
-    add_index :cms_pages, :reference_string, :unique => true
-    add_index :cms_pages, :position
-    add_index :cms_pages, :parent_id
   end
 
 end
