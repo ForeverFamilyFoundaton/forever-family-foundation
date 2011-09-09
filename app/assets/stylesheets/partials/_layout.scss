@@ -21,9 +21,9 @@ body {
   padding: 0 $padd-sides;
   @include container;
   #footer {
-    @include column(24); }
+    @include column(25); }
   #sidebar {
-    @include column(7);  
+    @include column(6);  
     background-color:#fff; }
   #content {
     @include border-radius;  

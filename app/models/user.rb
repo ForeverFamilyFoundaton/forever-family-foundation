@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_confirmation_of :email, :if => :email_changed?
   validates_associated :address
-  validates_presence_of :first_name, :last_name, :address
+  validates_presence_of :first_name, :last_name# , :address
   validates_acceptance_of :terms_of_use
 
   def has_role?(role)

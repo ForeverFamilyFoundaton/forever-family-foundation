@@ -10,4 +10,8 @@ class CmsPage < ActiveRecord::Base
   def self.get(reference_string)
     find_by_reference_string(reference_string) || self.new(:title => reference_string, :sub_title => "CMS Page Missing  - #{reference_string}")
   end
+  
+  def is_site_index?
+    reference_string == 'Site: Index'
+  end
 end
