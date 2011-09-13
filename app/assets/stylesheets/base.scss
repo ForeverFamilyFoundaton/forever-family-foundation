@@ -1,7 +1,8 @@
-@import "blueprint/grid";
 @import "compass";
 @import "compass/layout.scss";
-
+@import '_blueprint';
+@include blueprint;
+  
 @import "vars";
 @import "partials/layout";
 @import "partials/footer";
