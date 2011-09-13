@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.rc8'
-gem 'mysql2', '0.3.7'
+gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
+gem 'sass-rails', "  ~> 3.1.0.rc"
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0.rc"
   gem 'coffee-rails', "~> 3.1.0.rc"
   gem 'uglifier'
   gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
@@ -35,8 +35,4 @@ group :test do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
-end
-
-group :production do
-  gem 'pg'
 end
