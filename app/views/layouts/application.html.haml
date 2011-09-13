@@ -23,8 +23,9 @@
             %p.alert= alert
 
           %h1= @cms_page.title
+          = yield if @cms_page.is_site_index?
           =blog @cms_page.body
-          = yield
+          = yield if !@cms_page.is_site_index?
 
     #footer_spacer
   = render 'layouts/footer'

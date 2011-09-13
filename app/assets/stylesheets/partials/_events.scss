@@ -1,0 +1,32 @@
+.upcoming_events {
+  margin:0 0 10px 10px;
+  float:right;
+  h2 {
+    color: $dark-blue;
+    background: $light-blue;
+    @include border-top-radius;  
+    text-transform:uppercase;
+    font-weight:bold;
+    padding:5px 10px;
+    margin:0;
+  }
+  
+  ul {
+    margin:0;
+    padding:0;    
+    color: $light-blue;
+    background: $dark-blue;    
+    @include border-bottom-radius;      
+    li {
+      margin:0;
+      font-wight:normal;
+      list-style:none;
+      padding:0 0 15px 0;
+      text-align:center;
+    }
+    li:nth-child(1) {
+      padding-top:15px;
+    }
+  }
+}
+  

@@ -1,5 +1,5 @@
 class CreateCmsPages < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :cms_pages do |t|
       t.string :reference_string
       t.string :title
@@ -19,7 +19,4 @@ class CreateCmsPages < ActiveRecord::Migration
     add_index :cms_pages, :parent_id
   end
 
-  def self.down
-    drop_table :cms_pages
-  end
 end

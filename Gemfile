@@ -1,29 +1,33 @@
 source 'http://rubygems.org'
 
-# Rails 3.1
-# gem 'rails', git: 'https://github.com/rails/rails.git'
-# gem 'rack', git: 'https://github.com/rack/rack.git'
-gem 'rails'
+gem 'rails', '3.1.0.rc8'
+gem 'mysql2', '0.3.7'
 
-gem 'rake', '0.8.7'
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0.rc"
+  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'uglifier'
+  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
+end
 
-gem 'mysql2', '0.2.7'
+gem 'jquery-rails'
 
-gem 'compass'
 gem 'haml'
 gem 'devise' 
 gem "cancan"
 gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
 gem "transitions", :require => ["transitions", "active_record/transitions"]
-gem 'will_paginate'
 gem 'paperclip'
-gem "hoptoad_notifier", "~> 2.3"
+gem "hoptoad_notifier"
 gem 'acts_as_tree'
 gem 'acts_as_list'
 gem 'redcarpet'
 
 group :test do
-  gem "factory_girl_rails", '1.1.beta1'
+  gem "factory_girl_rails"
   gem "autotest"
   gem "test_notifier"
   gem "shoulda-matchers"
