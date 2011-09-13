@@ -233,7 +233,7 @@ DEPENDENCIES
   pg
   rails
   redcarpet
-  sass-rails
+  sass-rails (~> 3.1.0.rc)
   shoulda-context
   shoulda-matchers
   test_notifier
