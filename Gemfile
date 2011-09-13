@@ -6,9 +6,9 @@ gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
 
+gem 'sass-rails', "  ~> 3.1.0.rc"  
 group :assets do
   gem 'coffee-rails', "~> 3.1.0.rc"
-  gem 'sass-rails', "  ~> 3.1.0.rc"  
   gem 'uglifier'
   gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'  
 end
