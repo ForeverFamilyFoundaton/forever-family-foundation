@@ -24,7 +24,5 @@ active_admin/loading.gif: active_admin/loading-a3a1c1c2bbe032af63564970a0d88541.
 active_admin/nested_menu_arrow.gif: active_admin/nested_menu_arrow-a6f4d64a67ad6d1d88f1ec2e5495284e.gif
 active_admin/nested_menu_arrow_dark.gif: active_admin/nested_menu_arrow_dark-876e7f8b096102eb58089bae619da757.gif
 active_admin/orderable.png: active_admin/orderable-003d291622c6610ce91358a266ff0f9a.png
-jquery-ui.min.js: jquery-ui-7e33882a28fc84ad0e0e47e46cbf901c.min.js
-jquery.min.js: jquery-8a50feed8d29566738ad005e19fe1c2d.min.js
 application.js: application-d19c6034ce5bbcbac385cd022b816180.js
-application.css: application-c7e9053e41fc1848e0498f37f08d9a58.css
+application.css: application-622f01c9b6bb441ad25dedc15f00c9f6.css
