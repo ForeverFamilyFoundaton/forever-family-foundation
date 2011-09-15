@@ -26,3 +26,5 @@ active_admin/nested_menu_arrow_dark.gif: active_admin/nested_menu_arrow_dark-876
 active_admin/orderable.png: active_admin/orderable-003d291622c6610ce91358a266ff0f9a.png
 application.js: application-d19c6034ce5bbcbac385cd022b816180.js
 application.css: application-622f01c9b6bb441ad25dedc15f00c9f6.css
+active_admin.js: active_admin-89affda6475ea294155b17c5fa899e9d.js
+active_admin.css: active_admin-6a09fd0914a940578edb9f96a78bfe48.css
