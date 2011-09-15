@@ -37,7 +37,6 @@ private
       else
         self.action_name.titleize
       end
-      Rails.logger.error { ">>> #{[controller,action].join(": ")}" }
       @cms_page = CmsPage.get([controller,action].join(": "))
     end
 
