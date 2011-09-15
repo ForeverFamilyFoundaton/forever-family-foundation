@@ -6,7 +6,7 @@ html, body, #container {
 }
 
 body {
-  background:#000 url('/images/header.jpg') no-repeat top;
+  background:#000 url(image_url('/images/header.jpg')) no-repeat top;
   padding-top: 90px; // allow for logo
 }
 

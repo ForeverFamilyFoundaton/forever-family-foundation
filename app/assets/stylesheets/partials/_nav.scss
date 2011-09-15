@@ -24,7 +24,7 @@
     @include inline-block;
     margin:0;
     padding:$padd-top $padd-top 0 5px;
-    background:url('/images/nav-dot.gif') no-repeat right 25px;
+    background:url(image_url('/images/nav-dot.gif')) no-repeat right 25px;
 
     &.first {
       padding-left:0;
@@ -76,7 +76,7 @@
     
     a {
       padding-left: 17px;
-      background:url('/images/nav-star.gif') no-repeat left;
+      background:url(image_url('/images/nav-star.gif')) no-repeat left;
     }
   }
   
