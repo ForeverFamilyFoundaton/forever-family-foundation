@@ -1,5 +1,6 @@
 @import "compass";
-@import "compass/layout.scss";
+@import "compass/layout/sticky-footer";
+
 @import '_blueprint';
 @include blueprint;
   

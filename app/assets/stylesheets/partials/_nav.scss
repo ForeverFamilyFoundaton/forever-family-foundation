@@ -52,15 +52,16 @@
 
 #user_nav {
   float:left;
-  margin-top:0;
-  margin-right:$padd-sides*2;
+  margin-top:20px;
   
   li {
     @include inline-block;
     margin:0;
+    padding:0 10px;
 
     &.first {
       padding-left:0;
+      border-right:1px solid $dark-blue;      
     }
   }
   
@@ -68,7 +69,7 @@
 
 #site_nav {
   float:left;
-  margin-top: $padd-top*2;
+  margin-top: $padd-top;
   margin-bottom: $padd-top;
   li {
     font-size:14px;
