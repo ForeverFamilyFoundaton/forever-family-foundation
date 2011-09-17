@@ -24,7 +24,7 @@
     @include inline-block;
     margin:0;
     padding:$padd-top $padd-top 0 5px;
-    background:url(image_path('nav-dot.gif')) no-repeat right 25px;
+    background:image_url('nav-dot.gif') no-repeat right 25px;
 
     &.first {
       padding-left:0;
@@ -32,12 +32,12 @@
     &.last {
       background-image:none;
     }
-
     a{
       position:relative;
       font-size:13px;
       font-weight:bold;
     }
+    
 
     img.current {
       position:absolute;

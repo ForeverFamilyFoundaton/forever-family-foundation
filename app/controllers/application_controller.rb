@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   # helper_method :current_user_session, :current_user, :is_admin?
-  before_filter :authenticate_admin_user!
   before_filter :get_cms_page
   before_filter :http_auth unless Rails.env == 'development'
 
