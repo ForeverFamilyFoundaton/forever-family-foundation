@@ -1,17 +1,27 @@
 %ul.nav#global_nav
 
   %li.first
-    = link_to t('navigation.home'), '/'
+    %a{ href: root_path }  
+      = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /index/    
+      = t('navigation.home')
   %li
-    = link_to t('navigation.global.signs_of_life_radio'), '/site/signs_of_life_radio'
+    %a{ href: '/site/signs_of_life_radio' } 
+      = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /signs_of_life_radio/
+      = t('navigation.global.signs_of_life_radio')
   %li
-    = link_to t('navigation.global.events'), events_path
+    %a{ href: events_path }
+      = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /events/    
+      = t('navigation.global.events')
   %li
-    %a{:href => '/site/store'}
-      = image_tag('/images/nav-indicator.gif', :class => :current)
+    %a{ href: 'store' }
+      = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /store/    
       = t('navigation.global.store')
   %li
-    = link_to t('navigation.global.volunteers'), '/site/volunteers'
+    %a{ href: '/site/volunteers' }  
+      = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /volunteers/        
+      = t('navigation.global.volunteers')
   %li.last
-    = link_to t('navigation.global.contributers'), '/site/contributers'
+    %a{ href: '/site/contributers' }  
+      = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /contributers/        
+      = t('navigation.global.contributers')
 

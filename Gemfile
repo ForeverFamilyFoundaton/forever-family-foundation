@@ -1,25 +1,23 @@
 source 'http://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.1.1.rc1'
 gem 'pg'
-
 # Gems used only for assets and not required
 # in production environments by default.
+gem 'sass-rails', "~> 3.1.0"
 
-gem 'sass-rails', "  ~> 3.1.0.rc"  
 group :assets do
-  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
-  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'  
+  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'
 end
 
 gem 'jquery-rails'
-
 gem 'haml'
 gem 'devise' 
 gem "cancan"
 gem 'activeadmin'
-gem "meta_search",    '>= 1.1.0.pre'
+gem "meta_search", '>= 1.1.0.pre'
 gem "transitions", :require => ["transitions", "active_record/transitions"]
 gem 'paperclip'
 gem "hoptoad_notifier"
