@@ -19,12 +19,12 @@ gem "cancan"
 gem 'activeadmin'
 gem "meta_search", '>= 1.1.0.pre'
 gem "transitions", :require => ["transitions", "active_record/transitions"]
-gem 'paperclip'
+gem "paperclip", "~> 2.4"
 gem "hoptoad_notifier"
 gem 'acts_as_tree'
 gem 'acts_as_list'
 gem 'redcarpet'
-
+gem 'aws-s3'
 group :test do
   gem "factory_girl_rails"
   gem "autotest"
