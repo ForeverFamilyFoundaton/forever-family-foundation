@@ -3,7 +3,7 @@ require 'integration_helper'
 class UserTest < ActionDispatch::IntegrationTest
 
   setup do
-    DatabaseCleaner.start
+    Capybara.current_driver = :selenium
     [{ question: 'Do you Believe In GOD?', show_radio: true },
      { question: 'Do you believe that there is something that survives after physical death?', show_radio: true },
      { question: 'What specific topics are you interested in discussing?', show_radio: true },
@@ -21,7 +21,8 @@ class UserTest < ActionDispatch::IntegrationTest
   
     
   test 'Answer ADG questions' do
-    click_link "After life discussion group"
+    click_link 'Register'
+    pause
     # And I check "Do you Believe In GOD?" as "Yes"
     # And I enter text for "Do you Believe In GOD?" as "some text here..."
     # And I check "Do you believe that there is something that survives after physical death?" as "No"

@@ -4,3 +4,8 @@ def sign_in(user)
   fill_in 'Password', :with => 'password'
   click_on 'Sign in'
 end
+
+def pause
+  puts 'pausing...'
+  STDIN.gets
+end

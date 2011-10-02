@@ -2,6 +2,7 @@ require 'test_helper'
 require 'capybara/rails'
 require 'support/steps'
 
+DatabaseCleaner.strategy = :truncation
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
