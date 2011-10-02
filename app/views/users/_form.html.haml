@@ -1,86 +1,82 @@
-%fieldset
-  %legend
-    Basic Info
+.form_section
+  %h2 Login Info
+  .form_fields
+    .group
+      %p
+        = form.label :email, t('email')
+        = form.text_field :email
+      %p
+        = form.label :email_confirmation, I18n.t('email_confirmation')
+        = form.text_field :email_confirmation
 
-  %p
-    = form.label :first_name, t('first_name')
-    %br
-    = form.text_field :first_name
-  %p
-    = form.label :middle_name, t('middle_name')
-    %br
-    = form.text_field :middle_name
-  %p
-    = form.label :last_name, t('last_name')
-    %br
-    = form.text_field :last_name
-  %p
-    = form.label :email, t('email')
-    %br
-    = form.text_field :email
-  %p
-    = form.label :email_confirmation, I18n.t('email_confirmation')
-    %br
-    = form.text_field :email_confirmation
-  %p
-    = form.label :password, t(form.object.new_record? ? "password" : "change_password")
-    %br
-    = form.password_field :password, :class => 'password'
-  %p
-    = form.label :password_confirmation, t('password_confirmation')
-    %br
-    = form.password_field :password_confirmation, :class => 'password'
-  %p
-    = form.label :cell_phone, t('cell_phone')
-    %br
-    = form.text_field :cell_phone
-  %p
-    = form.label :home_phone, t('home_phone')
-    %br
-    = form.text_field :home_phone
-  %p
-    = form.label :work_phone, t('work_phone')
-    %br
-    = form.text_field :work_phone
+    .group
+      %p
+        = form.label :password, t(form.object.new_record? ? "password" : "change_password")
+        = form.password_field :password, :class => 'password'
+      %p
+        = form.label :password_confirmation, t('password_confirmation')
+        = form.password_field :password_confirmation, :class => 'password'
 
-  = form.fields_for :address do |address_form|
-    %p
-      = address_form.label :address, t('address')
-      %br
-      = address_form.text_field :address
-    %p
-      = address_form.label :city, t('city')
-      %br
-      = address_form.text_field :city
-    %p
-      = address_form.label :state, t('state')
-      %br
-      = address_form.text_field :state
-    %p
-      = address_form.label :zip, t('zip')
-      %br
-      = address_form.text_field :zip
+.form_section
+  %h2 Basic Info
+  .form_fields
+    .group
+      %p
+        = form.label :first_name, t('first_name')
+        = form.text_field :first_name
+      %p
+        = form.label :middle_name, t('middle_name')
+        = form.text_field :middle_name
+      %p
+        = form.label :last_name, t('last_name')
+        = form.text_field :last_name
+    .group
+      %p
+        = form.label :cell_phone, t('cell_phone')
+        = form.text_field :cell_phone
+      %p
+        = form.label :home_phone, t('home_phone')
+        = form.text_field :home_phone
+      %p
+        = form.label :work_phone, t('work_phone')
+        = form.text_field :work_phone
 
-%fieldset
-  %legend
-    Family Members
-  = form.fields_for :family_members do |family_member_form|
-    %table
-      %tr
-        %td
+    = form.fields_for :address do |address_form|
+      .group
+        %p
+          = address_form.label :address, t('address')
+          = address_form.text_field :address
+        %p
+          = address_form.label :city, t('city')
+          = address_form.text_field :city
+      .group
+        %p
+          = address_form.label :state, t('state')
+          = address_form.text_field :state
+        %p
+          = address_form.label :zip, t('zip')
+          = address_form.text_field :zip
+
+.form_section
+  %h2 Family Members
+  .form_fields
+    = form.fields_for :family_members do |family_member_form|
+      .group
+        %p
           = family_member_form.label :first_name, t('first_name')
           = family_member_form.text_field :first_name
-        %td
+        %p
           = family_member_form.label :last_name, t('last_name')
           = family_member_form.text_field :last_name
-        %td
+        %p
           = family_member_form.label :relationship, t('relationship')
           = family_member_form.text_field :relationship
 
-
-- Preference.profile_preferences.each do |profile_preference|
-  = check_box_tag "user[profile_preference_ids][]", profile_preference.id, @user.profile_preferences.include?(profile_preference)
-  = profile_preference.name
-  %br
-%br
+.form_section
+  %h2 Preferences
+  .form_fields
+    - Preference.profile_preferences.each do |profile_preference|
+      %p
+        = check_box_tag "user[profile_preference_ids][]", profile_preference.id, @user.profile_preferences.include?(profile_preference)
+        = profile_preference.name
 
