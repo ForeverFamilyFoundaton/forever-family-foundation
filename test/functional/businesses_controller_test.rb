@@ -5,7 +5,6 @@ class BusinessesControllerTest < ActionController::TestCase
   
   context "on get new" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
       @user = Factory.create(:user)
       sign_in @user
       get :new, :user_id => @user.id
@@ -16,7 +15,6 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on create business" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
       @user = Factory.create(:user)
       sign_in @user
       post :create, "business" => FactoryGirl.attributes_for(:business)
@@ -30,7 +28,6 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on business params error" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in Factory.create(:user)
       post :create, "business" => {}
     end
@@ -41,7 +38,6 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on get edit" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
       @user = Factory.create(:user)
       sign_in @user
       business = FactoryGirl.create(:business, :user_id => @user.id)
@@ -53,7 +49,7 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on updating user" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
+
       @user = Factory.create(:user)
       sign_in @user
       @business = FactoryGirl.create(:business, :user_id => @user.id)
@@ -67,7 +63,7 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on get step 2" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
+
       @user = Factory.create(:user)
       sign_in @user
       @business = FactoryGirl.create(:business, :user_id => @user.id)
@@ -79,7 +75,7 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on finishing step 2" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
+
       @user = Factory.create(:user)
       sign_in @user
       @business = FactoryGirl.create(:business, :user_id => @user.id)
@@ -93,7 +89,7 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on get step 3" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
+
       @user = Factory.create(:user)
       sign_in @user
       @business = FactoryGirl.create(:business, :user_id => @user.id)
@@ -105,7 +101,7 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on finishing step 3" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
+
       @user = Factory.create(:user)
       sign_in @user
       @business = FactoryGirl.create(:business, :user_id => @user.id)

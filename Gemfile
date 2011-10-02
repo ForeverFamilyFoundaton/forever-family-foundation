@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1.rc1'
 gem 'pg'
+gem 'rake', '0.9.3.beta1'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'sass-rails', "~> 3.1.0"
@@ -9,7 +10,7 @@ gem 'sass-rails', "~> 3.1.0"
 group :assets do
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
-  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'
+  gem 'compass', git: 'https://github.com/chriseppstein/compass.git'
 end
 
 gem 'jquery-rails'
@@ -29,11 +30,8 @@ gem 'css3buttons'
 
 group :test do
   gem "factory_girl_rails"
-  gem "autotest"
-  gem "test_notifier"
   gem "shoulda-matchers"
-  gem "shoulda-context"  
-  gem 'cucumber-rails'
+  gem "shoulda-context"
   gem 'capybara'
   gem 'database_cleaner'
 end
