@@ -72,11 +72,12 @@
           = family_member_form.label :relationship, t('relationship')
           = family_member_form.text_field :relationship
 
-.form_section
-  %h2 Preferences
-  .form_fields
-    - Preference.profile_preferences.each do |profile_preference|
-      %p
-        = check_box_tag "user[profile_preference_ids][]", profile_preference.id, @user.profile_preferences.include?(profile_preference)
-        = profile_preference.name
+- unless Preference.profile_preferences.empty?
+  .form_section
+    %h2 Preferences
+    .form_fields
+      - Preference.profile_preferences.each do |profile_preference|
+        %p
+          = check_box_tag "user[profile_preference_ids][]", profile_preference.id, @user.profile_preferences.include?(profile_preference)
+          = profile_preference.name
 

@@ -25,6 +25,8 @@ gem 'acts_as_tree'
 gem 'acts_as_list'
 gem 'redcarpet'
 gem 'aws-s3'
+gem 'css3buttons'
+
 group :test do
   gem "factory_girl_rails"
   gem "autotest"
