@@ -5,7 +5,12 @@
 label {
   display:block;
   font-weight:normal;
+  &.radio {
+    display:inline-block;
+    font-weight:normal;
+  }
 }
+
 
 .field_with_errors {
   color:$error-red;
@@ -13,7 +18,7 @@ label {
     border:1px solid $error-red;
   }
 }
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   width: 160px;
   margin-top:3px;
 }

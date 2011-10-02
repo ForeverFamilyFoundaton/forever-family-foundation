@@ -1,3 +1,5 @@
-admin_email = 'admin@example.com'
-password = 'password'
-AdminUser.create!(email: admin_email, password: password, password_confirmation: password)
+require 'factory_girl'
+require './test/factories/addresses'
+require './test/factories/users'
+FactoryGirl.create(:user)
+FactoryGirl.create(:admin)

@@ -1,15 +1,15 @@
 = form_tag adg_registration_path do
-  %table
+  %table.adg_questions
     - @adg_questions.each do |adg_question|
       %tr
         %td= adg_question.question
         %td
           - @adg_answers.blank? ? adg_answer = '' : (adg_answer = @adg_answers.assoc(adg_question.id)[1]) unless @adg_answers.assoc(adg_question.id).blank?          
           - if adg_question.show_radio
-            Yes
+            %label{ for: "adg_registration_radio_val[#{adg_question.id}]_yes", class: :radio } Yes
             = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "yes", :onclick => "show_text_area('#{adg_question.id}')", :checked => (@adg_answers.assoc(adg_question.id)[2] == "yes" unless @adg_answers.assoc(adg_question.id).blank?)
             /
-            No
+            %label{ for: "adg_registration_radio_val[#{adg_question.id}]_no", class: :radio } No
             = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "no", :onclick => "hide_text_area('#{adg_question.id}')", :checked => (@adg_answers.assoc(adg_question.id)[2] == "no" unless @adg_answers.assoc(adg_question.id).blank?)
             - adg_answer.blank? ? display = "hide" : display = ''
             %div= text_area_tag "adg_registration[answer[#{adg_question.id}]]", adg_answer, :class => "simple #{display}" 

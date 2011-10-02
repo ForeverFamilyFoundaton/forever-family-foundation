@@ -21,9 +21,12 @@ class UserTest < ActionDispatch::IntegrationTest
   
     
   test 'Answer ADG questions' do
+    click_link 'After life discussion group'    
     click_link 'Register'
     pause
-    # And I check "Do you Believe In GOD?" as "Yes"
+    within('table.adg_questions tr:nth-child(1)') do
+      choose 'Yes'
+    end
     # And I enter text for "Do you Believe In GOD?" as "some text here..."
     # And I check "Do you believe that there is something that survives after physical death?" as "No"
     # And I enter text for "What specific topics are you interested in discussing?" as "some text for topics here..."
