@@ -23,15 +23,27 @@ class UserTest < ActionDispatch::IntegrationTest
   test 'Answer ADG questions' do
     click_link 'After life discussion group'    
     click_link 'Register'
-    pause
     within('table.adg_questions tr:nth-child(1)') do
       choose 'Yes'
+      fill_in 'adg_registration[answer[1]]', with: 'some text here...'
     end
-    # And I enter text for "Do you Believe In GOD?" as "some text here..."
-    # And I check "Do you believe that there is something that survives after physical death?" as "No"
-    # And I enter text for "What specific topics are you interested in discussing?" as "some text for topics here..."
-    # And I enter text for "What books have you read in this topic" as "some text for books read here..."
-    # And I press "Submit"
+
+    within('table.adg_questions tr:nth-child(2)') do
+      choose 'No'
+    end
+
+    within('table.adg_questions tr:nth-child(3)') do
+      choose 'Yes'
+      fill_in 'adg_registration[answer[3]]', with: 'some text for topics here...'      
+    end
+  
+
+    within('table.adg_questions tr:nth-child(4)') do
+      choose 'Yes'
+      fill_in 'adg_registration[answer[4]]', with: 'some text for books read here...'      
+    end
+  
+    click_on 'Submit'
     # Then I should be on the ADG registration page
     # Then the radio button in "Do you Believe In GOD?" must be checked "Yes"
     # Then the text in "Do you Believe In GOD?" must be "some text here..."
@@ -43,7 +55,7 @@ class UserTest < ActionDispatch::IntegrationTest
   end
 
 
-    # Scenario: User is not logged-in
+  # Scenario: User is not logged-in
   #   Given I am not logged in
   #   When I am on the ADG registration page
   #   Then I should be on the user registration page

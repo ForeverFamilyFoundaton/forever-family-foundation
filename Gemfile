@@ -13,7 +13,6 @@ group :assets do
   gem 'compass', git: 'https://github.com/chriseppstein/compass.git'
 end
 
-gem 'jquery-rails'
 gem 'haml'
 gem 'devise' 
 gem "cancan"
