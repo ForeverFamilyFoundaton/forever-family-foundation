@@ -1,8 +1,3 @@
-Given /there are the following ADG questions/ do |table|
-  table.hashes.each do |hash|
-    FactoryGirl.create(:adg_question,:question => hash[:question], :show_radio => hash[:show_radio])
-  end
-end
 
 Given /^I check "([^\"]*)" as "([^\"]*)"$/ do |question, radio_val|
   adg_question = AdgQuestion.find_by_question(question)

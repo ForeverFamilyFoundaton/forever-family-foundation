@@ -5,10 +5,7 @@ class BusinessesController < ApplicationController
   end
 
   def create
-    @business = Business.new(params[:business])
-    #@business.users << current_user
-    current_user.business = @business
-    @business.completed_step = 1
+    @business = current_user.build_business(params[:business].merge(completed_step: 1))
     if @business.save
       current_user.business_registered!
       flash[:notice] = I18n.t('flash.business.create.success')

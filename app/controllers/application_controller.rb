@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   # helper_method :current_user_session, :current_user, :is_admin?
   before_filter :get_cms_page
-  before_filter :http_auth unless Rails.env == 'development'
+  before_filter :http_auth unless ['development','test'].include?(Rails.env)
 
   def http_auth
     if !session[:authenticated]
@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   
 private
 
+  
     rescue_from CanCan::AccessDenied do |exception|
       redirect_to root_url, :alert => exception.message
     end

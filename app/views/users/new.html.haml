@@ -1,7 +1,7 @@
 = form_for setup_user(@user), :url => account_path do |f|
   = render "shared/error_messages", :target => @user
   = render :partial => "form", :object => f
-  %hr
+  
   %p
     = f.check_box :terms_of_use
     = f.label :terms_of_use, t('terms_of_use_acceptance').html_safe

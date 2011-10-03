@@ -13,7 +13,6 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
 
   context "on user being logged in" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in Factory.create(:user)
     end
     
@@ -39,7 +38,6 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
 
     context "on create adg registration" do
       setup do
-        @request.env["devise.mapping"] = Devise.mappings[:admin]
         @user = Factory.create(:user)        
         sign_in @user
         @q1 = Factory.create(:adg_question)

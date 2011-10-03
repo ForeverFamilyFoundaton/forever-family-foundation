@@ -1,7 +1,6 @@
 require_relative '../test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
   
   context "on get new" do
     setup do
@@ -22,34 +21,32 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   context "on user params error" do
-    setup do
-      post :create, "user" => FactoryGirl.attributes_for(:user, :password => 'badpass')
-    end
-    should assign_to :user
-    should respond_with :success
-    should render_template :new
+   setup do
+     post :create, "user" => FactoryGirl.attributes_for(:user, :password => 'badpass')
+   end
+   should assign_to :user
+   should respond_with :success
+   should render_template :new
   end
 
   context "on get edit" do
-    setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
-      @user = Factory.create(:user)
-      sign_in @user
-      get :edit, :id => @user.id
-    end
-    should respond_with :success
-    should render_template :edit
+   setup do
+     @user = Factory.create(:user)
+     sign_in @user
+     get :edit, :id => @user.id
+   end
+   should respond_with :success
+   should render_template :edit
   end
 
   context "on updating user" do
-    setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
-      @user = Factory.create(:user)
-      sign_in @user
-      put :update, "user" => FactoryGirl.attributes_for(:user), :id => @user.id
-    end
-    should assign_to :user
-    should respond_with :redirect
+   setup do
+     @user = Factory.create(:user)
+     sign_in @user
+     put :update, "user" => FactoryGirl.attributes_for(:user), :id => @user.id
+   end
+   should assign_to :user
+   should respond_with :redirect
   end
   
 end

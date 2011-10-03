@@ -1,5 +1,4 @@
 class AdgRegistrationsController < ApplicationController
-  skip_before_filter :authenticate_admin_user!, :only => [:new]
   before_filter :redirect_to_reg_if_no_user, :only => [:new]
 
   def new
