@@ -4,13 +4,10 @@ class UserTest < ActionDispatch::IntegrationTest
 
   setup do
     Capybara.current_driver = :selenium
-    [{ question: 'Do you Believe In GOD?', show_radio: true },
-     { question: 'Do you believe that there is something that survives after physical death?', show_radio: true },
-     { question: 'What specific topics are you interested in discussing?', show_radio: true },
-     { question: 'What books have you read in this topic', show_radio: true }].each do |adg_question_params| 
-      AdgQuestion.create!(adg_question_params)
-    end
-
+    @adg_question1 = AdgQuestion.create!(question: 'Do you Believe In GOD?', show_radio: true)
+    @adg_question2 = AdgQuestion.create!(question: 'Do you believe that there is something that survives after physical death?', show_radio: true )
+    @adg_question3 = AdgQuestion.create!(question: 'What specific topics are you interested in discussing?', show_radio: true )
+    @adg_question4 = AdgQuestion.create!(question: 'What books have you read in this topic', show_radio: true )
     @user = FactoryGirl.create(:user)
     sign_in(@user)
   end
@@ -25,7 +22,7 @@ class UserTest < ActionDispatch::IntegrationTest
     click_link 'Register'
     within('table.adg_questions tr:nth-child(1)') do
       choose 'Yes'
-      fill_in 'adg_registration[answer[1]]', with: 'some text here...'
+      fill_in "adg_registration[answer[#{@adg_question1.id}]]", with: 'some text here...'
     end
 
     within('table.adg_questions tr:nth-child(2)') do
@@ -34,13 +31,13 @@ class UserTest < ActionDispatch::IntegrationTest
 
     within('table.adg_questions tr:nth-child(3)') do
       choose 'Yes'
-      fill_in 'adg_registration[answer[3]]', with: 'some text for topics here...'      
+      fill_in "adg_registration[answer[#{@adg_question3.id}]]", with: 'some text for topics here...'      
     end
   
 
     within('table.adg_questions tr:nth-child(4)') do
       choose 'Yes'
-      fill_in 'adg_registration[answer[4]]', with: 'some text for books read here...'      
+      fill_in "adg_registration[answer[#{@adg_question4.id}]]", with: 'some text for books read here...'      
     end
   
     click_on 'Submit'
