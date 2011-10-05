@@ -3,13 +3,6 @@ class AdgRegistrationsController < ApplicationController
 
   def new
     @adg_questions = AdgQuestion.all
-    @adg_answers = current_user.adg_answers.all.map do |answer|
-      {
-        adg_question_id: answer.adg_question_id,
-        answer: answer.answer,
-        radi_val: answer.radio_val
-      }
-    end
   end
 
   def create

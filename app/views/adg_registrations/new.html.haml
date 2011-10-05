@@ -1,23 +1,22 @@
 = form_tag adg_registration_path do
   %table.adg_questions
     - @adg_questions.each do |adg_question|
+      - adg_answer = current_user.adg_answers.find_by_adg_question_id(adg_question)
       %tr
-        %td= adg_question.question
         %td
-          - adg_answer = @adg_answers.blank? ? '' : @adg_answers.assoc(adg_question.id)[:answer] unless @adg_answers.assoc(adg_question.id).blank?
+          = adg_question.question
+        %td    
           - if adg_question.show_radio
             %label{ for: "adg_registration_radio_val[#{adg_question.id}]_yes", class: :radio } Yes
-            = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "yes", :checked => (@adg_answers.assoc(adg_question.id)[2] == "yes" unless @adg_answers.assoc(adg_question.id).blank?)
+            = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "yes", :checked => (adg_answer.present? and adg_answer.radio_val == "yes"), class: :yes
             /
             %label{ for: "adg_registration_radio_val[#{adg_question.id}]_no", class: :radio } No
-            = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "no", :checked => (@adg_answers.assoc(adg_question.id)[2] == "no" unless @adg_answers.assoc(adg_question.id).blank?)
+            = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "no", :checked => (adg_answer.present? and adg_answer.radio_val == "no"), class: :no
 
-            %div
-              - display = adg_answer.blank? ? "hide" : ''
-              = text_area_tag "adg_registration[answer[#{adg_question.id}]]", adg_answer, class: [:simple, display]
+          %div.ansewer_field{style: "display: #{adg_answer.try(:answer).blank? ? 'none' : 'block'}"}
+            = text_area_tag "adg_registration[answer[#{adg_question.id}]]", adg_answer.try(:answer), class: :simple
 
-          - else
-            = text_area_tag "adg_registration[answer[#{adg_question.id}]]", adg_answer, class: :simple
+
 
   - user_adg_preferences = current_user.adg_preferences.all
   - Preference.adg_preferences.each do |adg_preference|

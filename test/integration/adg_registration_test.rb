@@ -20,6 +20,7 @@ class UserTest < ActionDispatch::IntegrationTest
   test 'Answer ADG questions' do
     click_link 'After life discussion group'    
     click_link 'Register'
+    pause
     within('table.adg_questions tr:nth-child(1)') do
       choose 'Yes'
       fill_in "adg_registration[answer[#{@adg_question1.id}]]", with: 'some text here...'
