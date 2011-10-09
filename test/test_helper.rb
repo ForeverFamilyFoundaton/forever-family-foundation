@@ -17,3 +17,9 @@ FactoryGirl.class_eval do
     add_attribute(name, uploaded_file)
   end
 end
+
+class Test::Unit::TestCase
+  def page
+    Capybara::Node::Simple.new(@response.body)
+  end
+end

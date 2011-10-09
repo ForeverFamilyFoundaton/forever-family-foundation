@@ -14,8 +14,9 @@ def pause
   STDIN.gets
 end
 
-def fill_in_reg(params)
-  fill_in "Email", :with => params[:email]
+def fill_in_reg(params={})
+  params[:email] ||= 'abc@example.com'
+  fill_in "Email", :with => params[:email] 
   fill_in "Email confirmation", :with => params[:email]
   fill_in "Password", :with => "password"
   fill_in "Password confirmation", :with => "password"
