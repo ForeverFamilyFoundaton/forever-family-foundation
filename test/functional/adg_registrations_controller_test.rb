@@ -7,7 +7,7 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
     setup do
       get :new
     end
-    should redirect_to('new_account_path') { new_account_path }
+    should redirect_to '/users/sign_up'
     should set_the_flash.to(I18n.t('flash.adg.user_required'))
   end
 

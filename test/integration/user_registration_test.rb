@@ -31,7 +31,7 @@ class UserTest < ActionDispatch::IntegrationTest
       check "Yes, I accept the Terms of Use"
       check "I am registering a business"
       click_on "Register"
-      assert_match "/users/1/businesses/new", current_url
+      assert_match "/users/#{User.last.id}/businesses/new", current_url
 end
 
   test 'valdation' do
