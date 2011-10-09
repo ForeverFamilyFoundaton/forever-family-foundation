@@ -12,7 +12,7 @@ class UserTest < ActionDispatch::IntegrationTest
 
   test "non biz reg'" do
     visit '/users/sign_up'
-    fill_in_reg
+    fill_in_reg(email: 'qwe@example.com')
     assert_match "/home", current_url
   end
   
