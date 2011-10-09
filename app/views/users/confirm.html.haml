@@ -130,8 +130,8 @@
     =h @user.business.promotional_media_additional_notes
 
 
-= button_to 'Confirm' ,user_confirm_path,:class => 'submit',:method => :post
+= button_to 'Confirm' , '/users/confirm',:class => 'submit',:method => :post
 |
-= link_to 'Edit', edit_account_path
+= link_to 'Edit', edit_user_path(@user)
 = image_tag "progress.gif", :class => :progress_spinner
 

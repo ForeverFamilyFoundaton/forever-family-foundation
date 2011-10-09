@@ -19,8 +19,6 @@ class User < ActiveRecord::Base
   has_many :adg_preferences, :through => :user_preference_selections, :source => :preference, :conditions => "preferences.preference_type = 'ADG'", :class_name => 'Preference'
 
   state_machine do
-
-    state :initial_reg
     state :initial_reg
     state :business_initial_reg
     state :adg_reg

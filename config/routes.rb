@@ -4,7 +4,7 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   
   devise_scope :user do
     get "/login" => "devise/sessions#new"
@@ -15,11 +15,11 @@ ForeverFamilyFoundation::Application.routes.draw do
   match 'home' => "welcome#logged_in_index"  
   
   resource :adg_registration
-  resource :user_session
-  resource :user, :as => :account
+  # resource :user_session
+  # resource :user, :as => :account
 
   resource :businesses
-  
+
   resources :users do
     get :confirm
     resources :businesses do

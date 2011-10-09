@@ -27,7 +27,7 @@ class AdgRegistrationsController < ApplicationController
     if current_user.blank?
       flash[:notice] = I18n.t('flash.adg.user_required')
       store_location_adg_registration
-      redirect_to new_account_path
+      redirect_to new_user_registration_path
     end
   end
 end

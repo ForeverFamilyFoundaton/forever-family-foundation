@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  # helper_method :current_user_session, :current_user, :is_admin?
+  # helper_method :current_user_session, :current_user
   before_filter :get_cms_page
   before_filter :http_auth unless ['development','test'].include?(Rails.env)
 
@@ -53,16 +53,13 @@ private
     #    session[:return_to] = nil
     #  end
  
-    def construct_businesses_or_confirm_path(user)
-      (user.state == 'initial_reg' and user.is_business) ? new_user_business_path(user) :  user_confirm_path(user)
-    end
-
     def construct_confirm_or_home_path(user)
       (user.state == 'confirm') ? (url_for(:controller => 'welcome', :action => 'logged_in_index')) : user_confirm_path(current_user)
     end
 
-    def user_reg_step_path(user)
-      if user.state == 'initial_reg' and user.is_business
+    def user_reg_step_path
+      @user = current_user
+      if current_user.state == 'initial_reg' and current_user.is_business
         return new_user_business_path(user)
       else
         if session[:adg_registration]

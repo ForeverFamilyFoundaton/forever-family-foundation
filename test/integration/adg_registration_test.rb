@@ -9,18 +9,18 @@ class UserTest < ActionDispatch::IntegrationTest
     @adg_question3 = AdgQuestion.create!(question: 'What specific topics are you interested in discussing?', show_radio: true )
     @adg_question4 = AdgQuestion.create!(question: 'What books have you read in this topic', show_radio: true )
     @user = FactoryGirl.create(:user)
-    sign_in(@user)
   end
   
   teardown do
+    sign_out(@user)
     DatabaseCleaner.clean
   end
   
     
   test 'Answer ADG questions' do
+    sign_in(@user)
     click_link 'After life discussion group'    
     click_link 'Register'
-    pause
     within('table.adg_questions tr:nth-child(1)') do
       choose 'Yes'
       fill_in "adg_registration[answer[#{@adg_question1.id}]]", with: 'some text here...'
@@ -42,21 +42,24 @@ class UserTest < ActionDispatch::IntegrationTest
     end
   
     click_on 'Submit'
-    # Then I should be on the ADG registration page
-    # Then the radio button in "Do you Believe In GOD?" must be checked "Yes"
-    # Then the text in "Do you Believe In GOD?" must be "some text here..."
-    # Then the radio button in "Do you believe that there is something that survives after physical death?" must be checked "No"
-    # Then the text in "What specific topics are you interested in discussing?" must be "some text for topics here..."
-    # Then the text in "What books have you read in this topic" must be "some text for books read here..."
+    assert_match '/adg_registration/new', current_url
+    within('table.adg_questions tr:nth-child(1)') { assert_equal true, find('input.yes').selected? }
+    within('table.adg_questions tr:nth-child(2)') { assert_equal false, find('input.yes').selected? }
+    within('table.adg_questions tr:nth-child(3)') { assert_equal true, find('input.yes').selected? }
+    within('table.adg_questions tr:nth-child(4)') { assert_equal true, find('input.yes').selected? }    
 
-
+    assert_equal 'some text here...', find('table.adg_questions tr:nth-child(1) textarea').value
+    assert_equal 'some text for topics here...', find('table.adg_questions tr:nth-child(3) textarea').value
+    assert_equal 'some text for books read here...', find('table.adg_questions tr:nth-child(4) textarea').value
   end
 
 
-  # Scenario: User is not logged-in
-  #   Given I am not logged in
-  #   When I am on the ADG registration page
-  #   Then I should be on the user registration page
-  #   And I will register successfully as non business user
-  #   Then I should be redirected back to ADG registration
+  test "User is not logged-in" do
+    click_link 'After life discussion group'    
+    click_link 'Register'
+    assert_match '/users/sign_up', current_url
+    fill_in_reg(email: 'test2@example.com')
+    assert_match '/adg_registration/new', current_url
+    sign_out(@user)
+  end
 end
