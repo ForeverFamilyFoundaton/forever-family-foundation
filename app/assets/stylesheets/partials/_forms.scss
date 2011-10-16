@@ -18,7 +18,7 @@ label {
     border:1px solid $error-red;
   }
 }
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password], input[type=email], input[type=file]  {
   width: 160px;
   margin-top:3px;
 }
@@ -28,7 +28,12 @@ input[type=checkbox] {
   margin:3px 10px;
 }
 
-.form_section {
+textarea {
+  height:4em;
+  width: 400px;
+}
+
+.form_section, .page_section {
   background: $light-grey;
   @include border-radius;
   padding:0;
@@ -44,16 +49,23 @@ input[type=checkbox] {
     margin:0;
   }
 
-  .form_fields {
+  .form_fields, .section_content {
     padding: $padd-sides;
     
     p {
       margin:0;
     }
+
     .group p{
       display:inline-block;
       margin-right:$padd-sides;
     }
+
+    p.file_upload {
+        label {
+                
+        }
+      }
   }
 }
 

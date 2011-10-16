@@ -47,5 +47,9 @@ class User < ActiveRecord::Base
   def has_role?(role)
     roles.detect{|r| r.name == role}
   end
+
+  def full_name
+    [first_name, middle_name, last_name].compact.join(' ')
+  end
 end
 
