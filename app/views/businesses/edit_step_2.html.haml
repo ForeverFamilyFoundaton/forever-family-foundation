@@ -18,8 +18,10 @@
             = t('business_card')
           = business_card_form.file_field :attachment
           = business_card_form.hidden_field :kind
-          %br
-          = link_to @business.business_card.attachment.original_filename,  attachment_user_business_path(current_user, @business, :attachment_id => @business.business_card) unless @business.business_card.attachment.original_filename.blank?
+          
+          - if @business.business_card.present?
+            %br
+            = image_tag  @business.business_card.attachment.url
     
       = f.fields_for :business_logo do |business_logo_form|
         %fieldset
@@ -27,8 +29,10 @@
             = t('business_logo')
           = business_logo_form.file_field :attachment
           = business_logo_form.hidden_field :kind
-          %br
-          = link_to @business.business_logo.attachment.original_filename,  attachment_user_business_path(current_user, @business, :attachment_id => @business.business_logo) unless @business.business_logo.attachment.original_filename.blank?
+
+          - if @business.business_card.present?
+            %br
+              = image_tag  @business.business_logo.attachment.url
     
         %fieldset
           %legend
@@ -36,8 +40,11 @@
           = f.fields_for :web_banner do |web_banner_form|
             = web_banner_form.file_field :attachment
             = web_banner_form.hidden_field :kind        
-          %br
-          = link_to @business.web_banner.attachment.original_filename,  user_business_attachment_path(current_user, @business, :attachment_id => @business.web_banner) unless @business.web_banner.attachment.original_filename.blank?
+
+          - if @business.business_card.present?
+            %br
+              = image_tag  @business.web_banner.attachment.url
+          
           %br
           %p
             = f.check_box :use_business_card_for_web_banner

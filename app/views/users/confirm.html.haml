@@ -96,8 +96,8 @@
       = @user.business.promotional_media_additional_notes
 
 
-= button_to 'Confirm' , '/users/confirm',:class => 'submit',:method => :post
-|
-= link_to 'Edit', edit_user_path(@user)
+= primary_approve_button_tag 'Confirm' , '/users/confirm'
+= edit_button_link_to  'Edit', edit_user_path(@user)
+
 = image_tag "progress.gif", :class => :progress_spinner
 
