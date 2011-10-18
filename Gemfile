@@ -14,8 +14,8 @@ group :assets do
 end
 
 gem 'haml'
-gem 'devise' 
-gem "cancan"
+gem 'devise'
+gem "cancan", '1.6.7'
 gem 'activeadmin'
 gem "meta_search", '>= 1.1.0.pre'
 gem "transitions", :require => ["transitions", "active_record/transitions"]
