@@ -35,7 +35,7 @@ textarea {
 
 .form_section, .page_section {
   background: $light-grey;
-  @include border-radius;
+  @include border-radius($default-border-radius);
   padding:0;
   margin-bottom:15px;
   

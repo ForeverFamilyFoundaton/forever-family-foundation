@@ -55,6 +55,8 @@ GEM
       mime-types
       xml-simple
     bcrypt-ruby (3.0.1)
+    bourbon (1.1.0)
+      sass (>= 3.1)
     builder (3.0.0)
     cancan (1.6.6)
     capybara (1.1.1)
@@ -209,6 +211,7 @@ DEPENDENCIES
   acts_as_list
   acts_as_tree
   aws-s3
+  bourbon
   cancan
   capybara
   coffee-rails (~> 3.1.0)

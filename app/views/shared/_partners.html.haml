@@ -1,12 +1,16 @@
 %ul#partners
-  %li 
-    = link_to image_tag('donation.gif'), 'https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=FhvdI-nfHML0i_WPb67QsxQEaPG9VHLXFZzXgf3FK-vTpMRW_t6GTU88JJe&dispatch=5885d80a13c0db1f8e263663d3faee8deaa77efc63a6eb429928d42bdf5d9d2c', :target => '_blank'
+  %li
+    - igive_link = 'https://www.paypal.com/us/cgi-bin/webscr?cmd=_flow&SESSION=FhvdI-nfHML0i_WPb67QsxQEaPG9VHLXFZzXgf3FK-vTpMRW_t6GTU88JJe&dispatch=5885d80a13c0db1f8e263663d3faee8deaa77efc63a6eb429928d42bdf5d9d2c'
+    = link_to igive_link, target: '_blank' do
+      = button_tag 'Make a Donation', class: :fff_button
+
 
   %li 
     = link_to image_tag('sign-registry.gif'), 'http://thesignregistry.com/', :target => '_blank'
 
   %li 
     = t('layout.support_us_by_shopping')
+  
   %li
     = link_to image_tag('igive.gif'), 'http://www.igive.com/welcome/warmwelcome3.cfm?c=43517',:target => '_blank'
     
