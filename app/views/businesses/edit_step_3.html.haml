@@ -15,7 +15,7 @@
           = promotional_media_mp3_form.file_field :attachment
           = promotional_media_mp3_form.hidden_field :kind
 
-          - if @business.promotional_media_mp3.present?
+          - if @business.promotional_media_mp3.attachment.present?
             %br
             =  link_to @business.promotional_media_mp3.attachment.original_filename, @business.promotional_media_mp3.attachment.url
           
@@ -27,7 +27,7 @@
             = promotional_media_upload_form.file_field :attachment
             = promotional_media_upload_form.hidden_field :kind
 
-            - if @business.promotional_media_upload.present?
+            - if @business.promotional_media_upload.attachment.present?
               %br
               =  link_to @business.promotional_media_upload.attachment.original_filename, @business.promotional_media_upload.attachment.url
 

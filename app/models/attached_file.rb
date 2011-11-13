@@ -7,6 +7,7 @@ class AttachedFile < ActiveRecord::Base
     :s3_credentials => {
       :access_key_id => 'AKIAJY2QBAGM7WQAIDDQ',
       :secret_access_key => '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'
-  }
+    },
+    :styles => { :thumb => "100x100>" }
   attr_accessible :attachment, :kind
 end

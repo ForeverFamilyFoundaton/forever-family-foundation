@@ -1,19 +1,32 @@
 .page_section
+  %h2 Login Information
+  .section_content
+    %ul
+      %li
+        Login:
+        %span=@user.email
+        
+    %p= link_to 'Edit Login Details', edit_user_password_path
+
+.page_section
   %h2 Personal Information
   .section_content
-    %p= @user.full_name
-    %p= @user.email
-    %p= @user.home_phone
-    %p= @user.cell_phone
-    %p= @user.work_phone
-    %p= @user.address.address 
-    %p= [@user.address.city, @user.address.state].join(', ')  + ' ' + @user.address.zip 
+    %ul
+      %li= @user.full_name
+      %li= @user.home_phone
+      %li= @user.cell_phone
+      %li= @user.work_phone
+      %li= @user.address.address 
+      %li= [@user.address.city, @user.address.state].join(', ')  + ' ' + @user.address.zip 
     
-
+    %p= link_to 'Edit Personal Information'
+    
 -if @user.family_members.present?
   .page_section
     %h2 Family Members
     .section_content
+      %ul
+      %li
       %table
         %tr
           %th
@@ -33,71 +46,90 @@
 
 -if @user.is_business?
   .page_section
-    %h2 Bussines Details 
+    %h2 Business Details 
     .section_content
-      %p= @user.business.name 
-      %p
-        Contact name:
-        = @user.business.contact_name 
-      %p
-        Contact Email:
-        = @user.business.contact_email     
-      %p
-        Contact phone:
-        = @user.business.contact_phone     
-      %p= @user.business.address.address
-      %p= [@user.business.address.city, @user.business.address.state].join(', ') + ' '  + @user.business.address.zip
-      %p
-        Fax:
-        = @user.business.fax
-      
-
-.page_section
-  %h2 Billing address   
-  .section_content
-    %p= @user.business.billing_address.address
-    %p= [@user.business.billing_address.city, @user.business.billing_address.state].join(', ') + ' ' + @user.business.billing_address.zip      
     
-    - if @user.business.business_card.present?
+      %h3 Business Address   
+      %ul
+        %li= @user.business.name 
+        %li 
+          Contact name:
+          %span= @user.business.contact_name 
+        %li
+          Contact Email:
+          %span= @user.business.contact_email     
+        %li
+          Contact phone:
+          %span= @user.business.contact_phone     
+        %li= @user.business.address.address
+        %li= [@user.business.address.city, @user.business.address.state].join(', ') + ' '  + @user.business.address.zip
+        %li
+          Fax:
+          %span= @user.business.fax
+      
+      %h3 Billing Address         
+      %ul
+        %li= @user.business.billing_address.address
+        %li= [@user.business.billing_address.city, @user.business.billing_address.state].join(', ') + ' ' + @user.business.billing_address.zip      
+  
+      %p= link_to 'Edit Business Details', edit_user_registration_path(step: 1)
+    
+.page_section
+  %h2 Business Media
+  .section_content
+    - if @user.business.business_card.attachment.present?
       %fieldset
         %legend Bussines Card
         = image_tag  @user.business.business_card.attachment.url
     
-    - if @user.business.business_logo.present?  
+    - if @user.business.business_logo.attachment.present?  
       %fieldset
         %legend Bussines logo
         = image_tag  @user.business.business_logo.attachment.url
-    
-    - if @user.business.web_banner.present?  
-      %fieldset
-        %legend Web banner
+  
+    %fieldset
+      %legend Web banner
+      - if @user.business.web_banner.attachment.present?  
         = image_tag  @user.business.web_banner.attachment.url
+      - else
+        %p Use my business card.
     
-    %p 
-      Additional notes:
-      = @user.business.promotional_info_additional_notes
+    %p= link_to 'Edit Business Media'    
     
-    - if @user.business.web_banner.present?  
+    - if @user.business.promotional_info_additional_notes.present?
+      %p 
+        Additional notes:
+        = @user.business.promotional_info_additional_notes
+
+.page_section
+  %h2 Promotional Media
+  .section_content
+    
+    - if @user.business.promotional_media_mp3.attachment.present?  
       %fieldset
         %legend Mp3 file:
-        = image_tag  @user.business.promotional_media_mp3.attachment.url
+        %audio{ controls: "controls" }
+          %source{ src: @user.business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
+          %p Your browser does not support the audio tag.
     
-    - if @user.business.promotional_media_upload.present?  
+    - if @user.business.promotional_media_upload.attachment.present?  
       %fieldset
         %legend Text file:
-        = @user.business.promotional_media_mp3.attachment.original_filename
+        =link_to @user.business.promotional_media_upload.attachment.original_filename, @user.business.promotional_media_upload.attachment.url, target: '_blank'
+
+    - if @user.business.promotional_media_text    
+      %fieldset
+        %legend Promotional Media Text
+        %p= @user.business.promotional_media_text    
     
-    %p
-      = @user.business.promotional_media_text    
+    - if @user.business.promotional_media_additional_notes
+      %fieldset
+        %legend Promotional Media Notes
+        %p= @user.business.promotional_media_additional_notes
+      
+    %p= link_to 'Edit Promotional Media'    
 
-    %hr
-
-    %p
-      = @user.business.promotional_media_additional_notes
-
-
-= primary_approve_button_tag 'Confirm' , '/users/confirm'
-= edit_button_link_to  'Edit', edit_user_path(@user)
-
+= link_to button_tag('Confirm', class: :skip), user_confirm_path
+= link_to button_tag('Edit', class: :skip), edit_user_path(@user)
 = image_tag "progress.gif", :class => :progress_spinner
 

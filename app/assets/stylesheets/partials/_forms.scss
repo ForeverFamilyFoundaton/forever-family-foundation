@@ -11,7 +11,12 @@ label {
   }
 }
 
-
+fieldset {
+  legend {
+    padding:0 $padd-sides;
+  }
+  
+}
 .field_with_errors {
   color:$error-red;
   input {
@@ -69,6 +74,10 @@ textarea {
   }
 }
 
+ul.auth_links {
+  @include link-list-ul;
+  padding-top:$padd-top;
+}
 
 #errorExplanation {
   h2 {

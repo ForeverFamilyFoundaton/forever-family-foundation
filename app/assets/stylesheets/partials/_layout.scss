@@ -37,6 +37,7 @@ body {
   }
   
   #content_main {
+    width:100%;
     float:left;
     @include clearfix;
     margin-top: $padd-top;
