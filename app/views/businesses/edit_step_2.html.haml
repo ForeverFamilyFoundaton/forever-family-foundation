@@ -1,11 +1,10 @@
 = render :partial => 'steps'
 
-
 %p 
   Your business membership includes a thirty second radio spot on our weekly show. You have the option of sending us a recording or having us live-read or produce a spot for you. 
 
 .form_section
-  %h2 Promotional Matierial
+  %h2 Business Media
 
   = form_for setup_business(@business), :url => user_business_path(current_user, @business), :html => { :multipart => true } do |f|
     = hidden_field_tag :next_step, '3'
@@ -14,37 +13,31 @@
     
       = f.fields_for :business_card do |business_card_form|
         %fieldset
-          %legend
-            = t('business_card')
+          %legend= t('business_card')
+          - if @business.business_card.attachment.present?
+            .thumbnail= image_tag  @business.business_card.attachment.url(:thumb)
+          = business_card_form.label :attachment, t('business_card')
           = business_card_form.file_field :attachment
           = business_card_form.hidden_field :kind
-          
-          - if @business.business_card.present?
-            %br
-            = image_tag  @business.business_card.attachment.url
-    
+              
       = f.fields_for :business_logo do |business_logo_form|
         %fieldset
-          %legend
-            = t('business_logo')
+          %legend= t('business_logo')
+          - if @business.business_logo.attachment.present?
+            .thumbnail= image_tag  @business.business_logo.attachment.url(:thumb)
           = business_logo_form.file_field :attachment
           = business_logo_form.hidden_field :kind
-
-          - if @business.business_card.present?
-            %br
-              = image_tag  @business.business_logo.attachment.url
-    
+          
+          
         %fieldset
-          %legend
-            =  t('web_banner')
+          %legend= t('web_banner')
+          - if @business.web_banner.attachment.present?
+            .thumbnail= image_tag  @business.web_banner.attachment.url(:thumb)
           = f.fields_for :web_banner do |web_banner_form|
             = web_banner_form.file_field :attachment
             = web_banner_form.hidden_field :kind        
-
-          - if @business.business_card.present?
-            %br
-              = image_tag  @business.web_banner.attachment.url
           
+          %br
           %br
           %p
             = f.check_box :use_business_card_for_web_banner

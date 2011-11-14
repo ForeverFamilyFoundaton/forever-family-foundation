@@ -1,6 +1,6 @@
-= form_for setup_user(@user), :url => account_path do |f|
+= form_for @user, :url => user_registration_path do |f|
   = render "shared/error_messages", :target => @user
-  = render :partial => "form", :object => f
+  = render :partial => "users/form", :locals => { :form => f }
   
   %p
     = f.check_box :terms_of_use
@@ -10,3 +10,4 @@
     = f.label :is_business, t('business_reg_acceptance')
 
   = render :partial => 'shared/form_submit', :locals => { :text => t('register') }
+

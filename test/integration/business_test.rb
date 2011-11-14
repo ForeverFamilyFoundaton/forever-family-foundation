@@ -19,22 +19,19 @@ class UserTest < ActionDispatch::IntegrationTest
     assert_match "users/#{@user.id}/businesses/1/edit?step=2", current_url
     assert_match 'My Business', @user.reload.business.name
 
-    attach_file "Business Card",  "test/fixtures/files_to_upload/test_file_to_upload_1.gif"
-    attach_file "Business Logo", "test/fixtures/files_to_upload/test_file_to_upload_2.png"
+    #attach_file "Business Card",  "test/fixtures/files_to_upload/test_file_to_upload_1.gif"
+    #attach_file "Business Logo", "test/fixtures/files_to_upload/test_file_to_upload_2.png"
     check "I don't have a web banner, please use my business card"
     fill_in "Additional Notes",  with: "some text..."
     click_on "Submit"
   
     assert_match "users/#{@user.id}/businesses/1/edit?step=3", current_url
 
-    attach_file "MP3 File",  "test/fixtures/files_to_upload/test_file_to_upload_1.gif"
-    attach_file "Text file",  "test/fixtures/files_to_upload/test_file_to_upload_2.png"
+    #attach_file "MP3 File",  "test/fixtures/files_to_upload/test_file_to_upload_1.gif"
+    #attach_file "Text file",  "test/fixtures/files_to_upload/test_file_to_upload_2.png"
     fill_in "business_promotional_media_text", with: "media text goes here..."
     fill_in  "Additional Notes", with: "some text..."
     click_on "Submit"
-
-    assert_match "users/#{@user.id}/confirm", current_url
-    click_on "Confirm"
-    assert_match "home", current_url    
+    assert_match "users/#{@user.id}", current_url
   end
 end

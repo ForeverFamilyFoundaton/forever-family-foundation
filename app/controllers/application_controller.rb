@@ -1,6 +1,5 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
@@ -47,29 +46,9 @@ private
     def store_location_adg_registration
       session[:adg_registration] = request.fullpath
     end
-
-    # def redirect_back_or_default(default)
-    #    redirect_to(session[:return_to] || default)
-    #    session[:return_to] = nil
-    #  end
  
     def construct_confirm_or_home_path(user)
-      (user.state == 'confirm') ? (url_for(:controller => 'welcome', :action => 'logged_in_index')) : user_confirm_path(current_user)
-    end
-
-    def user_reg_step_path
-      @user = current_user
-      if current_user.state == 'initial_reg' and current_user.is_business
-        return new_user_business_path(user)
-      else
-        if session[:adg_registration]
-          return_path = session[:adg_registration]
-          session[:adg_registration] = nil
-          return return_path
-        else
-          return url_for(:controller => 'welcome', :action => 'logged_in_index')
-        end
-      end
+      (user.state == 'confirm') ? (url_for(:controller => 'welcome', :action => 'logged_in_index')) : user_path(current_user)
     end
 end
 

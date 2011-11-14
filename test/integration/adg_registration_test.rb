@@ -54,12 +54,12 @@ class UserTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "User is not logged-in" do
+  test "User is redirected to registration if not logged-in" do
+    visit('/')
     click_link 'After life discussion group'
     click_link 'Register'
     assert_match '/users/sign_up', current_url
     fill_in_reg(email: 'test2@example.com')
     assert_match '/adg_registration/new', current_url
-    sign_out(@user)
   end
 end

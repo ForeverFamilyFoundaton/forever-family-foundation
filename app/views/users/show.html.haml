@@ -1,29 +1,110 @@
-%p 
-  Login:  
-  =h @user.email
- 
-%p 
-  Login count:  
-  =h @user.login_count
- 
-%p 
-  Last request at:  
-  =h @user.last_request_at
- 
-%p 
-  Last login at:  
-  =h @user.last_login_at
- 
-%p 
-  Current login at:  
-  =h @user.current_login_at
- 
-%p 
-  Last login ip:  
-  =h @user.last_login_ip
- 
-%p 
-  Current login ip:  
-  =h @user.current_login_ip
- 
-= link_to 'Edit', edit_account_path
+.page_section
+  %h2 Personal Information
+  .section_content
+    %ul
+      %li= @user.full_name
+      %li= @user.email      
+      - if @user.home_phone.present?
+        %li= @user.home_phone 
+      - if @user.cell_phone.present?
+        %li= @user.cell_phone
+      - if @user.work_phone.present?        
+        %li= @user.work_phone
+      %li= @user.address.address 
+      %li= [@user.address.city, @user.address.state].join(', ')  + ' ' + @user.address.zip 
+    
+    %ul.profile_edit_links
+      %li= link_to 'Edit Personal Information', edit_user_registration_path
+      %li= link_to 'Change Password', edit_user_password_path
+    
+    
+-if @user.family_members.present?
+  .page_section
+    %h2 Family Members
+    .section_content
+      %ul
+        -@user.family_members.each do |member|
+          %li= member.name_and_relationship
+
+-if @user.is_business?
+  .page_section
+    %h2 Business Details 
+    .section_content
+    
+      %h3 Business Address:
+      %ul
+        %li= @user.business.name 
+        %li= @user.business.address.address
+        %li= [@user.business.address.city, @user.business.address.state].join(', ') + ' '  + @user.business.address.zip
+        
+      %h3 Business Contact:
+      %ul
+        %li= @user.business.contact_name 
+        %li= @user.business.contact_email     
+        %li= @user.business.contact_phone
+        %li= @user.business.fax
+      
+      %h3 Billing Address:       
+      %ul
+        %li= @user.business.billing_address.address
+        %li= [@user.business.billing_address.city, @user.business.billing_address.state].join(', ') + ' ' + @user.business.billing_address.zip      
+  
+      %p= link_to 'Edit Business Details', edit_businesses_path(step: 1)
+    
+  .page_section
+    %h2 Business Media
+    .section_content
+      - if @user.business.business_card.present?
+        %fieldset
+          %legend Bussines Card
+          = image_tag  @user.business.business_card.attachment.url(:thumb)
+    
+      - if @user.business.business_logo.present?  
+        %fieldset
+          %legend Bussines logo
+          = image_tag  @user.business.business_logo.attachment.url(:thumb)
+  
+      %fieldset
+        %legend Web banner
+        - if @user.business.web_banner.present?  
+          = image_tag  @user.business.web_banner.attachment.url(:thumb)
+        - else
+          %p Use my business card.
+    
+      %p= link_to 'Edit Business Media', edit_businesses_path(step: 2)
+    
+      - if @user.business.promotional_info_additional_notes.present?
+        %p 
+          Additional notes:
+          = @user.business.promotional_info_additional_notes
+
+  .page_section
+    %h2 Promotional Media
+    .section_content
+    
+      - if @user.business.promotional_media_mp3.present?  
+        %fieldset
+          %legend Mp3 file:
+          %audio{ controls: "controls" }
+            %source{ src: @user.business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
+            %p Your browser does not support the audio tag.
+    
+      - if @user.business.promotional_media_upload.present?  
+        %fieldset
+          %legend Text file:
+          =link_to @user.business.promotional_media_upload.attachment.original_filename, @user.business.promotional_media_upload.attachment.url, target: '_blank'
+
+      - if @user.business.promotional_media_text    
+        %fieldset
+          %legend Promotional Media Text
+          %p= @user.business.promotional_media_text    
+    
+      - if @user.business.promotional_media_additional_notes
+        %fieldset
+          %legend Promotional Media Notes
+          %p= @user.business.promotional_media_additional_notes
+      
+      %p= link_to 'Edit Promotional Media', edit_businesses_path(step: 3)  
+
+= image_tag "progress.gif", :class => :progress_spinner
+

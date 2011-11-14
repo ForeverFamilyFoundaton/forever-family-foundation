@@ -11,7 +11,12 @@ label {
   }
 }
 
-
+fieldset {
+  legend {
+    padding:0 $padd-sides;
+  }
+  
+}
 .field_with_errors {
   color:$error-red;
   input {
@@ -25,7 +30,7 @@ input[type=text], input[type=password], input[type=email], input[type=file]  {
 
 input[type=checkbox] {
   float:left;
-  margin:3px 10px;
+  margin:3px 10px 3px 0;
 }
 
 textarea {
@@ -35,7 +40,7 @@ textarea {
 
 .form_section, .page_section {
   background: $light-grey;
-  @include border-radius;
+  @include border-radius($default-border-radius);
   padding:0;
   margin-bottom:15px;
   
@@ -69,8 +74,12 @@ textarea {
   }
 }
 
+ul.auth_links {
+  @include link-list-ul;
+  padding-top:$padd-top;
+}
 
-#errorExplanation {
+#error_explanation {
   h2 {
     color:$error-red;
     font-weight:bold;
@@ -79,4 +88,8 @@ textarea {
   li {
     color:red;
   }
+}
+
+p.button_row {
+  padding-top: 10px;
 }

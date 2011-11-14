@@ -20,7 +20,7 @@ body {
 }
 
 #container {
-  @include border-radius;  
+  @include border-radius($default-border-radius);  
   width:$page-width;
   background-color:#fff;
   padding: 0 $padd-sides $padd-top $padd-sides;
@@ -31,12 +31,13 @@ body {
     @include column(6);  
     background-color:#fff; }
   #content {
-    @include border-radius;  
+    @include border-radius($default-border-radius);  
     @include column(17, true);  
     background-color:#fff; 
   }
   
   #content_main {
+    width:100%;
     float:left;
     @include clearfix;
     margin-top: $padd-top;

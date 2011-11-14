@@ -65,7 +65,7 @@
         %p
           = billing_address_form.label :address, t('country')
       
-          = billing_address_form.country_select :country
+          = billing_address_form.country_select :country, [["United States", 'US']]
 
         %p
           = billing_address_form.label :address, t('zip')
