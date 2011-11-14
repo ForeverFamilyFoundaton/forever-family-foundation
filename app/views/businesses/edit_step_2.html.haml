@@ -14,36 +14,27 @@
     
       = f.fields_for :business_card do |business_card_form|
         %fieldset
-          %legend
-            = t('business_card')
+          %legend= t('business_card')
+          - if @business.business_card.attachment.present?
+            .thumbnail= image_tag  @business.business_card.attachment.url(:thumb)
           = business_card_form.file_field :attachment
           = business_card_form.hidden_field :kind
-          
-          - if @business.business_card.attachment.present?
-            %br
-            = image_tag  @business.business_card.attachment.url
-    
+              
       = f.fields_for :business_logo do |business_logo_form|
         %fieldset
-          %legend
-            = t('business_logo')
+          %legend= t('business_logo')
+          - if @business.business_logo.attachment.present?
+            .thumbnail= image_tag  @business.business_logo.attachment.url(:thumb)
           = business_logo_form.file_field :attachment
           = business_logo_form.hidden_field :kind
-
-          - if @business.business_logo.attachment.present?
-            %br
-              = image_tag  @business.business_logo.attachment.url
     
         %fieldset
-          %legend
-            =  t('web_banner')
+          %legend= t('web_banner')
+          - if @business.web_banner.attachment.present?
+            .thumbnail= image_tag  @business.web_banner.attachment.url(:thumb)
           = f.fields_for :web_banner do |web_banner_form|
             = web_banner_form.file_field :attachment
             = web_banner_form.hidden_field :kind        
-
-          - if @business.web_banner.attachment.present?
-            %br
-              = image_tag  @business.web_banner.attachment.url
           
           %br
           %br

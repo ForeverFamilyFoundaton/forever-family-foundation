@@ -75,21 +75,21 @@
     - if @user.business.business_card.attachment.present?
       %fieldset
         %legend Bussines Card
-        = image_tag  @user.business.business_card.attachment.url
+        = image_tag  @user.business.business_card.attachment.url(:thumb)
     
     - if @user.business.business_logo.attachment.present?  
       %fieldset
         %legend Bussines logo
-        = image_tag  @user.business.business_logo.attachment.url
+        = image_tag  @user.business.business_logo.attachment.url(:thumb)
   
     %fieldset
       %legend Web banner
       - if @user.business.web_banner.attachment.present?  
-        = image_tag  @user.business.web_banner.attachment.url
+        = image_tag  @user.business.web_banner.attachment.url(:thumb)
       - else
         %p Use my business card.
     
-    %p= link_to 'Edit Business Media'    
+    %p= link_to 'Edit Business Media', edit_businesses_path(step: 2)
     
     - if @user.business.promotional_info_additional_notes.present?
       %p 
@@ -122,7 +122,7 @@
         %legend Promotional Media Notes
         %p= @user.business.promotional_media_additional_notes
       
-    %p= link_to 'Edit Promotional Media'    
+    %p= link_to 'Edit Promotional Media', edit_businesses_path(step: 3)  
 
 = link_to button_tag('Confirm', class: :skip), user_confirm_path
 = link_to button_tag('Edit', class: :skip), edit_user_path(@user)
