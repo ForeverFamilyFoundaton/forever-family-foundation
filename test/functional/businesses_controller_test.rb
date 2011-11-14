@@ -109,7 +109,7 @@ class BusinessesControllerTest < ActionController::TestCase
     end
     should assign_to :business
     should redirect_to("the confirmation page") {
-      user_confirm_path(@user)
+      user_path(@user)
     }
   end
 

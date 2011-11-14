@@ -2,7 +2,8 @@
   ul {
     li {
       list-style:none;
-      font-weight: bold;
+      font-size: 14px;
+      padding:2px;
       span {
         font-style: italic;
       }
@@ -23,3 +24,12 @@ audio {
   display:block;
   margin: $padd-sides $padd-sides $padd-sides 0;  
 }
+
+.profile_edit_links {
+  @include link-list-ul;
+  li a {
+    font-weight: normal;
+    text-decoration: underline;
+  }
+}
+  

@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
   def show
-  end
-
-  def confirm
     @user = current_user
     if request.post?
       current_user.confirm!

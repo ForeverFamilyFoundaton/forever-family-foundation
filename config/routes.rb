@@ -8,6 +8,7 @@ ForeverFamilyFoundation::Application.routes.draw do
     get "/login" => "devise/sessions#new"
     get "/logout" => "devise/sessions#destroy"
   end
+  
   resources :passwords  
   
   root :to => "site#index"
@@ -19,7 +20,6 @@ ForeverFamilyFoundation::Application.routes.draw do
   resource :businesses
 
   resources :users do
-    get :confirm
     resources :businesses do
       get :attachment
     end

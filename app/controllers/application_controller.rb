@@ -54,7 +54,7 @@ private
     #  end
  
     def construct_confirm_or_home_path(user)
-      (user.state == 'confirm') ? (url_for(:controller => 'welcome', :action => 'logged_in_index')) : user_confirm_path(current_user)
+      (user.state == 'confirm') ? (url_for(:controller => 'welcome', :action => 'logged_in_index')) : user_path(current_user)
     end
 
     def user_reg_step_path
