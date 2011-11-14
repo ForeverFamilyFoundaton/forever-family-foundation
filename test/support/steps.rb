@@ -2,7 +2,7 @@ def sign_in(user)
   visit login_path
   fill_in 'Email', :with => user.email
   fill_in 'Password', :with => 'password'
-  click_on 'Sign in'
+  click_button 'Login'
 end
 
 def sign_out(user)
@@ -28,7 +28,6 @@ def fill_in_reg(params={})
   fill_in "Zip", :with => "90001"
   check "Yes, I accept the Terms of Use"
   click_on "Register"
-  click_on "Confirm"
 end
 
 def fill_in_biz_reg(params={})

@@ -9,6 +9,17 @@
       }
     }
   }
+  
+  ul.profile_edit_links {
+    @include link-list-ul;
+    li {
+      a {
+        font-weight: normal;
+        text-decoration: underline;
+      } 
+    }
+  }
+  
 }
 
 .thumbnail {
@@ -25,11 +36,3 @@ audio {
   margin: $padd-sides $padd-sides $padd-sides 0;  
 }
 
-.profile_edit_links {
-  @include link-list-ul;
-  li a {
-    font-weight: normal;
-    text-decoration: underline;
-  }
-}
-  

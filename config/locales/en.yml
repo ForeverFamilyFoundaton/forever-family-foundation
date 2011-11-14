@@ -4,6 +4,7 @@
 en:
   site_name: Forever Family Foundation
   logout: Logout
+  login: Login
   email: Email
   email_confirmation: Email confirmation
   password: Password

@@ -3,10 +3,13 @@
   .section_content
     %ul
       %li= @user.full_name
-      %li=@user.email      
-      %li= @user.home_phone
-      %li= @user.cell_phone
-      %li= @user.work_phone
+      %li= @user.email      
+      - if @user.home_phone.present?
+        %li= @user.home_phone 
+      - if @user.cell_phone.present?
+        %li= @user.cell_phone
+      - if @user.work_phone.present?        
+        %li= @user.work_phone
       %li= @user.address.address 
       %li= [@user.address.city, @user.address.state].join(', ')  + ' ' + @user.address.zip 
     
@@ -48,62 +51,60 @@
   
       %p= link_to 'Edit Business Details', edit_businesses_path(step: 1)
     
-.page_section
-  %h2 Business Media
-  .section_content
-    - if @user.business.business_card.attachment.present?
-      %fieldset
-        %legend Bussines Card
-        = image_tag  @user.business.business_card.attachment.url(:thumb)
+  .page_section
+    %h2 Business Media
+    .section_content
+      - if @user.business.business_card.present?
+        %fieldset
+          %legend Bussines Card
+          = image_tag  @user.business.business_card.attachment.url(:thumb)
     
-    - if @user.business.business_logo.attachment.present?  
-      %fieldset
-        %legend Bussines logo
-        = image_tag  @user.business.business_logo.attachment.url(:thumb)
+      - if @user.business.business_logo.present?  
+        %fieldset
+          %legend Bussines logo
+          = image_tag  @user.business.business_logo.attachment.url(:thumb)
   
-    %fieldset
-      %legend Web banner
-      - if @user.business.web_banner.attachment.present?  
-        = image_tag  @user.business.web_banner.attachment.url(:thumb)
-      - else
-        %p Use my business card.
+      %fieldset
+        %legend Web banner
+        - if @user.business.web_banner.present?  
+          = image_tag  @user.business.web_banner.attachment.url(:thumb)
+        - else
+          %p Use my business card.
     
-    %p= link_to 'Edit Business Media', edit_businesses_path(step: 2)
+      %p= link_to 'Edit Business Media', edit_businesses_path(step: 2)
     
-    - if @user.business.promotional_info_additional_notes.present?
-      %p 
-        Additional notes:
-        = @user.business.promotional_info_additional_notes
+      - if @user.business.promotional_info_additional_notes.present?
+        %p 
+          Additional notes:
+          = @user.business.promotional_info_additional_notes
 
-.page_section
-  %h2 Promotional Media
-  .section_content
+  .page_section
+    %h2 Promotional Media
+    .section_content
     
-    - if @user.business.promotional_media_mp3.attachment.present?  
-      %fieldset
-        %legend Mp3 file:
-        %audio{ controls: "controls" }
-          %source{ src: @user.business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
-          %p Your browser does not support the audio tag.
+      - if @user.business.promotional_media_mp3.present?  
+        %fieldset
+          %legend Mp3 file:
+          %audio{ controls: "controls" }
+            %source{ src: @user.business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
+            %p Your browser does not support the audio tag.
     
-    - if @user.business.promotional_media_upload.attachment.present?  
-      %fieldset
-        %legend Text file:
-        =link_to @user.business.promotional_media_upload.attachment.original_filename, @user.business.promotional_media_upload.attachment.url, target: '_blank'
+      - if @user.business.promotional_media_upload.present?  
+        %fieldset
+          %legend Text file:
+          =link_to @user.business.promotional_media_upload.attachment.original_filename, @user.business.promotional_media_upload.attachment.url, target: '_blank'
 
-    - if @user.business.promotional_media_text    
-      %fieldset
-        %legend Promotional Media Text
-        %p= @user.business.promotional_media_text    
+      - if @user.business.promotional_media_text    
+        %fieldset
+          %legend Promotional Media Text
+          %p= @user.business.promotional_media_text    
     
-    - if @user.business.promotional_media_additional_notes
-      %fieldset
-        %legend Promotional Media Notes
-        %p= @user.business.promotional_media_additional_notes
+      - if @user.business.promotional_media_additional_notes
+        %fieldset
+          %legend Promotional Media Notes
+          %p= @user.business.promotional_media_additional_notes
       
-    %p= link_to 'Edit Promotional Media', edit_businesses_path(step: 3)  
+      %p= link_to 'Edit Promotional Media', edit_businesses_path(step: 3)  
 
-= link_to button_tag('Confirm', class: :skip), user_path
-= link_to button_tag('Edit', class: :skip), edit_user_path(@user)
 = image_tag "progress.gif", :class => :progress_spinner
 

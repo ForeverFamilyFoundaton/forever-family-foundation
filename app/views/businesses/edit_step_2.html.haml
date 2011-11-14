@@ -1,6 +1,5 @@
 = render :partial => 'steps'
 
-
 %p 
   Your business membership includes a thirty second radio spot on our weekly show. You have the option of sending us a recording or having us live-read or produce a spot for you. 
 
@@ -17,6 +16,7 @@
           %legend= t('business_card')
           - if @business.business_card.attachment.present?
             .thumbnail= image_tag  @business.business_card.attachment.url(:thumb)
+          = business_card_form.label :attachment, t('business_card')
           = business_card_form.file_field :attachment
           = business_card_form.hidden_field :kind
               
@@ -27,7 +27,8 @@
             .thumbnail= image_tag  @business.business_logo.attachment.url(:thumb)
           = business_logo_form.file_field :attachment
           = business_logo_form.hidden_field :kind
-    
+          
+          
         %fieldset
           %legend= t('web_banner')
           - if @business.web_banner.attachment.present?

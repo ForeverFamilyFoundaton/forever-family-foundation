@@ -2,11 +2,6 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    if request.post?
-      current_user.confirm!
-      redirect_to user_reg_step_path
-    else
-    end
   end
 
   def edit
