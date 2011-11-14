@@ -3,8 +3,8 @@
   .section_content
     %ul
       %li
-        Login:
-        %span=@user.email
+        %span Login:
+        =@user.email
         
     %p= link_to 'Edit Login Details', edit_user_password_path
 
@@ -49,30 +49,25 @@
     %h2 Business Details 
     .section_content
     
-      %h3 Business Address   
+      %h3 Business Address:
       %ul
         %li= @user.business.name 
-        %li 
-          Contact name:
-          %span= @user.business.contact_name 
-        %li
-          Contact Email:
-          %span= @user.business.contact_email     
-        %li
-          Contact phone:
-          %span= @user.business.contact_phone     
         %li= @user.business.address.address
         %li= [@user.business.address.city, @user.business.address.state].join(', ') + ' '  + @user.business.address.zip
-        %li
-          Fax:
-          %span= @user.business.fax
+        
+      %h3 Business Contact:
+      %ul
+        %li= @user.business.contact_name 
+        %li= @user.business.contact_email     
+        %li= @user.business.contact_phone
+        %li= @user.business.fax
       
-      %h3 Billing Address         
+      %h3 Billing Address:       
       %ul
         %li= @user.business.billing_address.address
         %li= [@user.business.billing_address.city, @user.business.billing_address.state].join(', ') + ' ' + @user.business.billing_address.zip      
   
-      %p= link_to 'Edit Business Details', edit_user_registration_path(step: 1)
+      %p= link_to 'Edit Business Details', edit_businesses_path(step: 1)
     
 .page_section
   %h2 Business Media

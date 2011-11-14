@@ -13,7 +13,7 @@ group :assets do
 end
 
 gem 'haml'
-gem 'devise' 
+gem 'devise', '1.5.0'
 gem "cancan"
 gem 'activeadmin'
 gem "transitions", :require => ["transitions", "active_record/transitions"]

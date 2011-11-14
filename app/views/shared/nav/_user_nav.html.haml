@@ -1,11 +1,11 @@
 %ul.nav#user_nav
   - if current_user.present?
     %li.first
-      = link_to t("navigation.edit"), edit_user_password_path
+      = link_to t("navigation.my_profile"), user_confirm_path(current_user)
     %li.last      
-      = link_to t("navigation.user.logout"), destroy_user_session_path
+      = link_to t("navigation.user.logout"), logout_path
   - else
     %li.first
       = link_to t("navigation.user.become_a_member"), new_user_registration_path
     %li.last
-      = link_to t("navigation.user.login"), new_user_session_path
+      = link_to t("navigation.user.login"), login_path

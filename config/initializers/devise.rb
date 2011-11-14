@@ -69,7 +69,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "730a93d6cf5abc2b958d837e0a1b873dacc7181c93ce756f76fa197b88f44426ff221bec94195c87d2fdd37b041e62c0d1126e54fd55b3b07de6b8e8446009c2"
+  # config.pepper = "9bdbd1ce64d888bf87fd3735922b0bc2a628495b0ec27ac640344215281f90e2a9cec5cfa7964c05c9c84d26399e7876fdaa9e34fe8bfbd56fec7cc63f23912c"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -191,7 +191,7 @@ Devise.setup do |config|
   # config.navigational_formats = [:"*/*", "*/*", :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = Rails.env.test? ? :get : :delete
+  config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -203,7 +203,6 @@ Devise.setup do |config|
   # change the failure app, you can configure them inside the config.warden block.
   #
   # config.warden do |manager|
-  #   manager.failure_app   = AnotherApp
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end

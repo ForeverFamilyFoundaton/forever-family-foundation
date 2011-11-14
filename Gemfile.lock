@@ -81,10 +81,10 @@ GEM
       actionpack (>= 3.0.0)
     daemons (1.1.4)
     database_cleaner (0.7.0)
-    devise (1.4.9)
+    devise (1.5.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
-      warden (~> 1.0.3)
+      warden (~> 1.1)
     erubis (2.7.0)
     eventmachine (0.12.10)
     execjs (1.2.9)
@@ -95,7 +95,7 @@ GEM
       factory_girl (~> 2.2.0)
       railties (>= 3.0.0)
     fastercsv (1.5.4)
-    ffi (1.0.10)
+    ffi (1.0.11)
     formtastic (1.2.4)
       actionpack (>= 2.3.7)
       activesupport (>= 2.3.7)
@@ -199,7 +199,7 @@ GEM
     uglifier (1.0.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
-    warden (1.0.6)
+    warden (1.1.0)
       rack (>= 1.0)
     xml-simple (1.1.1)
     xpath (0.1.4)
@@ -220,7 +220,7 @@ DEPENDENCIES
   compass!
   css3buttons
   database_cleaner
-  devise
+  devise (= 1.5.0)
   factory_girl_rails
   haml
   hoptoad_notifier
