@@ -13,7 +13,7 @@ group :assets do
 end
 
 gem 'haml'
-gem 'devise', '1.5.0'
+gem 'devise'
 gem "cancan"
 gem 'activeadmin'
 gem "transitions", :require => ["transitions", "active_record/transitions"]
@@ -23,7 +23,7 @@ gem 'acts_as_tree'
 gem 'acts_as_list'
 gem 'redcarpet'
 gem 'aws-s3'
-gem'bourbon'
+gem 'bourbon'
 gem 'css3buttons'
 
 group :test do

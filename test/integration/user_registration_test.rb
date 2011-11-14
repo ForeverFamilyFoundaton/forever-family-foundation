@@ -1,10 +1,6 @@
 require 'integration_helper'
 
 class UserTest < ActionDispatch::IntegrationTest
-
-  setup do
-    Capybara.current_driver = :selenium
-  end
   
   teardown do
     DatabaseCleaner.clean

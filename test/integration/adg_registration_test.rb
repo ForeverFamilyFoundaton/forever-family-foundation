@@ -3,7 +3,6 @@ require 'integration_helper'
 class UserTest < ActionDispatch::IntegrationTest
 
   setup do
-    Capybara.current_driver = :selenium
     @adg_question1 = AdgQuestion.create!(question: 'Do you Believe In GOD?', show_radio: true)
     @adg_question2 = AdgQuestion.create!(question: 'Do you believe that there is something that survives after physical death?', show_radio: true )
     @adg_question3 = AdgQuestion.create!(question: 'What specific topics are you interested in discussing?', show_radio: true )
@@ -12,7 +11,6 @@ class UserTest < ActionDispatch::IntegrationTest
   end
 
   teardown do
-    sign_out(@user)
     DatabaseCleaner.clean
   end
 
