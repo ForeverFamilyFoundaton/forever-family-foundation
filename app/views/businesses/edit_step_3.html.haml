@@ -10,7 +10,7 @@
       = f.fields_for :promotional_media_mp3 do |promotional_media_mp3_form|
   
         %fieldset
-          %legend= t('promotional_media_mp3')
+          %legend= promotional_media_mp3_form.label :attachment, t('promotional_media_mp3')
           - if @business.promotional_media_mp3.attachment.present?
             %audio{ controls: "controls" }
               %source{ src: @business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
@@ -21,10 +21,9 @@
     
         = f.fields_for :promotional_media_upload do |promotional_media_upload_form|
           %fieldset
-            %legend= t('promotional_media_upload')
+            %legend= promotional_media_upload_form.label :attachment, t('promotional_media_upload')
             - if @business.promotional_media_upload.attachment.present?
               .thumbnail=  link_to "#{@business.promotional_media_upload.attachment.original_filename} (Dowload)", @business.promotional_media_upload.attachment.url
-            
             = promotional_media_upload_form.file_field :attachment
             = promotional_media_upload_form.hidden_field :kind
 

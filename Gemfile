@@ -13,13 +13,12 @@ group :assets do
 end
 
 gem 'haml'
-gem 'devise', '1.5.0'
-gem 'cancan'
-gem 'formtastic', git: 'https://github.com/justinfrench/formtastic.git'
-gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
-gem 'transitions', require: ['transitions', 'active_record/transitions']
-gem 'paperclip'
-gem 'hoptoad_notifier'
+gem 'devise'
+gem "cancan"
+gem 'activeadmin'
+gem "transitions", :require => ["transitions", "active_record/transitions"]
+gem "paperclip"
+gem "hoptoad_notifier"
 gem 'acts_as_tree'
 gem 'acts_as_list'
 gem 'redcarpet'
