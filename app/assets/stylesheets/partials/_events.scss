@@ -4,7 +4,7 @@
   h2 {
     color: $dark-blue;
     background: $light-blue;
-    @include border-top-radius;  
+    @include border-top-radius($default-border-radius);  
     text-transform:uppercase;
     font-weight:bold;
     padding:5px 10px;
@@ -16,7 +16,7 @@
     padding:0;    
     color: $light-blue;
     background: $dark-blue;    
-    @include border-bottom-radius;      
+    @include border-bottom-radius($default-border-radius);      
     li {
       margin:0;
       font-wight:normal;

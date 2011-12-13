@@ -45,7 +45,7 @@ textarea {
   margin-bottom:15px;
   
   h2 {
-    @include border-top-radius;
+    @include border-top-radius($default-border-radius);
     color: $dark-blue;
     background: $light-blue;
     text-transform:uppercase;

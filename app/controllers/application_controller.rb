@@ -42,10 +42,6 @@ private
     def store_location
       session[:return_to] = request.fullpath
     end
-
-    def store_location_adg_registration
-      session[:adg_registration] = request.fullpath
-    end
  
     def construct_confirm_or_home_path(user)
       (user.state == 'confirm') ? (url_for(:controller => 'welcome', :action => 'logged_in_index')) : user_path(current_user)

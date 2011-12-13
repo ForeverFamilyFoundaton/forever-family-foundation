@@ -27,13 +27,9 @@ gem 'bourbon'
 gem 'css3buttons'
 
 group :test do
-  gem "factory_girl_rails"
-  gem "shoulda-matchers"
-  gem "shoulda-context"
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'shoulda-context'
   gem 'capybara'
   gem 'database_cleaner'
-end
-
-group :development do
-  gem "thin"
 end

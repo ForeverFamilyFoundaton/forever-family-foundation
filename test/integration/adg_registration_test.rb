@@ -14,7 +14,6 @@ class UserTest < ActionDispatch::IntegrationTest
     DatabaseCleaner.clean
   end
 
-
   test 'Answer ADG questions' do
     sign_in(@user)
     click_link 'After life discussion group'
@@ -33,24 +32,14 @@ class UserTest < ActionDispatch::IntegrationTest
       fill_in "adg_registration[answer[#{@adg_question3.id}]]", with: 'some text for topics here...'
     end
 
-
     within('table.adg_questions tr:nth-child(4)') do
       choose 'Yes'
       fill_in "adg_registration[answer[#{@adg_question4.id}]]", with: 'some text for books read here...'
     end
 
     click_on 'Submit'
-    assert_match '/adg_registration/new', current_url
-    within('table.adg_questions tr:nth-child(1)') { assert_equal true, find('input.yes').selected? }
-    within('table.adg_questions tr:nth-child(2)') { assert_equal false, find('input.yes').selected? }
-    within('table.adg_questions tr:nth-child(3)') { assert_equal true, find('input.yes').selected? }
-    within('table.adg_questions tr:nth-child(4)') { assert_equal true, find('input.yes').selected? }
-
-    assert_equal 'some text here...', find('table.adg_questions tr:nth-child(1) textarea').value
-    assert_equal 'some text for topics here...', find('table.adg_questions tr:nth-child(3) textarea').value
-    assert_equal 'some text for books read here...', find('table.adg_questions tr:nth-child(4) textarea').value
+    assert_match "/users/#{@user.id}", current_url
   end
-
 
   test "User is redirected to registration if not logged-in" do
     visit('/')

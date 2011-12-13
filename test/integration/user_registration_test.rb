@@ -9,7 +9,7 @@ class UserTest < ActionDispatch::IntegrationTest
   test "non biz reg'" do
     visit '/users/sign_up'
     fill_in_reg(email: 'qwe@example.com')
-    assert_match "/home", current_url
+    assert_match "/users/"+User.last.id.to_s, current_url
   end
   
   test 'biz reg' do

@@ -70,7 +70,7 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
       end
 
       should redirect_to("the adg page") {
-        new_adg_registration_path
+        user_path(@user)
       }
     end
   end

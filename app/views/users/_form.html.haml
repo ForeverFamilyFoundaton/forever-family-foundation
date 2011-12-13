@@ -2,12 +2,10 @@
   %h2 Login Info
   .form_fields
     .group
-      %p
-        = form.label :email, t('email')
-        = form.text_field :email
-      %p
-        = form.label :email_confirmation, I18n.t('email_confirmation')
-        = form.text_field :email_confirmation
+      = form.inputs do
+        = form.input :email, :label => t('email'), :required => true
+        = form.input :email_confirmation, :label => I18n.t('email_confirmation'), :required => true        
+
     - if @user.new_record?
       .group
         %p
