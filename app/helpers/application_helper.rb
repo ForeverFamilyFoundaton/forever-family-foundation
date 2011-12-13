@@ -24,6 +24,7 @@ module ApplicationHelper
 
   def blog(text)
     text = '' if text.nil?
-    raw Redcarpet.new(text).to_html
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    raw markdown.render(text)
   end
 end

@@ -77,7 +77,7 @@ en:
         success: Business updated!
     adg:
       user_required: THERE IS NO COST TO ATTEND AN AFTERLIFE DISCUSSION GROUP, HOWEVER IT IS ONLY OPEN TO MEMBERS OF FOREVER FAMILY FOUNDATION.
-      answers_updated: Updated successfully!
+      answers_updated: Afterlife Discusion Group registration completed
 
   authlogic:
     error_messages:

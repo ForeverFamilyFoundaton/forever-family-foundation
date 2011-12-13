@@ -1,20 +1,20 @@
 .afterlife {
   color: $dark-blue;
   font-style: italic;
-  font-weight: bold; 
+  font-weight: bold;
 }
 
 .callout {
-  float:left;  
+  float:left;
   background: $light-grey;
   @include border-radius($default-border-radius);
-  
+
   div {
     float:left;
     width:50%;
     margin:0;
   }
-  
+
   h2 {
     color: $dark-blue;
     background: $light-blue;
@@ -23,28 +23,28 @@
     padding:5px 10px;
     margin:0;
   }
-  
+
   h3 {
     font-size: 13px;
     font-weight:normal;
-    text-transform: none;  
+    text-transform: none;
     padding:5px 10px 5px 10px;
     margin:0;
   }
-  
+
   p {
     padding: 10px;
     margin:0;
   }
   .signs_of_life_radio {
     h2 {
-      @include border-top-left-radius;        
+      @include border-top-left-radius($default-border-radius);
     }
   }
-  
+
   .become_a_member {
     h2 {
-      @include border-top-right-radius;        
+      @include border-top-right-radius($default-border-radius);
     }
-  }    
+  }
 }

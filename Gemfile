@@ -14,22 +14,23 @@ end
 
 gem 'haml'
 gem 'devise', '1.5.0'
-gem "cancan"
-gem 'activeadmin'
-gem "transitions", :require => ["transitions", "active_record/transitions"]
-gem "paperclip"
-gem "hoptoad_notifier"
+gem 'cancan'
+gem 'formtastic', git: 'https://github.com/justinfrench/formtastic.git'
+gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
+gem 'transitions', require: ['transitions', 'active_record/transitions']
+gem 'paperclip'
+gem 'hoptoad_notifier'
 gem 'acts_as_tree'
 gem 'acts_as_list'
 gem 'redcarpet'
 gem 'aws-s3'
-gem'bourbon'
+gem 'bourbon'
 gem 'css3buttons'
 
 group :test do
-  gem "factory_girl_rails"
-  gem "shoulda-matchers"
-  gem "shoulda-context"
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'shoulda-context'
   gem 'capybara'
   gem 'database_cleaner'
 end

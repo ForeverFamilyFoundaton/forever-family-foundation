@@ -1,5 +1,5 @@
 class AdgRegistrationsController < ApplicationController
-  before_filter :redirect_to_reg_if_no_user, :only => [:new]
+  before_filter :require_registration, :only => [:new]
 
   def new
     @adg_questions = AdgQuestion.all
@@ -18,15 +18,15 @@ class AdgRegistrationsController < ApplicationController
     end
     current_user.update_attribute(:adg_preference_ids, params[:adg_registration][:adg_preference_ids])
     flash[:notice] = I18n.t('flash.adg.answers_updated')
-    redirect_to new_adg_registration_path
+    redirect_to current_user
   end
 
   private
 
-  def redirect_to_reg_if_no_user
+  def require_registration
     if current_user.blank?
+      session[:adg_registration] = request.fullpath
       flash[:notice] = I18n.t('flash.adg.user_required')
-      store_location_adg_registration
       redirect_to new_user_registration_path
     end
   end
