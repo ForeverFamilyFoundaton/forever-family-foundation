@@ -25,11 +25,12 @@ gem 'redcarpet'
 gem 'aws-s3'
 gem 'bourbon'
 gem 'css3buttons'
+gem 'simple_form'
 
 group :test do
-  gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
-  gem 'shoulda-context'
-  gem 'capybara'
+  gem "factory_girl_rails"
+  gem "shoulda-matchers"
+  gem "shoulda-context"
+  gem 'capybara', '1.1.2'
   gem 'database_cleaner'
 end
