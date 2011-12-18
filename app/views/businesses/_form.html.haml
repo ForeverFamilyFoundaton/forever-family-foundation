@@ -2,73 +2,26 @@
   %h2 Business information
   .form_fields
     .group
-      %p
-        = form.label :name, t('name_of_business')
-        = form.text_field :name
-
+      = form.input :name, label: t('name_of_business')          	
       = form.fields_for :address do |address_form|
-        %p
-          = address_form.label :address, t('address')
-          = address_form.text_field :address
-
-        %p
-          = address_form.label :city, t('city')
-          = address_form.text_field :city
-        
-        %p
-          = address_form.label :state, t('state')
-          = address_form.text_field :state
-        
-        %p
-          = address_form.label :zip, t('zip')
-          = address_form.text_field :zip
-        
-        %p
-          = form.label :contact_name, t('contact_name')
-          = form.text_field :contact_name
-        
-        %p
-          = form.label :contact_phone, t('contact_phone')
-          = form.text_field :contact_phone
-        
-        %p
-          = form.label :contact_email, t('contact_email')
-          = form.text_field :contact_email
-        
-        %p
-          = form.label :contact_email_confirmation, t('contact_email_confirmation')
-          = form.text_field :contact_email_confirmation
-        
-        %p
-          = form.label :fax, t('fax_number')
-          = form.text_field :fax
+        = address_form.input :address, label: t('address'), required: true      
+        = address_form.input :city, label: t('city'), required: true              
+        = address_form.input :state, label: t('state'), required: true            
+        = address_form.input :zip, label: t('zip'), required: true              
+      = form.input :contact_name, label: t('contact_name'), required: true                    
+      = form.input :contact_phone, label: t('contact_phone'), required: true
+      = form.input :contact_email, label: t('contact_email'), required: true
+      = form.input :contact_email_confirmation, label: t('contact_email_confirmation'), required: true
+      = form.input :fax, label: t('fax_number'), required: true                            
 
 .form_section
   %h2 Billing Address
   .form_fields
     .group
       = form.fields_for :billing_address do |billing_address_form|
-        %p
-          = billing_address_form.label :address, t('address')
-      
-          = billing_address_form.text_field :address
-
-        %p
-          = billing_address_form.label :city, t('city')
-      
-          = billing_address_form.text_field :city
-        %p
-          = billing_address_form.label :state, t('state')
-      
-          = billing_address_form.text_field :state
-
-        %p
-          = billing_address_form.label :address, t('country')
-      
-          = billing_address_form.country_select :country, [["United States", 'US']]
-
-        %p
-          = billing_address_form.label :address, t('zip')
-      
-          = billing_address_form.text_field :zip
+        = billing_address_form.input :address, label: t('address'), required: true      
+        = billing_address_form.input :city, label: t('city'), required: true              
+        = billing_address_form.input :state, label: t('state'), required: true            
+        = billing_address_form.input :zip, label: t('zip'), required: true              
+        = billing_address_form.country_select :country, [["United States", 'US']]        
 

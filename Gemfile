@@ -25,6 +25,7 @@ gem 'redcarpet'
 gem 'aws-s3'
 gem 'bourbon'
 gem 'css3buttons'
+gem 'simple_form'
 
 group :test do
   gem "factory_girl_rails"

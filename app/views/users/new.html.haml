@@ -1,13 +1,7 @@
-= form_for @user, :url => user_registration_path do |f|
+= simple_form_for @user, :url => user_registration_path do |f|
   = render "shared/error_messages", :target => @user
   = render :partial => "users/form", :locals => { :form => f }
-  
-  %p
-    = f.check_box :terms_of_use
-    = f.label :terms_of_use, t('terms_of_use_acceptance').html_safe
-    %br
-    = f.check_box :is_business
-    = f.label :is_business, t('business_reg_acceptance')
-
+  = f.input :terms_of_use, label: t('terms_of_use_acceptance'), as: :boolean, require: true
+  = f.input :is_business, label: t('business_reg_acceptance'), as: :boolean, require: true  
   = render :partial => 'shared/form_submit', :locals => { :text => t('register') }
 

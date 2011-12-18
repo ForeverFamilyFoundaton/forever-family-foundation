@@ -2,9 +2,13 @@
   display: none; 
 }
 
-label {
+.simple_form label {
   display:block;
   font-weight:normal;
+  abbr {
+    border: none;
+	color: $error-red;
+  }
   &.radio {
     display:inline-block;
     font-weight:normal;
