@@ -1,6 +1,10 @@
 class PasswordsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :new
 
+  def new
+    @user = current_user
+  end
+  
   def edit
     @user = current_user
   end

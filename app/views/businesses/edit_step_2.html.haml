@@ -6,7 +6,7 @@
 .form_section
   %h2 Business Media
 
-  = form_for setup_business(@business), :url => user_business_path(current_user, @business), :html => { :multipart => true } do |f|
+  = simple_form_for setup_business(@business), :url => user_business_path(current_user, @business), :html => { :multipart => true } do |f|
     = hidden_field_tag :next_step, '3'
 
     .form_fields

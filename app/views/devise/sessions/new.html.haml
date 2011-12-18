@@ -1,20 +1,11 @@
 = render "shared/error_messages", :target => @user
 .form_section
   %h2 Sign in
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     .form_fields
-      %p
-        = f.label :email
-        = f.email_field :email
-      %p
-        = f.label :password
-        = f.password_field :password
+      = f.input :email
+      = f.input :password
+      = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
 
-      - if devise_mapping.rememberable?
-        %p
-          = f.check_box :remember_me
-          = f.label :remember_me
-
-      = render :partial => 'shared/form_submit', :locals => { :text => t('login') }
-    
+      = render :partial => 'shared/form_submit', :locals => { :text => t('login') }    
       = render :partial => "devise/shared/links"

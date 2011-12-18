@@ -28,7 +28,7 @@ gem 'css3buttons'
 gem 'simple_form'
 
 group :test do
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", '1.3.0'
   gem "shoulda-matchers"
   gem "shoulda-context"
   gem 'capybara', '1.1.2'
