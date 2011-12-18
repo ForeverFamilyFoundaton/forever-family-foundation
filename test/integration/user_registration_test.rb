@@ -9,26 +9,26 @@ class UserTest < ActionDispatch::IntegrationTest
   test "non biz reg'" do
     visit '/users/sign_up'
     fill_in_reg(email: 'qwe@example.com')
-    assert_match "/home", current_url
+    assert_match "/users/"+User.last.id.to_s, current_url
   end
   
   test 'biz reg' do
-      visit '/users/sign_up'
-      fill_in "Email", :with => 'asd@example.com'
-      fill_in "Email confirmation", :with => 'asd@example.com'
-      fill_in "Password", :with => "password"
-      fill_in "Password confirmation", :with => "password"
-      fill_in "First name", :with => "Fname"
-      fill_in "Last name", :with => "Lname"
-      fill_in "Address", :with => "Street no. 100"
-      fill_in "City", :with => "Los Angeles"
-      fill_in "State", :with => "CA"
-      fill_in "Zip", :with => "90001"
-      check "Yes, I accept the Terms of Use"
-      check "I am registering a business"
-      click_on "Register"
-      assert_match "/users/#{User.last.id}/businesses/new", current_url
-end
+    visit '/users/sign_up'
+    fill_in "Email", :with => 'asd@example.com'
+    fill_in "Email confirmation", :with => 'asd@example.com'
+    fill_in "Password", :with => "password"
+    fill_in "Password confirmation", :with => "password"
+    fill_in "First name", :with => "Fname"
+    fill_in "Last name", :with => "Lname"
+    fill_in "Address", :with => "Street no. 100"
+    fill_in "City", :with => "Los Angeles"
+    fill_in "State", :with => "CA"
+    fill_in "Zip", :with => "90001"
+    check "Yes, I accept the Terms of Use"
+    check "I am registering a business"
+    click_on "Register"
+    assert_match "/users/#{User.last.id}/businesses/new", current_url
+  end
 
   test 'valdation' do
     visit '/users/sign_up'

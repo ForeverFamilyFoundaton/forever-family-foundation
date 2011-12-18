@@ -30,7 +30,7 @@ group :test do
   gem "factory_girl_rails"
   gem "shoulda-matchers"
   gem "shoulda-context"
-  gem 'capybara'
+  gem 'capybara', '1.1.2'
   gem 'database_cleaner'
 end
 
