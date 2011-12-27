@@ -19,8 +19,6 @@ class User < ActiveRecord::Base
   has_many :adg_preferences, :through => :user_preference_selections, :source => :preference, :conditions => "preferences.preference_type = 'ADG'", :class_name => 'Preference'
 
   state_machine do
-
-    state :initial_reg
     state :initial_reg
     state :business_initial_reg
     state :adg_reg
@@ -39,15 +37,25 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :family_members, :reject_if => proc { |attributes| attributes['first_name'].blank? }
 
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business
-
-  validates_presence_of :email
+              
+  validates_presence_of     :email
   validates_confirmation_of :email, :if => :email_changed?
+  validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true, :if => :email_changed?  
+  validates_format_of       :email, :with  => email_regexp, :allow_blank => true, :if => :email_changed?  
   validates_associated :address
   validates_presence_of :first_name, :last_name# , :address
   validates_acceptance_of :terms_of_use
 
+#  validates_presence_of     :password, :if => :password_required?
+#  validates_confirmation_of :password, :if => :password_required?
+#  validates_length_of       :password, :within => password_length, :allow_blank => true, :message => I18n.t('')
+#
   def has_role?(role)
     roles.detect{|r| r.name == role}
+  end
+
+  def full_name
+    [first_name, middle_name, last_name].compact.join(' ')
   end
 end
 

@@ -1,10 +1,13 @@
+@import "bourbon";
 @import "compass";
 @import "compass/layout/sticky-footer";
 
-@import '_blueprint';
+@import "_blueprint";
 @include blueprint;
-  
+
 @import "vars";
+@import "buttons";
+@import "mixins";
 @import "partials/layout";
 @import "partials/footer";
 @import "partials/nav";
@@ -13,3 +16,6 @@
 @import "partials/home";
 @import "partials/events";
 @import "partials/partners";
+@import "partials/forms";
+@import "partials/profile";
+

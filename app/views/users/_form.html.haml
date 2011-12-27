@@ -1,86 +1,49 @@
-%fieldset
-  %legend
-    Basic Info
+.form_section
+  %h2 Login Info
+  .form_fields
+    .group
+      = form.input :email, label: t('email'), required: true
+      = form.input :email_confirmation, label: t('email_confirmation'), required: true      
+    - if @user.new_record?
+      .group
+        = form.input :password, label: t(form.object.new_record? ? "password" : "change_password"), required: true
+        = form.input :password_confirmation, label: t('password_confirmation'), required: true, :class => 'password'
 
-  %p
-    = form.label :first_name, t('first_name')
-    %br
-    = form.text_field :first_name
-  %p
-    = form.label :middle_name, t('middle_name')
-    %br
-    = form.text_field :middle_name
-  %p
-    = form.label :last_name, t('last_name')
-    %br
-    = form.text_field :last_name
-  %p
-    = form.label :email, t('email')
-    %br
-    = form.text_field :email
-  %p
-    = form.label :email_confirmation, I18n.t('email_confirmation')
-    %br
-    = form.text_field :email_confirmation
-  %p
-    = form.label :password, t(form.object.new_record? ? "password" : "change_password")
-    %br
-    = form.password_field :password, :class => 'password'
-  %p
-    = form.label :password_confirmation, t('password_confirmation')
-    %br
-    = form.password_field :password_confirmation, :class => 'password'
-  %p
-    = form.label :cell_phone, t('cell_phone')
-    %br
-    = form.text_field :cell_phone
-  %p
-    = form.label :home_phone, t('home_phone')
-    %br
-    = form.text_field :home_phone
-  %p
-    = form.label :work_phone, t('work_phone')
-    %br
-    = form.text_field :work_phone
+.form_section
+  %h2 Basic Info
+  .form_fields
+    .group
+      = form.input :first_name, label: t('first_name'), required: true
+      = form.input :middle_name, label: t('middle_name')
+      = form.input :last_name, label: t('last_name'), required: true      
+    .group
+      = form.input :cell_phone, label: t('cell_phone')    
+      = form.input :home_phone, label: t('home_phone')          
+      = form.input :work_phone, label: t('work_phone')                
 
-  = form.fields_for :address do |address_form|
-    %p
-      = address_form.label :address, t('address')
-      %br
-      = address_form.text_field :address
-    %p
-      = address_form.label :city, t('city')
-      %br
-      = address_form.text_field :city
-    %p
-      = address_form.label :state, t('state')
-      %br
-      = address_form.text_field :state
-    %p
-      = address_form.label :zip, t('zip')
-      %br
-      = address_form.text_field :zip
+    = form.fields_for :address do |address_form|
+      .group
+        = address_form.input :address, label: t('address'), required: true      
+        = address_form.input :city, label: t('city'), required: true              
+      .group
+        = address_form.input :state, label: t('state'), required: true            
+        = address_form.input :zip, label: t('zip'), required: true            
 
-%fieldset
-  %legend
-    Family Members
-  = form.fields_for :family_members do |family_member_form|
-    %table
-      %tr
-        %td
-          = family_member_form.label :first_name, t('first_name')
-          = family_member_form.text_field :first_name
-        %td
-          = family_member_form.label :last_name, t('last_name')
-          = family_member_form.text_field :last_name
-        %td
-          = family_member_form.label :relationship, t('relationship')
-          = family_member_form.text_field :relationship
+.form_section
+  %h2 Family Members
+  .form_fields
+    = form.fields_for :family_members do |family_member_form|
+      .group
+        = family_member_form.input :first_name, label: t('first_name')
+        = family_member_form.input :last_name, label: t('last_name')
+        = family_member_form.input :relationship, label: t('relationship')                
 
-
-- Preference.profile_preferences.each do |profile_preference|
-  = check_box_tag "user[profile_preference_ids][]", profile_preference.id, @user.profile_preferences.include?(profile_preference)
-  = profile_preference.name
-  %br
-%br
+- unless Preference.profile_preferences.empty?
+  .form_section
+    %h2 Preferences
+    .form_fields
+      - Preference.profile_preferences.each do |profile_preference|
+        %p
+          = check_box_tag "user[profile_preference_ids][]", profile_preference.id, @user.profile_preferences.include?(profile_preference)
+          = profile_preference.name
 

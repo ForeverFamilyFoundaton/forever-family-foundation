@@ -13,6 +13,7 @@ ActiveAdmin.register CmsImage do
     div do   
       image_tag cms_image.image.url
     end
+    p cms_image.image.url
     p cms_image.caption
   end
 end

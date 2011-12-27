@@ -2,8 +2,8 @@ class CmsPage < ActiveRecord::Base
   acts_as_tree :order => :position
   acts_as_list :scope => :parent_id
 
-  validate :reference_string, :presence => true, :uniqueness => true
-  validate :title, :presence => true
+  validates :reference_string, presence: true, uniqueness: true
+  #validates :title, :presence => true
 
   attr_accessible :reference_string, :title, :sub_title, :nav_text, :body, :meta_keywords, :meta_description
 

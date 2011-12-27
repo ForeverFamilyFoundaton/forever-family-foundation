@@ -7,13 +7,12 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
     setup do
       get :new
     end
-    should redirect_to('new_account_path') { new_account_path }
+    should redirect_to '/users/sign_up'
     should set_the_flash.to(I18n.t('flash.adg.user_required'))
   end
 
   context "on user being logged in" do
     setup do
-      @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in Factory.create(:user)
     end
     
@@ -39,7 +38,6 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
 
     context "on create adg registration" do
       setup do
-        @request.env["devise.mapping"] = Devise.mappings[:admin]
         @user = Factory.create(:user)        
         sign_in @user
         @q1 = Factory.create(:adg_question)
@@ -72,7 +70,7 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
       end
 
       should redirect_to("the adg page") {
-        new_adg_registration_path
+        user_path(@user)
       }
     end
   end

@@ -1,40 +1,51 @@
 = render :partial => 'steps'
-= form_for setup_business(@business), :url => user_business_path(current_user, @business), :html => { :multipart => true } do |f|
-  = hidden_field_tag :next_step, '3'
-  %p    
-    = f.fields_for :business_card do |business_card_form|
-      = business_card_form.label :attachment, t('business_card')
-      %br
-      = business_card_form.file_field :attachment
-      = business_card_form.hidden_field :kind
-    %br
-    = link_to @business.business_card.attachment.original_filename,  attachment_user_business_path(current_user, @business, :attachment_id => @business.business_card) unless @business.business_card.attachment.original_filename.blank?
-  
-  %p
-    = f.fields_for :business_logo do |business_logo_form|
-      = business_logo_form.label :attachment, t('business_logo')
-      %br
-      = business_logo_form.file_field :attachment
-      = business_logo_form.hidden_field :kind
-    %br
-    = link_to @business.business_logo.attachment.original_filename,  attachment_user_business_path(current_user, @business, :attachment_id => @business.business_logo) unless @business.business_logo.attachment.original_filename.blank?
 
-  %p
-    = f.fields_for :web_banner do |web_banner_form|
-      = web_banner_form.label :attachment, t('web_banner')
-      %br
-      = web_banner_form.file_field :attachment
-      = web_banner_form.hidden_field :kind
-    %br
-    = link_to @business.web_banner.attachment.original_filename,  user_business_attachment_path(current_user, @business, :attachment_id => @business.web_banner) unless @business.web_banner.attachment.original_filename.blank?
-    %br
-    = f.check_box :use_business_card_for_web_banner
-    = f.label :use_business_card_for_web_banner, t('use_business_card_for_web_banner')
+%p 
+  Your business membership includes a thirty second radio spot on our weekly show. You have the option of sending us a recording or having us live-read or produce a spot for you. 
 
-  %p
-    = f.label :promotional_info_additional_notes, t('additional_notes')
-    %br
-    = f.text_area :promotional_info_additional_notes, :class => 'simple' 
-  = render :partial => 'shared/form_submit', :locals => { :text => t('submit') }
+.form_section
+  %h2 Business Media
+
+  = simple_form_for setup_business(@business), :url => user_business_path(current_user, @business), :html => { :multipart => true } do |f|
+    = hidden_field_tag :next_step, '3'
+
+    .form_fields
+    
+      = f.fields_for :business_card do |business_card_form|
+        %fieldset
+          %legend= business_card_form.label :attachment, t('business_card')
+          - if @business.business_card.attachment.present?
+            .thumbnail= image_tag  @business.business_card.attachment.url(:thumb)
+          = business_card_form.file_field :attachment
+          = business_card_form.hidden_field :kind
+              
+      = f.fields_for :business_logo do |business_logo_form|
+        %fieldset
+          %legend= business_logo_form.label :attachment, t('business_logo')
+          - if @business.business_logo.attachment.present?
+            .thumbnail= image_tag  @business.business_logo.attachment.url(:thumb)
+          = business_logo_form.file_field :attachment
+          = business_logo_form.hidden_field :kind
+          
+          
+      = f.fields_for :web_banner do |web_banner_form|
+        %fieldset
+          %legend= web_banner_form.label :attachment, t('web_banner')
+          - if @business.web_banner.attachment.present?
+            .thumbnail= image_tag  @business.web_banner.attachment.url(:thumb)
+            = web_banner_form.file_field :attachment
+            = web_banner_form.hidden_field :kind        
+          
+          %br
+          %br
+          %p
+            = f.check_box :use_business_card_for_web_banner
+            = f.label :use_business_card_for_web_banner, t('use_business_card_for_web_banner')
+
+      %p
+        = f.label :promotional_info_additional_notes, t('additional_notes')
+        = f.text_area :promotional_info_additional_notes, :class => 'simple' 
+
+      = render :partial => 'shared/form_submit', :locals => { :text => t('submit') }
 
 
