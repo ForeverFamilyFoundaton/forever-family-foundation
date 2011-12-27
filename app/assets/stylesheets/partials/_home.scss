@@ -43,8 +43,23 @@
   }
 
   .become_a_member {
+    position:relative;
     h2 {
       @include border-top-right-radius($default-border-radius);
     }
+    
+    .free_star {
+      position:absolute;
+      top:5px;
+      right:5px;
+      background:transparent url('http://s3.amazonaws.com/4ever_family_foundation/images/2/original/free-star.gif?1325006825') no-repeat top;
+      height:59px;
+      width:90px;
+    }
+    
+    p {
+      margin-top:20px;
+    }
   }
 }
+
