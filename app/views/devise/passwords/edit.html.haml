@@ -1,0 +1,10 @@
+= render "shared/error_messages", :target => @user
+.form_section
+  %h2 New Password
+  .form_fields
+    = simple_form_for(@user, :as => @user, :url => user_password_path, :html => { :method => :put }) do |f|
+      = f.input :reset_password_token, as: :hidden
+      = f.input :current_password
+      = f.input :password, label: "New password"
+      = f.input :password_confirmation
+      = button_tag t('submit'), class: :skip

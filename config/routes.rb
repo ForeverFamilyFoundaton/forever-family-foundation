@@ -4,12 +4,10 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   
-  devise_for :users, :controllers => { :registrations => "registrations", :passwords => "passwords" } do
+  devise_for :users, controllers: { :registrations => "registrations" } do
     get "/login" => "devise/sessions#new"
     get "/logout" => "devise/sessions#destroy"
   end
-  
-  resources :passwords  
   
   root :to => "site#index"
   

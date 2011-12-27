@@ -1,0 +1,7 @@
+.form_section
+  %h2 Forgot Password
+  = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    .form_fields  
+      = f.input :email
+      = button_tag t('submit'), class: :skip
+      = render :partial => "devise/shared/links"

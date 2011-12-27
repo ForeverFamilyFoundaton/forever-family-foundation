@@ -30,7 +30,7 @@ en:
   relationship: Relationship
   forgot_password: Forgot Password
   password_reset_mail_subject: Password Reset Instructions
-  reset_password_but: Reset my password
+  reset_password: Reset my password
   update_password_but: Update my password and log me in
   terms_of_use_acceptance: Yes, I accept the <a href=''>Terms of Use</a>
   business_reg_acceptance: I am registering a business
