@@ -18,7 +18,8 @@ ActiveAdmin.register CmsPage do
     h2 cms_page.title    
     h3 cms_page.sub_title
     div do
-      raw Redcarpet.new(cms_page.body).to_html
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+      raw markdown.render(cms_page.body)
     end
   end
 end
