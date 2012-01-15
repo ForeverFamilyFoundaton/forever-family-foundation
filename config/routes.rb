@@ -10,20 +10,21 @@ ForeverFamilyFoundation::Application.routes.draw do
   end
   
   root :to => "site#index"
-  
-  match 'home' => "welcome#logged_in_index"  
-  
+
   resource :adg_registration
 
-  resource :businesses
+  # resource :businesses do
+  #   get 'welcome'
+  # end
 
   resources :users do
+    get 'welcome'
     resources :businesses do
       get :attachment
     end
   end
 
-  resources :events
+  resource :events
     
   match ':controller(/:action(/:id))'
 end

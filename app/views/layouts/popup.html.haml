@@ -1,0 +1,14 @@
+= render 'layouts/header'
+
+%body
+  #layout
+    #logo
+    #container
+      #content        
+        #content_main
+          %h1= @cms_page.title
+          = blog @cms_page.body
+          = yield
+
+    #footer_spacer
+  = render 'layouts/footer'

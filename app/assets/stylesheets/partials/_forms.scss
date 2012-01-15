@@ -97,3 +97,8 @@ ul.auth_links {
 p.button_row {
   padding-top: 10px;
 }
+
+p.use_biz_address {
+  @include clearfix;
+  padding-bottom: 5px;
+}

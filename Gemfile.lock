@@ -7,6 +7,13 @@ GIT
       fssm (>= 0.2.7)
       sass (~> 3.1)
 
+GIT
+  remote: https://github.com/stripe/stripe-ruby
+  revision: e05c49350be5e5677a61671e09b2b4d80f776330
+  specs:
+    stripe (1.5.25)
+      rest-client (~> 1.4)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -166,6 +173,8 @@ GEM
       json (~> 1.4)
     redcarpet (2.0.1)
     responders (0.6.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rubyzip (0.9.5)
     sass (3.1.12)
     sass-rails (3.1.5)
@@ -230,5 +239,6 @@ DEPENDENCIES
   shoulda-context
   shoulda-matchers
   simple_form
+  stripe!
   transitions
   uglifier

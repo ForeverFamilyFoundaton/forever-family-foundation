@@ -14,6 +14,9 @@ class SiteController < ApplicationController
   def store; end  
   def contributers; end    
   def volunteers; end      
+  def terms
+    render :layout => 'popup'
+  end        
 
 private
   def get_events

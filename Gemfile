@@ -26,6 +26,7 @@ gem 'aws-s3'
 gem 'bourbon'
 gem 'css3buttons'
 gem 'simple_form'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :test do
   gem "factory_girl_rails", '1.3.0'

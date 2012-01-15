@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     end
 
     event :confirm do
-      transitions :from => [:initial_reg, :business_initial_reg,:adg_reg], :to => :confirm
+      transitions :from => [:initial_reg, :business_initial_reg, :adg_reg], :to => :confirm
     end
   end
 

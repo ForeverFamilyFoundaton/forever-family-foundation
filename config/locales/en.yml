@@ -3,53 +3,58 @@
 
 en:
   site_name: Forever Family Foundation
-  logout: Logout
-  login: Login
-  email: Email
-  email_confirmation: Email confirmation
-  password: Password
-  change_password: Change password
-  password_confirmation: Password confirmation
-  edit_my_account: Edit my account
-  edit: Edit
-  my_profile: My Profile
-  update: Update
-  remeber_me: Remeber me
-  admin: Admin
-  first_name: First name
-  middle_name: Middle name
-  last_name: Last name
-  address: Address
-  city: City
-  state: State
-  zip: Zip
-  country: Country
-  home_phone: Home phone
-  cell_phone: Cell phone
-  work_phone: Work phone
-  relationship: Relationship
-  forgot_password: Forgot Password
-  password_reset_mail_subject: Password Reset Instructions
-  reset_password: Reset my password
-  update_password_but: Update my password and log me in
-  terms_of_use_acceptance: Yes, I accept the <a href=''>Terms of Use</a>
-  business_reg_acceptance: I am registering a business
-  name_of_business: Name Of Business
-  submit: Submit
-  contact_name: Contact Name
-  contact_email: Contact Email
-  contact_email_confirmation: Contact Email Confirmation
-  contact_phone: Contact Phone
-  fax_number: Fax Number
-
-  business_card: Business Card
-  business_logo: Business Logo
-  web_banner: Web Banner
-  use_business_card_for_web_banner: I don't have a web banner, please use my business card
-  additional_notes: Additional Notes
-  promotional_media_mp3: MP3 File
-  promotional_media_upload: Text file
-  save: Save
+  
+  links:
+    logout: Logout
+    login: Login
+  
+  labels:
+    email: Email
+    email_confirmation: Email confirmation
+    password: Password
+    password_confirmation: Password confirmation
+    first_name: First name
+    middle_name: Middle name
+    last_name: Last name
+    address: Address
+    city: City
+    state: State
+    zip: Zip
+    country: Country
+    home_phone: Home phone
+    cell_phone: Cell phone
+    work_phone: Work phone    
+    remeber_me: Remeber me
+    terms_of_use_acceptance: Yes, I accept the <a href='/site/terms' class='popup'>Terms of Use</a>      
+    business_reg_acceptance: I am registering a business
+    contact_name: Contact Name
+    contact_email: Contact Email
+    contact_email_confirmation: Contact Email Confirmation
+    contact_phone: Contact Phone
+    fax_number: Fax Number
+    business_card: Business Card
+    business_logo: Business Logo
+    web_banner: Web Banner
+    use_business_card_for_web_banner: I don't have a web banner, please use my business card
+    additional_notes: Additional Notes
+    promotional_media_mp3: MP3 File
+    promotional_media_upload: Text file
+    name_of_business: Name Of Business
+    
+  buttons:
+    save: Save
+    edit: Edit
+    update: Update
+    reset_password: Reset my password
+    submit: Submit  
+    submit_or_skip: Submit / Skip    
+  headers:
+    change_password: Change password
+    edit_my_account: Edit my account
+    my_profile: My Profile
+    relationship: Relationship
+    forgot_password: Forgot Password
+    password_reset_mail_subject: Password Reset Instructions
 
   flash:
     user:
@@ -71,6 +76,7 @@ en:
         success: Password successfully updated
         token_mismatch: We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process.
     business:
+      reg_step_complete: "Completed step %{step} of business registration"
       create:
         success: Business created!
       update:
@@ -78,29 +84,6 @@ en:
     adg:
       user_required: THERE IS NO COST TO ATTEND AN AFTERLIFE DISCUSSION GROUP, HOWEVER IT IS ONLY OPEN TO MEMBERS OF FOREVER FAMILY FOUNDATION.
       answers_updated: Afterlife Discusion Group registration completed
-
-  authlogic:
-    error_messages:
-      login_blank: can not be blank
-      login_not_found: is not valid
-      login_invalid: should use only letters, numbers, spaces, and .-_@ please.
-      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
-      email_invalid: is not valid
-      email_dup: entered is already taken
-      password_blank: can not be blank
-      password_invalid: is not valid
-      not_active: Your account is not active
-      not_confirmed: Your account is not confirmed
-      not_approved: Your account is not approved
-      no_authentication_details: You did not provide any details for authentication.
-      models:
-        user_session: UserSession (or whatever name you are using)
-        attributes:
-          user_session: (or whatever name you are using)
-          login: login
-          email: email
-          password: password
-          remember_me: remember me
 
   activerecord:
     errors:

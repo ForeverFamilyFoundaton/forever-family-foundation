@@ -15,95 +15,97 @@
     
     %ul.profile_edit_links
       %li= link_to 'Edit Personal Information', edit_user_registration_path
-      %li= link_to 'Change Password', edit_user_password_path
+      %li= link_to 'Change Password', new_user_password_path
 
--if @user.family_members.present?
+-if @family_members.present?
   .page_section
     %h2 Family Members
     .section_content
       %ul
-        -@user.family_members.each do |member|
+        -@family_members.each do |member|
           %li= member.name_and_relationship
 
--if @user.is_business?
+-if @business.present?
   .page_section
     %h2 Business Details 
     .section_content
-    
       %h3 Business Address:
       %ul
-        %li= @user.business.name 
-        %li= @user.business.address.address
-        %li= [@user.business.address.city, @user.business.address.state].join(', ') + ' '  + @user.business.address.zip
+        %li= @business.name 
+        %li= @business.address.address
+        %li= [@business.address.city, @business.address.state].join(', ') + ' '  + @business.address.zip
         
       %h3 Business Contact:
       %ul
-        %li= @user.business.contact_name 
-        %li= @user.business.contact_email     
-        %li= @user.business.contact_phone
-        %li= @user.business.fax
+        %li= @business.contact_name 
+        %li= @business.contact_email     
+        %li= @business.contact_phone
+        %li= @business.fax
       
       %h3 Billing Address:       
       %ul
-        %li= @user.business.billing_address.address
-        %li= [@user.business.billing_address.city, @user.business.billing_address.state].join(', ') + ' ' + @user.business.billing_address.zip      
+        %li= @business.billing_address.address
+        %li= [@business.billing_address.city, @business.billing_address.state].join(', ') + ' ' + @business.billing_address.zip      
   
       %p= link_to 'Edit Business Details', edit_businesses_path(step: 1)
     
   .page_section
     %h2 Business Media
     .section_content
-      - if @user.business.business_card.present?
-        %fieldset
-          %legend Bussines Card
-          = image_tag  @user.business.business_card.attachment.url(:thumb)
-    
-      - if @user.business.business_logo.present?  
-        %fieldset
-          %legend Bussines logo
-          = image_tag  @user.business.business_logo.attachment.url(:thumb)
+      %fieldset
+        %legend Bussines Card
+        - if @business.business_card.present?
+          = image_tag @business.business_card.attachment.url(:thumb)
+        - else
+          = link_to 'Upload', edit_businesses_path(step: 2)
+  
+      %fieldset
+        %legend Bussines logo
+        - if @business.business_logo.present?  
+          = image_tag  @business.business_logo.attachment.url(:thumb)
+        - else
+          = link_to 'Upload', edit_businesses_path(step: 2)
   
       %fieldset
         %legend Web banner
-        - if @user.business.web_banner.present?  
-          = image_tag  @user.business.web_banner.attachment.url(:thumb)
+        - if @business.web_banner.present?  
+          = image_tag  @business.web_banner.attachment.url(:thumb)
         - else
           %p Use my business card.
-    
-      %p= link_to 'Edit Business Media', edit_businesses_path(step: 2)
-    
-      - if @user.business.promotional_info_additional_notes.present?
-        %p 
-          Additional notes:
-          = @user.business.promotional_info_additional_notes
 
+      %fieldset
+        %legend Additional notes:
+        %p= @business.promotional_info_additional_notes
+        
+      %p= link_to 'Edit Business Media', edit_businesses_path(step: 2)
+      
   .page_section
     %h2 Promotional Media
     .section_content
-    
-      - if @user.business.promotional_media_mp3.present?  
-        %fieldset
-          %legend Mp3 file:
+  
+      %fieldset
+        %legend Mp3 file:
+        - if @business.promotional_media_mp3.present?  
           %audio{ controls: "controls" }
-            %source{ src: @user.business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
+            %source{ src: @business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
             %p Your browser does not support the audio tag.
+        - else
+          %p= link_to 'Upload', edit_businesses_path(step: 3)            
+  
+      %fieldset
+        %legend Text file:
+        - if @business.promotional_media_upload.present?  
+          =link_to @business.promotional_media_upload.attachment.original_filename, @business.promotional_media_upload.attachment.url, target: '_blank'
+        - else
+          %p= link_to 'Upload', edit_businesses_path(step: 3)  
+          
+      %fieldset
+        %legend Promotional Media Text
+        %p= @business.promotional_media_text    
     
-      - if @user.business.promotional_media_upload.present?  
-        %fieldset
-          %legend Text file:
-          =link_to @user.business.promotional_media_upload.attachment.original_filename, @user.business.promotional_media_upload.attachment.url, target: '_blank'
-
-      - if @user.business.promotional_media_text    
-        %fieldset
-          %legend Promotional Media Text
-          %p= @user.business.promotional_media_text    
-    
-      - if @user.business.promotional_media_additional_notes
-        %fieldset
-          %legend Promotional Media Notes
-          %p= @user.business.promotional_media_additional_notes
+      %fieldset
+        %legend Promotional Media Notes
+        %p= @business.promotional_media_additional_notes
       
       %p= link_to 'Edit Promotional Media', edit_businesses_path(step: 3)  
-
-= image_tag "progress.gif", :class => :progress_spinner
 

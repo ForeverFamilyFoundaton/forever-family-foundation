@@ -1,8 +1,4 @@
-.step_indicator 
-  %p
-    %span 
-      Step 1
-    >> Step 2 >> Step 3
+= render :partial => 'steps'
 
 = simple_form_for setup_business(@business), :url => user_businesses_path(current_user) do |f|
   = render "shared/error_messages", :target => @business
