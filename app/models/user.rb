@@ -19,24 +19,18 @@ class User < ActiveRecord::Base
   has_many :adg_preferences, :through => :user_preference_selections, :source => :preference, :conditions => "preferences.preference_type = 'ADG'", :class_name => 'Preference'
 
   state_machine do
-    state :initial_reg
-    state :business_initial_reg
-    state :adg_reg
-    state :confirm
-
-    event :business_registered do
-      transitions :from => :initial_reg, :to => :business_initial_reg
-    end
-
+    state :new
+    state :confirmed
+    
     event :confirm do
-      transitions :from => [:initial_reg, :business_initial_reg, :adg_reg], :to => :confirm
+      transitions :from => :any, :to => :confirmed
     end
   end
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :family_members, :reject_if => proc { |attributes| attributes['first_name'].blank? }
 
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business, :welcomed
               
   validates_presence_of     :email
   validates_confirmation_of :email, :if => :email_changed?
@@ -50,6 +44,10 @@ class User < ActiveRecord::Base
 #  validates_confirmation_of :password, :if => :password_required?
 #  validates_length_of       :password, :within => password_length, :allow_blank => true, :message => I18n.t('')
 #
+  def biz?
+    business.present?
+  end
+
   def has_role?(role)
     roles.detect{|r| r.name == role}
   end

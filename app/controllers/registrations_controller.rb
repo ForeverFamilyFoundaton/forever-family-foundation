@@ -7,25 +7,24 @@ class RegistrationsController < Devise::RegistrationsController
     render '/users/new'
   end
 
-    # POST /resource
+  # POST /resource
   def create
     @user = User.new(params[:user])
     
     if @user.save
       flash[:notice] = I18n.t('flash.user.create.success')
       sign_in(@user)
-      url = @user.is_business? ? new_user_business_path(@user) : user_path(@user)
-      if session[:adg_registration].present? 
-        url = session[:adg_registration]
-        session[:adg_registration] = nil
+      if @user.is_business? 
+        redirect_to new_user_business_path(@user)
+      else
+        redirect_to confirm_user_path(@user)
       end
-      redirect_to url
     else
       clean_up_passwords(@user)
       render '/users/new'
     end
   end
-  
+    
   def edit
     @user = current_user
     3.times { @user.family_members.build } if @user.family_members.empty?

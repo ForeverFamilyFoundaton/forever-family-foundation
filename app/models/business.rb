@@ -1,6 +1,5 @@
 class Business < ActiveRecord::Base
-  TOTAL_REG_STEPS = 4
-  after_create :set_step
+  TOTAL_REG_STEPS = 5
   
   has_one :address, :as => :addressable
   has_many :attached_files, :as => :attachable
@@ -19,29 +18,23 @@ class Business < ActiveRecord::Base
   attr_accessible :name, :contact_name, :contact_phone, :contact_email,:contact_email_confirmation, :fax, :address_attributes, :billing_address_attributes, :completed_step, :business_card_attributes, :business_logo_attributes, :web_banner_attributes, :promotional_media_mp3_attributes, :promotional_media_upload_attributes, :promotional_info_additional_notes , :use_business_card_for_web_banner, :promotional_media_text, :promotional_media_additional_notes, :promotional_media_mp3, :promotional_media_upload
 
   attr_accessor :credit_card_number, :credit_card_token, :credit_card_expires_on
-  
-  accepts_nested_attributes_for :address, :business_card, :business_logo, :web_banner, :promotional_media_mp3, :promotional_media_upload ,:billing_address, reject_if: proc { |attrs| attrs[:attachment].blank? }
+  accepts_nested_attributes_for :address,:billing_address, reject_if: proc { |attrs| attrs.all?(&:blank?) }
+  accepts_nested_attributes_for  :business_card, :business_logo, :web_banner, :promotional_media_mp3, :promotional_media_upload, reject_if: proc { |attrs| attrs[:attachment].blank? }
   
   def completed_step?(i)
-    completed_step.to_i >= i
+    completed_step >= i
   end
   
   def complete_step!
-    completed_step += 1 if completed_step < TOTAL_REG_STEPS
+    update_attribute(:completed_step, next_step) if completed_step < TOTAL_REG_STEPS
   end
   
   def next_step
     completed_step + 1
   end
   
-  def step
-    read_attribute(:step).to_i
-  end
-  
-private
-  
-  def set_step
-    completed_step = 0
+  def reg_complete?
+    completed_step == TOTAL_REG_STEPS
   end
 end
 

@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :get_cms_page
   before_filter :http_auth unless ['development','test'].include?(Rails.env)
-
+  before_filter :welcome, :adg_redirect
+  
   def http_auth
     if !session[:authenticated]
       authenticate_or_request_with_http_basic do |username, password|
@@ -37,6 +38,19 @@ private
 
   def store_location
     session[:return_to] = request.fullpath
+  end
+  
+  def welcome
+    if current_user && current_user.confirmed? && !current_user.welcomed?
+      redirect_to current_user.biz? ? businesses_welcome_path : users_welome_path
+    end
+  end
+  
+  def adg_redirect 
+    if session[:adg_registration].present? && current_user && current_user.confirmed? && current_user.welcomed?
+      url = session[:adg_registration]
+      session[:adg_registration] = nil
+    end
   end
 end
 

@@ -7,7 +7,6 @@ class BusinessesController < ApplicationController
   def create
     @business = current_user.build_business(params[:business].merge(completed_step: 1))
     if @business.save
-      current_user.business_registered!
       flash[:notice] = I18n.t('flash.business.create.success', step: 1)
       redirect_to edit_user_business_path(current_user, @business, step: 2)
     else
@@ -27,9 +26,9 @@ class BusinessesController < ApplicationController
       @business.complete_step!
       flash[:notice] = I18n.t('flash.business.reg_step_complete', step: params[:step])
       if @business.reg_complete?
-        redirect_to welcome_path(current_user)
+        redirect_to businesses_confirm_path(current_user)
       else
-        redirect_to edit_user_business_path(current_user, @business, :step => next_step)
+        redirect_to edit_user_business_path(current_user, @business, :step => @business.next_step)
       end
     else
       render :template => "businesses/edit_step_#{@business.next_step}}"
@@ -41,5 +40,8 @@ class BusinessesController < ApplicationController
     send_file attached_file.attachment.path, :type => attached_file.attachment.content_type
   end
 
+  def welcome
+    current_user.update_attribute :welcomed, true
+  end
 end
 
