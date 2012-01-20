@@ -26,7 +26,7 @@ class BusinessesController < ApplicationController
       @business.complete_step!
       flash[:notice] = I18n.t('flash.business.reg_step_complete', step: params[:step])
       if @business.reg_complete?
-        redirect_to businesses_confirm_path(current_user)
+        redirect_to businesses_welcome_path(current_user)
       else
         redirect_to edit_user_business_path(current_user, @business, :step => @business.next_step)
       end

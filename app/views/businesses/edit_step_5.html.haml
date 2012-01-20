@@ -2,5 +2,7 @@
 = render 'users/details'
 = form_for @user, :url => user_business_path(current_user, @business), :html => { :multipart => true } do |f|
     = hidden_field_tag :step, 5
-    = hidden_field_tag :state, :confirmed
+    = f.hidden_field  :state, :confirmed
+    
+    = render :partial => 'shared/form_submit', :locals => { :text => t('confirm') }
     
