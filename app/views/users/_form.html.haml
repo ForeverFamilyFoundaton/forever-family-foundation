@@ -2,41 +2,41 @@
   %h2 Login Info
   .form_fields
     .group
-      = form.input :email, label: t('email'), required: true
-      = form.input :email_confirmation, label: t('email_confirmation'), required: true      
+      = form.input :email, label: t('labels.email'), required: true
+      = form.input :email_confirmation, label: t('labels.email_confirmation'), required: true
     - if @user.new_record?
       .group
-        = form.input :password, label: t(form.object.new_record? ? "password" : "change_password"), required: true
-        = form.input :password_confirmation, label: t('password_confirmation'), required: true, :class => 'password'
+        = form.input :password, label: t('labels.password'), required: true
+        = form.input :password_confirmation, label: t('labels.password_confirmation'), required: true, :class => 'password'
 
 .form_section
   %h2 Basic Info
   .form_fields
     .group
-      = form.input :first_name, label: t('first_name'), required: true
-      = form.input :middle_name, label: t('middle_name')
-      = form.input :last_name, label: t('last_name'), required: true      
+      = form.input :first_name, label: t('labels.first_name'), required: true
+      = form.input :middle_name, label: t('labels.middle_name')
+      = form.input :last_name, label: t('labels.last_name'), required: true
     .group
-      = form.input :cell_phone, label: t('cell_phone')    
-      = form.input :home_phone, label: t('home_phone')          
-      = form.input :work_phone, label: t('work_phone')                
+      = form.input :cell_phone, label: t('labels.cell_phone')
+      = form.input :home_phone, label: t('labels.home_phone')
+      = form.input :work_phone, label: t('labels.work_phone')
 
     = form.fields_for :address do |address_form|
       .group
-        = address_form.input :address, label: t('address'), required: true      
-        = address_form.input :city, label: t('city'), required: true              
+        = address_form.input :address, label: t('labels.address'), required: true
+        = address_form.input :city, label: t('labels.city'), required: true
       .group
-        = address_form.input :state, label: t('state'), required: true            
-        = address_form.input :zip, label: t('zip'), required: true            
+        = address_form.input :state, label: t('labels.state'), required: true
+        = address_form.input :zip, label: t('labels.zip'), required: true
 
 .form_section
   %h2 Family Members
   .form_fields
     = form.fields_for :family_members do |family_member_form|
       .group
-        = family_member_form.input :first_name, label: t('first_name')
-        = family_member_form.input :last_name, label: t('last_name')
-        = family_member_form.input :relationship, label: t('relationship')                
+        = family_member_form.input :first_name, label: t('labels.first_name')
+        = family_member_form.input :last_name, label: t('labels.last_name')
+        = family_member_form.input :relationship, label: t('labels.relationship')
 
 - unless Preference.profile_preferences.empty?
   .form_section
