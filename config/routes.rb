@@ -14,8 +14,8 @@ ForeverFamilyFoundation::Application.routes.draw do
   resource :adg_registration
   resource :businesses
   
-  get '/businesses/welcome'
-  get '/users/welcome'
+  match "/businesses/welcome/:id" => "businesses#welcome", as: 'businesses_welcome'
+  match "/users/welcome/:id" => "users#welcome", as: 'users_welcome'
 
   resources :users do
     resources :businesses do

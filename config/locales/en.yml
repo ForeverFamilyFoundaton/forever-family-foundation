@@ -47,8 +47,8 @@ en:
     update: Update
     reset_password: Reset my password
     submit: Submit  
-    submit_or_skip: Submit / Skip    
-    confirm: Confirm Registration Details
+    submit_or_skip: Submit or Skip
+    confirm: Confirm
   headers:
     change_password: Change password
     edit_my_account: Edit my account

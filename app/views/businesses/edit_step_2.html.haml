@@ -1,6 +1,13 @@
 = render :partial => 'steps'
-= simple_form_for @business, :url => user_business_path(current_user, @business), :method => :put do |f|
-  = render "shared/error_messages", :target => @business
-  = hidden_field_tag :step, 1
-  = render :partial => "payment_form", :object => f
-  = render :partial => 'shared/form_submit', :locals => { :text => t('submit') }
+
+.form_section
+  %h2 Payment Information
+
+  = simple_form_for @business, :url => user_business_path(current_user, @business), :html => { :multipart => true } do |f|
+    = hidden_field_tag :step, 2
+    .form_fields
+      = f.input :credit_card_number
+      = f.input :credit_card_token, as: :hidden
+      = f.input :credit_card_expires_on, as: :date, start_year: Date.today.year, add_month_numbers: true, order: [:month, :year]
+    
+      = render :partial => 'shared/form_submit', :locals => { :text => t('buttons.submit') }

@@ -16,8 +16,8 @@ class BusinessesController < ApplicationController
 
   def edit
     @business = current_user.business
-    step = params[:step] || '1'
-    render :template => "businesses/edit_step_#{step}"
+    template = params[:step] ? "edit_step_#{params[:step]}" : 'edit'
+    render :template => "businesses/#{template}"
   end
 
   def update
