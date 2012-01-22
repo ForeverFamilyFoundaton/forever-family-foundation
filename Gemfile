@@ -15,7 +15,7 @@ end
 gem 'haml'
 gem 'devise'
 gem "cancan"
-gem 'activeadmin'
+gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
 gem "transitions", :require => ["transitions", "active_record/transitions"]
 gem "paperclip"
 gem "hoptoad_notifier"
