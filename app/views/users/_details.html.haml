@@ -47,7 +47,7 @@
         %li= @business.billing_address.address
         %li= [@business.billing_address.city, @business.billing_address.state].join(', ') + ' ' + @business.billing_address.zip      
   
-      %p= link_to 'Edit Business Details', edit_businesses_path(step: 1)
+      %p= link_to 'Edit Business Details', edit_user_business_path(@user)
     
   .page_section
     %h2 Business Media
@@ -57,14 +57,14 @@
         - if @business.business_card.present?
           = image_tag @business.business_card.attachment.url(:thumb)
         - else
-          = link_to 'Upload', edit_businesses_path(step: 2)
+          = link_to 'Upload', edit_businesses_path(step: 3)
   
       %fieldset
         %legend Bussines logo
         - if @business.business_logo.present?  
           = image_tag  @business.business_logo.attachment.url(:thumb)
         - else
-          = link_to 'Upload', edit_businesses_path(step: 2)
+          = link_to 'Upload', edit_businesses_path(step: 3)
   
       %fieldset
         %legend Web banner
@@ -77,7 +77,7 @@
         %legend Additional notes:
         %p= @business.promotional_info_additional_notes
         
-      %p= link_to 'Edit Business Media', edit_businesses_path(step: 2)
+      %p= link_to 'Edit Business Media', edit_businesses_path(step: 3)
       
   .page_section
     %h2 Promotional Media
@@ -90,14 +90,14 @@
             %source{ src: @business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
             %p Your browser does not support the audio tag.
         - else
-          %p= link_to 'Upload', edit_businesses_path(step: 3)            
+          %p= link_to 'Upload', edit_businesses_path(step: 4)            
   
       %fieldset
         %legend Text file:
         - if @business.promotional_media_upload.present?  
           =link_to @business.promotional_media_upload.attachment.original_filename, @business.promotional_media_upload.attachment.url, target: '_blank'
         - else
-          %p= link_to 'Upload', edit_businesses_path(step: 3)  
+          %p= link_to 'Upload', edit_businesses_path(step: 4)  
           
       %fieldset
         %legend Promotional Media Text
@@ -107,5 +107,5 @@
         %legend Promotional Media Notes
         %p= @business.promotional_media_additional_notes
       
-      %p= link_to 'Edit Promotional Media', edit_businesses_path(step: 3)  
+      %p= link_to 'Edit Promotional Media', edit_businesses_path(step: 4)  
 

@@ -30,4 +30,5 @@ class RegistrationsController < Devise::RegistrationsController
     3.times { @user.family_members.build } if @user.family_members.empty?
     render 'users/edit'    
   end
+    
 end

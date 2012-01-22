@@ -1,4 +1,4 @@
-= simple_form_for setup_business(@business), :url => user_businesses_path(current_user) do |f|
+= simple_form_for @business, :url => user_business_path(current_user, @business) do |f|
   = render "shared/error_messages", :target => @business
   = render :partial => "form", :locals => { :form => f }
   = render :partial => 'shared/form_submit', :locals => { :text => t('submit') }
