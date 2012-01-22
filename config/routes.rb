@@ -6,7 +6,7 @@ ForeverFamilyFoundation::Application.routes.draw do
   
   devise_for :users, controllers: { :registrations => 'registrations' } do
     get '/login' => 'devise/sessions#new'
-    get '/logout' => 'devise/sessions#destroy'
+    delete '/logout' => 'devise/sessions#destroy'
   end
   
   root :to => 'site#index'
