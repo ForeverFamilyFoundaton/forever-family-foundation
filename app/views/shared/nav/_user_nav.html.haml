@@ -3,7 +3,7 @@
     %li.first
       = link_to t("navigation.my_profile"), user_path(current_user)
     %li.last      
-      = link_to t("navigation.user.logout"), logout_path
+      = link_to t("navigation.user.logout"), logout_path, :method => :delete
   - else
     %li.first
       = link_to t("navigation.user.become_a_member"), new_user_registration_path
