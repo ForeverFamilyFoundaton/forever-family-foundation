@@ -8,6 +8,7 @@ FactoryGirl.define do
     password 'password' 
     password_confirmation 'password'
     address_attributes FactoryGirl.attributes_for(:address)
+    welcomed true
   end
 
   factory :admin, :class => :user do
@@ -18,5 +19,6 @@ FactoryGirl.define do
     password 'password' 
     password_confirmation 'password'
     address_attributes FactoryGirl.attributes_for(:address)
+    welcomed true    
   end
 end    

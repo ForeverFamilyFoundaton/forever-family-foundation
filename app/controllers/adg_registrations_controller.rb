@@ -1,7 +1,9 @@
 class AdgRegistrationsController < ApplicationController
   before_filter :require_registration, :only => [:new]
+  skip_before_filter :adg_redirect
 
   def new
+    session[:adg_registration] = nil
     @adg_questions = AdgQuestion.all
   end
 
@@ -25,7 +27,7 @@ class AdgRegistrationsController < ApplicationController
 
   def require_registration
     if current_user.blank?
-      session[:adg_registration] = request.fullpath
+      session[:adg_registration] = true
       flash[:notice] = I18n.t('flash.adg.user_required')
       redirect_to new_user_registration_path
     end

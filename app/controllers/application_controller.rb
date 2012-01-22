@@ -41,15 +41,16 @@ private
   end
   
   def welcome
-    if current_user && current_user.confirmed? && !current_user.welcomed?
-      redirect_to current_user.biz? ? businesses_welcome_path : users_welome_path
+    if current_user && !current_user.welcomed?
+      current_user.update_attribute :welcomed, true
+      template = current_user.biz? ? 'businesses/welcome' : 'users/welcome'
+      render template
     end
   end
   
   def adg_redirect 
-    if session[:adg_registration].present? && current_user && current_user.confirmed? && current_user.welcomed?
-      url = session[:adg_registration]
-      session[:adg_registration] = nil
+    if session[:adg_registration] && current_user && current_user.welcomed?
+      redirect_to new_adg_registration_path
     end
   end
 end

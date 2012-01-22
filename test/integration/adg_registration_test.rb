@@ -47,6 +47,8 @@ class UserTest < ActionDispatch::IntegrationTest
     click_link 'Register'
     assert_match '/users/sign_up', current_url
     fill_in_reg(email: 'test2@example.com')
+    click_on 'Confirm'
+    click_on 'Home'
     assert_match '/adg_registration/new', current_url
   end
 end
