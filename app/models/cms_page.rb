@@ -1,6 +1,8 @@
 class CmsPage < ActiveRecord::Base
+  include RankedModel
+  ranks :position, :with_same => :parent_id
   acts_as_tree :order => :position
-  acts_as_list :scope => :parent_id
+
 
   validates :reference_string, presence: true, uniqueness: true
   #validates :title, :presence => true

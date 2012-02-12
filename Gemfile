@@ -27,6 +27,9 @@ gem 'bourbon'
 gem 'css3buttons'
 gem 'simple_form'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'ranked-model'
+gem 'acts_as_tree'
+gem 'country-select'
 
 group :test do
   gem "factory_girl_rails", '1.3.0'
