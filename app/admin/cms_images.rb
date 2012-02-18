@@ -7,6 +7,14 @@ ActiveAdmin.register CmsImage do
     end    
     f.buttons
   end
+
+  index do
+    column 'Thumbnail' do |q|
+      image_tag q.image.url(:thumb)
+    end
+    column :title    
+    column :caption
+  end
   
   show do
     h2 cms_image.title 
