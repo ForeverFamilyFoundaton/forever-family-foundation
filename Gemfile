@@ -22,7 +22,7 @@ gem "hoptoad_notifier"
 gem 'acts_as_tree'
 gem 'acts_as_list'
 gem 'redcarpet'
-gem 'aws-s3'
+gem 'aws-sdk'
 gem 'bourbon'
 gem 'css3buttons'
 gem 'simple_form'
