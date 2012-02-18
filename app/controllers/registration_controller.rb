@@ -1,5 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
-  
+class RegistrationController < Devise::RegistrationsController
   def new
     @user = User.new
     @user.build_address if @user.address.nil?
@@ -7,10 +6,8 @@ class RegistrationsController < Devise::RegistrationsController
     render '/users/new'
   end
 
-  # POST /resource
   def create
     @user = User.new(params[:user])
-    
     if @user.save
       flash[:notice] = I18n.t('flash.user.create.success')
       sign_in(@user)
@@ -24,11 +21,4 @@ class RegistrationsController < Devise::RegistrationsController
       render '/users/new'
     end
   end
-    
-  def edit
-    @user = current_user
-    3.times { @user.family_members.build } if @user.family_members.empty?
-    render 'users/edit'    
-  end
-    
 end

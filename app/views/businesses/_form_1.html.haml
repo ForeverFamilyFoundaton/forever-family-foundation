@@ -1,18 +1,20 @@
+= render "shared/error_messages", :target => @business
+= hidden_field_tag :step, 1
 .form_section
-  %h2 Business information
+  %h2 Business information  
   .form_fields
     .group.biz_address
-      = form.input :name, label: t('name_of_business')          	
-      = form.fields_for :address do |address_form|
+      = f.input :name, label: t('name_of_business')          	
+      = f.fields_for :address do |address_form|
         = address_form.input :address, label: t('labels.address'), required: true, input_html: { class: :address }
         = address_form.input :city, label: t('labels.city'), required: true, input_html: { class: :city }
         = address_form.input :state, label: t('labels.state'), required: true, input_html: { class: :state }
         = address_form.input :zip, label: t('labels.zip'), required: true, input_html: { class: :zip }
-      = form.input :contact_name, label: t('labels.contact_name'), required: true                    
-      = form.input :contact_phone, label: t('labels.contact_phone'), required: true
-      = form.input :contact_email, label: t('labels.contact_email'), required: true
-      = form.input :contact_email_confirmation, label: t('labels.contact_email_confirmation'), required: true
-      = form.input :fax, label: t('labels.fax_number')
+      = f.input :contact_name, label: t('labels.contact_name'), required: true                    
+      = f.input :contact_phone, label: t('labels.contact_phone'), required: true
+      = f.input :contact_email, label: t('labels.contact_email'), required: true
+      = f.input :contact_email_confirmation, label: t('labels.contact_email_confirmation'), required: true
+      = f.input :fax, label: t('labels.fax_number')
 
 .form_section
   %h2 Billing Address
@@ -21,10 +23,9 @@
       = check_box_tag :use_biz_address
       %label{ for: :use_biz_address} Use Business Address
     .group.billing_address
-      = form.fields_for :billing_address do |billing_address_form|
+      = f.fields_for :billing_address do |billing_address_form|
         = billing_address_form.input :address, label: t('labels.address'), required: true, input_html: { class: :address }
         = billing_address_form.input :city, label: t('labels.city'), required: true, input_html: { class: :city }
         = billing_address_form.input :state, label: t('labels.state'), required: true, input_html: { class: :state }
         = billing_address_form.input :zip, label: t('labels.zip'), required: true, input_html: { class: :zip }
-        = billing_address_form.country_select :country, [["United States", 'US']]        
-
+        = billing_address_form.country_select :country, ["United States"]    

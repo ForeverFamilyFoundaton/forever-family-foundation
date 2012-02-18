@@ -4,21 +4,25 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   
-  devise_for :users, controllers: { :registrations => 'registrations' } do
+  devise_for :users, controllers: { :registrations => 'registration' } do
     get '/login' => 'devise/sessions#new'
     delete '/logout' => 'devise/sessions#destroy'
   end
   
+  resources :users
+  
   root :to => 'site#index'
 
   resource :adg_registration
-  resource :businesses
   
   match "/businesses/welcome/:id" => "businesses#welcome", as: 'businesses_welcome'
   match "/users/welcome/:id" => "users#welcome", as: 'users_welcome'
 
   resources :users do
     resources :businesses do
+      put :register
+      post :register      
+      get :register            
       get :attachment
     end
   end

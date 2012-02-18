@@ -19,18 +19,18 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on create business" do
     setup do
-      post :create, "business" => FactoryGirl.attributes_for(:business, name: 'Testing Corp')
+      post :create, business: FactoryGirl.attributes_for(:business, name: 'Testing Corp'), step: 1
     end
     should assign_to :business
     should redirect_to("the business step 2 page") {
       business = Business.find_by_name('Testing Corp')
-      edit_user_business_path(@user, business, :step => '2')
+      user_business_register_path(@user, business, :step => '2')
     }
   end
 
   context "on business params error" do
     setup do
-      post :create, "business" => {}
+      post :create, "business" => {}, step: 1
     end
     should assign_to :business
     should respond_with :success
@@ -40,7 +40,7 @@ class BusinessesControllerTest < ActionController::TestCase
   context "on get edit" do
     setup do
       business = FactoryGirl.create(:business, :user_id => @user.id)
-      get :edit, :user_id => @user.id, :id => business.id
+      get :edit, :user_id => @user.id, :id => business.id, step: 1
     end
     should respond_with :success
     should render_template :edit
@@ -48,20 +48,18 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on updating user" do
     setup do
-      put :update, "business" => FactoryGirl.attributes_for(:business), :id => @business.id, :next_step => '2'
+      put :update, "business" => FactoryGirl.attributes_for(:business), :id => @business.id, :step => '1'
     end
     should assign_to :business
-    should redirect_to("the business step 2 page") {
-      edit_user_business_path(@user, @business, :step => '2')
-    }
+    should respond_with :success
   end
 
   context "on get step 2" do
     setup do
-      get :edit, :user_id => @user.id, :id => @business.id, :step => '2'
+      get :edit, :user_id => @user.id, :id => @business.id, step: 2
     end
     should respond_with :success
-    should render_template :edit_step_2
+    should render_template :edit
   end
 
   context "on finishing step 2" do
@@ -70,9 +68,7 @@ class BusinessesControllerTest < ActionController::TestCase
       put :update, "business" => {}, :user_id => @user.id, :id => @business.id, :step => '2'
     end
     should assign_to :business
-    should redirect_to("step 3") {
-      edit_user_business_path(@user, @business, :step => '3')
-    }
+    should respond_with :success
   end
 
   context "on get step 3" do
@@ -80,7 +76,7 @@ class BusinessesControllerTest < ActionController::TestCase
       get :edit, :user_id => @user.id, :id => @business.id, :step => '3'
     end
     should respond_with :success
-    should render_template :edit_step_3
+    should render_template :edit
   end
 
   context "on finishing step 3" do
@@ -89,9 +85,7 @@ class BusinessesControllerTest < ActionController::TestCase
       put :update, "business" => {}, :user_id => @user.id, :id => @business.id, step: 3
    end
     should assign_to :business
-    should redirect_to("step 4") {
-      edit_user_business_path(@user, @business, :step => '4')
-    }
+    should respond_with :success
   end
 
   context "on get step 4" do
@@ -99,7 +93,7 @@ class BusinessesControllerTest < ActionController::TestCase
       get :edit, :user_id => @user.id, :id => @business.id, :step => '4'
     end
     should respond_with :success
-    should render_template :edit_step_4
+    should render_template :edit
   end
 
   context "on finishing step 4" do
@@ -108,8 +102,8 @@ class BusinessesControllerTest < ActionController::TestCase
       put :update, "business" => {}, :user_id => @user.id, :id => @business.id, step: 4
     end
     should assign_to :business
-    should redirect_to("step 5") {
-      edit_user_business_path(@user, @business, :step => '5')
+    should redirect_to('user show') {
+      user_path(@user)
     }
   end
 

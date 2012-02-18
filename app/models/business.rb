@@ -25,8 +25,8 @@ class Business < ActiveRecord::Base
     completed_step >= i
   end
   
-  def complete_step!
-    update_attribute(:completed_step, next_step) if completed_step < TOTAL_REG_STEPS
+  def complete_step!(step)
+    update_attribute(:completed_step, step.to_i + 1) if completed_step < TOTAL_REG_STEPS
   end
   
   def next_step

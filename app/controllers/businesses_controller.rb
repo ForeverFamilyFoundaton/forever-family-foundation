@@ -1,37 +1,52 @@
 class BusinessesController < ApplicationController
 
   def new
-    @business = Business.new
+    params[:step] ||= 1
+    @business = current_user.business || Business.new
   end
 
   def create
-    @business = current_user.build_business(params[:business].merge(completed_step: 1))
+    @business = current_user.build_business(params[:business])
     if @business.save
+      @business.complete_step!(1)
       flash[:notice] = I18n.t('flash.business.create.success', step: 1)
-      redirect_to edit_user_business_path(current_user, @business, step: 2)
+      redirect_to user_business_register_path(current_user, @business, step: 2)
     else
-      render :action => :new
+      render template: "businesses/new"
+    end
+  end
+
+  def register
+    @business = current_user.business
+    if request.put?
+      if @business.update_attributes(params[:business])
+        @business.complete_step!(params[:step])
+        flash[:notice] = I18n.t('flash.business.create.success', step: params[:step])
+        redirect_to user_business_register_path(current_user, step: params[:step].to_i + 1)
+      else
+        render template: "businesses/register"
+      end
+    else
+      render template: "businesses/register"
     end
   end
 
   def edit
     @business = current_user.business
-    template = params[:step] ? "edit_step_#{params[:step]}" : 'edit'
-    render :template => "businesses/#{template}"
   end
 
   def update
     @business = current_user.business
     if @business.update_attributes(params[:business])
-      @business.complete_step!
-      flash[:notice] = I18n.t('flash.business.reg_step_complete', step: params[:step])
+      @business.complete_step!(params[:step])
+      flash[:notice] = I18n.t('flash.business.saved.success', step: params[:step])
       if @business.reg_complete?
-        redirect_to businesses_welcome_path(current_user)
+        redirect_to user_path(current_user)
       else
-        redirect_to edit_user_business_path(current_user, @business, :step => @business.next_step)
+        render template: "businesses/new" 
       end
     else
-      render :template => "businesses/edit_step_#{@business.next_step}}"
+      render template: "businesses/edit"
     end
   end
 
@@ -40,8 +55,9 @@ class BusinessesController < ApplicationController
     send_file attached_file.attachment.path, :type => attached_file.attachment.content_type
   end
 
-  def welcome
-    current_user.update_attribute :welcomed, true
-  end
+  # def welcome
+  #   current_user.update_attribute :welcomed, true
+  #   current_user.business.update_attribute :welcomed, true    
+  # end
 end
 

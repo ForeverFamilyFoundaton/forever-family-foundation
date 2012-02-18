@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :get_cms_page
   before_filter :http_auth unless ['development','test'].include?(Rails.env)
-  before_filter :welcome, :adg_redirect
+  before_filter :adg_redirect
   
   def http_auth
     if !session[:authenticated]
@@ -41,10 +41,9 @@ private
   end
   
   def welcome
-    if current_user && !current_user.welcomed?
-      current_user.update_attribute :welcomed, true
-      template = current_user.biz? ? 'businesses/welcome' : 'users/welcome'
-      render template
+    if current_user.try :needs_to_be_welcomed?
+      url = current_user.biz? ? business_wecome_path(current_user) :  users_wecome_path(current_user)
+      redirect_to url
     end
   end
   

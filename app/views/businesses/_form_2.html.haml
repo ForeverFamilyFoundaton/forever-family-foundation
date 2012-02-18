@@ -1,0 +1,7 @@
+= hidden_field_tag :step, 2
+.form_section
+  %h2 Payment Information
+  .form_fields
+    = f.input :credit_card_number
+    = f.input :credit_card_token, as: :hidden
+    = f.input :credit_card_expires_on, as: :date, start_year: Date.today.year, add_month_numbers: true, order: [:month, :year]

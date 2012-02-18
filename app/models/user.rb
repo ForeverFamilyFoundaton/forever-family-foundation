@@ -55,5 +55,10 @@ class User < ActiveRecord::Base
   def full_name
     [first_name, middle_name, last_name].compact.join(' ')
   end
+  
+  def needs_to_be_welcomed?
+    return true if !biz? && reg_complete? && !welcomed?
+    return true if biz? && business.reg_complete? && !welcomed?  
+  end
 end
 
