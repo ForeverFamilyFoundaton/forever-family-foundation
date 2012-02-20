@@ -12,6 +12,9 @@ ActiveAdmin.register CmsImage do
     column 'Thumbnail' do |q|
       image_tag q.image.url(:thumb)
     end
+    column 'URL' do |q|
+      link_to q.image.url, q.image.url
+    end
     column :title    
     column :caption
   end
