@@ -3,16 +3,16 @@
   .section_content
     %ul
       %li= @user.full_name
-      %li= @user.email      
+      %li= @user.email
       - if @user.home_phone.present?
-        %li= @user.home_phone 
+        %li= @user.home_phone
       - if @user.cell_phone.present?
         %li= @user.cell_phone
-      - if @user.work_phone.present?        
+      - if @user.work_phone.present?
         %li= @user.work_phone
-      %li= @user.address.address 
-      %li= [@user.address.city, @user.address.state].join(', ')  + ' ' + @user.address.zip 
-    
+      %li= @user.address.address
+      %li= [@user.address.city, @user.address.state].join(', ')  + ' ' + @user.address.zip
+
     %ul.profile_edit_links
       %li= link_to 'Edit Personal Information', edit_user_registration_path
       %li= link_to 'Change Password', new_user_password_path
@@ -27,28 +27,28 @@
 
 -if @business.present?
   .page_section
-    %h2 Business Details 
+    %h2 Business Details
     .section_content
       %h3 Business Address:
       %ul
-        %li= @business.name 
+        %li= @business.name
         %li= @business.address.address
         %li= [@business.address.city, @business.address.state].join(', ') + ' '  + @business.address.zip
-        
+
       %h3 Business Contact:
       %ul
-        %li= @business.contact_name 
-        %li= @business.contact_email     
+        %li= @business.contact_name
+        %li= @business.contact_email
         %li= @business.contact_phone
         %li= @business.fax
-      
-      %h3 Billing Address:       
+
+      %h3 Billing Address:
       %ul
         %li= @business.billing_address.address
-        %li= [@business.billing_address.city, @business.billing_address.state].join(', ') + ' ' + @business.billing_address.zip      
-  
+        %li= [@business.billing_address.city, @business.billing_address.state].join(', ') + ' ' + @business.billing_address.zip
+
       %p= link_to 'Edit Business Details', edit_user_business_path(@user,@business,step: 1)
-    
+
   .page_section
     %h2 Business Media
     .section_content
@@ -58,17 +58,17 @@
           = image_tag @business.business_card.attachment.url(:thumb)
         - else
           = link_to 'Upload', edit_user_business_path(@user,@business,step: 3)
-  
+
       %fieldset
         %legend Bussines logo
-        - if @business.business_logo.present?  
+        - if @business.business_logo.present?
           = image_tag  @business.business_logo.attachment.url(:thumb)
         - else
           = link_to 'Upload', edit_user_business_path(@user,@business,step: 3)
-  
+
       %fieldset
         %legend Web banner
-        - if @business.web_banner.present?  
+        - if @business.web_banner.present?
           = image_tag  @business.web_banner.attachment.url(:thumb)
         - else
           %p Use my business card.
@@ -76,36 +76,36 @@
       %fieldset
         %legend Additional notes:
         %p= @business.promotional_info_additional_notes
-        
+
       %p= link_to 'Edit Business Media', edit_user_business_path(@user,@business,step: 3)
-      
+
   .page_section
     %h2 Promotional Media
     .section_content
-  
+
       %fieldset
         %legend Mp3 file:
-        - if @business.promotional_media_mp3.present?  
+        - if @business.promotional_media_mp3.present?
           %audio{ controls: "controls" }
             %source{ src: @business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
             %p Your browser does not support the audio tag.
         - else
-          %p= link_to 'Upload', edit_user_business_path(@user,@business,step: 4)            
-  
+          %p= link_to 'Upload', edit_user_business_path(@user,@business,step: 4)
+
       %fieldset
         %legend Text file:
-        - if @business.promotional_media_upload.present?  
+        - if @business.promotional_media_upload.present?
           =link_to @business.promotional_media_upload.attachment.original_filename, @business.promotional_media_upload.attachment.url, target: '_blank'
         - else
-          %p= link_to 'Upload', edit_user_business_path(@user,@business,step: 4)  
-          
+          %p= link_to 'Upload', edit_user_business_path(@user,@business,step: 4)
+
       %fieldset
         %legend Promotional Media Text
-        %p= @business.promotional_media_text    
-    
+        %p= @business.promotional_media_text
+
       %fieldset
         %legend Promotional Media Notes
         %p= @business.promotional_media_additional_notes
-      
-      %p= link_to 'Edit Promotional Media', edit_user_business_path(@user,@business,step: 4)  
+
+      %p= link_to 'Edit Promotional Media', edit_user_business_path(@user,@business,step: 4)
 

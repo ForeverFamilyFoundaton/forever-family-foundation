@@ -11,14 +11,21 @@ class RegistrationController < Devise::RegistrationsController
     if @user.save
       flash[:notice] = I18n.t('flash.user.create.success')
       sign_in(@user)
-      if @user.is_business? 
+      if @user.is_business?
         redirect_to new_user_business_path(@user)
       else
-        redirect_to user_path(@user)
+        redirect_to user_confirm_path(@user)
       end
     else
       clean_up_passwords(@user)
       render '/users/new'
     end
   end
+
+  def edit
+    @user = current_user
+    3.times { @user.family_members.build } if @user.family_members.empty?
+    render 'users/edit'
+  end
+
 end

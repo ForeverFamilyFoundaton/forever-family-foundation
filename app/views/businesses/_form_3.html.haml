@@ -1,11 +1,11 @@
 = hidden_field_tag :step, 3
-%p 
-  Your business membership includes a thirty second radio spot on our weekly show. You have the option of sending us a recording or having us live-read or produce a spot for you. 
+%p
+  Your business membership includes a thirty second radio spot on our weekly show. You have the option of sending us a recording or having us live-read or produce a spot for you.
 
 .form_section
   %h2 Business Media
   .form_fields
-    
+
     = f.fields_for :business_card do |business_card_form|
       %fieldset
         %legend= business_card_form.label :attachment, t('labels.business_card')
@@ -13,7 +13,7 @@
           .thumbnail= image_tag  @business.business_card.attachment.url(:thumb)
         = business_card_form.file_field :attachment
         = business_card_form.hidden_field :kind
-              
+
     = f.fields_for :business_logo do |business_logo_form|
       %fieldset
         %legend= business_logo_form.label :attachment, t('labels.business_logo')
@@ -21,16 +21,16 @@
           .thumbnail= image_tag  @business.business_logo.attachment.url(:thumb)
         = business_logo_form.file_field :attachment
         = business_logo_form.hidden_field :kind
-          
-          
+
+
     = f.fields_for :web_banner do |web_banner_form|
       %fieldset
         %legend= web_banner_form.label :attachment, t('labels.web_banner')
         - if @business.web_banner.attachment.present?
           .thumbnail= image_tag  @business.web_banner.attachment.url(:thumb)
           = web_banner_form.file_field :attachment
-          = web_banner_form.hidden_field :kind        
-          
+          = web_banner_form.hidden_field :kind
+
         %br
         %br
         %p
@@ -39,5 +39,5 @@
 
     %p
       = f.label :promotional_info_additional_notes, t('labels.additional_notes')
-      = f.text_area :promotional_info_additional_notes, :class => 'simple' 
+      = f.text_area :promotional_info_additional_notes, :class => 'simple'
 

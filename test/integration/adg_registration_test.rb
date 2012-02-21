@@ -48,6 +48,7 @@ class UserTest < ActionDispatch::IntegrationTest
     assert_match '/users/sign_up', current_url
     fill_in_reg(email: 'test2@example.com')
     click_on 'Confirm'
+    assert page.has_content?("Welcome")
     click_on 'Home'
     assert_match '/adg_registration/new', current_url
   end

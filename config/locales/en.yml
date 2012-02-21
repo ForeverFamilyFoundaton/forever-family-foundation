@@ -3,11 +3,11 @@
 
 en:
   site_name: Forever Family Foundation
-  
+
   links:
     logout: Logout
     login: Login
-  
+
   labels:
     email: Email
     email_confirmation: Email confirmation
@@ -23,9 +23,9 @@ en:
     country: Country
     home_phone: Home phone
     cell_phone: Cell phone
-    work_phone: Work phone    
+    work_phone: Work phone
     remeber_me: Remeber me
-    terms_of_use_acceptance: Yes, I accept the <a href='/site/terms' class='popup'>Terms of Use</a>      
+    terms_of_use_acceptance: Yes, I accept the <a href='/site/terms' class='popup'>Terms of Use</a>
     business_reg_acceptance: I am registering a business
     contact_name: Contact Name
     contact_email: Contact Email
@@ -40,13 +40,13 @@ en:
     promotional_media_mp3: MP3 File
     promotional_media_upload: Text file
     name_of_business: Name Of Business
-    
+
   buttons:
     save: Save
     edit: Edit
     update: Update
     reset_password: Reset my password
-    submit: Submit  
+    submit: Submit
     submit_or_skip: Submit or Skip
     confirm: Confirm
   headers:
@@ -79,9 +79,9 @@ en:
     business:
       reg_step_complete: "Completed step %{step} of business registration"
       create:
-        success: Business created!
+        success: Business created.
       update:
-        success: Business updated!
+        success: Business details updated successfully.
     adg:
       user_required: THERE IS NO COST TO ATTEND AN AFTERLIFE DISCUSSION GROUP, HOWEVER IT IS ONLY OPEN TO MEMBERS OF FOREVER FAMILY FOUNDATION.
       answers_updated: Afterlife Discusion Group registration completed

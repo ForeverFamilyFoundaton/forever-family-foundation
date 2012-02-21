@@ -1,6 +1,6 @@
 class Business < ActiveRecord::Base
-  TOTAL_REG_STEPS = 5
-  
+  TOTAL_REG_STEPS = 4
+
   has_one :address, :as => :addressable
   has_many :attached_files, :as => :attachable
   has_one :business_card, :class_name => 'AttachedFile', :conditions => "kind = 'business_card'", :as => :attachable
@@ -20,19 +20,19 @@ class Business < ActiveRecord::Base
   attr_accessor :credit_card_number, :credit_card_token, :credit_card_expires_on
   accepts_nested_attributes_for :address,:billing_address, reject_if: proc { |attrs| attrs.all?(&:blank?) }
   accepts_nested_attributes_for  :business_card, :business_logo, :web_banner, :promotional_media_mp3, :promotional_media_upload, reject_if: proc { |attrs| attrs[:attachment].blank? }
-  
+
   def completed_step?(i)
     completed_step >= i
   end
-  
+
   def complete_step!(step)
-    update_attribute(:completed_step, step.to_i + 1) if completed_step < TOTAL_REG_STEPS
+    update_attribute(:completed_step, step.to_i) if completed_step <= TOTAL_REG_STEPS
   end
-  
+
   def next_step
     completed_step + 1
   end
-  
+
   def reg_complete?
     completed_step == TOTAL_REG_STEPS
   end

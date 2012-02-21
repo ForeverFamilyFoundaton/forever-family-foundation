@@ -46,46 +46,48 @@ class BusinessesControllerTest < ActionController::TestCase
     should render_template :edit
   end
 
-  context "on updating user" do
+  context "on updating business" do
     setup do
-      put :update, "business" => FactoryGirl.attributes_for(:business), :id => @business.id, :step => '1'
+      put :update, "business" => {}, :id => @business.id, :step => '1'
     end
     should assign_to :business
-    should respond_with :success
+    should redirect_to('user show') { user_path(@user) }
   end
 
   context "on get step 2" do
     setup do
-      get :edit, :user_id => @user.id, :id => @business.id, step: 2
+      get :register, user_id: @user.id, id: @business.id, step: 2
     end
     should respond_with :success
-    should render_template :edit
+    should render_template :register
   end
 
   context "on finishing step 2" do
     setup do
-      @business.update_attribute :completed_step, 1      
-      put :update, "business" => {}, :user_id => @user.id, :id => @business.id, :step => '2'
+      put :register, business: {}, user_id: @user.id, id: @business.id, step: '2'
     end
     should assign_to :business
-    should respond_with :success
+    should redirect_to('step 3') {
+      user_business_register_path(@user, step: 3)
+    }
   end
 
   context "on get step 3" do
     setup do
-      get :edit, :user_id => @user.id, :id => @business.id, :step => '3'
+      get :register, :user_id => @user.id, :id => @business.id, :step => '3'
     end
     should respond_with :success
-    should render_template :edit
+    should render_template :register
   end
 
   context "on finishing step 3" do
     setup do
-      @business.update_attribute :completed_step, 2
-      put :update, "business" => {}, :user_id => @user.id, :id => @business.id, step: 3
+      put :register, "business" => {}, :user_id => @user.id, :id => @business.id, step: 3
    end
     should assign_to :business
-    should respond_with :success
+    should redirect_to('step 4') {
+      user_business_register_path(@user, step: 4)
+    }
   end
 
   context "on get step 4" do
@@ -98,23 +100,12 @@ class BusinessesControllerTest < ActionController::TestCase
 
   context "on finishing step 4" do
     setup do
-      @business.update_attribute :completed_step, 3
-      put :update, "business" => {}, :user_id => @user.id, :id => @business.id, step: 4
+      put :register, business: {}, user_id: @user.id, id: @business.id, step: 4
     end
     should assign_to :business
-    should redirect_to('user show') {
-      user_path(@user)
+    should redirect_to('confirm user') {
+      user_confirm_path(@user)
     }
   end
 
-  context "on finishing step 5" do
-    setup do
-      @business.update_attribute :completed_step, 4
-      put :update, "business" => {}, :user_id => @user.id, :id => @business.id, step: 5
-    end
-    should assign_to :business
-    should redirect_to("welcome page") {
-      businesses_welcome_path(@user)
-    }
-  end
 end

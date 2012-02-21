@@ -2,9 +2,9 @@ ActiveAdmin.register CmsImage do
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "CMS Image", :multipart => true do
       f.input :title
-      f.input :image      
+      f.input :image
       f.input :caption
-    end    
+    end
     f.buttons
   end
 
@@ -15,13 +15,13 @@ ActiveAdmin.register CmsImage do
     column 'URL' do |q|
       link_to q.image.url, q.image.url
     end
-    column :title    
+    column :title
     column :caption
   end
-  
+
   show do
-    h2 cms_image.title 
-    div do   
+    h2 cms_image.title
+    div do
       image_tag cms_image.image.url
     end
     p cms_image.image.url

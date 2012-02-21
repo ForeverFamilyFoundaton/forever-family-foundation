@@ -1,0 +1,3 @@
+= render 'users/details'
+= form_for @user, :url => user_confirm_path(current_user), :html => { :multipart => true } do |f|
+  = render partial: 'shared/form_submit', locals: { text: t('buttons.confirm') }

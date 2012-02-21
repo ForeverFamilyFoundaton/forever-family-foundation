@@ -1,7 +1,7 @@
 require 'integration_helper'
 
 class UserTest < ActionDispatch::IntegrationTest
-  
+
   teardown do
     DatabaseCleaner.clean
   end
@@ -11,7 +11,7 @@ class UserTest < ActionDispatch::IntegrationTest
     fill_in_reg(email: 'qwe@example.com')
     assert_match "/users/"+User.last.id.to_s, current_url
   end
-  
+
   test 'biz reg' do
     visit '/users/sign_up'
     fill_in "Email", :with => 'asd@example.com'

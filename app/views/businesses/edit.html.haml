@@ -2,6 +2,6 @@
 = simple_form_for setup_business(@business), :url => user_business_path(current_user, @business) do |f|
   = render partial: "form_#{params[:step]}", locals: { f: f }
   = render partial: 'shared/form_submit', locals: { text: t('buttons.update') }
-      
 
-  
+
+

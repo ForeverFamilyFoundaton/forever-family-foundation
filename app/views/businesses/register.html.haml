@@ -1,5 +1,6 @@
+- button_text = [3,4].include?(params[:step].to_i) ? t('buttons.submit_or_skip') : t('buttons.submit')
 = render :partial => 'steps'
 = simple_form_for setup_business(@business), :url => user_business_register_path(current_user, @business) do |f|
   = render partial: "form_#{params[:step]}", locals: { f: f }
-  = render partial: 'shared/form_submit', locals: { text: t('buttons.submit_or_skip') }
-      
+  = render partial: 'shared/form_submit', locals: { text: button_text }
+

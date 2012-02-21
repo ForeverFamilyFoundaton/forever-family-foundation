@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   include ActiveRecord::Transitions
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, 
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
   has_and_belongs_to_many :roles
   has_one :address, :as => :addressable
   has_one :business
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   state_machine do
     state :new
     state :confirmed
-    
+
     event :confirm do
       transitions :from => :any, :to => :confirmed
     end
@@ -31,11 +31,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :family_members, :reject_if => proc { |attributes| attributes['first_name'].blank? }
 
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business, :welcomed
-              
+
   validates_presence_of     :email
   validates_confirmation_of :email, :if => :email_changed?
-  validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true, :if => :email_changed?  
-  validates_format_of       :email, :with  => email_regexp, :allow_blank => true, :if => :email_changed?  
+  validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true, :if => :email_changed?
+  validates_format_of       :email, :with  => email_regexp, :allow_blank => true, :if => :email_changed?
   validates_associated :address
   validates_presence_of :first_name, :last_name# , :address
   validates_acceptance_of :terms_of_use
@@ -55,10 +55,10 @@ class User < ActiveRecord::Base
   def full_name
     [first_name, middle_name, last_name].compact.join(' ')
   end
-  
+
   def needs_to_be_welcomed?
     return true if !biz? && reg_complete? && !welcomed?
-    return true if biz? && business.reg_complete? && !welcomed?  
+    return true if biz? && business.reg_complete? && !welcomed?
   end
 end
 

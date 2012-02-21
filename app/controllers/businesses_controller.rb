@@ -17,10 +17,14 @@ class BusinessesController < ApplicationController
   end
 
   def register
+    @user = current_user
     @business = current_user.business
     if request.put?
       if @business.update_attributes(params[:business])
         @business.complete_step!(params[:step])
+        if @business.reg_complete?
+          redirect_to user_confirm_path(@user) and return
+        end
         flash[:notice] = I18n.t('flash.business.create.success', step: params[:step])
         redirect_to user_business_register_path(current_user, step: params[:step].to_i + 1)
       else
@@ -38,13 +42,8 @@ class BusinessesController < ApplicationController
   def update
     @business = current_user.business
     if @business.update_attributes(params[:business])
-      @business.complete_step!(params[:step])
-      flash[:notice] = I18n.t('flash.business.saved.success', step: params[:step])
-      if @business.reg_complete?
-        redirect_to user_path(current_user)
-      else
-        render template: "businesses/new" 
-      end
+      flash[:notice] = I18n.t('flash.business.update.success')
+      redirect_to user_path(current_user)
     else
       render template: "businesses/edit"
     end
@@ -55,9 +54,8 @@ class BusinessesController < ApplicationController
     send_file attached_file.attachment.path, :type => attached_file.attachment.content_type
   end
 
-  # def welcome
-  #   current_user.update_attribute :welcomed, true
-  #   current_user.business.update_attribute :welcomed, true    
-  # end
+  def welcome
+    current_user.update_attribute :welcomed, true
+    current_user.business.update_attribute :welcomed, true if current_user.biz?
+  end
 end
-
