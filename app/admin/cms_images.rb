@@ -17,6 +17,9 @@ ActiveAdmin.register CmsImage do
     end
     column :title
     column :caption
+    column "Actions" do |q|
+      link_to 'Show', admin_cms_image_path(q)
+    end
   end
 
   show do

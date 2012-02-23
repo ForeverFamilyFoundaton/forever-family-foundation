@@ -49,6 +49,7 @@ en:
     submit: Submit
     submit_or_skip: Submit or Skip
     confirm: Confirm
+
   headers:
     change_password: Change password
     edit_my_account: Edit my account

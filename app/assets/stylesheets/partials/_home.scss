@@ -5,9 +5,11 @@
 }
 
 .callout {
+  @include box-shadow(#ccc -3px 3px 3px);
   float:left;
   background: $light-grey;
   @include border-radius($default-border-radius);
+  margin:0 0 6px 6px;
 
   div {
     float:left;
@@ -37,6 +39,8 @@
     margin:0;
   }
   .signs_of_life_radio {
+    width:330px;
+    border-right:2px solid white;
     h2 {
       @include border-top-left-radius($default-border-radius);
     }
@@ -47,7 +51,7 @@
     h2 {
       @include border-top-right-radius($default-border-radius);
     }
-    
+
     .free_star {
       position:absolute;
       top:5px;
@@ -56,7 +60,7 @@
       height:59px;
       width:90px;
     }
-    
+
     p {
       margin-top:20px;
     }

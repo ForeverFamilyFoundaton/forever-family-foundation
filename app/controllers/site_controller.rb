@@ -14,7 +14,12 @@ class SiteController < ApplicationController
   def store; end
   def contributers; end
   def volunteers; end
+  def contact; end
   def terms
+    render :layout => 'popup'
+  end
+
+  def privacy
     render :layout => 'popup'
   end
 

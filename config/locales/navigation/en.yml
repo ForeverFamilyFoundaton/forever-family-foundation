@@ -7,17 +7,17 @@ en:
       events: Events
       store: FFF Store
       volunteers: Volunteers
-      contributers: Contributers
+      contributions: Contributions
     user:
       login: Login
       register: Register
-      become_a_member: Become a member
+      become_a_member: Become a Member
     site:
-      after_life_discussion_group: After life discussion group
-      certified_mediums: Certifed Mediums
-      signs_of_life_newsletter: Signs of life newsletter
-      after_life_science: After life science
-      grief_and_loss: Grief and loss
-      support_and_information: Support and information
+      after_life_discussion_group: Afterlife Discussion Groups
+      certified_mediums: Certified Mediums
+      signs_of_life_newsletter: Signs Of Life Newsletter
+      after_life_science: Afterlife Science
+      grief_and_loss: Grief and Loss
+      support_and_information: Support and Information
       calendar_of_events: Calendar of events
       registration: Registration
