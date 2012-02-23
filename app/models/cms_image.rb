@@ -2,9 +2,9 @@ class CmsImage < ActiveRecord::Base
   has_attached_file :image,
   styles: { thumb: '100x100>' },
   storage: :s3,
-  bucket: '4ever_family_foundation',
+  bucket: 'fff_cms_images',
   s3_credentials: {
-    access_key_id: 'AKIAJY2QBAGM7WQAIDDQ',
-    secret_access_key: '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'
+    access_key_id: 'AKIAIMDZEEZXRWDDHWCA',
+    secret_access_key: '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'
   }
 end
