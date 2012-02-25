@@ -7,7 +7,7 @@
 .callout {
   @include box-shadow(#ccc -3px 3px 3px);
   float:left;
-  background: $light-grey;
+  background: $light-grey image-url('white-stripe-2px.gif') repeat-y top; 
   @include border-radius($default-border-radius);
   margin:0 0 6px 6px;
 
@@ -39,9 +39,8 @@
     margin:0;
   }
   .signs_of_life_radio {
-    width:330px;
-    border-right:2px solid white;
     h2 {
+      border-right:1px solid white;
       @include border-top-left-radius($default-border-radius);
     }
   }
@@ -49,6 +48,7 @@
   .become_a_member {
     position:relative;
     h2 {
+      border-left:1px solid white;      
       @include border-top-right-radius($default-border-radius);
     }
 
@@ -56,7 +56,7 @@
       position:absolute;
       top:5px;
       right:5px;
-      background:transparent url('http://s3.amazonaws.com/fff_cms_images/images/5/thumb/free-star.gif?1329974723') no-repeat top;
+      background:transparent image-url('free-star.gif') no-repeat top;
       height:59px;
       width:90px;
     }

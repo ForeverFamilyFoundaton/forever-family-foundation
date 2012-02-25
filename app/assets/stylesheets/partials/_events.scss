@@ -1,31 +1,26 @@
 .upcoming_events {
-  margin:0 0 10px 10px;
   float:right;
+  text-align:center;
   h2 {
+    margin:0;
+    padding:5px;
     color: $dark-blue;
     background: $light-blue;
     @include border-top-radius($default-border-radius);  
     text-transform:uppercase;
     font-weight:bold;
-    padding:5px 10px;
-    margin:0;
   }
   
   ul {
     margin:0;
-    padding:0;    
+    padding:5px 0 10px 0;
     color: $light-blue;
     background: $dark-blue;    
     @include border-bottom-radius($default-border-radius);      
     li {
-      margin:0;
+      padding:5px $padd-sides;
       font-wight:normal;
       list-style:none;
-      padding:0 0 15px 0;
-      text-align:center;
-    }
-    li:nth-child(1) {
-      padding-top:15px;
     }
   }
 }
