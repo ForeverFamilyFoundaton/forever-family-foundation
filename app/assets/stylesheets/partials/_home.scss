@@ -7,7 +7,7 @@
 .callout {
   @include box-shadow(#ccc -3px 3px 3px);
   float:left;
-  background: $light-grey image-url('white-stripe-2px.gif') repeat-y top; 
+  background: $light-gray image-url('white-stripe-2px.gif') repeat-y top; 
   @include border-radius($default-border-radius);
   margin:0 0 6px 6px;
 
@@ -26,14 +26,6 @@
     margin:0;
   }
 
-  h3 {
-    font-size: 13px;
-    font-weight:normal;
-    text-transform: none;
-    padding:5px 10px 5px 10px;
-    margin:0;
-  }
-
   p {
     padding: 10px;
     margin:0;
@@ -43,6 +35,11 @@
       border-right:1px solid white;
       @include border-top-left-radius($default-border-radius);
     }
+    
+    img.right {
+      float:right;
+      margin:15px;
+    }
   }
 
   .become_a_member {
@@ -50,6 +47,13 @@
     h2 {
       border-left:1px solid white;      
       @include border-top-right-radius($default-border-radius);
+      margin-bottom:25px;
+    }
+
+    h3 {
+      text-transform:uppercase;
+      padding:5px 10px 0 10px;
+      margin:0;
     }
 
     .free_star {
@@ -61,9 +65,6 @@
       width:90px;
     }
 
-    p {
-      margin-top:20px;
-    }
   }
 }
 
