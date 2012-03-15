@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
-
+  before_filter :continue_registration, only: [:new]
+  
   def new
     params[:step] ||= 1
     @business = current_user.business || Business.new
@@ -17,6 +18,9 @@ class BusinessesController < ApplicationController
   end
 
   def register
+    params[:step] ||= session[:step]
+    session[:step] = params[:step]
+    
     @user = current_user
     @business = current_user.business
     if request.put?
@@ -57,5 +61,13 @@ class BusinessesController < ApplicationController
   def welcome
     current_user.update_attribute :welcomed, true
     current_user.business.update_attribute :welcomed, true if current_user.biz?
+  end
+
+private
+
+  def continue_registration
+    if session[:step].present?
+      redirect_to user_business_register_path(current_user, current_user.business, step: session[:step]) 
+    end
   end
 end

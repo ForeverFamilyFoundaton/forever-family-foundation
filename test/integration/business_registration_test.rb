@@ -48,4 +48,16 @@ class UserTest < ActionDispatch::IntegrationTest
     click_on "Confirm"
     assert page.has_content?("Welcome")
   end
+
+  test 'return to registration' do
+    sign_in(@user)
+    visit new_user_business_path(@user)
+    pause
+    fill_in_biz_reg
+    click_on "Submit"
+    click_on "Submit" #payment
+    click_on 'Home'
+    click_on 'Business Registration'
+    pause   
+  end
 end

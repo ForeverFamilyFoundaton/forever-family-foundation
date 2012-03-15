@@ -23,12 +23,14 @@ private
     controller = self.controller_name.titleize
     # Admin user should not need to differentiate between edit / update and new / create
     action = case self.action_name
-    when 'create' then 'New'
-    when 'update' then 'Edit'
+    when 'create' 
+      'New'
+    when 'update'
+      'Edit'
     else
       self.action_name.titleize
     end
-    [controller,action].join(": ")
+    [controller,action, params[:step]].compact.join(": ")
   end
   
   def get_cms_page

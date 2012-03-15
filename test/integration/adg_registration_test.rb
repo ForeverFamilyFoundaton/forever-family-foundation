@@ -16,7 +16,7 @@ class UserTest < ActionDispatch::IntegrationTest
 
   test 'Answer ADG questions' do
     sign_in(@user)
-    click_link 'After life discussion group'
+    click_link 'Afterlife Discussion Groups'
     click_link 'Register'
     within('table.adg_questions tr:nth-child(1)') do
       choose 'Yes'
@@ -43,7 +43,7 @@ class UserTest < ActionDispatch::IntegrationTest
 
   test "User is redirected to registration if not logged-in" do
     visit('/')
-    click_link 'After life discussion group'
+    click_link 'Afterlife Discussion Groups'
     click_link 'Register'
     assert_match '/users/sign_up', current_url
     fill_in_reg(email: 'test2@example.com')

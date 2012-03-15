@@ -10,3 +10,4 @@ Capfile
 config/deploy.rb
 fff.csv
 public/system
+*.orig

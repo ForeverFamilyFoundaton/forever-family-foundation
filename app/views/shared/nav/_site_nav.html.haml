@@ -1,5 +1,9 @@
 %ul.nav#site_nav
-  %li.first
+  - if current_user and !current_user.biz? || !current_user.business.reg_complete?
+    %li
+      = link_to t('navigation.site.business_registration'), new_user_business_path(current_user)
+
+  %li
     = link_to t('navigation.site.after_life_discussion_group'), '/site/after_life_discussion_group'
   %li.current
     = link_to t("navigation.site.certified_mediums"), '/site/certifed_mediums'

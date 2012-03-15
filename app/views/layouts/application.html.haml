@@ -23,10 +23,12 @@
           - if alert
             %p.alert= alert
 
-          %h1= @cms_page.title
-          %h2= @cms_page.sub_title if !@cms_page.sub_title.blank?
+          - if !@cms_page.title.blank?
+            %h1= @cms_page.title 
+          - if !@cms_page.sub_title.blank?            
+            %h2= @cms_page.sub_title 
           = yield if @cms_page.is_site_index?
-          =blog @cms_page.body
+          = blog @cms_page.body
           = yield if !@cms_page.is_site_index?
 
     #footer_spacer
