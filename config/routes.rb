@@ -11,6 +11,8 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   resources :users
 
+  resources :events
+  
   root :to => 'site#index'
 
   resource :adg_registration

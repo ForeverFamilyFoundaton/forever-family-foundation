@@ -19,20 +19,21 @@ private
     redirect_to root_url, :alert => exception.message
   end
 
-  def get_cms_page
-    return if request.fullpath =~ /admin/
-      
+  def current_reference_string
     controller = self.controller_name.titleize
     # Admin user should not need to differentiate between edit / update and new / create
     action = case self.action_name
-    when "create"
-      "New"
-    when "update"
-      "Edit"
+    when 'create' then 'New'
+    when 'update' then 'Edit'
     else
       self.action_name.titleize
     end
-    @cms_page = CmsPage.get([controller,action].join(": "))
+    [controller,action].join(": ")
+  end
+  
+  def get_cms_page
+    return if request.fullpath =~ /admin/
+    @cms_page ||= CmsPage.get(current_reference_string)
   end
 
   def store_location
