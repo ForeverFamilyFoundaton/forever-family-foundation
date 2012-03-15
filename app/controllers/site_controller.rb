@@ -12,9 +12,11 @@ class SiteController < ApplicationController
   def grief_and_loss; end
   def support_and_information; end
   def store; end
-  def contributers; end
+  def contributions; end
   def volunteers; end
   def contact; end
+  def store; end
+  def business_membership; end
   def terms
     render :layout => 'popup'
   end

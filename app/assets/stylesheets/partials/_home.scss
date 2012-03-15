@@ -7,7 +7,7 @@
 .callout {
   @include box-shadow(#ccc -3px 3px 3px);
   float:left;
-  background: $light-gray image-url('white-stripe-2px.gif') repeat-y top; 
+  background: $light-gray image-url('white-stripe-2px.gif') repeat-y top;
   @include border-radius($default-border-radius);
   margin:0 0 6px 6px;
 
@@ -35,7 +35,7 @@
       border-right:1px solid white;
       @include border-top-left-radius($default-border-radius);
     }
-    
+
     img.right {
       float:right;
       margin:15px;
@@ -45,7 +45,7 @@
   .become_a_member {
     position:relative;
     h2 {
-      border-left:1px solid white;      
+      border-left:1px solid white;
       @include border-top-right-radius($default-border-radius);
       margin-bottom:25px;
     }

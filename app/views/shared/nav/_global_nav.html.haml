@@ -13,7 +13,7 @@
       = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /events/
       = t('navigation.global.events')
   %li
-    %a{ href: 'store' }
+    %a{ href: '/site/store' }
       = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /store/
       = t('navigation.global.store')
   %li
@@ -21,7 +21,7 @@
       = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /volunteers/
       = t('navigation.global.volunteers')
   %li.last
-    %a{ href: '/site/contributers' }
-      = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /contributers/
-      = t('navigation.global.contributers')
+    %a{ href: '/site/contributions' }
+      = image_tag('nav-indicator.gif', :class => :current) if controller.action_name =~ /contributions/
+      = t('navigation.global.contributions')
 
