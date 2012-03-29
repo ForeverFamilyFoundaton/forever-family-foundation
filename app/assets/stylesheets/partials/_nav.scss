@@ -37,12 +37,10 @@
       font-size:13px;
       font-weight:bold;
     }
-    
 
     img.current {
       position:absolute;
-      // adjust for a white line at top with -2
-      top: -$padd-top - 2px;
+      top: -$padd-top;
       left: 50%;
       // pull image back to center
       margin-left:-10px;
@@ -53,7 +51,7 @@
 #user_nav {
   float:left;
   margin-top:20px;
-  
+
   li {
     @include inline-block;
     font-weight:bold;
@@ -62,10 +60,10 @@
 
     &.first {
       padding-left:0;
-      border-right:1px solid $dark-blue;      
+      border-right:1px solid $dark-blue;
     }
   }
-  
+
 }
 
 #site_nav {
@@ -75,13 +73,13 @@
   li {
     font-size:14px;
     padding: 0 0 $padd-top/2 0;
-    
+
     a {
       padding-left: 17px;
       background:url(image_path('nav-star.gif')) no-repeat left;
     }
   }
-  
+
   &.current {
     font-weight:bold;
   }
