@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   before_filter :continue_registration, only: [:new]
-  
+
   def new
     params[:step] ||= 1
     @business = current_user.business || Business.new
@@ -20,7 +20,7 @@ class BusinessesController < ApplicationController
   def register
     params[:step] ||= session[:step]
     session[:step] = params[:step]
-    
+
     @user = current_user
     @business = current_user.business
     if request.put?
@@ -30,7 +30,8 @@ class BusinessesController < ApplicationController
           redirect_to user_confirm_path(@user) and return
         end
         flash[:notice] = I18n.t('flash.business.create.success', step: params[:step])
-        redirect_to user_business_register_path(current_user, step: params[:step].to_i + 1)
+        redirect_to "/users/#{current_user.id}/businesses/#{current_user.business.id}/register?step=#{params[:step].to_i + 1}"
+        # redirect_to user_business_register_path(current_user.id, step: params[:step].to_i + 1)
       else
         render template: "businesses/register"
       end
@@ -67,7 +68,8 @@ private
 
   def continue_registration
     if session[:step].present?
-      redirect_to user_business_register_path(current_user, current_user.business, step: session[:step]) 
+      # redirect_to user_business_register_path(current_user, current_user.business, step: session[:step])
+      redirect_to "/users/#{current_user.id}/businesses/#{current_user.business.id}/register?step=#{session[:step]}"
     end
   end
 end

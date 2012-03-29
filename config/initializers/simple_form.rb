@@ -3,7 +3,6 @@ SimpleForm.setup do |config|
   # Components used by the form builder to generate a complete input. You can remove
   # any of them, change the order, or even add your own components to the stack.
   # config.components = [ :placeholder, :label_input, :hint, :error ]
-  config.components = [ :placeholder, :label_input, :hint ]  
 
   # Default tag used on hints.
   # config.hint_tag = :span
@@ -29,8 +28,13 @@ SimpleForm.setup do |config|
   # ID to add for error notification helper.
   # config.error_notification_id = nil
 
-  # You can wrap all inputs in a pre-defined tag.
-  config.wrapper_tag = :p
+  config.wrappers :tag => :p, :class => :input, :error_class => :fieldWithErrors do |b|
+    # b.use :html5
+     b.use :placeholder
+     b.use :hint,  :wrap_with => { :tag => :span, :class => :inputHint }
+     b.use :label_input
+     b.use :error, :wrap_with => { :tag => :span, :class => :inputError }
+   end
 
   # CSS class to add to all wrapper tags.
   # config.wrapper_class = :input
@@ -70,7 +74,6 @@ SimpleForm.setup do |config|
   # (e.g. required) are used or not. True by default.
   # Having this on in non-HTML5 compliant sites can cause odd behavior in
   # HTML5-aware browsers such as Chrome.
-  config.html5 = false
 
   # Custom mappings for input types. This should be a hash containing a regexp
   # to match as key, and the input type that will be used when the field name

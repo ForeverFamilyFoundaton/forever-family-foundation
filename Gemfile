@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails'
 gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
@@ -9,7 +9,7 @@ gem 'sass-rails'
 group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'compass', git: 'https://github.com/chriseppstein/compass.git'
+  gem 'compass-rails'
 end
 
 gem 'haml'

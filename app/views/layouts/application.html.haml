@@ -24,9 +24,9 @@
             %p.alert= alert
 
           - if !@cms_page.title.blank?
-            %h1= @cms_page.title 
-          - if !@cms_page.sub_title.blank?            
-            %h2= @cms_page.sub_title 
+            %h1= @cms_page.title
+          - if !@cms_page.sub_title.blank?
+            %h2= @cms_page.sub_title
           = yield if @cms_page.is_site_index?
           = blog @cms_page.body
           = yield if !@cms_page.is_site_index?

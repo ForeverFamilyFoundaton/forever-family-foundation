@@ -2,7 +2,7 @@ require_relative '../test_helper'
 
 class AdgRegistrationsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
-  
+
   context "on user being not logged in" do
     setup do
       get :new
@@ -15,7 +15,7 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
     setup do
       sign_in Factory.create(:user)
     end
-    
+
     context "on get new" do
       setup do
         get :new
@@ -38,22 +38,22 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
 
     context "on create adg registration" do
       setup do
-        @user = Factory.create(:user)        
+        @user = Factory.create(:user)
         sign_in @user
         @q1 = Factory.create(:adg_question)
         @q2 = Factory.create(:first_adg_question)
         @q3 = Factory.create(:second_adg_question)
         @p1 = Factory.create(:preference_adg)
-        @params = { 
+        @params = {
           :answer => {
-            @q1.id => 'answer1', 
+            @q1.id => 'answer1',
             @q2.id => 'answer2'
-          }, 
+          },
           :radio_val => {
-            @q1.id => 'yes', 
+            @q1.id => 'yes',
             @q2.id => 'no'
-          }, 
-          :adg_preference_ids => [ @p1.id ] 
+          },
+          :adg_preference_ids => [ @p1.id ]
         }
         post :create, :adg_registration => @params
       end
@@ -62,7 +62,7 @@ class AdgRegistrationsControllerTest < ActionController::TestCase
         @user.adg_answers.each do |adg_answer|
           assert_equal @params[:answer][adg_answer.adg_question_id], adg_answer.answer
           assert_equal @params[:radio_val][adg_answer.adg_question_id], adg_answer.radio_val
-        end        
+        end
       end
 
       should 'save the adg preferences' do

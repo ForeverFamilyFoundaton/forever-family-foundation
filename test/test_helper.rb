@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+# require 'test/unit/rails'
 require 'factory_girl_devise_fix.rb'
 
 include ActionDispatch::TestProcess

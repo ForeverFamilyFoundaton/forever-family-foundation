@@ -68,7 +68,8 @@ class BusinessesControllerTest < ActionController::TestCase
     end
     should assign_to :business
     should redirect_to('step 3') {
-      user_business_register_path(@user, step: 3)
+      # user_business_register_path(@user, step: 3)
+      "/users/#{@user.id}/businesses/#{@user.business.id}/register?step=3"
     }
   end
 
@@ -86,7 +87,8 @@ class BusinessesControllerTest < ActionController::TestCase
    end
     should assign_to :business
     should redirect_to('step 4') {
-      user_business_register_path(@user, step: 4)
+      # user_business_register_path(@user, step: 4)
+      "/users/#{@user.id}/businesses/#{@user.business.id}/register?step=4"
     }
   end
 

@@ -1,6 +1,6 @@
 class RegistrationController < Devise::RegistrationsController
   def new
-    @user = User.new
+    @user = User.where(id: params[:id]).first_or_initialize
     @user.build_address if @user.address.nil?
     3.times { @user.family_members.build } if @user.family_members.empty?
     render '/users/new'

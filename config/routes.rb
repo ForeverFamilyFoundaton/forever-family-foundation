@@ -4,15 +4,15 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  devise_for :users, controllers: { :registrations => 'registration' } do
+  devise_for :users, controllers: { :registrations => 'registration' }
+
+  devise_scope :user do
     get '/login' => 'devise/sessions#new'
     delete '/logout' => 'devise/sessions#destroy'
   end
 
-  resources :users
-
   resources :events
-  
+
   root :to => 'site#index'
 
   resource :adg_registration

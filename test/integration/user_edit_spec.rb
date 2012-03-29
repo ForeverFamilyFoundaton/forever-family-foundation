@@ -21,6 +21,5 @@ class UserTest < ActionDispatch::IntegrationTest
     click_on 'Confirm'
     click_on 'My Profile'
     click_on 'Edit Business Details'
-    pause
   end
 end
