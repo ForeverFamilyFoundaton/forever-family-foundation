@@ -3,8 +3,9 @@
 %body
   #layout
     #logo
+      %a{href: root_url}
     #container
-      #content        
+      #content
         #content_main
           %h1= @cms_page.title
           = blog @cms_page.body
