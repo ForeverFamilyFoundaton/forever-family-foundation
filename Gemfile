@@ -29,6 +29,7 @@ gem 'simple_form'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'ranked-model'
 gem 'country-select'
+gem 'launchy'
 
 group :test do
   gem "factory_girl_rails", '1.3.0'
