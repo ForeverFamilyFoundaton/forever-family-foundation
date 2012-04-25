@@ -52,6 +52,8 @@ module ForeverFamilyFoundation
 
     config.assets.initialize_on_precompile = false
 
+    # Precompile the Active Admin assets.
+    config.assets.precompile += %w[active_admin.css active_admin/print.css active_admin.js]
   end
 end
 
