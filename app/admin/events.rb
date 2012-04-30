@@ -1,26 +1,26 @@
-ActiveAdmin.register Event do
+ActiveAdmin.register Event, { sort_order: 'start_time_asc' }  do
   index do
     column :title
     column :description do |q|
       truncate q.description, length: 200
     end
     column :start_time
-    column :end_time      
+    column :end_time
     column 'Actions' do |q|
       link_to 'Show', admin_event_path(q)
     end
   end
-  
+
   form do |f|
     f.inputs 'Details' do
       f.input :title
       f.input :description
       f.input :start_time
-      f.input :end_time    
+      f.input :end_time
     end
     f.buttons
   end
-  
+
   show do
     h1 event.title
     h2 event.times
@@ -29,5 +29,5 @@ ActiveAdmin.register Event do
       raw markdown.render(event.description)
     end
   end
-  
+
 end

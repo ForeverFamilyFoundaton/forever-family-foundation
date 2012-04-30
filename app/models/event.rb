@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  scope :upcoming, :conditions => ["start_time >= ?", Time.now]
+  scope :upcoming, :conditions => ["start_time >= ?", Time.now], order: 'start_time asc'
   def times
     if start_time.strftime('%j') == end_time.strftime('%j')
       [start_time.to_s(:events), end_time.strftime('%l:%M %p')].join(' to ')
