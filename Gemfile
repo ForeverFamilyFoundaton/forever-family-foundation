@@ -14,11 +14,11 @@ end
 
 gem 'haml'
 gem 'devise'
-gem "cancan"
+gem 'cancan'
 gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
-gem "transitions", :require => ["transitions", "active_record/transitions"]
-gem "paperclip"
-gem "hoptoad_notifier"
+gem 'transitions', :require => ['transitions', 'active_record/transitions']
+gem 'paperclip'
+gem 'hoptoad_notifier'
 gem 'acts_as_tree'
 gem 'acts_as_list'
 gem 'redcarpet'
@@ -32,9 +32,10 @@ gem 'country-select'
 gem 'launchy'
 
 group :test do
-  gem "factory_girl_rails", '1.3.0'
-  gem "shoulda-matchers"
-  gem "shoulda-context"
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '1.3.0'
+  gem 'shoulda-matchers'
+  gem 'shoulda-context'
   gem 'capybara', '1.1.2'
   gem 'database_cleaner'
 end
