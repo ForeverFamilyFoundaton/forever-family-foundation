@@ -2,6 +2,9 @@
 %ul.events
   - @events.each do |event|
     %li
-      %h4=link_to event.title, event
+      - if !event.url.blank?
+        %h4=link_to event.title, event.url, target: '_blank'
+      - else
+        %h4=link_to event.title, event
       %h5= event.times
       %p= truncate event.description, length: 200
