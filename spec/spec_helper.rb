@@ -8,7 +8,7 @@ require 'factory_girl_devise_fix.rb'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-
+# MOVE ME
 module ControllerMacros
 
   def setup_user
@@ -18,7 +18,6 @@ module ControllerMacros
     end
   end
 end
-
 
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
@@ -45,6 +44,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 end
 
+# MOVE ME
 RSpec::Matchers.define :accept_nested_attributes_for do |association|
   match do |model|
     @model = model
@@ -83,5 +83,3 @@ RSpec::Matchers.define :accept_nested_attributes_for do |association|
     @accept = accept
   end
 end
-  
-  

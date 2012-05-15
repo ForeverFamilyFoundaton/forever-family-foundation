@@ -1,27 +1,26 @@
-require_relative '../test_helper'
+require 'spec_helper'
 
-class BusinessesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+describe BusinessesController do
+  setup_user
 
-  setup do
-    @user = Factory.create(:user)
+  before do
     @business = FactoryGirl.create(:business, :user_id => @user.id)
     sign_in @user
   end
 
   context "on get new" do
-    setup do
+    before do
       get :new, :user_id => @user.id
     end
-    should respond_with :success
-    should render_template :new
+    it { should respond_with :success }
+    it { should render_template :new }
   end
 
   context "on create business" do
-    setup do
+    before do
       post :create, business: FactoryGirl.attributes_for(:business, name: 'Testing Corp'), step: 1
     end
-    should assign_to :business
+    it { should assign_to :business }
     should redirect_to("the business step 2 page") {
       business = Business.find_by_name('Testing Corp')
       user_business_register_path(@user, business, :step => '2')
