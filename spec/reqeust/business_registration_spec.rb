@@ -1,4 +1,4 @@
-require 'integration_helper'
+require 'requests_helper'
 
 class UserTest < ActionDispatch::IntegrationTest
 

@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'spec_helper'
 require 'capybara/rails'
 require 'support/steps'
 
