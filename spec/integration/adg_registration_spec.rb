@@ -1,8 +1,8 @@
-require 'requests_helper'
+require 'integration/integration_helper'
 
-class UserTest < ActionDispatch::IntegrationTest
+describe 'ADG registration' do
 
-  setup do
+  before do
     @adg_question1 = AdgQuestion.create!(question: 'Do you Believe In GOD?', show_radio: true)
     @adg_question2 = AdgQuestion.create!(question: 'Do you believe that there is something that survives after physical death?', show_radio: true )
     @adg_question3 = AdgQuestion.create!(question: 'What specific topics are you interested in discussing?', show_radio: true )
@@ -10,11 +10,7 @@ class UserTest < ActionDispatch::IntegrationTest
     @user = FactoryGirl.create(:user)
   end
 
-  teardown do
-    DatabaseCleaner.clean
-  end
-
-  test 'Answer ADG questions' do
+  it 'Answer ADG questions' do
     sign_in(@user)
     click_link 'Afterlife Discussion Groups'
     click_link 'Register'
@@ -38,18 +34,18 @@ class UserTest < ActionDispatch::IntegrationTest
     end
 
     click_on 'Submit'
-    assert_match "/users/#{@user.id}", current_url
+    current_url.should match "/users/#{@user.id}"
   end
 
-  test "User is redirected to registration if not logged-in" do
+  it "User is redirected to registration if not logged-in" do
     visit('/')
     click_link 'Afterlife Discussion Groups'
     click_link 'Register'
-    assert_match '/users/sign_up', current_url
+    page.should have_content 'Login Info'
     fill_in_reg(email: 'test2@example.com')
     click_on 'Confirm'
-    assert page.has_content?("Welcome")
+    page.should have_content("Welcome")
     click_on 'Home'
-    assert_match '/adg_registration/new', current_url
+    page.should have_content("Adg Registrations: New")
   end
 end

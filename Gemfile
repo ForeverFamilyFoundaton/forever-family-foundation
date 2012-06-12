@@ -33,9 +33,9 @@ gem 'launchy'
 
 group :test do
   gem 'rspec-rails'
-  gem 'factory_girl_rails', '1.3.0'
+  gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'shoulda-context'
-  gem 'capybara', '1.1.2'
+  gem 'capybara'
   gem 'database_cleaner'
 end

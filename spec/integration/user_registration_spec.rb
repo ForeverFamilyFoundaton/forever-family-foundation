@@ -1,18 +1,14 @@
-require 'integration_helper'
+require 'integration/integration_helper'
 
-class UserTest < ActionDispatch::IntegrationTest
+describe 'User registration' do
 
-  teardown do
-    DatabaseCleaner.clean
-  end
-
-  test "non biz reg'" do
+  it "non biz reg'" do
     visit '/users/sign_up'
     fill_in_reg(email: 'qwe@example.com')
-    assert_match "/users/"+User.last.id.to_s, current_url
+    current_url.should match "/users/"+User.last.id.to_s+"/confirm"
   end
 
-  test 'biz reg' do
+  it 'biz reg' do
     visit '/users/sign_up'
     fill_in "Email", :with => 'asd@example.com'
     fill_in "Email confirmation", :with => 'asd@example.com'
@@ -27,13 +23,14 @@ class UserTest < ActionDispatch::IntegrationTest
     check "Yes, I accept the Terms of Use"
     check "I am registering a business"
     click_on "Register"
-    assert_match "/users/#{User.last.id}/businesses/new", current_url
+    current_url.should match "/users/#{User.last.id}/businesses/new"
   end
 
-  test 'valdation' do
+  it 'valdation' do
     visit '/users/sign_up'
     click_on "Register"
-    assert page.has_content?("Terms of use must be accepted")
-    assert page.has_content?("prohibited this record from being saved")
+    page.should have_content "Terms of use must be accepted"
+    page.should have_content "prohibited this record from being saved"
   end
+
 end

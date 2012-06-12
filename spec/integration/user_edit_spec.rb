@@ -1,16 +1,11 @@
-require 'integration_helper'
+require 'integration/integration_helper'
 
-class UserTest < ActionDispatch::IntegrationTest
-
-  setup do
+describe 'User edit' do
+  before do
     @user = FactoryGirl.create(:user, { email: 'abc@example.com'})
   end
 
-  teardown do
-    DatabaseCleaner.clean
-  end
-
-  test 'Edit sections' do
+  it 'Edit sections' do
     sign_in(@user)
     visit new_user_business_path(@user)
     fill_in_biz_reg
