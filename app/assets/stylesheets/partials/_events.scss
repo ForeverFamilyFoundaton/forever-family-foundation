@@ -1,5 +1,5 @@
 ul.events {
-  list-style: none;    
+  list-style: none;
   padding:0;
   li {
     border: 1px solid $light-gray;
@@ -19,21 +19,22 @@ ul.events {
   float:right;
   margin:0 0 5px 5px;
   text-align:center;
+  max-width: 350px;
   h2 {
     margin:0;
     padding:5px;
     color: $dark-blue;
     background: $light-blue;
-    @include border-top-radius($default-border-radius);  
+    @include border-top-radius($default-border-radius);
     text-transform:uppercase;
     font-weight:bold;
   }
-  
+
   ul {
     margin:0;
     padding:5px 0 10px 0;
-    background: $dark-blue;    
-    @include border-bottom-radius($default-border-radius);      
+    background: $dark-blue;
+    @include border-bottom-radius($default-border-radius);
     li {
       padding:5px $padd-sides;
       font-wight:normal;
@@ -44,4 +45,3 @@ ul.events {
     }
   }
 }
-  

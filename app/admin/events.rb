@@ -1,6 +1,8 @@
 ActiveAdmin.register Event, { sort_order: 'start_time_asc' }  do
   index do
-    column :title
+    column :title do |q|
+      link_to q.title, q.url, target: '_blank'
+    end
     column :description do |q|
       truncate q.description, length: 200
     end
@@ -14,6 +16,7 @@ ActiveAdmin.register Event, { sort_order: 'start_time_asc' }  do
   form do |f|
     f.inputs 'Details' do
       f.input :title
+      f.input :url
       f.input :description
       f.input :start_time
       f.input :end_time
@@ -22,7 +25,9 @@ ActiveAdmin.register Event, { sort_order: 'start_time_asc' }  do
   end
 
   show do
-    h1 event.title
+    h1 do
+      link_to event.title, event.url, target: '_blank'
+    end
     h2 event.times
     div do
       markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
