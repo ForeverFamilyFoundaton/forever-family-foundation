@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  include ActiveRecord::Transitions
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,7 +22,7 @@ class User < ActiveRecord::Base
     state :confirmed
 
     event :confirm do
-      transitions :from => :any, :to => :confirmed
+      transition all => :confirmed
     end
   end
 

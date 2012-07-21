@@ -3,7 +3,7 @@ ActiveAdmin.register CmsPage do
   filter :reference_string
   index as: :blog
 
- batch_action :destroy, false
+  batch_action :destroy, false
 
   form do |f|
     f.inputs 'Details' do

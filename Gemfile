@@ -16,7 +16,7 @@ gem 'haml'
 gem 'devise'
 gem 'cancan'
 gem 'activeadmin', git: 'https://github.com/gregbell/active_admin.git'
-gem 'transitions', :require => ['transitions', 'active_record/transitions']
+gem 'state_machine'
 gem 'paperclip'
 gem 'hoptoad_notifier'
 gem 'acts_as_tree'
@@ -35,7 +35,7 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
-  gem 'shoulda-context'
+  gem 'shoulda-context', require: false
   gem 'capybara'
   gem 'database_cleaner'
 end
