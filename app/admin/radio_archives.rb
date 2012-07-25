@@ -13,7 +13,7 @@ ActiveAdmin.register RadioArchive do
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
-    f.inputs 'Details' do # physician's fields
+    f.inputs 'Details' do
       f.input :title
       f.input :guest
       f.input :date
@@ -22,6 +22,11 @@ ActiveAdmin.register RadioArchive do
 
     f.inputs "Recording", :for => [:attached_file, f.object.attached_file || AttachedFile.new] do |recording_form|
       recording_form.input :attachment, as: :file
+    end
+
+    f.has_many :external_links do |link_form|
+      link_form.input :text
+      link_form.input :url      
     end
     
     f.buttons
