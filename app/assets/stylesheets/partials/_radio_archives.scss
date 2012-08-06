@@ -1,0 +1,16 @@
+ul.radio_archives {
+  list-style: none;
+  padding:0;
+  li {
+    border: 1px solid $light-gray;
+    border-width: 0 0 1px 0;
+    margin-bottom: 15px;
+    h4{
+      font-size:14px;
+      margin:0;
+    }
+    h5{
+      margin:5px 0;
+    }
+  }
+}

@@ -1,6 +1,11 @@
 %h3 Radio Archives
-%ul.raido_archives
+%ul.radio_archives
   - @archives.each do |archive|
     %li
-      %h4=link_to archive.title, archive
-      %h5= archive.guest
+      %h4=archive.title
+      %p
+        = archive.guest
+        %br
+        = archive.date
+        %br
+        = link_to 'Download', archive.attached_file.attachment.url if archive.attached_file 
