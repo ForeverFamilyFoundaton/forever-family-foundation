@@ -12,6 +12,7 @@ ForeverFamilyFoundation::Application.routes.draw do
   end
 
   resources :events
+  resources :radio_archives
 
   root :to => 'site#index'
 
