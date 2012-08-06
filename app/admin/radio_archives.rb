@@ -34,8 +34,17 @@ ActiveAdmin.register RadioArchive do
   
   show do
     h2 radio_archive.title
-    p radio_archive.guest
-    p radio_archive.date.to_s
+    div do
+      h3 radio_archive.guest
+      h3 radio_archive.date.to_s
+      h3 radio_archive.format
+    end
+    
+    table_for(radio_archive.external_links) do
+      column "External Links" do |elink| 
+        link_to elink.text, elink.url
+      end
+    end
   end
       
 end
