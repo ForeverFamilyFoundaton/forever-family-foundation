@@ -1,15 +1,14 @@
 ActiveAdmin.register RadioArchive do
   index do
-    column :title
+    column :title do |q|
+      link_to q.title, admin_radio_archive_path(q, method: :delete)
+    end 
     column :guest
     column :date
     column :format
-    column :format do |q|
-      link_to 'Download', q.attached_file.attachment.url
-    end
-    column 'Actions' do |q|
-      link_to 'Delete', admin_radio_archive_path(q, method: :delete)
-    end
+    column :attached_file do |q|
+      link_to 'Download', q.attached_file.attachment.url if q.attached_file 
+    end 
   end
 
   form :html => { :enctype => "multipart/form-data" } do |f|
@@ -31,4 +30,12 @@ ActiveAdmin.register RadioArchive do
     
     f.buttons
   end
+  
+  
+  show do
+    h2 radio_archive.title
+    p radio_archive.guest
+    p radio_archive.date.to_s
+  end
+      
 end
