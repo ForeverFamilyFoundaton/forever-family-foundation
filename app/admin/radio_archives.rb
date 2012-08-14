@@ -1,7 +1,7 @@
 ActiveAdmin.register RadioArchive do
   index do
     column :title do |q|
-      link_to q.title, admin_radio_archive_path(q, method: :delete)
+      link_to q.title, admin_radio_archive_path(q)
     end 
     column :guest
     column :date
@@ -38,6 +38,7 @@ ActiveAdmin.register RadioArchive do
       h3 radio_archive.guest
       h3 radio_archive.date.to_s
       h3 radio_archive.format
+      link_to 'Download', radio_archive.attached_file.attachment.url if radio_archive.attached_file 
     end
     
     table_for(radio_archive.external_links) do
