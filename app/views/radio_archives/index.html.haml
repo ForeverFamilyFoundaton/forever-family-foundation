@@ -10,6 +10,5 @@
         %br
         = link_to 'Download', archive.attached_file.attachment.url if archive.attached_file 
         %br
-        - archive.external_links.each do |external_link| 
-          = link_to external_link.text, external_link.url
-          %br
+        - archive.embeded_links.each do |embeded_link| 
+          = embeded_link.body.html_safe

@@ -23,9 +23,9 @@ ActiveAdmin.register RadioArchive do
       recording_form.input :attachment, as: :file
     end
 
-    f.has_many :external_links do |link_form|
-      link_form.input :text
-      link_form.input :url      
+    f.has_many :embeded_links do |link_form|
+      link_form.input :title
+      link_form.input :body    
     end
     
     f.buttons
@@ -41,9 +41,9 @@ ActiveAdmin.register RadioArchive do
       link_to 'Download', radio_archive.attached_file.attachment.url if radio_archive.attached_file 
     end
     
-    table_for(radio_archive.external_links) do
-      column "External Links" do |elink| 
-        link_to elink.text, elink.url
+    table_for(radio_archive.embeded_links) do
+      column "Embeded Links" do |elink| 
+        elink.body.html_safe
       end
     end
   end
