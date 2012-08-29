@@ -39,6 +39,11 @@ body {
     @include column(17, true);
     background-color:#fff;
   }
+   #popup-content {
+    @include border-radius($default-border-radius);
+    @include column(24, true);
+    background-color:#fff;
+  }
 
   #content_main {
     width:100%;

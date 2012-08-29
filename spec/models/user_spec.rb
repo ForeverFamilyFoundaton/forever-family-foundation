@@ -20,4 +20,8 @@ describe User do
   it { should_not allow_mass_assignment_of :last_login_at }
   it { should_not allow_mass_assignment_of :current_login_ip }
   it { should_not allow_mass_assignment_of :last_login_ip }
+
+  it 'increments a sequential id' do 
+    
+  end
 end

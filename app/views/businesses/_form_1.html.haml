@@ -9,6 +9,7 @@
         = address_form.input :address, label: t('labels.address'), required: true, input_html: { class: :address }
         = address_form.input :city, label: t('labels.city'), required: true, input_html: { class: :city }
         = address_form.input :state, label: t('labels.state'), required: true, input_html: { class: :state }
+        = address_form.country_select :country, ["United States"]   
         = address_form.input :zip, label: t('labels.zip'), required: true, input_html: { class: :zip }
       = f.input :contact_name, label: t('labels.contact_name'), required: true                    
       = f.input :contact_phone, label: t('labels.contact_phone'), required: true
