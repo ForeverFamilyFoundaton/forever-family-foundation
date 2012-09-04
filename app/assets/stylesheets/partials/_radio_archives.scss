@@ -12,5 +12,14 @@ ul.radio_archives {
     h5{
       margin:5px 0;
     }
+    p {
+      margin: 0;
+    }
+    span {
+      margin-top: 3px;
+      float:left;
+      border:1px solid $dark-blue;
+      padding:3px;
+    }
   }
 }

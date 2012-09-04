@@ -3,12 +3,8 @@
   - @archives.each do |archive|
     %li
       %h4=archive.title
-      %p
-        = archive.guest
-        %br
-        = archive.date
-        %br
-        = link_to 'Download', archive.attached_file.attachment.url if archive.attached_file 
-        %br
-        - archive.embeded_links.each do |embeded_link| 
-          = embeded_link.body.html_safe
+      %p= archive.guest
+      %p= archive.date
+      = link_to 'Download', archive.attached_file.attachment.url if archive.attached_file 
+      - archive.embeded_links.each do |embeded_link| 
+        %span= embeded_link.body.html_safe
