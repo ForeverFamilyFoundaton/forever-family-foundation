@@ -59,5 +59,16 @@ class User < ActiveRecord::Base
     return true if !biz? && reg_complete? && !welcomed?
     return true if biz? && business.reg_complete? && !welcomed?
   end
+
+  def confirm!
+    welcome_message
+    super
+  end
+
+private
+
+  def welcome_message
+    UserMailer.welcome_message(self).deliver
+  end
 end
 

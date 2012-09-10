@@ -26,7 +26,7 @@ en:
     work_phone: Work phone
     remeber_me: Remeber me
     terms_of_use_acceptance: Yes, I accept the <a href='/site/terms' class='popup'>Terms of Use</a>
-    business_reg_acceptance: I am registering a business
+    business_reg_acceptance: I am registering a business  <a href='/site/business_membership'>Business Memership</a>
     contact_name: Contact Name
     contact_email: Contact Email
     contact_email_confirmation: Contact Email Confirmation
