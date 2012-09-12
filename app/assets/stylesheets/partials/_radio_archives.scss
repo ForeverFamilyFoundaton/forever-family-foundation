@@ -14,6 +14,7 @@ ul.radio_archives {
     }
     p {
       margin: 0;
+      @include clearfix;
     }
     span {
       margin-top: 3px;
