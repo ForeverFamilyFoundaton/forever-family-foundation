@@ -38,6 +38,7 @@ describe 'ADG registration' do
   end
 
   it "User is redirected to registration if not logged-in" do
+    pending 'remove redirects'
     visit('/')
     click_link 'Afterlife Discussion Groups'
     click_link 'Register'

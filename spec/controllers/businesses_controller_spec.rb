@@ -102,7 +102,7 @@ describe BusinessesController do
       put :register, business: {}, user_id: @user.id, id: @business.id, step: 4
     end
     it {should assign_to :business}
-    it {response.should redirect_to user_confirm_path(@user) }
+    it {response.should redirect_to user_path(@user) }
   end
 
 end

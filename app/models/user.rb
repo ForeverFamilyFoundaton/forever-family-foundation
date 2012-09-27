@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :family_members, :reject_if => proc { |attributes| attributes['first_name'].blank? }
 
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business, :welcomed
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business
 
   validates_presence_of     :email
   validates_confirmation_of :email, :if => :email_changed?
@@ -55,9 +55,9 @@ class User < ActiveRecord::Base
     [first_name, middle_name, last_name].compact.join(' ')
   end
 
-  def needs_to_be_welcomed?
-    return true if !biz? && reg_complete? && !welcomed?
-    return true if biz? && business.reg_complete? && !welcomed?
-  end
+  # def needs_to_be_welcomed?
+  #   return true if !biz? && reg_complete? && !welcomed?
+  #   return true if biz? && business.reg_complete? && !welcomed?
+  # end
 end
 

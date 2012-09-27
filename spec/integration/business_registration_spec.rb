@@ -41,19 +41,7 @@ describe 'Business registration' do
     click_on "Submit" #payment
     click_on "Submit or Skip"
     click_on "Submit or Skip"
-    click_on "Confirm"
-    page.should have_content("Welcome")
-  end
-
-  it 'return to registration' do
-    sign_in(@user)
-    visit new_user_business_path(@user)
-    fill_in_biz_reg
-    click_on "Submit"
-    click_on "Submit" #payment
-    click_on "Submit or Skip"
-    click_on "Submit or Skip"
-    click_on "Confirm"
+    # click_on "Confirm"
     page.should have_content("Welcome")
   end
 end

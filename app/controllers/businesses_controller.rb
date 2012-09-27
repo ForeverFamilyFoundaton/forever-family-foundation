@@ -23,21 +23,18 @@ class BusinessesController < ApplicationController
 
     @user = current_user
     @business = current_user.business
-    if request.put?
-      if @business.update_attributes(params[:business])
+    
+      if request.put? && @business.update_attributes(params[:business])
         @business.complete_step!(params[:step])
-        if @business.reg_complete?
-          redirect_to user_confirm_path(@user) and return
-        end
+        
+        redirect_to user_path(@user) and return if @business.reg_complete?
+        
         flash[:notice] = I18n.t('flash.business.create.success', step: params[:step])
         redirect_to "/users/#{current_user.id}/businesses/#{current_user.business.id}/register?step=#{params[:step].to_i + 1}"
         # redirect_to user_business_register_path(current_user.id, step: params[:step].to_i + 1)
       else
         render template: "businesses/register"
       end
-    else
-      render template: "businesses/register"
-    end
   end
 
   def edit
@@ -59,10 +56,10 @@ class BusinessesController < ApplicationController
     send_file attached_file.attachment.path, :type => attached_file.attachment.content_type
   end
 
-  def welcome
-    current_user.update_attribute :welcomed, true
-    current_user.business.update_attribute :welcomed, true if current_user.biz?
-  end
+  # def welcome
+  #   current_user.update_attribute :welcomed, true
+  #   current_user.business.update_attribute :welcomed, true if current_user.biz?
+  # end
 
 private
 

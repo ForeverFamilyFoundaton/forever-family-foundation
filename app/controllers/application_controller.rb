@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :get_cms_page
-  before_filter :adg_redirect
+  # before_filter :adg_redirect
   
   def http_auth
     if !session[:authenticated]
@@ -46,17 +46,17 @@ private
     session[:return_to] = request.fullpath
   end
   
-  def welcome
-    if current_user.try :needs_to_be_welcomed?
-      url = current_user.biz? ? business_wecome_path(current_user) :  users_wecome_path(current_user)
-      redirect_to url
-    end
-  end
+  # def welcome
+  #   if current_user.try :needs_to_be_welcomed?
+  #     url = current_user.biz? ? business_wecome_path(current_user) :  users_wecome_path(current_user)
+  #     redirect_to url
+  #   end
+  # end
   
-  def adg_redirect 
-    if session[:adg_registration] && current_user && current_user.welcomed?
-      redirect_to new_adg_registration_path
-    end
-  end
+#   def adg_redirect 
+#     if session[:adg_registration] && current_user && current_user.welcomed?
+#       redirect_to new_adg_registration_path
+#     end
+#   end
 end
 

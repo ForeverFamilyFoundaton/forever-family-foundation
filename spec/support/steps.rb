@@ -39,7 +39,7 @@ def fill_in_biz_reg(params={})
   fill_in "Contact Name", with: "My Self"
   fill_in "Contact Phone", with: "734876856"
   fill_in "Contact Email", with: "abc@example.com"
-  fill_in "Contact Email Confirmation", with: "abc@example.com"
+  fill_in "Contact Email Conf.", with: "abc@example.com"
   fill_in "business_billing_address_attributes_address", with: "Street No. 10"
   fill_in "business_billing_address_attributes_city", with: "Los Angeles"
   fill_in "business_billing_address_attributes_state", with: "CA"
