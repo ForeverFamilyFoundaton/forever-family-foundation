@@ -35,5 +35,6 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   resource :events
 
+  match '/site/page/:id' => 'site#page', as: 'page'
   match ':controller(/:action(/:id))'
 end

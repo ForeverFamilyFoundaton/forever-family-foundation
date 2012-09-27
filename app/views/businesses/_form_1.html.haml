@@ -10,7 +10,9 @@
         = address_form.input :city, label: t('labels.city'), required: true, input_html: { class: :city }
         = address_form.input :state, label: t('labels.state'), required: true, input_html: { class: :state }
         = address_form.input :zip, label: t('labels.zip'), required: true, input_html: { class: :zip }
-      = f.input :contact_name, label: t('labels.contact_name'), required: true                    
+        = address_form.country_select :country, ["United States"], input_html: { class: :country }      
+        %br
+      = f.input :contact_name, label: t('labels.contact_name'), required: true  
       = f.input :contact_phone, label: t('labels.contact_phone'), required: true
       = f.input :contact_email, label: t('labels.contact_email'), required: true
       = f.input :contact_email_confirmation, label: t('labels.contact_email_confirmation'), required: true
@@ -28,4 +30,4 @@
         = billing_address_form.input :city, label: t('labels.city'), required: true, input_html: { class: :city }
         = billing_address_form.input :state, label: t('labels.state'), required: true, input_html: { class: :state }
         = billing_address_form.input :zip, label: t('labels.zip'), required: true, input_html: { class: :zip }
-        = billing_address_form.country_select :country, ["United States"]    
+        = billing_address_form.country_select :country, ["United States"], input_html: { class: :country }       

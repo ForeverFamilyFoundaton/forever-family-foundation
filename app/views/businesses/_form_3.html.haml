@@ -1,6 +1,4 @@
 = hidden_field_tag :step, 3
-%p
-  Your business membership includes a thirty second radio spot on our weekly show. You have the option of sending us a recording or having us live-read or produce a spot for you.
 
 .form_section
   %h2 Business Media
@@ -28,8 +26,8 @@
         %legend= web_banner_form.label :attachment, t('labels.web_banner')
         - if @business.web_banner.attachment.present?
           .thumbnail= image_tag  @business.web_banner.attachment.url(:thumb)
-          = web_banner_form.file_field :attachment
-          = web_banner_form.hidden_field :kind
+        = web_banner_form.file_field :attachment
+        = web_banner_form.hidden_field :kind
 
         %br
         %br

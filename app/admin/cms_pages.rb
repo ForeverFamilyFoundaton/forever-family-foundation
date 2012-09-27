@@ -1,9 +1,17 @@
 ActiveAdmin.register CmsPage do
-  filter :title
-  filter :reference_string
-  index as: :blog
-
-  batch_action :destroy, false
+  
+  index do
+    column :reference_string
+    column 'Title' do |q|
+      link_to q.title, page_url(q)
+    end
+    column 'URL' do |q|
+      page_url(q)
+    end
+    column "Actions" do |q|
+      link_to 'Show', admin_cms_image_path(q)
+    end
+  end
 
   form do |f|
     f.inputs 'Details' do

@@ -29,7 +29,7 @@ en:
     business_reg_acceptance: I am registering a business
     contact_name: Contact Name
     contact_email: Contact Email
-    contact_email_confirmation: Contact Email Confirmation
+    contact_email_confirmation: Contact Email Conf.
     contact_phone: Contact Phone
     fax_number: Fax Number
     business_card: Business Card
@@ -61,7 +61,7 @@ en:
   flash:
     user:
       create:
-        success: Account registered!
+        success: Personal Account registered!
       update:
         success: Account updated!
       login:

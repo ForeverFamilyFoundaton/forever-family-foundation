@@ -35,7 +35,11 @@ private
   
   def get_cms_page
     return if request.fullpath =~ /admin/
-    @cms_page ||= CmsPage.get(current_reference_string)
+    @cms_page ||=  if current_reference_string == 'Site: Page'
+      CmsPage.find(params[:id])  
+    else    
+      CmsPage.get(current_reference_string)
+    end
   end
 
   def store_location
