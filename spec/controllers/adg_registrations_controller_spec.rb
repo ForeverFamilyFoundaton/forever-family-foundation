@@ -33,10 +33,10 @@ describe AdgRegistrationsController do
 
     context "on get new with adg questions" do
       setup do
-        Factory.create(:user)
-        Factory.create(:adg_question)
-        Factory.create(:first_adg_question)
-        Factory.create(:second_adg_question)
+        FactoryGirl.create(:user)
+        FactoryGirl.create(:adg_question)
+        FactoryGirl.create(:first_adg_question)
+        FactoryGirl.create(:second_adg_question)
       end
 
       it 'responds with success' do
@@ -52,10 +52,10 @@ describe AdgRegistrationsController do
 
     context "on create adg registration" do
       before do
-        @q1 = Factory.create(:adg_question)
-        @q2 = Factory.create(:first_adg_question)
-        @q3 = Factory.create(:second_adg_question)
-        @p1 = Factory.create(:preference_adg)
+        @q1 = FactoryGirl.create(:adg_question)
+        @q2 = FactoryGirl.create(:first_adg_question)
+        @q3 = FactoryGirl.create(:second_adg_question)
+        @p1 = FactoryGirl.create(:preference_adg)
         @params = {
           :answer => {
             @q1.id => 'answer1',

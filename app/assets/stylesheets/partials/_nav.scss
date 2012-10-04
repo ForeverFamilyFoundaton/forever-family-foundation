@@ -23,9 +23,9 @@
   li {
     @include inline-block;
     margin:0;
-    padding:$padd-top $padd-top 0 5px;
+    padding:$padd-top ($padd-top - 5px) 0 0 /*5px*/;
     background:image_url('nav-dot.gif') no-repeat right 25px;
-
+//    border: 1px solid black;
     &.first {
       padding-left:0;
     }

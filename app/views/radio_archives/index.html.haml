@@ -3,9 +3,10 @@
   - @archives.each do |archive|
     %li
       %h4=archive.title
-      %p
-        = archive.guest
-        %br
-        = archive.date
-        %br
-        = link_to 'Download', archive.attached_file.attachment.url if archive.attached_file 
+      %p= archive.guest
+      %p= archive.date
+      %p= link_to 'Download', archive.attached_file.attachment.url if archive.attached_file 
+      - if !archive.embeded_links.empty?
+        %p
+          - archive.embeded_links.each do |embeded_link| 
+            %span= embeded_link.body.html_safe

@@ -8,6 +8,7 @@
       .group
         = form.input :password, label: t('labels.password'), required: true
         = form.input :password_confirmation, label: t('labels.password_confirmation'), required: true, :class => 'password'
+        %p.red * Minimum 6 characters
 
 .form_section
   %h2 Basic Info
@@ -28,6 +29,8 @@
       .group
         = address_form.input :state, label: t('labels.state'), required: true
         = address_form.input :zip, label: t('labels.zip'), required: true
+
+    %p.red * Please be careful to accurately enter your address fields as returned mail depletes vital foundation funds.
 
 .form_section
   %h2 Family Members

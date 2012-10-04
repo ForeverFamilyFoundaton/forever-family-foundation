@@ -13,7 +13,7 @@ module ControllerMacros
   def setup_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      @user = Factory.create(:user)
+      @user = FactoryGirl.create(:user)
     end
   end
 end
