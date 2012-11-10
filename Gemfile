@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails'
 gem 'pg'
-gem 'sqlite3' # for heroku db:pull via taps gem
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'sass-rails'
@@ -42,4 +41,8 @@ group :test do
   gem 'shoulda-context', require: false
   gem 'capybara'
   gem 'database_cleaner'
+end
+
+group :development do
+  gem 'sqlite3' # for heroku db:pull via taps gem
 end

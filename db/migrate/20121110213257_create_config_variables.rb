@@ -5,5 +5,6 @@ class CreateConfigVariables < ActiveRecord::Migration
       t.string :value
       t.timestamps
     end
+    ConfigVariable.create! name: 'Price', value: '100'
   end
 end
