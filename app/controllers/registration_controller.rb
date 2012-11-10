@@ -14,7 +14,7 @@ class RegistrationController < Devise::RegistrationsController
       if @user.is_business?
         redirect_to new_user_business_path(@user)
       else
-        redirect_to user_confirm_path(@user)
+        redirect_to user_path(@user)
       end
     else
       clean_up_passwords(@user)

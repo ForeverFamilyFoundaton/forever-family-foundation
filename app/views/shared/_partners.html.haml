@@ -27,7 +27,14 @@
     = link_to image_tag('twitter.png'), 'https://twitter.com/FFFAfterlife', :target => '_blank'
 
   %li
-    <script type="text/javascript" charset="UTF-8" language="JavaScript1.2" src="http://uk.babelfish.yahoo.com/free_trans_service/babelfish2.js?from_lang=en&region=us"></script>
+    #google_translate_element
+    :javascript
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      }
+
+    %script{:type => "text/javascript", :src => "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"}
+
 
   %li
     %p.small Forever Family Foundation is a not for profit all volunteer 501(c)3 organization #EIN 20-0942333 and is registered with the NYS Charities Bureau #20-72-58.  Your contributions are tax deductible to the extent provided by law.

@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails'
 gem 'pg'
+gem 'sqlite3' # for heroku db:pull via taps gem
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'sass-rails'
@@ -30,6 +31,9 @@ gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'ranked-model'
 gem 'country-select'
 gem 'launchy'
+gem 'heroku'
+gem 'taps'
+gem 'truncate_html'
 
 group :test do
   gem 'rspec-rails'
