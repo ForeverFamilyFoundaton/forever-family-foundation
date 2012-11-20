@@ -1,15 +1,15 @@
 ActiveAdmin.register CmsPage do
-  
+
   index do
     column :reference_string
     column 'Title' do |q|
-      link_to q.title, page_url(q)
+      q.title
     end
     column 'URL' do |q|
-      page_url(q)
+      link_to page_url(q), page_url(q)
     end
     column "Actions" do |q|
-      link_to 'Show', admin_cms_image_path(q)
+      link_to 'Show', admin_cms_page_path(q)
     end
   end
 
