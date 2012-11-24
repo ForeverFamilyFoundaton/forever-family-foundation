@@ -1,4 +1,6 @@
 ActiveAdmin.register CmsPage do
+  menu false
+
 
   index do
     column :reference_string

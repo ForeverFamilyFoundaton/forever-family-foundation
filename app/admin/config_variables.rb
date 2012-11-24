@@ -1,4 +1,6 @@
 ActiveAdmin.register ConfigVariable do
+    menu false
+
     index do
     column :name
     column :value

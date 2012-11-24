@@ -1,4 +1,6 @@
 ActiveAdmin.register Event, { sort_order: 'start_time_asc' }  do
+  menu false
+
   index do
     column :title do |q|
       link_to q.title, q.url, target: '_blank'

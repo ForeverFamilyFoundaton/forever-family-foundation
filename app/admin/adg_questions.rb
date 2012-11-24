@@ -1,4 +1,5 @@
 ActiveAdmin.register AdgQuestion do
+  menu false
   index do
     column :question
     column :show_radio

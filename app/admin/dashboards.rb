@@ -1,38 +1,25 @@
-ActiveAdmin::Dashboards.build do
+ActiveAdmin.register_page "Dashboard" do
 
-  # Define your dashboard sections here. Each block will be
-  # rendered on the dashboard in the context of the view. So just
-  # return the content which you would like to display.
-  
-  # == Simple Dashboard Section
-  # Here is an example of a simple dashboard section
-  #
-  #   section "Recent Posts" do
-  #     ul do
-  #       Post.recent(5).collect do |post|
-  #         li link_to(post.title, admin_post_path(post))
-  #       end
-  #     end
-  #   end
-  
-  # == Render Partial Section
-  # The block is rendered within the context of the view, so you can
-  # easily render a partial rather than build content in ruby.
-  #
-  #   section "Recent Posts" do
-  #     div do
-  #       render 'recent_posts' # => this will render /app/views/admin/dashboard/_recent_posts.html.erb
-  #     end
-  #   end
-  
-  # == Section Ordering
-  # The dashboard sections are ordered by a given priority from top left to
-  # bottom right. The default priority is 10. By giving a section numerically lower
-  # priority it will be sorted higher. For example:
-  #
-  #   section "Recent Posts", :priority => 10
-  #   section "Recent User", :priority => 1
-  #
-  # Will render the "Recent Users" then the "Recent Posts" sections on the dashboard.
+  menu :priority => 2, :label => proc{ I18n.t("active_admin.dashboard") }
 
+  content :title => proc{ I18n.t("active_admin.dashboard") } do
+    columns do
+      column do
+        panel 'Links' do
+          ul do
+            li link_to 'Attached Files', admin_attached_files_path
+            li link_to 'Cms Images', admin_cms_images_path
+            li link_to 'Cms Pages', admin_cms_pages_path
+            li link_to 'Adg Questions', admin_adg_questions_path
+            li link_to 'Config Variables', admin_config_variables_path
+            li link_to 'Events', admin_events_path
+            li link_to 'External Links', admin_external_links_path
+            li link_to 'Preferences', admin_preferences_path
+            li link_to 'Radio Archives', admin_radio_archives_path
+            li link_to 'Users', admin_users_path
+          end
+        end
+      end
+    end
+  end # content
 end

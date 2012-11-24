@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  menu false
+
   filter :email
   index do
     column :email, :sortable => :email do |user|

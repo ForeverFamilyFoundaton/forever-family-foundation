@@ -1,4 +1,6 @@
 ActiveAdmin.register AttachedFile do
+  menu false
+
   index do
     column 'Image' do |q|
       image_tag q.attachment.url
@@ -14,7 +16,7 @@ ActiveAdmin.register AttachedFile do
     end
     f.buttons
   end
-  
+
   show do |file|
     image_tag file.attachment.url
   end

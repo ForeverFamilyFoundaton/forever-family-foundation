@@ -1,9 +1,11 @@
 ActiveAdmin.register ExternalLink do
+  menu false
+
   index do
     column :text
     column :url
     column "Actions" do |q|
-      link_to "Delete", admin_link_path(q, method: :delete)
+      link_to "Delete", admin_external_link_path(q, method: :delete)
     end
   end
 
