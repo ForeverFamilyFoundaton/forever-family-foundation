@@ -46,7 +46,7 @@
     %h2 Preferences
     .form_fields
       - Preference.profile_preferences.each do |profile_preference|
-        %p
+        %p.clear
           = check_box_tag "user[profile_preference_ids][]", profile_preference.id, @user.profile_preferences.include?(profile_preference)
           = profile_preference.name
 

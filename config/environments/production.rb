@@ -59,4 +59,13 @@ ForeverFamilyFoundation::Application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.default_url_options = { :host => 'forever-family-foundation.herokuapp.com' }
+
+  config.paperclip_defaults = { :storage => :s3,
+    :bucket => 'fff_attachments',
+    :s3_credentials => {
+      :access_key_id => 'AKIAIMDZEEZXRWDDHWCA',
+      :secret_access_key => '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'
+  }
+}
+
 end
