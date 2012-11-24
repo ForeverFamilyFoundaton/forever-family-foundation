@@ -36,16 +36,25 @@ ActiveAdmin.register User do
     div do
       simple_format ["Bussiness?", user.is_business?].join(': ')
     end
+
+   table_for(user.profile_preferences) do
+      column "Question" do |pref|
+        pref.name
+      end
+      column "Answer" do |pref|
+        user.profile_preferences.include?(pref).to_s
+      end
+    end
   end
 
   form do |f|
     f.inputs "Details" do
       f.input :first_name
       f.input :middle_name
-      f.input :last_name            
+      f.input :last_name
       f.input :email
-      f.input :state      
+      f.input :state
     end
     f.buttons
-  end  
+  end
 end
