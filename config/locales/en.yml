@@ -29,7 +29,7 @@ en:
     business_reg_acceptance: I am registering a business <a class='popup' href='/site/business_membership'>Business Memership</a>. Charges will apply.
     contact_name: Contact Name
     contact_email: Contact Email
-    contact_email_confirmation: Contact Email Conf.
+    contact_email_confirmation: Confirm Contact Email
     contact_phone: Contact Phone
     fax_number: Fax Number
     business_card: Business Card

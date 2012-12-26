@@ -40,11 +40,8 @@ ActiveAdmin.register User do
     end
 
    table_for(user.profile_preferences) do
-      column "Question" do |pref|
-        pref.name
-      end
-      column "Answer" do |pref|
-        user.profile_preferences.include?(pref).to_s
+      column "Preferences" do |question|
+        question.name
       end
     end
   end
