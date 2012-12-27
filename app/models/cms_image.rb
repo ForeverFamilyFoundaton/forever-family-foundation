@@ -4,7 +4,7 @@ class CmsImage < ActiveRecord::Base
   storage: :s3,
   bucket: 'fff_cms_images',
   s3_credentials: {
-    access_key_id: 'AKIAIMDZEEZXRWDDHWCA',
-    secret_access_key: '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'
+    access_key_id: ENV['S3_KEY'],
+    secret_access_key: ENV['S3_SECRET']
   }
 end
