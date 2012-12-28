@@ -1,4 +1,4 @@
-require 'integration/integration_helper'
+require_relative 'feature_helper'
 
 describe 'User registration' do
 

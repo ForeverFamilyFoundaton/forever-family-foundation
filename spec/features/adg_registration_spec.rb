@@ -1,4 +1,4 @@
-require 'integration/integration_helper'
+require_relative 'feature_helper'
 
 describe 'ADG registration' do
 
@@ -12,7 +12,9 @@ describe 'ADG registration' do
 
   it 'Answer ADG questions' do
     sign_in(@user)
-    click_link 'Afterlife Discussion Groups'
+    within '#site_nav' do
+      click_link 'Afterlife Discussion Groups'
+    end
     click_link 'Register'
     within('table.adg_questions tr:nth-child(1)') do
       choose 'Yes'
@@ -40,7 +42,9 @@ describe 'ADG registration' do
   it "User is redirected to registration if not logged-in" do
     pending 'remove redirects'
     visit('/')
-    click_link 'Afterlife Discussion Groups'
+    within '#site_nav' do
+      click_link 'Afterlife Discussion Groups'
+    end
     click_link 'Register'
     page.should have_content 'Login Info'
     fill_in_reg(email: 'test2@example.com')
