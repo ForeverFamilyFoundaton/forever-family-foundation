@@ -1,4 +1,5 @@
-= simple_form_for :credit_card, :url => '/users' do |f|
+= render("shared/error_messages", target: @business) if @business
+= simple_form_for :credit_card, :url => user_business_payment_path(@user, @business) do |f|
   .form_section
     %h2 Payment Information
     .form_fields
@@ -14,4 +15,6 @@
       %p.red
         * Your credit card will be charged the Business Membership Fee of
         = number_to_currency ConfigVariable.find_by_name('Price').try(:value)
+
+  = render partial: 'shared/form_submit', locals: { text: 'Submit Payment' }
 

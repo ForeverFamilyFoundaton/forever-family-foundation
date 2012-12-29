@@ -12,8 +12,8 @@ describe 'Business registration' do
     fill_in_biz_reg
     click_on "Submit"
 
-    current_url.should match("step=2")
-
+    current_url.should match("payment")
+    fill_in_payment_details
     click_on "Submit"
     current_url.should match "step=3"
     @user.reload.business.name.should == 'My Business'
@@ -38,7 +38,8 @@ describe 'Business registration' do
     visit new_user_business_path(@user)
     fill_in_biz_reg
     click_on "Submit"
-    click_on "Submit" #payment
+    fill_in_payment_details
+    click_on "Submit Payment"
     click_on "Submit or Skip"
     click_on "Submit or Skip"
     page.should have_selector('h1', {text: 'USERS: SHOW', visible: true})
@@ -50,7 +51,6 @@ describe 'Business registration' do
       visit new_user_business_path(@user)
       fill_in_biz_reg
       click_on "Submit"
-      pause
     end
   end
 end

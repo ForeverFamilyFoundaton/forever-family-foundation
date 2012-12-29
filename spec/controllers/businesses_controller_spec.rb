@@ -23,8 +23,17 @@ describe BusinessesController do
     it { should assign_to :business }
     it 'redirects to payment' do
       business = Business.find_by_name('Testing Corp')
-      response.should render_template :payment
+      response.should redirect_to user_business_payment_path(@user, business)
     end
+  end
+
+  context 'on process payment' do
+    before do
+      post :create, credit_card: {}
+    end
+    it {assigns(:business).should be_kind_of(Business)}
+    it {response.should be_success}
+    it {response.should render_template :new}
   end
 
   context "on business params error" do

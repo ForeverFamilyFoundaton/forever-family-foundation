@@ -49,3 +49,11 @@ def fill_in_biz_reg(params={})
     fill_in "business_billing_address_attributes_zip", with: "90001"
   end
 end
+
+def fill_in_payment_details
+  fill_in "credit_card_name", with: "John Doe"
+  fill_in "credit_card_number", with: "4242424242424242"
+  fill_in "credit_card_cvc", with: "123"
+  page.select('2', :from => 'credit_card_exp_month')
+  page.select(2.years.from_now.year, :from => 'credit_card_exp_year')
+end
