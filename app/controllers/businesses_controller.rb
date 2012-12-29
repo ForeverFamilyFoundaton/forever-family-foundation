@@ -23,7 +23,7 @@ class BusinessesController < ApplicationController
     if request.post?
       begin
         Stripe::Charge.create(
-          amount: (ConfigVariable.find_by_name('Price').try(:value) || 100) * 100,
+          amount: (ConfigVariable.find_by_name('Price').try(:value) || 100).to_i * 100,
           currency: "usd",
           card: {
             number: params[:credit_card][:number],
