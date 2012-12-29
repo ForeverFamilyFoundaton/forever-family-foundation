@@ -16,10 +16,10 @@ end
 
 def fill_in_reg(params={})
   params[:email] ||= 'abc@example.com'
-  fill_in "Email", :with => params[:email] 
-  fill_in "Email confirmation", :with => params[:email]
-  fill_in "Password", :with => "password"
-  fill_in "Password confirmation", :with => "password"
+  fill_in "user_email", :with => params[:email]
+  fill_in "user_email_confirmation", :with => params[:email]
+  fill_in "user_password", :with => "password"
+  fill_in "user_password_confirmation", :with => "password"
   fill_in "user_first_name", :with => "Fname"
   fill_in "user_last_name", :with => "Lname"
   fill_in "Address", :with => "Street no. 100"
@@ -31,17 +31,21 @@ def fill_in_reg(params={})
 end
 
 def fill_in_biz_reg(params={})
-  fill_in "Name Of Business", with: "My Business"
-  fill_in "Address", with: "Street No. 10"
-  fill_in "City", with: "Los Angeles"
-  fill_in "State", with: "CA"
-  fill_in "Zip", with: "90001"
-  fill_in "Contact Name", with: "My Self"
-  fill_in "Contact Phone", with: "734876856"
-  fill_in "Contact Email", with: "abc@example.com"
-  fill_in "Contact Email Conf.", with: "abc@example.com"
-  fill_in "business_billing_address_attributes_address", with: "Street No. 10"
-  fill_in "business_billing_address_attributes_city", with: "Los Angeles"
-  fill_in "business_billing_address_attributes_state", with: "CA"
-  fill_in "business_billing_address_attributes_zip", with: "90001"
+  within '.biz_address' do
+    fill_in "Name Of Business", with: "My Business"
+    fill_in "Address", with: "Street No. 10"
+    fill_in "City", with: "Los Angeles"
+    fill_in "State", with: "CA"
+    fill_in "Zip", with: "90001"
+    fill_in "Contact Name", with: "My Self"
+    fill_in "Contact Phone", with: "734876856"
+    fill_in "business_contact_email", with: "abc@example.com"
+    fill_in "business_contact_email_confirmation", with: "abc@example.com"
+  end
+  within '.billing_address' do
+    fill_in "business_billing_address_attributes_address", with: "Street No. 10"
+    fill_in "business_billing_address_attributes_city", with: "Los Angeles"
+    fill_in "business_billing_address_attributes_state", with: "CA"
+    fill_in "business_billing_address_attributes_zip", with: "90001"
+  end
 end

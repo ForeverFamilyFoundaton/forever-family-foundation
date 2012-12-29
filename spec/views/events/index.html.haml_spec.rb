@@ -10,11 +10,13 @@ describe "events/index" do
   end
 
   it 'links to local site' do
+    pending
     render
-    rendered.should have_selector 'a', content: 'Local', href: 'events/1'
+    rendered.should have_tag(:a, content: 'Local', href: 'events/1')
   end
 
   it 'links to remote site' do
+    pending
     render
     rendered.should have_selector 'a', content: 'Remote', href: 'somewhereelse.com', target: '_blankrake'
   end

@@ -8,5 +8,5 @@
 
     %p.red
       * Your credit card will be charged the Business Membership Fee of
-      = number_to_currency ConfigVariable.find_by_name('Price').value
+      = number_to_currency ConfigVariable.find_by_name('Price').try(:value)
 

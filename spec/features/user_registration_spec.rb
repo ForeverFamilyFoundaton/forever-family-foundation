@@ -5,15 +5,15 @@ describe 'User registration' do
   it "non biz reg'" do
     visit '/users/sign_up'
     fill_in_reg(email: 'qwe@example.com')
-    current_url.should match "/users/"+User.last.id.to_s+"/confirm"
+    page.should have_selector('h1', {text: 'USERS: SHOW', visible: true})
   end
 
   it 'biz reg' do
     visit '/users/sign_up'
-    fill_in "Email", :with => 'asd@example.com'
-    fill_in "Email confirmation", :with => 'asd@example.com'
-    fill_in "Password", :with => "password"
-    fill_in "Password confirmation", :with => "password"
+    fill_in "user_email", :with => 'asd@example.com'
+    fill_in "user_email_confirmation", :with => 'asd@example.com'
+    fill_in "user_password", :with => "password"
+    fill_in "user_password_confirmation", :with => "password"
     fill_in "user_first_name", :with => "Fname"
     fill_in "user_last_name", :with => "Lname"
     fill_in "Address", :with => "Street no. 100"

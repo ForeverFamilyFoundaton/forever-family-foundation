@@ -41,7 +41,6 @@ describe 'Business registration' do
     click_on "Submit" #payment
     click_on "Submit or Skip"
     click_on "Submit or Skip"
-    # click_on "Confirm"
-    page.should have_content("Welcome")
+    page.should have_selector('h1', {text: 'USERS: SHOW', visible: true})
   end
 end
