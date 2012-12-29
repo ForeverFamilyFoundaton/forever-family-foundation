@@ -4,6 +4,10 @@ ActiveAdmin.register ConfigVariable do
     index do
     column :name
     column :value
+    column "Actions" do |q|
+      link_to 'Show', admin_config_variable_path(q)
+    end
+
   end
 
   form do |f|
