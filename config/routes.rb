@@ -28,6 +28,9 @@ ForeverFamilyFoundation::Application.routes.draw do
     put :update_password
 
     resources :businesses do
+      get :payment
+      put :payment
+      post :payment
       put :register
       post :register
       get :register

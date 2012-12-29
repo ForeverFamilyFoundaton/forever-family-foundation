@@ -43,4 +43,14 @@ describe 'Business registration' do
     click_on "Submit or Skip"
     page.should have_selector('h1', {text: 'USERS: SHOW', visible: true})
   end
+
+  context 'payment screen' do
+    it 'processec payment' do
+      sign_in(@user)
+      visit new_user_business_path(@user)
+      fill_in_biz_reg
+      click_on "Submit"
+      pause
+    end
+  end
 end

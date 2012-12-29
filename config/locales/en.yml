@@ -40,6 +40,10 @@ en:
     promotional_media_mp3: MP3 File
     promotional_media_upload: Text file
     name_of_business: Name Of Business
+    credit_card_name: Name on Card
+    credit_card_number: Card Number
+    credit_card_cvc: CVC
+    credit_card_exp: Expiration Date
 
   buttons:
     save: Save

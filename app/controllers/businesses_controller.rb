@@ -19,21 +19,23 @@ class BusinessesController < ApplicationController
 
   def register
     params[:step] ||= session[:step]
-    session[:step] = params[:step]
+    session[:step] = params[:step].to_i
+    next_step = session[:step] + 1
 
     @user = current_user
     @business = current_user.business
-    
+
       if request.put? && @business.update_attributes(params[:business])
         @business.complete_step!(params[:step])
-        
-        redirect_to user_path(@user) and return if @business.reg_complete?
-        
         flash[:notice] = I18n.t('flash.business.create.success', step: params[:step])
-        redirect_to "/users/#{current_user.id}/businesses/#{current_user.business.id}/register?step=#{params[:step].to_i + 1}"
-        # redirect_to user_business_register_path(current_user.id, step: params[:step].to_i + 1)
+
+        redirect_to user_path(@user) and return if @business.reg_complete?
+        render :payment and return if next_step == 2
+        redirect_to user_business_register_path(
+          current_user, current_user.business,
+          step: next_step )
       else
-        render template: "businesses/register"
+        render :register
       end
   end
 
@@ -65,8 +67,13 @@ private
 
   def continue_registration
     if session[:step].present?
-      # redirect_to user_business_register_path(current_user, current_user.business, step: session[:step])
-      redirect_to "/users/#{current_user.id}/businesses/#{current_user.business.id}/register?step=#{session[:step]}"
+      if session[:step] == 2
+        redirect_to user_business_payment_path(current_user, current_user.business)
+      else
+        redirect_to user_business_register_path(
+          current_user, current_user.business,
+          step: session[:step] )
+      end
     end
   end
 end

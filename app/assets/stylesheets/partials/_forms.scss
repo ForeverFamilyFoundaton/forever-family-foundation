@@ -1,5 +1,5 @@
 .progress_spinner {
-  display: none; 
+  display: none;
 }
 
 .simple_form label {
@@ -19,7 +19,7 @@ fieldset {
   legend {
     padding:0 $padd-sides;
   }
-  
+
 }
 .field_with_errors {
   color:$error-red;
@@ -47,7 +47,7 @@ textarea {
   @include border-radius($default-border-radius);
   padding:0;
   margin-bottom:15px;
-  
+
   h2 {
     @include border-top-radius($default-border-radius);
     color: $dark-blue;
@@ -60,19 +60,25 @@ textarea {
 
   .form_fields, .section_content {
     padding: $padd-sides;
-    
+
     p {
       margin:0;
+
+        #credit_card_cvc {
+          width: 3em;
+        }
     }
 
-    .group p{
-      display:inline-block;
-      margin-right:$padd-sides;
+    .group {
+      p {
+        display:inline-block;
+        margin-right:$padd-sides;
+      }
     }
 
     p.file_upload {
         label {
-                
+
         }
       }
   }
@@ -88,7 +94,7 @@ ul.auth_links {
     color:$error-red;
     font-weight:bold;
   }
-  
+
   li {
     color:red;
   }

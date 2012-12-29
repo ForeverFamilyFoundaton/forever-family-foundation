@@ -21,9 +21,9 @@ describe BusinessesController do
       post :create, business: FactoryGirl.attributes_for(:business, name: 'Testing Corp'), step: 1
     end
     it { should assign_to :business }
-    it 'redirects to step 2' do
+    it 'redirects to payment' do
       business = Business.find_by_name('Testing Corp')
-      response.should redirect_to user_business_register_path(@user, business, :step => '2')
+      response.should render_template :payment
     end
   end
 
@@ -67,7 +67,7 @@ describe BusinessesController do
     end
     it {should assign_to :business}
     it {
-      response.should redirect_to "/users/#{@user.id}/businesses/#{@user.business.id}/register?step=3"
+      response.should redirect_to user_business_register_path(@user, @business, step: 3)
     }
   end
 
@@ -85,7 +85,7 @@ describe BusinessesController do
    end
     it {should assign_to :business}
     it {
-      response.should redirect_to "/users/#{@user.id}/businesses/#{@user.business.id}/register?step=4"
+      response.should redirect_to user_business_register_path(@user, @business, step: 4)
     }
   end
 

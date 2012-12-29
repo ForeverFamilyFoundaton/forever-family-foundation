@@ -1,0 +1,17 @@
+= simple_form_for :credit_card, :url => '/users' do |f|
+  .form_section
+    %h2 Payment Information
+    .form_fields
+      = hidden_field_tag :step, 2
+      = f.input :name, label: I18n.t('labels.credit_card_name')
+      = f.input :number, label: I18n.t('labels.credit_card_number')
+      = f.input :cvc, input_html: { maxlength: 3 }, label: I18n.t('labels.credit_card_cvc')
+
+      %p.input.select.required
+      = f.input :exp_month, as: :select, :collection => 1..12, prompt: 'MM', label: I18n.t('labels.credit_card_exp'), wrapper: false
+      = f.input :exp_year, as: :select, :collection => Date.today.year..10.years.from_now.year, prompt: 'YYYY', label: false, wrapper: false
+
+      %p.red
+        * Your credit card will be charged the Business Membership Fee of
+        = number_to_currency ConfigVariable.find_by_name('Price').try(:value)
+
