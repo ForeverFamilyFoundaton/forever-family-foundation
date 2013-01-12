@@ -39,6 +39,9 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name# , :address
   validates_acceptance_of :terms_of_use
 
+  #TODO: remove if we begin using confirmable
+  after_create :welcome_message
+
 #  validates_presence_of     :password, :if => :password_required?
 #  validates_confirmation_of :password, :if => :password_required?
 #  validates_length_of       :password, :within => password_length, :allow_blank => true, :message => I18n.t('')
@@ -68,7 +71,9 @@ class User < ActiveRecord::Base
 private
 
   def welcome_message
-    UserMailer.welcome_message(self).deliver
+    if welcome_template = EmailTemplate.where(meta_keywords: 'welcome_email').first
+      UserMailer.welcome_email(self, welcome_template).deliver
+    end
   end
 end
 

@@ -1,10 +1,14 @@
 require 'spec_helper'
 
 describe User do
+  let(:valid_params) {{first_name: 'John', last_name: 'Doe',
+    email: 'user@example.com', password: 'testing'}}
+
   it { should have_one :address }
   it { should have_many :family_members }
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
+  it { should validate_presence_of :email }
   it { should have_many :preferences }
   it { should have_many :profile_preferences }
   it { should have_many :adg_preferences }
@@ -23,5 +27,28 @@ describe User do
 
   it 'increments a sequential id' do 
     
+  end
+
+  context '#save' do
+    let(:user) { User.new valid_params }
+    it 'calls welcome_email' do
+      user.should_receive :welcome_message
+      user.save
+    end
+
+    it 'does not deliver mail if no template' do
+      UserMailer.should_not_receive(:welcome_email)
+      user.save
+    end
+
+    it 'attempts delivers mail if template available' do
+      template = EmailTemplate.create!({
+        title: '@first_name', body: 'z @last_name x @email', meta_keywords: 'welcome_email'
+      })
+      mail = UserMailer.welcome_email(user, template)
+      mail.stub!(:deliver)
+      UserMailer.should_receive(:welcome_email).with(user, template).and_return mail
+      user.save
+    end
   end
 end

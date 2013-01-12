@@ -40,6 +40,8 @@ group :test do
   gem 'shoulda-context', require: false
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'webmock'
 end
 
 group :development do

@@ -1,0 +1,7 @@
+= semantic_form_for [:admin, @email_template] do |f|
+  = f.inputs 'Details' do
+    = f.input :meta_keywords, as: :hidden, input_html: { value: 'welcome_email' }
+    = f.input :title, label: 'Subject'
+    = f.input :body
+  = f.actions
+  = javascript_include_tag 'email_templates_autofill'
