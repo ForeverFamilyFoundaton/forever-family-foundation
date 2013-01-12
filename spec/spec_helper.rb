@@ -3,9 +3,14 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'factory_girl_devise_fix.rb'
+require 'action_dispatch/testing/integration'
+require 'features/feature_helper'
+require 'webmock/rspec'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+
+WebMock.allow_net_connect!
 
 # MOVE ME
 module ControllerMacros
@@ -18,12 +23,14 @@ module ControllerMacros
   end
 end
 
+
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do

@@ -6,6 +6,8 @@ describe 'User edit' do
   end
 
   it 'Edit sections' do
+    stub_request(:any, 'https://js.stripe.com/v1/').to_return body: File.new(Rails.root + 'spec/support/stripe.js').read
+    Stripe::Charge.stub(:create).and_return(true)
     sign_in(@user)
     visit new_user_business_path(@user)
     fill_in_biz_reg

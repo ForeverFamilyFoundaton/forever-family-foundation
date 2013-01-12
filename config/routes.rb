@@ -20,6 +20,7 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   match '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
   match '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'
+  get '/users/schema' => 'users#schema'
 
   resources :users do
     get :confirm
