@@ -2,12 +2,14 @@ class SiteController < ApplicationController
   skip_before_filter :authenticate_admin_user!, :only => [:index]
   before_filter :get_events
 
-  def page 
+  def page
   end
   def after_life_discussion_group; end
   def after_life_science; end
   def radio_archives; end
-  def business_membership; end
+  def business_membership
+    render :layout => 'popup'
+  end
   def certifed_mediums; end
   def contact; end
   def contributions; end
