@@ -1,6 +1,9 @@
 ForeverFamilyFoundation::Application.routes.draw do
 
-  ActiveAdmin.routes(self)
+  begin
+    ActiveAdmin.routes(self)
+  rescue ActiveRecord::StatementInvalid => e
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
