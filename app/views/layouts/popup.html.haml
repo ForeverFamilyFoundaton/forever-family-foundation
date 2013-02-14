@@ -11,5 +11,8 @@
           = blog @cms_page.body
           = yield
 
+        %p
+          %a.close{ href: '#' } Close
+
     #footer_spacer
   = render 'layouts/footer'

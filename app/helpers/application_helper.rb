@@ -7,7 +7,7 @@ module ApplicationHelper
     user
   end
 
-  def setup_business(business)
+def setup_business(business)
     business.build_address if business.address.nil?
     business.build_billing_address if business.billing_address.nil?
     business.build_business_card(:kind => 'business_card') if business.business_card.nil?
@@ -27,7 +27,7 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
     raw markdown.render(text)
   end
-  
+
   def resource_name
     :user
   end
@@ -38,5 +38,16 @@ module ApplicationHelper
 
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
+  end
+
+  def current_page
+    case [@controller_name,@action_name].join('/')
+    when /site\/index/ then :home
+    when /radio/ then :radio
+    when /events/ then :events
+    when /store/ then :store
+    when /volunteers/ then :volunteers
+    when /contributions/ then :contributions
+    end
   end
 end

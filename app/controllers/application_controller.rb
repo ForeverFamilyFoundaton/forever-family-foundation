@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :get_cms_page
+  before_filter :get_cms_page, :set_controller_and_action_names
   # before_filter :adg_redirect
 
   def http_auth
@@ -13,10 +13,25 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_page
+    case [controller_name,controllor_action].join('/')
+    when /site\/index/ then :home
+    when /radio/ then :radio
+    when /events/ then :events
+    when /store/ then :store
+    when /volunteers/ then :volunteers
+    when /contributions/ then :contributions
+    end
+  end
 private
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+  end
+
+  def set_controller_and_action_names
+    @controller_name = controller_name
+    @action_name = action_name
   end
 
   def current_reference_string
@@ -46,17 +61,5 @@ private
     session[:return_to] = request.fullpath
   end
 
-  # def welcome
-  #   if current_user.try :needs_to_be_welcomed?
-  #     url = current_user.biz? ? business_wecome_path(current_user) :  users_wecome_path(current_user)
-  #     redirect_to url
-  #   end
-  # end
-
-#   def adg_redirect
-#     if session[:adg_registration] && current_user && current_user.welcomed?
-#       redirect_to new_adg_registration_path
-#     end
-#   end
 end
 

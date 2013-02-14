@@ -86,9 +86,9 @@
       %fieldset
         %legend Mp3 file:
         - if @business.promotional_media_mp3.present?
-          %audio{ controls: "controls" }
-            %source{ src: @business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
+          %audio{ controls: "controls", src: @business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
             %p Your browser does not support the audio tag.
+          %p== If the audio player, above, does not work in your browser you can download the audio file #{link_to 'here', @business.promotional_media_mp3.attachment.url}.
         - else
           %p= link_to 'Upload', edit_user_business_path(@user,@business,step: 4)
 

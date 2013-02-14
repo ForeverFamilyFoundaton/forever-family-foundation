@@ -9,9 +9,9 @@
       %fieldset
         %legend= promotional_media_mp3_form.label :attachment, t('labels.promotional_media_mp3')
         - if @business.promotional_media_mp3.attachment.present?
-          %audio{ controls: "controls" }
-            %source{ src: @business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
+          %audio{ controls: "controls", src: @business.promotional_media_mp3.attachment.url, type: "audio/mp3" }
             %p= link_to @business.promotional_media_mp3.attachment.original_filename, @business.promotional_media_mp3.attachment.url
+          %p== If the audio player, above, does not work in your browser you can download the audio file #{link_to 'here', @business.promotional_media_mp3.attachment.original_filename}.
         = promotional_media_mp3_form.file_field :attachment
         = promotional_media_mp3_form.hidden_field :kind
 
