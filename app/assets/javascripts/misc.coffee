@@ -5,6 +5,4 @@ $ ->
     top:50
     left:50
 
-  $('a.close').click ->
-    alert 'aeu'
-    window.close()
+  $('a.close').click -> window.close()
