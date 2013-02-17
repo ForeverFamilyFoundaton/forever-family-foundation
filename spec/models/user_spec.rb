@@ -25,8 +25,8 @@ describe User do
   it { should_not allow_mass_assignment_of :current_login_ip }
   it { should_not allow_mass_assignment_of :last_login_ip }
 
-  it 'increments a sequential id' do 
-    
+  it 'increments a sequential id' do
+
   end
 
   context '#save' do
@@ -42,8 +42,8 @@ describe User do
     end
 
     it 'attempts delivers mail if template available' do
-      template = EmailTemplate.create!({
-        title: '@first_name', body: 'z @last_name x @email', meta_keywords: 'welcome_email'
+      template = CmsPage.create!({
+        title: '@first_name', body: 'z @last_name x @email', reference_string: 'Email::Welcome'
       })
       mail = UserMailer.welcome_email(user, template)
       mail.stub!(:deliver)

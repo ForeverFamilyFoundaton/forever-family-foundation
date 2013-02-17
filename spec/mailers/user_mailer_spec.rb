@@ -7,13 +7,13 @@ describe UserMailer do
   let(:user_params) {{first_name: 'John', last_name: 'Doe',
     email: 'user@example.com', password: 'testing'}}
   let(:template_params) {{title: '@first_name',
-    body: 'z @last_name x @email', meta_keywords: 'welcome_email'}}
+    body: 'z @last_name x @email', reference_string: 'Email::Welcome'}}
 
   context '#welcome_email' do
     before do
       @email = UserMailer.welcome_email(
         User.create!(user_params),
-        EmailTemplate.create!(template_params)
+        CmsPage.create!(template_params)
       )
     end
 

@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
 private
 
   def welcome_message
-    if welcome_template = EmailTemplate.where(meta_keywords: 'welcome_email').first
+    if welcome_template = CmsPage.where(reference_string: 'Email::Welcome').first
       UserMailer.welcome_email(self, welcome_template).deliver
     end
   end
