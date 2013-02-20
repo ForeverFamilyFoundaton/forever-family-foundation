@@ -10,9 +10,6 @@ class UserMailer < ActionMailer::Base
       body.gsub!("@#{key.to_s}", user[key].to_s)
       subject.gsub!("@#{key.to_s}", user[key].to_s)
     end
-    mail(:to => user.email, subject: subject, body: body) do |format|
-      format.html
-      format.text
-    end
+    mail(to: user.email, subject: subject, body: body, format: 'text/html')
   end
 end
