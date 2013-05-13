@@ -17,6 +17,7 @@ ActiveAdmin.register_page "Dashboard" do
             li link_to 'Preferences', admin_preferences_path
             li link_to 'Radio Archives', admin_radio_archives_path
             li link_to 'Users', admin_users_path
+            li link_to 'Admin Users', admin_admin_users_path
           end
         end
       end
