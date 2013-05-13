@@ -20,7 +20,6 @@ describe BusinessesController do
     before do
       post :create, business: FactoryGirl.attributes_for(:business, name: 'Testing Corp'), step: 1
     end
-    it { should assign_to :business }
     it 'redirects to payment' do
       business = Business.find_by_name('Testing Corp')
       response.should redirect_to user_business_payment_path(@user, business)
@@ -58,7 +57,6 @@ describe BusinessesController do
     before do
       put :update, "business" => {}, :id => @business.id, :step => '1'
     end
-    it {should assign_to :business}
     it {response.should redirect_to  user_path(@user)}
   end
 
@@ -74,7 +72,6 @@ describe BusinessesController do
     before do
       put :register, business: {}, user_id: @user.id, id: @business.id, step: '2'
     end
-    it {should assign_to :business}
     it {
       response.should redirect_to user_business_register_path(@user, @business, step: 3)
     }
@@ -91,8 +88,8 @@ describe BusinessesController do
   context "on finishing step 3" do
     before do
       put :register, "business" => {}, :user_id => @user.id, :id => @business.id, step: 3
-   end
-    it {should assign_to :business}
+    end
+
     it {
       response.should redirect_to user_business_register_path(@user, @business, step: 4)
     }
@@ -110,7 +107,6 @@ describe BusinessesController do
     before do
       put :register, business: {}, user_id: @user.id, id: @business.id, step: 4
     end
-    it {should assign_to :business}
     it {response.should redirect_to user_path(@user) }
   end
 

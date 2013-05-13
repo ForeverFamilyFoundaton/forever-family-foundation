@@ -32,8 +32,10 @@ gem 'launchy'
 gem 'heroku'
 gem 'taps'
 gem 'truncate_html'
+gem 'jquery-rails'
 
 group :test do
+  gem 'selenium-webdriver'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'

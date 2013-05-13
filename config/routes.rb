@@ -1,11 +1,10 @@
 ForeverFamilyFoundation::Application.routes.draw do
 
-  begin
-    ActiveAdmin.routes(self)
-  rescue ActiveRecord::StatementInvalid => e
-  end
+  root :to => 'site#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+
+  ActiveAdmin.routes(self)
 
   devise_for :users, controllers: { :registrations => 'registration' }
 
@@ -16,8 +15,6 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   resources :events
   resources :radio_archives
-
-  root :to => 'site#index'
 
   resource :adg_registration
 

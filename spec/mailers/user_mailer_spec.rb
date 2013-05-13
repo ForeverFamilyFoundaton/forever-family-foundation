@@ -19,6 +19,6 @@ describe UserMailer do
 
     it {@email.should have_subject(/^John$/)}
 
-    it {@email.should have_body_text('z Doe x user@example.com')}
+    it {@email.should have_body_text('z Doe x')}
   end
 end
