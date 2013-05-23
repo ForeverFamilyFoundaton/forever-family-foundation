@@ -1,6 +1,5 @@
 ActiveAdmin.register CmsImage do
   menu false
-
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs "CMS Image", :multipart => true do
       f.input :title
