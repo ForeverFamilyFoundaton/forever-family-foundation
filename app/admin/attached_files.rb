@@ -3,7 +3,7 @@ ActiveAdmin.register AttachedFile do
 
   index do
     column 'Image' do |q|
-      image_tag q.attachment.url if q.image?
+      image_tag q.attachment.url(:thumb) if q.image?
     end
     column :attachment_file_name
     column 'Path' do |q|
