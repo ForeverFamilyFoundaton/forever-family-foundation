@@ -5,8 +5,10 @@
       %h4=archive.title
       %p= archive.guest
       %p= archive.date
-      %p= link_to 'Download', archive.attached_file.attachment.url if archive.attached_file 
-      - if !archive.embeded_links.empty?
-        %p
-          - archive.embeded_links.each do |embeded_link| 
-            %span= embeded_link.body.html_safe
+      %p= link_to 'Download', archive.attached_file.attachment.url if archive.attached_file
+      - if !archive.embeded_links.compact.empty?
+        %fieldset.links
+          %legend Links
+          %ul
+            - archive.embeded_links.each do |embeded_link|
+              %li= embeded_link.body.html_safe
