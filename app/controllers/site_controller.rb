@@ -10,7 +10,7 @@ class SiteController < ApplicationController
   def business_membership
     render :layout => 'popup'
   end
-  def certifed_mediums; end
+  def certified_mediums; end
   def contact; end
   def contributions; end
   def grief_and_loss; end
