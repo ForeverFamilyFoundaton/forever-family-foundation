@@ -1,6 +1,8 @@
 %ul#partners
   %li
-    = link_to 'http://www.iGive.com/html/refer.cfm?causeid=43517', target: '_blank' do
+    %form{ action: "https://www.paypal.com/cgi-bin/webscr", method: "post", target: "_top" }
+      %input{ type: "hidden", name: "cmd", value: "_s-xclick" }
+      %input{ type: "hidden", name: "hosted_button_id", value: "9ZL9Q8D353ZWA"}
       = button_tag 'Make a Donation', class: :fff_button
 
   %li
