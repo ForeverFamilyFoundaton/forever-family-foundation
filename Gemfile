@@ -35,6 +35,7 @@ gem 'truncate_html'
 gem 'jquery-rails'
 
 group :test do
+  gem 'faker'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
