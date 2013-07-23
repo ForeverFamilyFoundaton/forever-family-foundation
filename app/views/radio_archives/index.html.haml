@@ -1,4 +1,8 @@
 %h3 Radio Archives
+
+%p
+  = paginate @archives
+
 %ul.radio_archives
   - @archives.each do |archive|
     %li
@@ -12,3 +16,5 @@
           %ul
             - archive.embeded_links.each do |embeded_link|
               %li= embeded_link.body.html_safe
+
+= paginate @archives

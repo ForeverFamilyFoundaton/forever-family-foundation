@@ -1,7 +1,7 @@
 class RadioArchivesController < ApplicationController
 
   def index
-    @archives = RadioArchive.order('date desc')
+    @archives = RadioArchive.page(params[:page] || 1).order('date desc')
   end
 
   def show

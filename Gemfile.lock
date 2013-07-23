@@ -291,6 +291,7 @@ DEPENDENCIES
   heroku
   hoptoad_notifier
   jquery-rails
+  kaminari
   launchy
   paperclip
   pg
