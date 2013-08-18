@@ -33,4 +33,11 @@ describe 'User registration' do
     page.should have_content "prohibited this record from being saved"
   end
 
+  it 'confirmins email case insensative' do
+    visit '/users/sign_up'
+    fill_in_reg(email: 'CASE@sensative.com', email_confirmation: 'CASE@sensative.com', password: '')
+    find_field('user_email').value.should eq 'case@sensative.com'
+    find_field('user_email_confirmation').value.should eq 'case@sensative.com'
+  end
+
 end

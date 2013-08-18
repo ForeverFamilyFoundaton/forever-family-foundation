@@ -7,9 +7,7 @@ class SiteController < ApplicationController
   def after_life_discussion_group; end
   def after_life_science; end
   def radio_archives; end
-  def business_membership
-    render :layout => 'popup'
-  end
+  def business_membership; end
   def certified_mediums; end
   def contact; end
   def contributions; end

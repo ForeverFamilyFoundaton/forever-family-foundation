@@ -17,9 +17,9 @@ end
 def fill_in_reg(params={})
   params[:email] ||= 'abc@example.com'
   fill_in "user_email", :with => params[:email]
-  fill_in "user_email_confirmation", :with => params[:email]
-  fill_in "user_password", :with => "password"
-  fill_in "user_password_confirmation", :with => "password"
+  fill_in "user_email_confirmation", :with => params[:email_confirmation] || params[:email]
+  fill_in "user_password", :with => params[:password] || "password"
+  fill_in "user_password_confirmation", :with => params[:password] || "password"
   fill_in "user_first_name", :with => "Fname"
   fill_in "user_last_name", :with => "Lname"
   fill_in "Address", :with => "Street no. 100"
