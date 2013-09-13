@@ -12,7 +12,7 @@
       %p= link_to 'Download', archive.attached_file.attachment.url if archive.attached_file
       - if !archive.embeded_links.compact.empty?
         %fieldset.links
-          %legend Links
+          %legend Books &amp; Links
           %ul
             - archive.embeded_links.each do |embeded_link|
               %li= embeded_link.body.html_safe

@@ -46,7 +46,7 @@ describe User do
         title: '@first_name', body: 'z @last_name x @email', reference_string: 'Email::Welcome'
       })
       mail = UserMailer.welcome_email(user, template)
-      mail.stub!(:deliver)
+      mail.stub(:deliver)
       UserMailer.should_receive(:welcome_email).with(user, template).and_return mail
       user.save
     end
