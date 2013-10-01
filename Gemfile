@@ -15,7 +15,7 @@ end
 gem 'haml'
 gem 'devise'
 gem 'cancan'
-gem "activeadmin", github: "gregbell/active_admin"
+gem "activeadmin", git: "https://github.com/gregbell/active_admin"
 gem 'state_machine'
 gem 'paperclip'
 gem 'hoptoad_notifier'

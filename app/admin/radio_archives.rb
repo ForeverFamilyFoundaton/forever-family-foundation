@@ -17,7 +17,7 @@ ActiveAdmin.register RadioArchive do
     f.inputs 'Details' do
       f.input :title
       f.input :guest
-      f.input :date
+      f.input :date, start_year: 2000, end_year: Date.today.year + 1
       f.input :format, as: :select, collection: ['Signs of Life', 'Mediums & Messages', 'The Gathering']
     end
 
