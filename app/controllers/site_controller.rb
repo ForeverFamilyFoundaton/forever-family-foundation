@@ -20,13 +20,8 @@ class SiteController < ApplicationController
   def store; end
   def support_and_information; end
   def volunteers; end
-  def terms
-    render :layout => 'popup'
-  end
-
-  def privacy
-    render :layout => 'popup'
-  end
+  def terms; end
+  def privacy; end
 
 private
   def get_events
