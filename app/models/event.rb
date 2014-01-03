@@ -7,9 +7,7 @@ class Event < ActiveRecord::Base
   scope :upcoming, :conditions => ["start_time >= ?", Time.now], order: 'start_time asc', limit: 4
 
   def times
-    if start_time.strftime('%j') == end_time.strftime('%j')
-      [start_time.to_s(:events), end_time.strftime('%l:%M %p')].join(' to ')
-    else
+    if start_time && end_time
       [start_time.to_s(:events), end_time.to_s(:events)].join(' to ')
     end
   end

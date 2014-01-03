@@ -1,9 +1,15 @@
-ActiveAdmin.register Event, { sort_order: 'start_time_asc' }  do
+ActiveAdmin.register Event do
+  config.sort_order = "start_time_desc"
+
   menu false
 
   index do
     column :title do |q|
-      link_to q.title, q.url, target: '_blank'
+      if q.url.present?
+        link_to q.title, q.url, target: '_blank'
+      else
+        q.title
+      end
     end
     column :description do |q|
       truncate q.description, length: 200
