@@ -29,14 +29,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :family_members, :reject_if => proc { |attributes| attributes['first_name'].blank? }
 
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business, :state, :fax, :enrolled_from
 
-  validates_presence_of     :email
-  validates_confirmation_of :email, :if => :email_changed?
-  validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true, :if => :email_changed?
-  validates_format_of       :email, :with  => email_regexp, :allow_blank => true, :if => :email_changed?
+  # validates_presence_of     :email
+  # validates_confirmation_of :email, :if => :email_changed?
+  # validates_uniqueness_of   :email, case_sensitive: false, allow_blank: true, if: :email_changed?
+  # validates_format_of       :email, with: email_regexp, allow_blank: true, if: :email_changed?
   validates_associated :address
-  validates_presence_of :first_name, :last_name# , :address
+  validates_presence_of :first_name, :last_name
   validates_acceptance_of :terms_of_use
 
   #TODO: remove if we begin using confirmable
