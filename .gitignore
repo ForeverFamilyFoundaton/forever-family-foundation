@@ -14,3 +14,6 @@ public/system
 *.swp
 *~
 .*DS_Store
+server.crt
+server.key
+Membership 2014-Dinshaw010514.csv
