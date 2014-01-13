@@ -1,12 +1,8 @@
 class AlterUsers < ActiveRecord::Migration
   def up
-    # remove_index :users, :email
-    change_column :users, :email, :string, null: true
-    change_column :users, :id, :integer
+    remove_column :users, :email
+    add_column :users, :email, :string
     add_column :users, :do_not_mail, :boolean
-  end
-
-  def down
-    # execute "ALTER TABLE users ADD PRIMARY KEY (id);"
+    add_column :users, :membership_number, :integer
   end
 end
