@@ -33,7 +33,7 @@ class UserImporter
               last_name: name_parts,
               relationship: val(row,"Relationship#{i}"),
             )
-            @family_member_count =+ 1
+            @family_member_count += 1
           end
         end
         @address_count += 1 if user.create_address!(
