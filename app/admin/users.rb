@@ -33,6 +33,7 @@ ActiveAdmin.register User do
       row :last_sign_in_at
       row :created_at
       row :updated_at
+      row :problems
     end
    table_for user.profile_preferences do
       column "Preferences" do |question|
