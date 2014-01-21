@@ -18,3 +18,4 @@ server.crt
 server.key
 Membership 2014-Dinshaw010514.csv
 user_list.csv
+push_*.dat

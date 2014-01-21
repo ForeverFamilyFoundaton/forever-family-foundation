@@ -5,7 +5,7 @@ class UserImporter
   def self.import
     @user_count, @family_member_count, @address_count = 0,0,0
     @errors = []
-    CSV.foreach(Rails.root.join('users.csv'), headers: true) do |row|
+    CSV.foreach(Rails.root.join('user_list.csv'), headers: true) do |row|
       begin
         @email = val(row,'email').to_s
         @email = "member#{val(row,'Member #')}@invalidemail.com" unless @email.match(/\A[^@]+@[^@]+\z/)
@@ -14,6 +14,7 @@ class UserImporter
           password: password = SecureRandom.hex(8),
           password_confirmation: password,
           email: @email,
+          problems: val(row,'problems'),
           first_name: val(row,'First Name') || 'First Name',
           middle_name: val(row,'Middle'),
           last_name: val(row,'Last Name') || 'Last Name',
@@ -30,7 +31,7 @@ class UserImporter
             name_parts = val(row,"Family Mem#{i}").split
             user.family_members.create!(
               fist_name: name_parts.pop,
-              last_name: name_parts,
+              last_name: name_parts.join(' '),
               relationship: val(row,"Relationship#{i}"),
             )
             @family_member_count += 1

@@ -12,37 +12,35 @@ ActiveAdmin.register User do
     end
   end
 
-  show do
-    h3 user.email
-    div do
-      simple_format [user.first_name, user.middle_name, user.last_name].join(' ')
+  show do |user|
+    attributes_table do
+      row :name do
+        [user.first_name, user.middle_name, user.last_name].join(' ')
+      end
+      row :id
+      row :membership_number
+      row :email
+      row :cell_phone
+      row :home_phone
+      row :work_phone
+      row :fax
+      row :is_business
+      row :address do
+        user.address
+      end
+      row :enrolled_from
+      row :do_not_mail
+      row :last_sign_in_at
+      row :created_at
+      row :updated_at
     end
-    div do
-      simple_format ["Created at", user.created_at.to_s(:long)].join(': ')
-    end
-    div do
-      simple_format ["Updated at", user.created_at.to_s(:long)].join(': ')
-    end
-    div do
-      simple_format ["Cell Phone", user.cell_phone].join(': ')
-    end
-    div do
-      simple_format ["Home Phone", user.home_phone].join(': ')
-    end
-    div do
-      simple_format ["Work Phone", user.work_phone].join(': ')
-    end
-    div do
-      simple_format ["State", user.state].join(': ')
-    end
-    div do
-      simple_format ["Bussiness?", user.is_business?].join(': ')
-    end
-
-   table_for(user.profile_preferences) do
+   table_for user.profile_preferences do
       column "Preferences" do |question|
         question.name
       end
+    end
+    table_for user.family_members do
+      column :family_member, :name_and_relationship
     end
   end
 
