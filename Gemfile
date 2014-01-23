@@ -33,6 +33,7 @@ gem 'taps'
 gem 'truncate_html'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'chronic'
 
 group :test do
   gem 'faker'

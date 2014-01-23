@@ -9,6 +9,7 @@ class UserImporter
       begin
         @email = val(row,'email').to_s
         @email = "member#{val(row,'Member #')}@invalidemail.com" unless @email.match(/\A[^@]+@[^@]+\z/)
+        @enrolled_at = Chronic.parse(val(row,'Date Enrolled').to_s.split(' ').first)
         user = User.create!(
           membership_number: val(row,'Member #'),
           password: password = SecureRandom.hex(8),
@@ -22,15 +23,17 @@ class UserImporter
           home_phone: val(row,'Phone - H'),
           work_phone: val(row,'Phone - W'),
           is_business: val(row,'Corp Member') == 'YES',
+          do_not_mail: val(row,'DO NOT MAIL').present?,
           fax: val(row,'fax'),
-          enrolled_from: val(row,'Enrolled From'),
+          enrolled_from: val(row,'Notes'),
+          enrolled_at: @enrolled_at,
         )
         @user_count += 1
         (1..3).each do |i|
           if val(row,"Family Mem#{i}")
             name_parts = val(row,"Family Mem#{i}").split
             user.family_members.create!(
-              fist_name: name_parts.pop,
+              first_name: name_parts.pop,
               last_name: name_parts.join(' '),
               relationship: val(row,"Relationship#{i}"),
             )
@@ -40,9 +43,9 @@ class UserImporter
         @address_count += 1 if user.create_address!(
           address: val(row,'Address 1').to_s + ' ' + val(row, 'Address 2').to_s,
           city: val(row,'City'),
-          state: val(row,'Other State/Province'),
-          zip: val(row,'Zip'),
-          country: val(row,'Zip +4'),
+          state: val(row,'State'),
+          zip: val(row,'Zip +4'),
+          country: val(row,'Country'),
         )
       rescue
         @errors << @email
