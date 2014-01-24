@@ -1,7 +1,18 @@
 ActiveAdmin.register User do
   menu false
 
+  filter :id
+  filter :membership_number
   filter :email
+  filter :first_name
+  filter :middle_name
+  filter :last_name
+  filter :is_business
+  filter :enrolled_from
+  filter :do_not_mail
+  filter :problems
+  filter :address_state_contains
+  filter :address_country_contains
   index do
     column :email, :sortable => :email do |user|
       link_to user.email, admin_user_path(user)
@@ -29,6 +40,7 @@ ActiveAdmin.register User do
         user.address
       end
       row :enrolled_from
+      row :enrolled_at
       row :do_not_mail
       row :last_sign_in_at
       row :created_at
@@ -55,11 +67,19 @@ ActiveAdmin.register User do
       f.input :fax
       f.input :is_business
       f.input :enrolled_from
+      f.input :enrolled_at
       f.input :do_not_mail
       f.input :last_sign_in_at
       f.input :created_at
       f.input :updated_at
       f.input :problems
+      f.inputs "Address", for: [:address, f.object.address || Address.new] do |address|
+        address.input :address
+        address.input :city
+        address.input :state
+        address.input :zip
+        address.input :country
+      end
     end
     f.buttons
   end
