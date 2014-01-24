@@ -25,7 +25,7 @@ class UserImporter
           is_business: val(row,'Corp Member') == 'YES',
           do_not_mail: val(row,'DO NOT MAIL').present?,
           fax: val(row,'fax'),
-          enrolled_from: val(row,'Notes'),
+          enrolled_from: val(row,'Enrolled From') || val(row,'Notes'),
           enrolled_at: @enrolled_at,
         )
         @user_count += 1
