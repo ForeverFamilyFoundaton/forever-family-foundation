@@ -47,11 +47,19 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Details" do
-      f.input :first_name
-      f.input :middle_name
-      f.input :last_name
+      f.input :membership_number
       f.input :email
-      f.input :state
+      f.input :cell_phone
+      f.input :home_phone
+      f.input :work_phone
+      f.input :fax
+      f.input :is_business
+      f.input :enrolled_from
+      f.input :do_not_mail
+      f.input :last_sign_in_at
+      f.input :created_at
+      f.input :updated_at
+      f.input :problems
     end
     f.buttons
   end
