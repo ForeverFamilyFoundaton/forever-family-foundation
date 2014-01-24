@@ -13,14 +13,19 @@ ActiveAdmin.register User do
   filter :problems
   filter :address_state_contains
   filter :address_country_contains
+
   index do
-    column :email, :sortable => :email do |user|
+    column :id
+    column 'M#', :membership_number
+    column :email
+    column :name, sortable: :last_name do |user|
+      user.full_name
+    end
+    column :email, sortable: :email do |user|
       link_to user.email, admin_user_path(user)
     end
-    column :address, :sortable => false
-    column :is_business, :sortable => :is_business do |user|
-      user.is_business? ? 'true' : false
-    end
+    column :address, sortable: false
+    column :is_business
   end
 
   show do |user|
