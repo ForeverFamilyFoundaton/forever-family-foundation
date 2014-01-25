@@ -91,6 +91,9 @@ ActiveAdmin.register User do
   csv do
     column :id
     column :membership_number
+    column :first_name
+    column :middle_name
+    column :last_name
     column :email
     column :cell_phone
     column :home_phone
