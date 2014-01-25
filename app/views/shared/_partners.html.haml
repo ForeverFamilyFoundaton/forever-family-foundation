@@ -25,15 +25,14 @@
 
     = link_to image_tag('twitter.png'), 'https://twitter.com/FFFAfterlife', :target => '_blank'
 
-  - if Rails.env == 'production'
-    %li
-      #google_translate_element
-      :javascript
-        function googleTranslateElementInit() {
-          new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
+  %li
+    #google_translate_element
+    :javascript
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      }
 
-      %script{:type => "text/javascript", :src => "http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"}
+    %script{:type => "text/javascript", :src => "http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"}
 
 
   %li
