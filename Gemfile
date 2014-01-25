@@ -32,6 +32,7 @@ gem 'launchy'
 gem 'taps'
 gem 'truncate_html'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'chronic'
 
