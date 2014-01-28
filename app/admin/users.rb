@@ -17,9 +17,8 @@ ActiveAdmin.register User do
   index do
     column :id
     column 'M#', :membership_number
-    column :email
     column :name, sortable: :last_name do |user|
-      user.full_name
+      "#{user.last_name}, #{user.first_name} #{user.middle_name}"
     end
     column :email, sortable: :email do |user|
       link_to user.email, admin_user_path(user)
@@ -87,5 +86,31 @@ ActiveAdmin.register User do
       end
     end
     f.actions
+  end
+
+  csv do
+    column :id
+    column :membership_number
+    column :first_name
+    column :middle_name
+    column :last_name
+    column :email
+    column :cell_phone
+    column :home_phone
+    column :work_phone
+    column :fax
+    column :is_business
+    column("Address: Street") { |user| user.address.address }
+    column("Address: City") { |user| user.address.city }
+    column("Address: State") { |user| user.address.state }
+    column("Address: Zip") { |user| user.address.zip }
+    column("Address: Country") { |user| user.address.country }
+    column :enrolled_from
+    column :enrolled_at
+    column :do_not_mail
+    column :last_sign_in_at
+    column :created_at
+    column :updated_at
+    column :problems
   end
 end
