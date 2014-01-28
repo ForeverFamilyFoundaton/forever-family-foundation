@@ -15,7 +15,7 @@ ActiveAdmin.register ConfigVariable do
       f.input :name
       f.input :value
     end
-    f.buttons
+    f.actions
   end
 
 end

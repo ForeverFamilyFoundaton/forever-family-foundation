@@ -20,7 +20,7 @@ ActiveAdmin.register CmsPage do
       f.input :sub_title
       f.input :body
     end
-    f.buttons
+    f.actions
   end
 
   show do

@@ -18,7 +18,7 @@ ActiveAdmin.register AttachedFile do
     f.inputs 'Details' do
       f.input :attachment, as: :file
     end
-    f.buttons
+    f.actions
   end
 
   show do |file|

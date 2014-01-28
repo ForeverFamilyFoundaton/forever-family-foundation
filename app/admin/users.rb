@@ -86,6 +86,6 @@ ActiveAdmin.register User do
         address.input :country
       end
     end
-    f.buttons
+    f.actions
   end
 end

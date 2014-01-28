@@ -14,7 +14,7 @@ ActiveAdmin.register ExternalLink do
       f.input :text
       f.input :url
     end
-    f.buttons
+    f.actions
   end
 
   show do

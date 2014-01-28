@@ -29,7 +29,7 @@ ActiveAdmin.register Event do
       f.input :start_time
       f.input :end_time
     end
-    f.buttons
+    f.actions
   end
 
   show do

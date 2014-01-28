@@ -6,7 +6,7 @@ ActiveAdmin.register CmsImage do
       f.input :image
       f.input :caption
     end
-    f.buttons
+    f.actions
   end
 
   index do

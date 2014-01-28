@@ -14,7 +14,7 @@ ActiveAdmin.register Preference do
       f.input :name
       f.input :preference_type, as: :select, collection: ['ADG', 'Profile']
     end
-    f.buttons
+    f.actions
   end
 
 
