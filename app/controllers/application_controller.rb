@@ -2,16 +2,6 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :get_cms_page, :set_controller_and_action_names
-  # before_filter :adg_redirect
-
-  def http_auth
-    if !session[:authenticated]
-      authenticate_or_request_with_http_basic do |username, password|
-        username == "fff" && password == "afterlife"
-      end
-      session[:authenticated] = true
-    end
-  end
 
   def current_page
     case [controller_name,controllor_action].join('/')

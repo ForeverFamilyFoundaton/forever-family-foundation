@@ -63,6 +63,9 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Details" do
+      f.input :first_name
+      f.input :middle_name
+      f.input :last_name
       f.input :membership_number
       f.input :email
       f.input :cell_phone
@@ -84,6 +87,12 @@ ActiveAdmin.register User do
         address.input :zip
         address.input :country
       end
+      f.has_many :family_members do |family_member|
+        family_member.input :first_name
+        family_member.input :last_name
+        family_member.input :relationship
+      end
+
     end
     f.actions
   end
