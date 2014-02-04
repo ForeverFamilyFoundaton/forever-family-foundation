@@ -7,8 +7,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_one :address, :as => :addressable
   has_one :business
-  #has_many :business_assignments
-  #has_many :businesses, :through => :business_assignments
   has_many :family_members
   has_many :adg_answers
   has_many :notes
@@ -58,10 +56,6 @@ class User < ActiveRecord::Base
     [first_name, middle_name, last_name].compact.join(' ')
   end
 
-  # def needs_to_be_welcomed?
-  #   return true if !biz? && reg_complete? && !welcomed?
-  #   return true if biz? && business.reg_complete? && !welcomed?
-  # end
 
   def confirm!
     welcome_message

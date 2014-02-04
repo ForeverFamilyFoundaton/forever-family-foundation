@@ -69,19 +69,17 @@ ActiveAdmin.register User do
       f.input :last_name
       f.input :membership_number
       f.input :email
-      f.input :password
-      f.input :email
       f.input :cell_phone
       f.input :home_phone
       f.input :work_phone
       f.input :fax
       f.input :is_business
       f.input :enrolled_from
-      f.input :enrolled_at
+      f.input :enrolled_at, start_year: 2004
       f.input :do_not_mail
       f.input :last_sign_in_at
-      f.input :created_at
-      f.input :updated_at
+      f.input :created_at, start_year: 2004
+      f.input :updated_at, start_year: 2004
       f.input :problems
       f.inputs "Address", for: [:address, f.object.address || Address.new] do |address|
         address.input :address
