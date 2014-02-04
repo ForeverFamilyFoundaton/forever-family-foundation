@@ -62,11 +62,14 @@ ActiveAdmin.register User do
   end
 
   form do |f|
+    f.semantic_errors *f.object.errors.keys
     f.inputs "Details" do
       f.input :first_name
       f.input :middle_name
       f.input :last_name
       f.input :membership_number
+      f.input :email
+      f.input :password
       f.input :email
       f.input :cell_phone
       f.input :home_phone
