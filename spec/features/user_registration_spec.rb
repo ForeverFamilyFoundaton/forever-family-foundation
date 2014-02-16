@@ -5,7 +5,7 @@ describe 'User registration' do
   it "non biz reg'" do
     visit '/users/sign_up'
     fill_in_reg(email: 'qwe@example.com')
-    page.should have_selector('h1', {text: 'USERS: SHOW', visible: true})
+    page.should have_selector('h1', {text: 'Users: Show', visible: true})
   end
 
   it 'biz reg' do
@@ -26,14 +26,7 @@ describe 'User registration' do
     current_url.should match "/users/#{User.last.id}/businesses/new"
   end
 
-  it 'valdation' do
-    visit '/users/sign_up'
-    click_on "Register"
-    page.should have_content "Terms of use must be accepted"
-    page.should have_content "prohibited this record from being saved"
-  end
-
-  it 'confirmins email case insensative' do
+  it 'confirms email case insensitive' do
     visit '/users/sign_up'
     fill_in_reg(email: 'CASE@sensative.com', email_confirmation: 'CASE@sensative.com', password: '')
     find_field('user_email').value.should eq 'case@sensative.com'

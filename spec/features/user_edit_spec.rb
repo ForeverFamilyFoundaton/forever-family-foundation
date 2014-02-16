@@ -16,7 +16,6 @@ describe 'User edit' do
     click_on 'Submit'
     click_on 'Submit or Skip'
     click_on 'Submit or Skip'
-    # click_on 'Confirm'
     click_on 'My Profile'
     click_on 'Edit Business Details'
   end

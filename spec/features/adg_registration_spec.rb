@@ -10,7 +10,7 @@ describe 'ADG registration' do
     @user = FactoryGirl.create(:user)
   end
 
-  it 'Answer ADG questions' do
+  it 'Answer ADG questions', js: true do
     sign_in(@user)
     within '#site_nav' do
       click_link 'Afterlife Discussion Groups'

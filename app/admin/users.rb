@@ -69,6 +69,10 @@ ActiveAdmin.register User do
       f.input :last_name
       f.input :membership_number
       f.input :email
+      if f.object.new_record?
+        f.input :password
+        f.input :password_confirmation
+      end
       f.input :cell_phone
       f.input :home_phone
       f.input :work_phone

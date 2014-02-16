@@ -3,7 +3,7 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'support/steps'
 
-Capybara.default_driver = :selenium
+# Capybara.default_driver = :selenium
 
 def pause
   puts 'pausing...'
@@ -17,7 +17,6 @@ def create_admin(options={})
       :password => '123456', :password_confirmation => '123456',
       :active => options[:active]
     )
-    #admin.confirm! unless options[:confirm] == false
     admin
   end
 end

@@ -6,7 +6,7 @@ describe 'Business registration' do
     @user = FactoryGirl.create(:user, { email: 'abc@example.com'})
   end
 
-  it 'Business registration' do
+  it 'Business registration', js: true do
     sign_in(@user)
     visit new_user_business_path(@user)
     fill_in_biz_reg
@@ -42,7 +42,7 @@ describe 'Business registration' do
     click_on "Submit Payment"
     click_on "Submit or Skip"
     click_on "Submit or Skip"
-    page.should have_selector('h1', {text: 'USERS: SHOW', visible: true})
+    page.should have_selector('h1', {text: 'Users: Show', visible: true})
   end
 
   context 'payment screen' do
