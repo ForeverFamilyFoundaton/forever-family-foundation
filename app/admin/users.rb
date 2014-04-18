@@ -15,11 +15,12 @@ ActiveAdmin.register User do
   filter :address_country_contains
 
   index do
-    column :id
-    column 'M#', :membership_number
-    column :name, sortable: :last_name do |user|
-      "#{user.last_name}, #{user.first_name} #{user.middle_name}"
+    column :id do |user|
+      link_to user.id, admin_user_path(user)
     end
+    column 'M#', :membership_number
+    column :first_name
+    column :last_name
     column :email, sortable: :email do |user|
       link_to user.email, admin_user_path(user)
     end
@@ -51,7 +52,46 @@ ActiveAdmin.register User do
       row :updated_at
       row :problems
     end
-   table_for user.profile_preferences do
+    panel("Business details") do
+      attributes_table_for user.business do
+        row :name
+        row :contact_name
+        row :contact_email
+        row :contact_phone
+        row :fax
+        row :promotional_additional_notes
+        row :use_business_card_for_web_banner
+        row :promotional_media_text
+        row :promotional_media_additional_notes
+        row :completed_step
+        row :business_card do |biz|
+          if biz && biz.business_card
+            link_to image_tag(biz.business_card.attachment.url(:thumb)), biz.business_card.attachment.url
+          end
+        end
+        row :business_logo do |biz|
+          if biz && biz.business_logo
+            link_to image_tag(biz.business_logo.attachment.url(:thumb)), biz.business_logo.attachment.url
+          end
+        end
+        row :web_banner do |biz|
+          if biz && biz.web_banner
+            link_to image_tag(biz.web_banner.attachment.url(:thumb)), biz.web_banner.attachment.url
+          end
+        end
+        row :promotional_media_mp3 do |biz|
+          if biz && biz.promotional_media_mp3
+            link_to biz.promotional_media_mp3.attached_file_name, biz.promotional_media_mp3.attachment.url
+          end
+        end
+        row :promotional_media_upload do |biz|
+          if biz && biz.promotional_media_upload
+            link_to biz.promotional_media_upload.attached_file_name, biz.promotional_media_upload.attachment.url
+          end
+        end
+      end
+    end
+    table_for user.profile_preferences do
       column "Preferences" do |question|
         question.name
       end

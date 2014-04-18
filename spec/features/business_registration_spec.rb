@@ -18,15 +18,15 @@ describe 'Business registration' do
     current_url.should match "step=3"
     @user.reload.business.name.should == 'My Business'
 
-    attach_file "Business Card", "spec/fixtures/files_to_upload/test_file_to_upload_1.gif"
-    attach_file "Business Logo", "spec/fixtures/files_to_upload/test_file_to_upload_2.png"
+    attach_file "Business Card", "spec/fixtures/img/test.gif"
+    attach_file "Business Logo", "spec/fixtures/img/test.gif"
     check "I don't have a web banner, please use my business card"
     fill_in "Additional Notes",  with: "some text..."
     click_on "Submit"
 
     current_url.should match "step=4"
-    attach_file "MP3 File",  "spec/fixtures/files_to_upload/test_file_to_upload_1.gif"
-    attach_file "Text file", "spec/fixtures/files_to_upload/test_file_to_upload_2.png"
+    attach_file "MP3 File",  "spec/fixtures/img/test.gif"
+    attach_file "Text file", "spec/fixtures/img/test.gif"
     fill_in "business_promotional_media_text", with: "media text goes here..."
     fill_in  "Additional Notes", with: "some text..."
     click_on "Submit"

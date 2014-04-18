@@ -3,6 +3,9 @@ require_relative '../feature_helper'
 describe 'ADMIN: Users' do
   before { sign_in_as_admin }
 
+  let(:user) { create(:user, business: business) }
+  let(:business) { create(:business_complete ) }
+
   it 'Creates a user' do
     click_link 'Users'
     click_on 'New User'
@@ -26,5 +29,11 @@ describe 'ADMIN: Users' do
     click_on 'Edit User'
     click_on 'Update User'
     expect(page).to have_content('User was successfully updated.')
+  end
+
+  it 'shows biz details'   do
+    user
+    click_link 'Users'
+    click_link user.id
   end
 end
