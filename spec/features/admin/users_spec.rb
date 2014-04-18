@@ -31,9 +31,10 @@ describe 'ADMIN: Users' do
     expect(page).to have_content('User was successfully updated.')
   end
 
-  it 'shows biz details'   do
+  it 'shows and sorts by #business.name'   do
     user
     click_link 'Users'
-    click_link user.id
+    click_link 'Business Name'
+    expect(page).to have_content user.business.name
   end
 end

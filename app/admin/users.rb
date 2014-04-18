@@ -1,6 +1,10 @@
 ActiveAdmin.register User do
   menu false
-
+  controller do
+    def scoped_collection
+      end_of_association_chain.includes(:business)
+    end
+  end
   filter :id
   filter :membership_number
   filter :email
@@ -25,7 +29,9 @@ ActiveAdmin.register User do
       link_to user.email, admin_user_path(user)
     end
     column :address, sortable: false
-    column :is_business
+    column :business_name, sortable: 'businesses.name' do |user|
+      user.business && user.business.name
+    end
   end
 
   show do |user|
