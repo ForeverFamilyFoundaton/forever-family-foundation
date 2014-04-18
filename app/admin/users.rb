@@ -117,7 +117,9 @@ ActiveAdmin.register User do
       f.input :home_phone
       f.input :work_phone
       f.input :fax
-      f.input :is_business
+      f.input :is_business do |user|
+        user.business.present?
+      end
       f.input :enrolled_from
       f.input :enrolled_at, start_year: 2004
       f.input :do_not_mail
