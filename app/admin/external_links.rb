@@ -1,12 +1,13 @@
 ActiveAdmin.register ExternalLink do
   menu false
+  config.filters = false
 
   index do
     column :text
-    column :url
-    column "Actions" do |q|
-      link_to "Delete", admin_external_link_path(q, method: :delete)
+    column :url do |link|
+      link.url
     end
+    actions
   end
 
   form do |f|
