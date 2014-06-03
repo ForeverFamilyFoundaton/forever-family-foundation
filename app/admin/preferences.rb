@@ -1,12 +1,12 @@
 ActiveAdmin.register Preference do
   menu false
+  config.filters = false
+
 
   index do
     column :name
     column :preference_type
-    column 'Actions' do |q|
-      link_to 'SHow', admin_preference_path(q)
-    end
+    actions
   end
 
   form do |f|
