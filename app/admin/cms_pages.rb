@@ -8,6 +8,7 @@ ActiveAdmin.register CmsPage do
     column 'URL' do |q|
       link_to page_url(q), page_url(q)
     end
+    column :updated_at
     column "Actions" do |q|
       link_to 'Show', admin_cms_page_path(q)
     end
