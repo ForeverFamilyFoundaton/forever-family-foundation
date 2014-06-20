@@ -50,5 +50,5 @@ group :test do
 end
 
 group :development do
-  gem 'sqlite3' # for heroku db:pull via taps gem
+  gem 'roo'
 end

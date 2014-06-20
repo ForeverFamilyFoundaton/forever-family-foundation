@@ -206,6 +206,10 @@ GEM
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    roo (1.13.2)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
     rspec-core (3.0.0)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.0)
@@ -222,6 +226,7 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.0)
+    ruby-ole (1.2.11.7)
     rubyzip (1.1.4)
     safe_yaml (1.0.3)
     sass (3.2.19)
@@ -243,12 +248,13 @@ GEM
       activemodel (~> 3.0)
     sinatra (1.0)
       rack (>= 1.0)
+    spreadsheet (0.9.7)
+      ruby-ole (>= 1.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.9)
     state_machine (1.2.0)
     taps (0.3.24)
       rack (>= 1.0.1)
@@ -306,13 +312,13 @@ DEPENDENCIES
   rails (= 3.2.11)
   ranked-model
   redcarpet
+  roo
   rspec-rails
   sass-rails
   selenium-webdriver
   shoulda-context
   shoulda-matchers
   simple_form
-  sqlite3
   state_machine
   stripe!
   taps
