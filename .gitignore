@@ -17,5 +17,5 @@ public/system
 server.crt
 server.key
 Membership 2014-Dinshaw010514.csv
-user_list.csv
+user_list*
 push_*.dat
