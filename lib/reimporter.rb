@@ -4,21 +4,19 @@ class Reimporter
   def self.process(file)
     xls = Roo::Spreadsheet.open file
     i = 0
-
+    errors = []
+    user_attrs = []
     xls.each_with_pagename do |_, sheet|
       sheet.each(MAPPING) do |attrs|
-        next if attrs[:id] == 'Id'
-
-        user_attrs = []
+        next if attrs[:id] == 'Id' || User.exists?(email: attrs[:email])
         user_attrs <<  {
           password: password = SecureRandom.hex(8),
           password_confirmation: password,
-          membership_number: attrs[:membership_number] || attrs[:id],
+          membership_number: (attrs[:membership_number] || attrs[:id]).to_i,
           first_name: attrs[:first_name],
           middle_name: attrs[:middle_name],
           middle_name: attrs[:middle_name],
           last_name: attrs[:last_name],
-          email: attrs[:email],
           email: attrs[:email],
           cell_phone: attrs[:cell_phone],
           home_phone: attrs[:home_phone],
@@ -37,16 +35,24 @@ class Reimporter
           do_not_mail: attrs[:do_not_mail],
           problems: attrs[:problems],
         }
-        ActiveRecord::Base.transaction do
-          user_attrs.each do |attrs|
-            puts 'Creating ...'
-            u = User.new
-            u.assign_attributes(attrs)
-            u.save!
-          end
+      end
+    end
+    ActiveRecord::Base.transaction do
+      user_attrs.each do |u_attrs|
+        begin
+          puts 'Creating ...'
+          u = User.new
+          u.assign_attributes(u_attrs)
+          u.save!
+        rescue => e
+          puts 'Fail...'
+          puts u_attrs.inspect
+          puts e.message
+          errors << { u_attrs[:email] => e.message }
         end
       end
     end
+    puts errors.inspect
   end
   MAPPING = {
     id: 'Id',
