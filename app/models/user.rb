@@ -35,12 +35,12 @@ class User < ActiveRecord::Base
   validates_format_of       :email, with: email_regexp, allow_blank: true, if: :email_changed?
   validates_uniqueness_of   :membership_number
   validates_presence_of   :membership_number
-  # validates_associated :address
-  # validates_presence_of :first_name, :last_name
+  validates_associated :address
+  validates_presence_of :first_name, :last_name
   validates_acceptance_of :terms_of_use
 
   #TODO: remove if we begin using confirmable
-  # before_validation :assign_membership_number
+  before_validation :assign_membership_number
   after_create :welcome_message
 
  # validates_presence_of     :password, :if => :password_required?

@@ -28,6 +28,15 @@ ActiveAdmin.register User do
     column :business_name, sortable: 'businesses.name' do |user|
       user.business && user.business.name
     end
+    column :enrolled_at, sortable: :enrolled_at do |user|
+      user.created_at.to_s(:admin)
+    end
+    column :created_at, sortable: :created_at do |user|
+      user.created_at.to_s(:admin)
+    end
+    column :updated_at, sortable: :updated_at do |user|
+      user.updated_at.to_s(:admin)
+    end
   end
 
   show do |user|
