@@ -9,6 +9,7 @@ describe User do
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :email }
+  it { should validate_uniqueness_of :membership_number }
   it { should have_many :preferences }
   it { should have_many :profile_preferences }
   it { should have_many :adg_preferences }
@@ -49,6 +50,13 @@ describe User do
       mail.stub(:deliver)
       UserMailer.should_receive(:welcome_email).with(user, template).and_return mail
       user.save
+    end
+  end
+  describe '#membership_number' do
+    let!(:user) { create :user }
+    let!(:user_2) { create :user }
+    it 'auto increments' do
+      expect(user_2.membership_number).to eq user.membership_number + 1
     end
   end
 end

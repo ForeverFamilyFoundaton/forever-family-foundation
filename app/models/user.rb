@@ -33,11 +33,14 @@ class User < ActiveRecord::Base
   validates_confirmation_of :email, :if => :email_changed?
   validates_uniqueness_of   :email, case_sensitive: false, allow_blank: true, if: :email_changed?
   validates_format_of       :email, with: email_regexp, allow_blank: true, if: :email_changed?
-  # validates_associated :address
-  # validates_presence_of :first_name, :last_name
+  validates_uniqueness_of   :membership_number
+  validates_presence_of   :membership_number
+  validates_associated :address
+  validates_presence_of :first_name, :last_name
   validates_acceptance_of :terms_of_use
 
   #TODO: remove if we begin using confirmable
+  before_validation :assign_membership_number
   after_create :welcome_message
 
  # validates_presence_of     :password, :if => :password_required?
@@ -62,7 +65,14 @@ class User < ActiveRecord::Base
     super
   end
 
+
 private
+
+  def assign_membership_number
+    if membership_number.blank?
+      self.membership_number = User.maximum(:membership_number).to_i + 1
+    end
+  end
 
   def welcome_message
     if welcome_template = CmsPage.where(reference_string: 'Email::Welcome').first

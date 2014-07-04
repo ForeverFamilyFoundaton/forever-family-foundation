@@ -19,3 +19,5 @@ server.key
 Membership 2014-Dinshaw010514.csv
 user_list*
 push_*.dat
+.env
+dump.sql

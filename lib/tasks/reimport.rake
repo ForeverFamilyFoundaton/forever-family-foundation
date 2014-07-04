@@ -7,5 +7,5 @@ end
 desc "Update the User#membership_number"
 task :renumber => :environment do
   require 'renumberer'
-  Renumberer.process('user_list.xls')
+  Renumberer.process
 end

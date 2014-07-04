@@ -7,52 +7,65 @@ class Reimporter
     errors = []
     user_attrs = []
     xls.each_with_pagename do |_, sheet|
-      sheet.each(MAPPING) do |attrs|
-        next if attrs[:id] == 'Id' || User.exists?(email: attrs[:email])
-        user_attrs <<  {
-          password: password = SecureRandom.hex(8),
-          password_confirmation: password,
-          membership_number: (attrs[:membership_number] || attrs[:id]).to_i,
-          first_name: attrs[:first_name],
-          middle_name: attrs[:middle_name],
-          middle_name: attrs[:middle_name],
-          last_name: attrs[:last_name],
-          email: attrs[:email],
-          cell_phone: attrs[:cell_phone],
-          home_phone: attrs[:home_phone],
-          work_phone: attrs[:work_phone],
-          work_phone: attrs[:work_phone],
-          fax: attrs[:fax],
-          is_business: attrs[:is_business],
-          address_attributes: {
-            address: attrs[:address_street],
-            city: attrs[:address_city],
-            state: attrs[:address_state],
-            zip: attrs[:address_zip],
-            country: attrs[:address_country],
-          },
-          enrolled_from: attrs[:enrolled_from],
-          do_not_mail: attrs[:do_not_mail],
-          problems: attrs[:problems],
-        }
-      end
-    end
-    ActiveRecord::Base.transaction do
-      user_attrs.each do |u_attrs|
-        begin
-          puts 'Creating ...'
-          u = User.new
-          u.assign_attributes(u_attrs)
-          u.save!
-        rescue => e
-          puts 'Fail...'
-          puts u_attrs.inspect
-          puts e.message
-          errors << { u_attrs[:email] => e.message }
+      sheet.each(MAPPING) do |xl_attrs|
+        next if xl_attrs[:id] == 'Id'
+
+        user = User.find_by_email(xl_attrs[:email])
+
+        if user
+          if user.membership_number.blank?
+            user.update_attribute :membership_number, xl_attrs[:id]
+          end
+        else
+          membership_number = xl_attrs[:membership_number].present? ?
+              xl_attrs[:membership_number].to_i :
+              xl_attrs[:id].to_i
+
+          user_attrs <<  {
+            password: password = SecureRandom.hex(8),
+            password_confirmation: password,
+            membership_number: membership_number,
+            first_name: xl_attrs[:first_name],
+            middle_name: xl_attrs[:middle_name],
+            middle_name: xl_attrs[:middle_name],
+            last_name: xl_attrs[:last_name],
+            email: xl_attrs[:email],
+            cell_phone: xl_attrs[:cell_phone],
+            home_phone: xl_attrs[:home_phone],
+            work_phone: xl_attrs[:work_phone],
+            work_phone: xl_attrs[:work_phone],
+            fax: xl_attrs[:fax],
+            is_business: xl_attrs[:is_business],
+            address_attributes: {
+              address: xl_attrs[:address_street],
+              city: xl_attrs[:address_city],
+              state: xl_attrs[:address_state],
+              zip: xl_attrs[:address_zip],
+              country: xl_attrs[:address_country],
+            },
+            enrolled_from: xl_attrs[:enrolled_from],
+            do_not_mail: xl_attrs[:do_not_mail],
+            problems: xl_attrs[:problems],
+          }
         end
       end
+      ActiveRecord::Base.transaction do
+        user_attrs.each do |u_attrs|
+          begin
+            puts 'Creating ...'
+            u = User.new
+            u.assign_attributes(u_attrs)
+            u.save!
+          rescue => e
+            puts 'Fail...'
+            puts u_attrs.inspect
+            puts e.message
+            errors << { u_attrs[:email] => e.message }
+          end
+        end
+      end
+      puts errors.inspect
     end
-    puts errors.inspect
   end
   MAPPING = {
     id: 'Id',

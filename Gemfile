@@ -38,16 +38,18 @@ gem 'chronic'
 
 group :test do
   gem 'faker'
-  gem 'selenium-webdriver'
-  gem 'rspec-rails'
+  gem 'selenium-webdriver', '2.41.0'
+  gem 'rspec-rails', '2.14.2'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '2.6.1'
   gem 'shoulda-context', require: false
-  gem 'capybara'
+  gem 'capybara', '2.2.1'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'webmock'
 end
+
+gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development do
   gem 'roo'

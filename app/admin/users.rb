@@ -5,7 +5,6 @@ ActiveAdmin.register User do
       end_of_association_chain.includes(:business)
     end
   end
-  filter :id
   filter :membership_number
   filter :email
   filter :first_name
@@ -19,10 +18,7 @@ ActiveAdmin.register User do
   filter :address_country_contains
 
   index do
-    column :id do |user|
-      link_to user.id, admin_user_path(user)
-    end
-    column 'M#', :membership_number
+    column 'Membership Number', :membership_number
     column :first_name
     column :last_name
     column :email, sortable: :email do |user|
