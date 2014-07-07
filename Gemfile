@@ -17,7 +17,7 @@ gem 'devise'
 gem 'cancan'
 gem "activeadmin", git: "https://github.com/gregbell/active_admin"
 gem 'state_machine'
-gem 'paperclip'
+gem 'paperclip', '3.5.3'
 gem 'acts_as_tree'
 gem 'redcarpet'
 gem 'aws-sdk'
