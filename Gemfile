@@ -18,7 +18,6 @@ gem 'cancan'
 gem "activeadmin", git: "https://github.com/gregbell/active_admin"
 gem 'state_machine'
 gem 'paperclip'
-gem 'hoptoad_notifier'
 gem 'acts_as_tree'
 gem 'redcarpet'
 gem 'aws-sdk'
@@ -35,6 +34,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'chronic'
+gem 'honeybadger'
 
 group :test do
   gem 'faker'
@@ -48,8 +48,6 @@ group :test do
   gem 'email_spec'
   gem 'webmock'
 end
-
-gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development do
   gem 'roo'
