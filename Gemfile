@@ -54,3 +54,5 @@ gem 'dotenv-rails', :groups => [:development, :test]
 group :development do
   gem 'roo'
 end
+
+gem 'dotenv-rails', :groups => [:development, :test]

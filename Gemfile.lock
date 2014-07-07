@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/gregbell/active_admin
-  revision: 8ec04cfbf8fd23093815a939f19f82b2b8079fd1
+  revision: 2ae0a9e09bf9fab7fd95e245b6c46d5c7fc2a953
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -125,7 +125,7 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
-    faker (1.4.0)
+    faker (1.4.1)
       i18n (~> 0.5)
     ffi (1.9.3)
     formtastic (2.3.0.rc3)

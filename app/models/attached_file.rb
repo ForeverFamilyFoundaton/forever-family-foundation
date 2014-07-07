@@ -4,10 +4,10 @@ class AttachedFile < ActiveRecord::Base
   has_attached_file :attachment,
     :styles => { :thumb => "200x200>" },
     storage: :s3,
-    bucket: 'fff_attached_files',
     s3_credentials: {
-      access_key_id: ENV['S3_KEY'],
-      secret_access_key: ENV['S3_SECRET']
+      bucket: 'fff_attached_files',
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
 
   attr_accessible :attachment, :kind
