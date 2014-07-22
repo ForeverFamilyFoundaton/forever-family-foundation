@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '~> 3.2.19'
 gem 'pg', '~> 0.17.1'
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'jquery-rails', '~> 3.1.0'
-gem 'jquery-ui-rails', '~> 4.1.2'
+gem 'jquery-rails', '~> 3.1.1'
+gem 'jquery-ui-rails', '~> 5.0'
 gem 'sass-rails', '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.2'
 gem 'uglifier', '~> 2.5.0'

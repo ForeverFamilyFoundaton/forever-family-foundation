@@ -5,6 +5,6 @@
 // the compiled file.
 //
 //= require jquery
-//= require jquery.ui.all
+//= require jquery-ui
 //= require_tree .
 
