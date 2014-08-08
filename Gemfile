@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '~> 3.2.19'
 gem 'pg', '~> 0.17.1'
+gem 'unicorn'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'jquery-rails', '~> 3.1.1'
@@ -10,7 +11,6 @@ gem 'sass-rails', '~> 3.2.6'
 gem 'coffee-rails', '~> 3.2.2'
 gem 'uglifier', '~> 2.5.0'
 gem 'compass-rails', '~> 1.1.7'
-
 gem 'haml', '~> 4.0.5'
 gem 'devise', '~> 3.2.4'
 gem 'cancan', '~> 1.6.10'
