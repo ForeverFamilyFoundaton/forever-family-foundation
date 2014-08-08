@@ -167,11 +167,11 @@ ActiveAdmin.register User do
     column :work_phone
     column :fax
     column :is_business
-    column("Address: Street") { |user| user.address.address }
-    column("Address: City") { |user| user.address.city }
-    column("Address: State") { |user| user.address.state }
-    column("Address: Zip") { |user| user.address.zip }
-    column("Address: Country") { |user| user.address.country }
+    column("Address: Street") { |user| user.address.try(:address) }
+    column("Address: City") { |user| user.address.try(:city) }
+    column("Address: State") { |user| user.address.try(:state) }
+    column("Address: Zip") { |user| user.address.try(:zip) }
+    column("Address: Country") { |user| user.address.try(:country) }
     column :enrolled_from
     column :enrolled_at
     column :do_not_mail
