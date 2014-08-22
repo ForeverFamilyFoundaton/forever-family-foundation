@@ -74,6 +74,7 @@ ActiveAdmin.register User do
         row :use_business_card_for_web_banner
         row :promotional_media_text
         row :promotional_media_additional_notes
+        row :do_not_mail
         row :completed_step
         row :business_card do |biz|
           if biz && biz.business_card
