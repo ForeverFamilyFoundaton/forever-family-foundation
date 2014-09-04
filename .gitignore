@@ -21,3 +21,5 @@ user_list*
 push_*.dat
 .env
 dump.sql
+spec/support/env.rb
+config/application.yml
