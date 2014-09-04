@@ -1,12 +1,5 @@
 class UsersController < ApplicationController
 
-  protect_from_forgery only: :schema
-
-  def schema
-    Hash[User.new.attributes.keys.map {|k| [k,k]}]
-    respond_to {|format| format.json { render json: User.new.attributes.keys } }
-  end
-
   def show
     @user = current_user
     @family_members = current_user.family_members
