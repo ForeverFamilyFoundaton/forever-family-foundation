@@ -28,6 +28,9 @@ ActiveAdmin.register User do
     column :business_name, sortable: 'businesses.name' do |user|
       user.business && user.business.name
     end
+    column 'Preferences' do |user| 
+      user.try(:preferences).map(&:name).to_sentence
+    end
     column :enrolled_at, sortable: :enrolled_at do |user|
       user.created_at.to_s(:admin)
     end
@@ -168,6 +171,9 @@ ActiveAdmin.register User do
     column :work_phone
     column :fax
     column :is_business
+    column('Preferences') do |user| 
+      user.try(:preferences).map(&:name).to_sentence
+    end
     column("Address: Street") { |user| user.address.try(:address) }
     column("Address: City") { |user| user.address.try(:city) }
     column("Address: State") { |user| user.address.try(:state) }

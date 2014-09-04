@@ -18,14 +18,16 @@ describe 'Business registration' do
     page_address.query.should match "step=3"
     @user.reload.business.name.should == 'My Business'
 
-    attach_file "Business Card", "spec/fixtures/img/test.gif"
-    attach_file "Business Logo", "spec/fixtures/img/test.gif"
+    attach_file "Business Card", "#{Rails.root}/spec/fixtures/img/test.gif"
+    attach_file "Business Logo", "#{Rails.root}/spec/fixtures/img/test.gif"
     check "I don't have a web banner, please use my business card"
     fill_in "Additional Notes",  with: "some text..."
     click_on "Submit"
-    page_address.query.should match "step=4"
-    attach_file "MP3 File",  "spec/fixtures/img/test.gif"
-    attach_file "Text file", "spec/fixtures/img/test.gif"
+    
+    current_url.should match "step=4"
+    attach_file "MP3 File",  "#{Rails.root}/spec/fixtures/img/test.gif"
+    attach_file "Text file", "#{Rails.root}/spec/fixtures/img/test.gif"
+
     fill_in "business_promotional_media_text", with: "media text goes here..."
     fill_in  "Additional Notes", with: "some text..."
     click_on "Submit"

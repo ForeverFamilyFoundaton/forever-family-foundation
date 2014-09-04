@@ -38,4 +38,11 @@ describe 'ADMIN: Users' do
     click_link 'Business Name'
     expect(page).to have_content user.business.name
   end
+
+  it "should show a preference column" do
+    test = create(:user, email: 'hello@example.com', preferences: [Preference.create(name: "hello world")])
+    
+    click_link 'Users'
+    expect(page).to have_content "#{test.preferences.map(&:name)}"
+  end
 end
