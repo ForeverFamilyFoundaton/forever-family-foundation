@@ -15,11 +15,10 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   resources :events
   resources :radio_archives
-
   resource :adg_registration
 
-  match '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
-  match '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'
+  get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
+  get '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'
 
   resources :users do
     get :confirm
@@ -40,6 +39,6 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   resource :events
 
-  match '/site/page/:id' => 'site#page', as: 'page'
-  match ':controller(/:action(/:id))'
+  get '/site/page/:id' => 'site#page', as: 'page'
+  get ':controller(/:action(/:id))'
 end

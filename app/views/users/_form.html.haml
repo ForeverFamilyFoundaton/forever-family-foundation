@@ -28,7 +28,7 @@
         = address_form.input :city, label: t('labels.city'), required: true
         = address_form.input :state, label: t('labels.state'), required: true
         = address_form.input :zip, label: t('labels.zip'), required: true
-        = address_form.country_select :country, ["United States"], input_html: { class: :country }
+        = address_form.input :country, priority: ["United States"], input_html: { class: :country }
 
 
     %p.red * Please be careful to accurately enter your address fields as returned mail depletes vital foundation funds.

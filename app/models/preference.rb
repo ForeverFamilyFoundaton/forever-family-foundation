@@ -2,8 +2,9 @@ class Preference < ActiveRecord::Base
   validates_presence_of :name
   attr_accessible :name, :preference_type
 
-  has_many :users, :through => :user_preference_selection
+  has_many :user_preference_selections
+  has_many :users, through: :user_preference_selection
 
-  scope :profile_preferences, :conditions => {:preference_type => 'Profile'}
-  scope :adg_preferences, :conditions => {:preference_type => 'ADG'}
+  scope :profile_preferences, -> { where(preference_type: 'Profile') }
+  scope :adg_preferences, -> { where(preference_type: 'ADG') }
 end

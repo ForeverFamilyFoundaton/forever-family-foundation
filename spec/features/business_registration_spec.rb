@@ -12,10 +12,10 @@ describe 'Business registration' do
     fill_in_biz_reg
     click_on "Submit"
 
-    current_url.should match("payment")
+    page_address.path.should match("payment")
     fill_in_payment_details
     click_on "Submit"
-    current_url.should match "step=3"
+    page_address.query.should match "step=3"
     @user.reload.business.name.should == 'My Business'
 
     attach_file "Business Card", "spec/fixtures/img/test.gif"
@@ -23,14 +23,13 @@ describe 'Business registration' do
     check "I don't have a web banner, please use my business card"
     fill_in "Additional Notes",  with: "some text..."
     click_on "Submit"
-
-    current_url.should match "step=4"
+    page_address.query.should match "step=4"
     attach_file "MP3 File",  "spec/fixtures/img/test.gif"
     attach_file "Text file", "spec/fixtures/img/test.gif"
     fill_in "business_promotional_media_text", with: "media text goes here..."
     fill_in  "Additional Notes", with: "some text..."
     click_on "Submit"
-    current_url.should match "users/#{@user.id}"
+    page_address.path.should match "users/#{@user.id}"
   end
 
   it 'Biz reg, skip all pages' do

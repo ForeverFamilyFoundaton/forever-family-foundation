@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'factory_girl_devise_fix.rb'
 require 'action_dispatch/testing/integration'
 require 'features/feature_helper'
 require 'webmock/rspec'

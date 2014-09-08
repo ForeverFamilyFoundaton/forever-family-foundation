@@ -11,9 +11,13 @@ class User < ActiveRecord::Base
   has_many :adg_answers
   has_many :notes
   has_many :user_preference_selections
-  has_many :preferences, :through => :user_preference_selections
-  has_many :profile_preferences, :through => :user_preference_selections, :source => :preference, :conditions => "preferences.preference_type = 'Profile'", :class_name => 'Preference'
-  has_many :adg_preferences, :through => :user_preference_selections, :source => :preference, :conditions => "preferences.preference_type = 'ADG'", :class_name => 'Preference'
+  has_many :preferences, through: :user_preference_selections
+  has_many :profile_preferences, -> {where("preferences.preference_type = 'Profile'")},
+    through: :user_preference_selections,
+    source: :preference
+  has_many :adg_preferences, -> { where("preferences.preference_type = 'ADG'") },
+    through: :user_preference_selections,
+    source: :preference
 
   state_machine do
     state :new
