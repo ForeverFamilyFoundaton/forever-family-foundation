@@ -28,8 +28,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  accepts_nested_attributes_for :address, :reject_if => proc { |attributes| attributes['address'].blank? }
-  accepts_nested_attributes_for :family_members, :reject_if => proc { |attributes| attributes['first_name'].blank? }
+  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :family_members
 
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business, :state, :fax, :enrolled_from, :id, :membership_number, :problems, :do_not_mail, :enrolled_at
 
@@ -40,11 +40,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :membership_number
   validates_presence_of   :membership_number
   validates_associated :address
+  validates_presence_of :address
   validates_presence_of :first_name, :last_name
   validates_acceptance_of :terms_of_use
 
   #TODO: remove if we begin using confirmable
   before_validation :assign_membership_number
+  # before_create :build_address
   after_create :welcome_message
 
  # validates_presence_of     :password, :if => :password_required?
