@@ -12,7 +12,7 @@ class AdgRegistrationsController < ApplicationController
     adg_radio_val_hash = params[:adg_registration][:radio_val] || {}
     adg_answers.each_pair do |question_id, answer|
       adg_question = AdgQuestion.find(question_id)
-      adg_answer = current_user.adg_answers.find_or_create_by_adg_question_id(adg_question.id)
+      adg_answer = current_user.adg_answers.find_or_create_by(adg_question_id: adg_question.id)
       adg_answer.answer = answer
       adg_answer.radio_val = adg_radio_val_hash[question_id]
       adg_answer.question = adg_question.question

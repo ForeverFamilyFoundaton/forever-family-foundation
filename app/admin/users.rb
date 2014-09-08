@@ -144,7 +144,7 @@ ActiveAdmin.register User do
         address.input :city
         address.input :state
         address.input :zip
-        address.input :country
+        # address.input :country
       end
       f.has_many :family_members do |family_member|
         family_member.input :first_name

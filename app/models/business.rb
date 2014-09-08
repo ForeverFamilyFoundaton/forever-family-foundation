@@ -1,13 +1,13 @@
 class Business < ActiveRecord::Base
   TOTAL_REG_STEPS = 4
 
-  has_one :address, :as => :addressable
-  has_many :attached_files, :as => :attachable
-  has_one :business_card, :class_name => 'AttachedFile', :conditions => "kind = 'business_card'", :as => :attachable
-  has_one :business_logo, :class_name => 'AttachedFile', :conditions => "kind = 'business_logo'", :as => :attachable
-  has_one :web_banner, :class_name => 'AttachedFile', :conditions => "kind = 'web_banner'", :as => :attachable
-  has_one :promotional_media_mp3, :class_name => 'AttachedFile', :conditions => "kind = 'promotional_media_mp3'", :as => :attachable
-  has_one :promotional_media_upload, :class_name => 'AttachedFile', :conditions => "kind = 'promotional_media_upload'", :as => :attachable
+  has_one :address, as: :addressable
+  has_many :attached_files, as: :attachable
+  has_one :business_card, -> { where(kind: 'business_card') }, class_name: 'AttachedFile', as: :attachable
+  has_one :business_logo, -> { where(kind: 'business_logo') }, class_name: 'AttachedFile', as: :attachable
+  has_one :web_banner, -> { where(kind: 'business_banner') }, class_name: 'AttachedFile', as: :attachable
+  has_one :promotional_media_mp3, -> { where(kind: 'promotional_media_mp3') }, class_name: 'AttachedFile', as: :attachable
+  has_one :promotional_media_upload, -> { where(kind: 'promotional_media_upload') }, class_name: 'AttachedFile', as: :attachable
   has_one :billing_address
   belongs_to :user
 

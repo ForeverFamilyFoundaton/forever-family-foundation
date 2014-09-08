@@ -30,3 +30,7 @@ def sign_in_as_admin(options={}, &block)
   click_on 'Login'
   admin
 end
+
+def page_address
+  URI(current_url)
+end

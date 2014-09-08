@@ -4,8 +4,8 @@ class Event < ActiveRecord::Base
   validate :end_time, presence: true
   validate :title, presence: true
 
-  scope :upcoming, :conditions => ["start_time >= ?", Time.now], order: 'start_time asc', limit: 4
-  scope :all_upcoming, :conditions => ["start_time >= ?", Time.now], order: 'start_time asc'
+  scope :upcoming, -> { where("start_time >= ?", Time.now).order('start_time asc').limit(4) }
+  scope :all_upcoming, -> { where("start_time >= ?", Time.now).order('start_time asc') }
 
   def times
     if start_time && end_time

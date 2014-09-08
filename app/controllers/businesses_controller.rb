@@ -96,6 +96,7 @@ class BusinessesController < ApplicationController
     else
       render template: "businesses/edit"
     end
+
   end
 
   def attachment
