@@ -32,6 +32,11 @@ describe User do
 
   context '#save' do
     let(:user) { User.new valid_params }
+
+    before(:each) do
+      user.build_address(address: '2342 hello st', city: 'sf', state: 'ca', zip: '94231')
+    end
+
     it 'calls welcome_email' do
       user.should_receive :welcome_message
       user.save
