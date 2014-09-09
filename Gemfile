@@ -39,9 +39,10 @@ gem 'honeybadger', '~> 1.15.3'
 gem 'newrelic_rpm', '~> 3.8.0.218'
 
 group :test do
+  gem 'poltergeist', '~> 1.5.0'
+  gem 'rspec-rails', '~> 3.0.1'
   gem 'faker', '~> 1.4.1'
   gem 'selenium-webdriver', '2.41.0'
-  gem 'rspec-rails', '2.14.2'
   gem 'factory_girl_rails', '4.4.1'
   gem 'shoulda-matchers', '2.6.1'
   gem 'capybara', '2.2.1'

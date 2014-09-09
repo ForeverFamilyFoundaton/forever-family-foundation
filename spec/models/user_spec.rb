@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
   let(:valid_params) {{first_name: 'John', last_name: 'Doe',

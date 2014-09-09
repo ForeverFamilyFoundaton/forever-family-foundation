@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe SiteController do
 	it 'renders cms pages by id' do

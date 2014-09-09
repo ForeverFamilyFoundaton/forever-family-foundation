@@ -1,8 +1,8 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe AdgRegistrationsController do
   setup_user
-  
+
   context "on user being not logged in" do
     it  'redirects to singup' do
       get :new
@@ -72,8 +72,12 @@ describe AdgRegistrationsController do
       it 'saves the adg answers' do
         post :create, :adg_registration => @params
         @user.adg_answers.each do |adg_answer|
-          @params[:answer][adg_answer.adg_question_id].should == adg_answer.answer
-          @params[:radio_val][adg_answer.adg_question_id].should == adg_answer.radio_val
+          expect(
+            @params[:answer][adg_answer.adg_question_id]
+          ).to eq adg_answer.answer
+          expect(
+            @params[:radio_val][adg_answer.adg_question_id]
+          ).to eq adg_answer.radio_val
         end
       end
 

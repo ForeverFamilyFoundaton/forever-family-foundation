@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe AttachedFile do
   it { should belong_to :attachable }
