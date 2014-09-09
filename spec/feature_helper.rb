@@ -1,13 +1,14 @@
 require 'rails_helper'
+require 'database_cleaner'
+require 'capybara/poltergeist'
 
 require 'webmock/rspec'
-WebMock.allow_net_connect!
-
 
 include ActionDispatch::TestProcess
 
-  Timecop.travel Time.local(2014, 1, 1, 12, 0, 0)
+Timecop.travel Time.local(2014, 1, 1, 12, 0, 0)
 
+RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.before :suite do
@@ -15,7 +16,8 @@ include ActionDispatch::TestProcess
     Capybara.javascript_driver = :poltergeist
   end
 
-  config.before :each do
+  config.before :each do |example|
+    WebMock.allow_net_connect!
     if example.metadata[:js] || example.metadata[:driver] == :selenium
       DatabaseCleaner.strategy = :truncation
     else

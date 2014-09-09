@@ -1,4 +1,4 @@
-require_relative 'feature_helper'
+require 'feature_helper'
 
 describe 'Business registration' do
 

@@ -1,14 +1,7 @@
 class AttachedFile < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
 
-  has_attached_file :attachment,
-    :styles => { :thumb => "200x200>" },
-    storage: :s3,
-    s3_credentials: {
-      bucket: 'fff_attached_files',
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    }
+  has_attached_file :attachment, { styles: { thumb: "200x200>" } }.merge(S3_STORAGE_OPTS)
 
   attr_accessible :attachment, :kind
 

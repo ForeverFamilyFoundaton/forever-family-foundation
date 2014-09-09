@@ -1,4 +1,4 @@
-require_relative 'feature_helper'
+require 'feature_helper'
 
 describe 'ADG registration' do
 
@@ -46,11 +46,11 @@ describe 'ADG registration' do
       click_link 'Afterlife Discussion Groups'
     end
     click_link 'Register'
-    page.should have_content 'Login Info'
+    expect(page).to have_content 'Login Info'
     fill_in_reg(email: 'test2@example.com')
     click_on 'Confirm'
-    page.should have_content("Welcome")
+    expect(page).to have_content("Welcome")
     click_on 'Home'
-    page.should have_content("Adg Registrations: New")
+    expect(page).to have_content("Adg Registrations: New")
   end
 end
