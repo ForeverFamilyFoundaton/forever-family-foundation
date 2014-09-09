@@ -3,7 +3,7 @@ class AttachedFile < ActiveRecord::Base
 
   paperclip_opts = { styles: { thumb: '100x100>' }}
   if Rails.env.production?
-    paperclip_opts.merge(S3_STORAGE_OPTS).merge(bucket: 'fff_attached_files')
+    paperclip_opts.merge!(S3_STORAGE_OPTS).merge!(bucket: 'fff_attached_files')
   end
 
   has_attached_file :attachment, { styles: { thumb: "200x200>" } }.merge(paperclip_opts)
