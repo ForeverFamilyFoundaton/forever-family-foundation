@@ -1,7 +1,12 @@
 class AttachedFile < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
 
-  has_attached_file :attachment, { styles: { thumb: "200x200>" } }.merge(S3_STORAGE_OPTS)
+  paperclip_opts = { styles: { thumb: '100x100>' }}
+  if Rails.env.production?
+    paperclip_opts.merge(S3_STORAGE_OPTS).merge(bucket: 'fff_attached_files')
+  end
+
+  has_attached_file :attachment, { styles: { thumb: "200x200>" } }.merge(paperclip_opts)
 
   attr_accessible :attachment, :kind
 
