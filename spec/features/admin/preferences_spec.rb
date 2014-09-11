@@ -1,4 +1,4 @@
-require_relative '../feature_helper'
+require 'feature_helper'
 
 feature 'Admin area: Preferences' do
 

@@ -1,5 +1,4 @@
-
-require_relative '../feature_helper'
+require 'feature_helper'
 
 describe 'ADMIN: Users' do
   before { sign_in_as_admin }
