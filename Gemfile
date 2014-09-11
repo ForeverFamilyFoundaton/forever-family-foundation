@@ -37,7 +37,7 @@ gem 'kaminari', '~> 0.16.1'
 gem 'chronic', '~> 0.10.2'
 gem 'honeybadger', '~> 1.15.3'
 gem 'newrelic_rpm', '~> 3.8.0.218'
-# gem 'non-stupid-digest-assets'
+gem 'non-stupid-digest-assets'
 
 group :test do
   gem 'poltergeist', '~> 1.5.0'
