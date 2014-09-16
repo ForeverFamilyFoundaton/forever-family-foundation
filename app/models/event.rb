@@ -1,8 +1,8 @@
 class Event < ActiveRecord::Base
 
-  validate :start_time, presence: true
-  validate :end_time, presence: true
-  validate :title, presence: true
+  validates_presence_of :start_time
+  validates_presence_of :end_time
+  validates_presence_of :title
 
   attr_accessible :start_time, :end_time, :title, :description, :url
 
