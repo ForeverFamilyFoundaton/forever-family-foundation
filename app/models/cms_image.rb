@@ -1,10 +1,13 @@
 class CmsImage < ActiveRecord::Base
 
-  paperclip_opts = { styles: { thumb: '100x100>' }}
   if Rails.env.production?
-    paperclip_opts.merge!(S3_STORAGE_OPTS).merge!(bucket: 'fff_cms_images')
+    Paperclip::Attachment.default_options[:s3_credentials].merge! bucket: 'fff_cms_images'
   end
-  has_attached_file :image, {
-    styles: { thumb: '100x100>' }
-  }.merge(paperclip_opts)
+
+  has_attached_file :image, { styles: { thumb: '100x100>' } }
+
+  do_not_validate_attachment_file_type :image
+
+  attr_accessible :title, :image, :caption
+
 end
