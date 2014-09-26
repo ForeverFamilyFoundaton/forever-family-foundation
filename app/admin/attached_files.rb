@@ -1,6 +1,5 @@
 ActiveAdmin.register AttachedFile do
   menu false
-
   index do
     column 'Image' do |q|
       image_tag q.attachment.url(:thumb) if q.image?
