@@ -1,0 +1,25 @@
+#announcement {
+	height: 50px;
+	position: fixed;
+	width: 100%;
+	background: #084296;
+  line-height: 50px;
+	text-align: center;
+  
+  span:first-child {
+    @extend h1;
+    color: white;
+  }
+
+  .hide {
+    float: right;
+    margin-right: 1.5%;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: inline;
+
+    a {
+      
+    }
+  }
+}
