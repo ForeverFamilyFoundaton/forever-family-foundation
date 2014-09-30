@@ -6,5 +6,5 @@
 //
 //= require jquery
 //= require jquery-ui
+//= require announcements
 //= require_tree .
-
