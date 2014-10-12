@@ -54,6 +54,10 @@ group :test do
   gem 'timecop', '~> 0.7.1'
 end
 
+group :development do
+  gem 'spring'
+end
+
 group :development, :test do
   gem 'dotenv-rails'
 end
