@@ -48,6 +48,9 @@ group :test do
   gem 'webmock', '~> 1.18.0'
 end
 
+group :development do
+  gem 'spring'
+end
 
 group :development, :test do
   gem 'dotenv-rails'
