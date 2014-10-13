@@ -50,8 +50,12 @@ end
 
 group :development do
   gem 'spring'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
 end
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'pry'
 end
