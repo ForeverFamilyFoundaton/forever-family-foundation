@@ -33,7 +33,7 @@ gem 'kaminari', '~> 0.16.1'
 gem 'chronic', '~> 0.10.2'
 gem 'honeybadger', '~> 1.15.3'
 gem 'newrelic_rpm', '~> 3.8.0.218'
-gem 'paul_revere', git: 'https://github.com/gsreynolds/paul_revere.git'
+# gem 'paul_revere', git: 'https://github.com/gsreynolds/paul_revere.git'
 
 group :test do
   gem 'faker', '~> 1.4.1'

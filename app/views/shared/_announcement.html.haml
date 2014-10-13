@@ -1,0 +1,7 @@
+%div.current_announcement
+	%span#body= current_announcement.body
+	%a#url{:href => "#{current_announcement.link}"}
+		%button= current_announcement.button
+	%span.hide
+		=link_to_function "hide", "hideAnnouncement('announcement_#{current_announcement.created_at}')"
+	

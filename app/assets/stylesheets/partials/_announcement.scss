@@ -1,4 +1,4 @@
-#announcement {
+.current_announcement {
 	height: 50px;
 	position: fixed;
   z-index: 10;
@@ -7,7 +7,7 @@
   line-height: 50px;
 	text-align: center;
   
-  span:first-child {
+  #body {
     @extend h1;
     color: white;
   }
