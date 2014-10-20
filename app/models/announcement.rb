@@ -1,5 +1,5 @@
 class Announcement < ActiveRecord::Base
-  validates_presence_of :button, :link
+  validates_presence_of :button, :link, :body, :start_date, :end_date
   validates_uniqueness_of :start_date, :end_date
   validate :overlapping_start_dates, :overlapping_end_dates
 
@@ -17,7 +17,7 @@ class Announcement < ActiveRecord::Base
   end 
   
   def self.current
-    order('start_date DESC').first || new 
+    where("end_date >= ?", Date.today).first
   end
   
   def exists?
