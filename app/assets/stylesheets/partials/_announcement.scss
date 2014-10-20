@@ -1,9 +1,13 @@
-.current_announcement {
+.bar {
+  padding-top: 50px;
+}
+
+.announcement {
 	height: 50px;
 	position: fixed;
   z-index: 10;
 	width: 100%;
-	background: #084296;
+	background: #96081f;
   line-height: 50px;
 	text-align: center;
   
@@ -20,7 +24,8 @@
     display: inline;
 
     a {
-      
+      text-decoration: none;
+      color: white;
     }
   }
 }
