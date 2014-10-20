@@ -37,6 +37,7 @@ gem 'kaminari', '~> 0.16.1'
 gem 'chronic', '~> 0.10.2'
 gem 'honeybadger', '~> 1.15.3'
 gem 'newrelic_rpm', '~> 3.8.0.218'
+# gem 'paul_revere', git: 'https://github.com/gsreynolds/paul_revere.git'
 
 group :test do
   gem 'poltergeist', '~> 1.5.0'
@@ -52,8 +53,16 @@ group :test do
   gem 'timecop', '~> 0.7.1'
 end
 
+group :development do
+  gem 'spring'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
+end
+
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'pry'
 end
 
 gem 'rails_12factor', group: :production

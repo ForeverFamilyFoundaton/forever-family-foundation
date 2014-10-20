@@ -1,0 +1,31 @@
+.bar {
+  padding-top: 50px;
+}
+
+.announcement {
+	height: 50px;
+	position: fixed;
+  z-index: 10;
+	width: 100%;
+	background: #96081f;
+  line-height: 50px;
+	text-align: center;
+  
+  #body {
+    @extend h1;
+    color: white;
+  }
+
+  .hide {
+    float: right;
+    margin-right: 1.5%;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: inline;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}
