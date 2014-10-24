@@ -54,8 +54,16 @@ group :test do
   gem 'timecop', '~> 0.7.1'
 end
 
+group :development do
+  gem 'spring'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
+end
+
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'pry'
 end
 
 gem 'rails_12factor', group: :production
