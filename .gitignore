@@ -23,3 +23,5 @@ push_*.dat
 dump.sql
 spec/support/env.rb
 config/application.yml
+public/attached_files
+public/cms_images

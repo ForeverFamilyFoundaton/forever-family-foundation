@@ -1,8 +1,7 @@
 = render 'layouts/header'
 
-= render 'shared/announcement' unless current_announcement.nil?
+= render 'shared/announcement' unless (current_announcement.nil? or announcement_hidden?(current_announcement))
 %body
-  / - binding.pry
   #layout{:class => ("bar" unless current_announcement.nil? or announcement_hidden?(current_announcement))}
     #logo
       %a{href: root_url}

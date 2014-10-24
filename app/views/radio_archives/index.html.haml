@@ -10,7 +10,7 @@
       %p= archive.guest
       %p= archive.date
       %p= link_to 'Download', archive.attached_file.attachment.url if archive.attached_file
-      - if !archive.embeded_links.compact.empty?
+      - if !archive.embeded_links.empty?
         %fieldset.links
           %legend Books &amp; Links
           %ul
