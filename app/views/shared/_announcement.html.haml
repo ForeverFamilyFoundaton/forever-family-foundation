@@ -3,5 +3,5 @@
 	%a#url{:href => "#{current_announcement.link}"}
 		= current_announcement.button
 	%span.hide
-		=link_to_function "X", "hideAnnouncement('announcement_#{current_announcement.created_at}')"
+		= link_to "X", "javascript:", :onclick => "hideAnnouncement('announcement_#{current_announcement.created_at}')"
 	
