@@ -1,4 +1,6 @@
 class Announcement < ActiveRecord::Base
+  attr_accessible :start_date, :end_date, :button, :link, :body
+
   validates_presence_of :button, :link, :body, :start_date, :end_date
   validates_uniqueness_of :start_date, :end_date
   validate :end_before_start, :overlapping_dates
