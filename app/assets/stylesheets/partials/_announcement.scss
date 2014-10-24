@@ -14,6 +14,24 @@
   #body {
     @extend h1;
     color: white;
+    line-height: 50px;
+  }
+
+  #url {
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: larger;
+    color: #ffffff;
+    background: #3498db;
+    padding: 6px 13px;
+    text-decoration: none;
+  } 
+  
+  #url:hover {
+    background: #3cb0fd;
+    text-decoration: none;
   }
 
   .hide {

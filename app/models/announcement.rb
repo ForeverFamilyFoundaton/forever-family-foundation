@@ -3,7 +3,7 @@ class Announcement < ActiveRecord::Base
 
   validates_presence_of :button, :link, :body, :start_date, :end_date
   validates_uniqueness_of :start_date, :end_date
-  validate :end_before_start, :overlapping_dates
+  before_create :end_before_start, :overlapping_dates
 
   def date_range
     start_date..end_date
