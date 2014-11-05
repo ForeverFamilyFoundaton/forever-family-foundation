@@ -7,6 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel 'Links' do
           ul do
+            li link_to 'Announcements', admin_announcements_path
             li link_to 'Attached Files', admin_attached_files_path
             li link_to 'Cms Images', admin_cms_images_path
             li link_to 'Cms Pages', admin_cms_pages_path

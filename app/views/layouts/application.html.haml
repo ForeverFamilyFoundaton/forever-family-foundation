@@ -1,7 +1,8 @@
 = render 'layouts/header'
 
+= render 'shared/announcement' unless (current_announcement.nil? or announcement_hidden?(current_announcement))
 %body
-  #layout
+  #layout{:class => ("bar" unless current_announcement.nil? or announcement_hidden?(current_announcement))}
     #logo
       %a{href: root_url}
     #container
