@@ -1,0 +1,46 @@
+.bar {
+  padding-top: 50px;
+}
+
+.announcement {
+	height: 50px;
+	position: fixed;
+  z-index: 10;
+	width: 100%;
+	background: #96081f;
+  line-height: 50px;
+	text-align: center;
+  
+  #body {
+    @extend h1;
+    color: white;
+    line-height: 50px;
+  }
+
+  #url {
+    -webkit-border-radius: 5;
+    -moz-border-radius: 5;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: larger;
+    color: #ffffff;
+    background: #3498db;
+    padding: 6px 13px;
+    text-decoration: none;
+  } 
+  
+  #url:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+  }
+
+  .hide {
+    float: right;
+    margin-right: 1.5%;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: inline;
+    text-decoration: none;
+    color: white;
+  }
+}

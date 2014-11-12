@@ -1,6 +1,6 @@
 class AttachedFile < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
-
+  
   paperclip_opts = { styles: { thumb: '200x200>' } }
   if Rails.env.production?
     paperclip_opts.merge!(

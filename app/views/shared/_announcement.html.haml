@@ -1,0 +1,5 @@
+%div.announcement
+	%span#body= current_announcement.body
+	%a#url{:href => "#{current_announcement.link}"}
+		= current_announcement.button
+	%a.hide{:href => "#", :data => {:created_at => "announcement_#{current_announcement.created_at}"}} X

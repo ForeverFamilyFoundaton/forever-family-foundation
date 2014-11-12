@@ -19,5 +19,4 @@ class CmsImage < ActiveRecord::Base
   do_not_validate_attachment_file_type :image
 
   attr_accessible :title, :image, :caption
-
 end

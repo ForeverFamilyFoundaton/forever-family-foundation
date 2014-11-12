@@ -1,7 +1,8 @@
 = render 'layouts/header'
 
+= render 'shared/announcement' unless no_announcement
 %body
-  #layout
+  #layout{class: ("bar" unless no_announcement)}
     #logo
       %a{href: root_url}
     #container
