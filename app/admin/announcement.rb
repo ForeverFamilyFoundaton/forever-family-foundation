@@ -1,9 +1,5 @@
 ActiveAdmin.register Announcement do
-  menu false 
-
-  # collection_action :new do
-  #   @announcement = Announcement.new(start_date: Date.today)
-  # end
+  menu false
   index do
     column :body do |announcement|
       link_to announcement.body, admin_announcement_path(announcement)

@@ -2,6 +2,4 @@
 	%span#body= current_announcement.body
 	%a#url{:href => "#{current_announcement.link}"}
 		= current_announcement.button
-	%span.hide
-		= link_to "X", "javascript:", :onclick => "hideAnnouncement('announcement_#{current_announcement.created_at}')"
-	
+	%a.hide{:href => "#", :data => {:created_at => "announcement_#{current_announcement.created_at}"}} X

@@ -1,3 +1,10 @@
+jQuery(document).ready(function($) {
+  $('.hide').click(function(event) {
+    var created_at = $(event.target).data('created-at');
+    hideAnnouncement(created_at);
+  });
+});
+
 function hideAnnouncement(announcement_created_at) {
   createCookie(announcement_created_at, 'hidden', 365);
   $(".announcement").slideUp();

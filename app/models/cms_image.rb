@@ -1,5 +1,5 @@
 class CmsImage < ActiveRecord::Base
-  
+
   paperclip_opts = { styles: { thumb: '100x100>' } }
   if Rails.env.production?
     paperclip_opts.merge!({
@@ -19,8 +19,4 @@ class CmsImage < ActiveRecord::Base
   do_not_validate_attachment_file_type :image
 
   attr_accessible :title, :image, :caption
-<<<<<<< HEAD
-
-=======
->>>>>>> Create Announcement
 end
