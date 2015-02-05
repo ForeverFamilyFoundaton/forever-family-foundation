@@ -16,6 +16,7 @@ ActiveAdmin.register User do
   filter :problems
   filter :address_state_contains
   filter :address_country_contains
+  filter :preferences
 
   index do
     column 'Membership Number', :membership_number
