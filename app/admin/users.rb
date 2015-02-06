@@ -16,7 +16,7 @@ ActiveAdmin.register User do
   filter :problems
   filter :address_state_contains
   filter :address_country_contains
-  filter :preferences
+  filter :preferences, as: :check_boxes
 
   index do
     column 'Membership Number', :membership_number
@@ -143,6 +143,7 @@ ActiveAdmin.register User do
       f.input :created_at, start_year: 2004
       f.input :updated_at, start_year: 2004
       f.input :problems
+      f.input :preferences, as: :check_boxes
       f.inputs "Address", for: [:address, f.object.address || Address.new] do |address|
         address.input :address
         address.input :city
