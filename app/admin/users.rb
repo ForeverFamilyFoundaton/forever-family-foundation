@@ -143,7 +143,7 @@ ActiveAdmin.register User do
       f.input :created_at, start_year: 2004
       f.input :updated_at, start_year: 2004
       f.input :problems
-      f.input :preferences, as: :check_boxes
+      f.input :profile_preferences, as: :check_boxes
       f.inputs "Address", for: [:address, f.object.address || Address.new] do |address|
         address.input :address
         address.input :city
