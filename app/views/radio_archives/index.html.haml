@@ -1,5 +1,10 @@
 %h3 Radio Archives
 
+= search_form_for @q do |f| 
+  = f.search_field :title_or_guest_cont
+
+  = f.submit
+
 %p
   = paginate @archives
 
