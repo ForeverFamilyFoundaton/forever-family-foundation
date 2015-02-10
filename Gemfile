@@ -39,6 +39,7 @@ gem 'chronic', '~> 0.10.2'
 gem 'honeybadger', '~> 1.15.3'
 gem 'newrelic_rpm', '~> 3.8.0.218'
 gem 'non-stupid-digest-assets'
+gem 'ransack'
 
 group :test do
   gem 'poltergeist', '~> 1.5.0'

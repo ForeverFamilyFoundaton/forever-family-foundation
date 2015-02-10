@@ -1,7 +1,8 @@
 class RadioArchivesController < ApplicationController
 
   def index
-    @archives = RadioArchive.page(params[:page] || 1).order('date desc')
+    @q = RadioArchive.ransack(params[:q]) 
+    @archives = @q.result(distinct: true).page(params[:page] || 1).order('date desc')
   end
 
   def show
