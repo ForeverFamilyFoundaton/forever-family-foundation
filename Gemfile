@@ -41,6 +41,7 @@ gem 'newrelic_rpm', '~> 3.8.0.218'
 gem 'non-stupid-digest-assets'
 gem 'ransack'
 gem "comma", "~> 3.2.1"
+gem 'delayed_job'
 
 
 group :test do
