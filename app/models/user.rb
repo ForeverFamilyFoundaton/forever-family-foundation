@@ -50,6 +50,31 @@ class User < ActiveRecord::Base
   after_create :welcome_message
 
   scope :registered_for_adg, -> { includes(:adg_answers).where.not(adg_answers: { id: nil }) }
+  
+  comma do
+    id
+    membership_number
+    first_name
+    middle_name
+    last_name
+    email
+    cell_phone
+    home_phone
+    work_phone
+    fax
+    is_business
+    preferences do |preferences|
+      preferences.map(&:name).to_sentence
+    end
+    address
+    enrolled_from
+    enrolled_at
+    do_not_mail
+    last_sign_in_at
+    created_at
+    updated_at
+    problems
+  end
 
  # validates_presence_of     :password, :if => :password_required?
  # validates_confirmation_of :password, :if => :password_required?

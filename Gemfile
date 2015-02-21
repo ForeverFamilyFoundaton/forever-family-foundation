@@ -40,6 +40,8 @@ gem 'honeybadger', '~> 1.15.3'
 gem 'newrelic_rpm', '~> 3.8.0.218'
 gem 'non-stupid-digest-assets'
 gem 'ransack'
+gem "comma", "~> 3.2.1"
+
 
 group :test do
   gem 'poltergeist', '~> 1.6.0'
