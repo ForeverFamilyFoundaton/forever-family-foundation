@@ -107,6 +107,17 @@ ActiveAdmin.register User do
         end
       end
     end
+    
+    table_for user.adg_answers do
+      column "Question" do |question|
+        question.question
+      end
+
+      column "Answer" do |question|
+        question.answer
+      end
+    end
+
     table_for user.profile_preferences do
       column "Preferences" do |question|
         question.name
