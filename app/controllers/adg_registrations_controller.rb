@@ -19,6 +19,12 @@ class AdgRegistrationsController < ApplicationController
       adg_answer.save!
     end
     current_user.update_attribute(:adg_preference_ids, params[:adg_registration][:adg_preference_ids])
+
+    adg_template = CmsPage.where(reference_string: 'Email::Adg').first    
+    if adg_template
+      UserMailer.welcome_email(current_user, adg_template).deliver
+    end
+    
     flash[:notice] = I18n.t('flash.adg.answers_updated')
     redirect_to current_user
   end
