@@ -18,6 +18,8 @@ ActiveAdmin.register User do
   filter :address_country_contains
   filter :preferences, as: :check_boxes
 
+  scope "Registered for ADG", :registered_for_adg
+
   index do
     column 'Membership Number', :membership_number
     column :first_name
@@ -107,6 +109,17 @@ ActiveAdmin.register User do
         end
       end
     end
+    
+    table_for user.adg_answers do
+      column "Question" do |question|
+        question.question
+      end
+
+      column "Answer" do |question|
+        question.answer
+      end
+    end
+
     table_for user.profile_preferences do
       column "Preferences" do |question|
         question.name

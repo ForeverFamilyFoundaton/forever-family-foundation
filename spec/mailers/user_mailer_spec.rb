@@ -21,4 +21,17 @@ describe UserMailer do
 
     it {@email.should have_body_text('z Doe x')}
   end
+
+  context '#adg_email' do
+    before do
+      @email = UserMailer.adg_email(
+        User.create!(user_params),
+        CmsPage.create!({title: '@first_name', body: 'z @last_name x @email', reference_string: 'Email::Adg'})
+      )
+    end
+
+    it {@email.should have_subject(/^John$/)}
+
+    it {@email.should have_body_text('z Doe x')}
+  end
 end
