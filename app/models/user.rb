@@ -49,6 +49,8 @@ class User < ActiveRecord::Base
   # before_create :build_address
   after_create :welcome_message
 
+  scope :registered_for_adg, -> { includes(:adg_answers).where.not(adg_answers: { id: nil }) }
+
  # validates_presence_of     :password, :if => :password_required?
  # validates_confirmation_of :password, :if => :password_required?
  # validates_length_of       :password, :within => password_length, :allow_blank => true, :message => I18n.t('')
