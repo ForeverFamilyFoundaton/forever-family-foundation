@@ -42,6 +42,7 @@ gem 'non-stupid-digest-assets'
 gem 'ransack'
 gem "comma", "~> 3.2.1"
 gem 'delayed_job'
+gem 'figaro'
 
 
 group :test do
