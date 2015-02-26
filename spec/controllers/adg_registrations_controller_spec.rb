@@ -3,6 +3,16 @@ require 'rails_helper'
 describe AdgRegistrationsController do
   setup_user
 
+  before do
+    CmsPage.where({title: '@first_name', body: 'z @last_name x @email', reference_string: 'Email::Adg'}).first_or_create
+    ActionMailer::Base.delivery_method = :test
+    ActionMailer::Base.perform_deliveries = true
+  end
+
+  after(:each) do
+    ActionMailer::Base.deliveries.clear
+  end
+
   context "on user being not logged in" do
     it  'redirects to singup' do
       get :new
@@ -79,6 +89,11 @@ describe AdgRegistrationsController do
             @params[:radio_val][adg_answer.adg_question_id]
           ).to eq adg_answer.radio_val
         end
+      end
+
+      it "emails the user" do
+        post :create, :adg_registration => @params
+        expect(ActionMailer::Base.deliveries.count).to eq(1) 
       end
 
       it 'saves the adg preferences' do
