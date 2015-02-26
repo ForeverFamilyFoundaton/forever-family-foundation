@@ -19,7 +19,7 @@ class AdgRegistrationsController < ApplicationController
       adg_answer.save!
     end
     current_user.update_attribute(:adg_preference_ids, params[:adg_registration][:adg_preference_ids])
-    UserNotifier.send_adg_email
+    UserNotifier.send_adg_email(current_user)
     
     flash[:notice] = I18n.t('flash.adg.answers_updated')
     redirect_to current_user
