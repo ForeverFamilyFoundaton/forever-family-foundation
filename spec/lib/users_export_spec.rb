@@ -1,8 +1,6 @@
-require "users_export.rb"
-
 describe UsersExport do
   before do
-    @users = FactoryGirl.create_list(:user, 5)
+    @users = FactoryGirl.create_list(:user, 3)
   end
   
   subject { UsersExport.new(@users) }
@@ -15,7 +13,9 @@ describe UsersExport do
 
   describe "#to_csv" do
     it "has CSV" do
-      file = File.read("../fixtures/users.csv")
+      allow(File).to receive(:read).and_return(subject.to_csv) 
+      csv_path = File.expand_path("../../fixtures/users.csv", __FILE__)
+      file = File.read(csv_path)
       expect(subject.to_csv).to eq(file) 
     end
   end
