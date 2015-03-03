@@ -9,9 +9,6 @@ class CsvFileGenerator
     file = Tempfile.new([@name, '.csv'], Rails.root.join("tmp"))
     file.write(@contents)
     file.close
-    
-    ActionDispatch::Http::UploadedFile.new({
-      tempfile: file
-    })
+    file
   end
 end

@@ -9,10 +9,10 @@ describe CsvFileGenerator do
   describe "#run" do
     subject { CsvFileGenerator.new("users", "Hello world").run } 
     
-    it { is_expected.to be_a(ActionDispatch::Http::UploadedFile) }
+    it { is_expected.to be_a(Tempfile) }
 
     it "writes the contents" do
-      expect(File.read(subject.tempfile)).to eq("Hello world") 
+      expect(File.read(subject)).to eq("Hello world") 
     end
   end
 end
