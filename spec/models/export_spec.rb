@@ -3,6 +3,7 @@ require "users_export.rb"
 describe Export do
   before do
     @users = FactoryGirl.create_list(:user, 2)
+    ActionMailer::Base.delivery_method = :test
   end
 
   after do
@@ -17,6 +18,10 @@ describe Export do
     it "attaches file" do
       file = User.all.to_comma
       expect(Paperclip.io_adapters.for(subject.file).read).to eq(file)
+    end
+
+    it "sends email" do
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
   end
 end
