@@ -70,6 +70,7 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
+  gem 'rspec-rails', '~> 3.0.1'
 end
 
 gem 'rails_12factor', group: :production
