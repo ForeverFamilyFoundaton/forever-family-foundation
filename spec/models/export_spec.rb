@@ -15,8 +15,8 @@ describe Export do
     subject { Export.create } 
 
     it "attaches file" do
-      file = UsersExport(@users).to_csv
-      expect(subject.file).to eq(file)
+      file = User.all.to_comma
+      expect(Paperclip.io_adapters.for(subject.file).read).to eq(file)
     end
   end
 end
