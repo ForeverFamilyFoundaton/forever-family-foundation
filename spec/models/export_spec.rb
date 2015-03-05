@@ -4,6 +4,7 @@ describe Export do
   before do
     @users = FactoryGirl.create_list(:user, 2)
     ActionMailer::Base.delivery_method = :test
+    Delayed::Worker.delay_jobs = false  
   end
 
   after do

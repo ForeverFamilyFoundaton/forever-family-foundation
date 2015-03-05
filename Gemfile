@@ -41,7 +41,7 @@ gem 'newrelic_rpm', '~> 3.8.0.218'
 gem 'non-stupid-digest-assets'
 gem 'ransack'
 gem "comma", "~> 3.2.1"
-gem 'delayed_job'
+gem 'delayed_job_active_record'
 gem 'figaro'
 
 
@@ -64,13 +64,12 @@ group :development do
   gem 'spring'
   gem 'guard'
   gem 'guard-rspec'
-  gem 'terminal-notifier-guard'
 end
 
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
-  gem 'rspec-rails', '~> 3.0.1'
+  gem 'rspec-nc'
 end
 
 gem 'rails_12factor', group: :production
