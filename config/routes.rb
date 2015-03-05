@@ -37,6 +37,7 @@ ForeverFamilyFoundation::Application.routes.draw do
     end
   end
 
+  resources :exports
   resource :events
 
   get '/site/page/:id' => 'site#page', as: 'page'
