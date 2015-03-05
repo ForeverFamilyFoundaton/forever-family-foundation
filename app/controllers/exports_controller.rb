@@ -8,7 +8,11 @@ class ExportsController < ApplicationController
 
   # GET /exports/1
   def show
-    send_file @export.file.path
+    if @export.file.try(:path).nil?
+      render :show
+    else
+      send_file @export.file.path
+    end
   end
 
   # GET /exports/new
@@ -22,9 +26,10 @@ class ExportsController < ApplicationController
 
   # POST /exports
   def create
-    @export = Export.new(export_params)
+    @export = Export.create
+    @export.save_csv
 
-    if @export.save
+    if @export
       redirect_to @export, notice: 'Export was successfully created.'
     else
       render :new

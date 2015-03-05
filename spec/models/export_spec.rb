@@ -13,8 +13,12 @@ describe Export do
 
   it { is_expected.to have_attached_file(:file) }
 
-  describe "#attach_file" do
-    subject { Export.create } 
+  describe "#save_csv" do
+    subject do
+      @export = Export.create
+      @export.save_csv
+      @export
+    end 
 
     it "attaches file" do
       file = User.all.to_comma

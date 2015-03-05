@@ -35,14 +35,24 @@ RSpec.describe ExportsController, :type => :controller do
   describe "GET show" do
     it "assigns the requested export as @export" do
       export = Export.create! valid_attributes
+      export.save_csv
       get :show, {:id => export.to_param}, valid_session
       expect(assigns(:export)).to eq(export)
     end
 
     it "downloads the file" do
       export = Export.create! valid_attributes
+      export.save_csv
       get :show, {:id => export.to_param}, valid_session
       expect(response.header['Content-Type']).to eq('text/csv')
+    end
+
+    context 'when Export has no file' do
+      it "renders the page" do
+        export = Export.create! valid_attributes
+        get :show, {:id => export.to_param}, valid_session
+        expect(response).to render_template("show")
+      end
     end
   end
 
@@ -73,6 +83,12 @@ RSpec.describe ExportsController, :type => :controller do
         post :create, {:export => valid_attributes}, valid_session
         expect(assigns(:export)).to be_a(Export)
         expect(assigns(:export)).to be_persisted
+      end
+
+      it "saves the users csv" do
+        users = User.all.to_comma
+        post :create, {:export => valid_attributes}, valid_session
+        expect(Paperclip.io_adapters.for(assigns(:export).file).read).to eq(users)
       end
 
       it "redirects to the created export" do
