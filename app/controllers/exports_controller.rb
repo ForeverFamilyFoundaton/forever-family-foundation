@@ -27,7 +27,6 @@ class ExportsController < ApplicationController
   # POST /exports
   def create
     @export = Export.create
-    @export.save_csv
 
     if @export
       redirect_to @export, notice: 'Export was successfully created.'

@@ -4,6 +4,7 @@ RSpec.describe ExportsController, :type => :controller do
   before do
     FactoryGirl.create_list(:user, 3)
     Delayed::Worker.delay_jobs = false  
+    ActionMailer::Base.delivery_method = :test
   end
 
   after do
@@ -35,14 +36,12 @@ RSpec.describe ExportsController, :type => :controller do
   describe "GET show" do
     it "assigns the requested export as @export" do
       export = Export.create! valid_attributes
-      export.save_csv
       get :show, {:id => export.to_param}, valid_session
       expect(assigns(:export)).to eq(export)
     end
 
     it "downloads the file" do
       export = Export.create! valid_attributes
-      export.save_csv
       get :show, {:id => export.to_param}, valid_session
       expect(response.header['Content-Type']).to eq('text/csv')
     end
