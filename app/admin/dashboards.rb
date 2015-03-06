@@ -14,6 +14,7 @@ ActiveAdmin.register_page "Dashboard" do
             li link_to 'Adg Questions', admin_adg_questions_path
             li link_to 'Config Variables', admin_config_variables_path
             li link_to 'Events', admin_events_path
+            li link_to 'Exports', admin_exports_path
             li link_to 'External Links', admin_external_links_path
             li link_to 'Preferences', admin_preferences_path
             li link_to 'Radio Archives', admin_radio_archives_path
