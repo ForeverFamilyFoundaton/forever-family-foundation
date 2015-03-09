@@ -35,15 +35,6 @@ class ExportsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /exports/1
-  def update
-    if @export.update(export_params)
-      redirect_to @export, notice: 'Export was successfully updated.'
-    else
-      render :edit
-    end 
-  end
-
   # DELETE /exports/1
   def destroy
     @export.destroy

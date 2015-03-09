@@ -6,10 +6,6 @@ ActiveAdmin.register User do
     end
   end
 
-  collection_action :export_csv, method: :get do
-    csv = User.includes(:addresses, :preferences).all.to_comma
-    csv
-  end
   filter :membership_number
   filter :email
   filter :first_name

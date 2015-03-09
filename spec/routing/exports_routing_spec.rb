@@ -23,10 +23,6 @@ RSpec.describe ExportsController, :type => :routing do
       expect(:post => "/exports").to route_to("exports#create")
     end
 
-    it "routes to #update" do
-      expect(:put => "/exports/1").to route_to("exports#update", :id => "1")
-    end
-
     it "routes to #destroy" do
       expect(:delete => "/exports/1").to route_to("exports#destroy", :id => "1")
     end

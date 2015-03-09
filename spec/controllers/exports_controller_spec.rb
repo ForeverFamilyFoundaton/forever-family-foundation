@@ -26,7 +26,6 @@ RSpec.describe ExportsController, :type => :controller do
 
   describe "GET index" do
     it "assigns all exports as @exports" do
-      puts Export.count
       export = Export.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:exports)).to eq([export])
@@ -98,48 +97,7 @@ RSpec.describe ExportsController, :type => :controller do
       end
     end
   end
-
-  # describe "PUT update" do
-  #   describe "with valid params" do
-  #     let(:new_attributes) {
-  #       skip("Add a hash of attributes valid for your model")
-  #     }
-
-  #     it "updates the requested export" do
-  #       export = Export.create! valid_attributes
-  #       put :update, {:id => export.to_param, :export => new_attributes}, valid_session
-  #       export.reload
-  #       skip("Add assertions for updated state")
-  #     end
-
-  #     it "assigns the requested export as @export" do
-  #       export = Export.create! valid_attributes
-  #       put :update, {:id => export.to_param, :export => valid_attributes}, valid_session
-  #       expect(assigns(:export)).to eq(export)
-  #     end
-
-  #     it "redirects to the export" do
-  #       export = Export.create! valid_attributes
-  #       put :update, {:id => export.to_param, :export => valid_attributes}, valid_session
-  #       expect(response).to redirect_to(export)
-  #     end
-  #   end
-
-  #   describe "with invalid params" do
-  #     it "assigns the export as @export" do
-  #       export = Export.create! valid_attributes
-  #       put :update, {:id => export.to_param, :export => invalid_attributes}, valid_session
-  #       expect(assigns(:export)).to eq(export)
-  #     end
-
-  #     it "re-renders the 'edit' template" do
-  #       export = Export.create! valid_attributes
-  #       put :update, {:id => export.to_param, :export => invalid_attributes}, valid_session
-  #       expect(response).to render_template("edit")
-  #     end
-  #   end
-  # end
-
+  
   describe "DELETE destroy" do
     it "destroys the requested export" do
       export = Export.create! valid_attributes
