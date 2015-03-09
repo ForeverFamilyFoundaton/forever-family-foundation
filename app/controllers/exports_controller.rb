@@ -49,6 +49,6 @@ class ExportsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def export_params
-      params[:export]
+      params.require(:export).permit()
     end
 end
