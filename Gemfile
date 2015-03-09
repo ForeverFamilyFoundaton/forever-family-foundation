@@ -42,17 +42,18 @@ gem 'non-stupid-digest-assets'
 gem 'ransack'
 
 group :test do
-  gem 'poltergeist', '~> 1.5.0'
-  gem 'rspec-rails', '~> 3.0.1'
+  gem 'poltergeist', '~> 1.6.0'
+  gem 'rspec-rails', '~> 3.2.0'
   gem 'faker', '~> 1.4.1'
   gem 'selenium-webdriver', '2.41.0'
   gem 'factory_girl_rails', '4.4.1'
   gem 'shoulda-matchers', '2.6.1'
-  gem 'capybara', '2.2.1'
+  gem 'capybara', '2.4.4'
   gem 'database_cleaner', '~> 1.3.0', require: false
   gem 'email_spec', '~> 1.6.0'
   gem 'webmock', '~> 1.18.0'
   gem 'timecop', '~> 0.7.1'
+  gem 'capybara-screenshot', '1.0.6'
 end
 
 group :development do
