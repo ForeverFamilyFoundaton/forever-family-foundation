@@ -17,9 +17,9 @@ describe UserMailer do
       )
     end
 
-    it {@email.should have_subject(/^John$/)}
+    it { expect(@email).to have_subject(/^John$/) }
 
-    it {@email.should have_body_text('z Doe x')}
+    it { expect(@email).to have_body_text('z Doe x') }
   end
 
   context '#adg_email' do
@@ -30,8 +30,8 @@ describe UserMailer do
       )
     end
 
-    it {@email.should have_subject(/^John$/)}
+    it { expect(@email).to have_subject(/^John$/)}
 
-    it {@email.should have_body_text('z Doe x')}
+    it { expect(@email).to have_body_text('z Doe x')}
   end
 end

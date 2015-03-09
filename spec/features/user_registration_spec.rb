@@ -5,7 +5,7 @@ describe 'User registration' do
   it "non biz reg'" do
     visit '/users/sign_up'
     fill_in_reg(email: 'qwe@example.com')
-    page.should have_selector('h1', {text: 'Users: Show', visible: true})
+    expect(page).to have_selector('h1', {text: 'Users: Show', visible: true})
   end
 
   it 'biz reg' do
@@ -23,14 +23,14 @@ describe 'User registration' do
     check "Yes, I accept the Terms of Use"
     check "I am registering a business"
     click_on "Register"
-    current_url.should match "/users/#{User.last.id}/businesses/new"
+    expect(current_url).to match "/users/#{User.last.id}/businesses/new"
   end
 
   it 'confirms email case insensitive' do
     visit '/users/sign_up'
     fill_in_reg(email: 'CASE@sensative.com', email_confirmation: 'CASE@sensative.com', password: '')
-    find_field('user_email').value.should eq 'case@sensative.com'
-    find_field('user_email_confirmation').value.should eq 'case@sensative.com'
+    expect(find_field('user_email').value).to eq 'case@sensative.com'
+    expect(find_field('user_email_confirmation').value).to eq 'case@sensative.com'
   end
 
 end

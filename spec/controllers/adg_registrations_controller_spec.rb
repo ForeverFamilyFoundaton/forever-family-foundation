@@ -16,11 +16,11 @@ describe AdgRegistrationsController do
   context "on user being not logged in" do
     it  'redirects to singup' do
       get :new
-      response.should redirect_to '/users/sign_up'
+      expect(response).to redirect_to '/users/sign_up'
     end
     it 'sets flash' do
       get :new
-      flash[:notice].should == I18n.t('flash.adg.user_required')
+      expect(flash[:notice]).to eq I18n.t('flash.adg.user_required')
     end
   end
 
@@ -32,12 +32,12 @@ describe AdgRegistrationsController do
     context "on get new" do
       it 'responds with success' do
         get :new
-        response.should be_success
+        expect(response).to be_success
       end
 
       it 'renders new' do
         get :new
-        response.should render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
 
@@ -51,12 +51,12 @@ describe AdgRegistrationsController do
 
       it 'responds with success' do
         get :new
-        response.should be_success
+        expect(response).to be_success
       end
 
       it 'renders new' do
         get :new
-        response.should render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
 
@@ -93,12 +93,12 @@ describe AdgRegistrationsController do
 
       it "emails the user" do
         post :create, :adg_registration => @params
-        expect(ActionMailer::Base.deliveries.count).to eq(1) 
+        expect(ActionMailer::Base.deliveries.count).to eq(1)
       end
 
       it 'saves the adg preferences' do
         post :create, :adg_registration => @params
-        @user.adg_preferences.should == [@p1]
+        expect(@user.adg_preferences).to eq [@p1]
       end
     end
   end

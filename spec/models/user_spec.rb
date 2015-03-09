@@ -38,12 +38,12 @@ describe User do
     end
 
     it 'calls welcome_email' do
-      user.should_receive :welcome_message
+      expect(user).to receive(:welcome_message)
       user.save
     end
 
     it 'does not deliver mail if no template' do
-      UserMailer.should_not_receive(:welcome_email)
+      expect(UserMailer).not_to receive(:welcome_email)
       user.save
     end
 
@@ -52,8 +52,8 @@ describe User do
         title: '@first_name', body: 'z @last_name x @email', reference_string: 'Email::Welcome'
       })
       mail = UserMailer.welcome_email(user, template)
-      mail.stub(:deliver)
-      UserMailer.should_receive(:welcome_email).with(user, template).and_return mail
+      allow(mail).to receive(:deliver)
+      expect(UserMailer).to receive(:welcome_email).with(user, template).and_return mail
       user.save
     end
   end

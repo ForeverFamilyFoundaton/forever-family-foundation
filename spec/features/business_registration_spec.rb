@@ -12,26 +12,26 @@ describe 'Business registration' do
     fill_in_biz_reg
     click_on "Submit"
 
-    page_address.path.should match("payment")
+    expect(page_address.path).to match("payment")
     fill_in_payment_details
     click_on "Submit"
-    page_address.query.should match "step=3"
-    @user.reload.business.name.should == 'My Business'
+    expect(page_address.query).to match "step=3"
+    expect(@user.reload.business.name).to eq 'My Business'
 
     attach_file "Business Card", "#{Rails.root}/spec/fixtures/img/test.gif"
     attach_file "Business Logo", "#{Rails.root}/spec/fixtures/img/test.gif"
     check "I don't have a web banner, please use my business card"
     fill_in "Additional Notes",  with: "some text..."
     click_on "Submit"
-    
-    current_url.should match "step=4"
+
+    expect(current_url).to match "step=4"
     attach_file "MP3 File",  "#{Rails.root}/spec/fixtures/img/test.gif"
     attach_file "Text file", "#{Rails.root}/spec/fixtures/img/test.gif"
 
     fill_in "business_promotional_media_text", with: "media text goes here..."
     fill_in  "Additional Notes", with: "some text..."
     click_on "Submit"
-    page_address.path.should match "users/#{@user.id}"
+    expect(page_address.path).to match "users/#{@user.id}"
   end
 
   it 'Biz reg, skip all pages' do
@@ -43,7 +43,7 @@ describe 'Business registration' do
     click_on "Submit Payment"
     click_on "Submit or Skip"
     click_on "Submit or Skip"
-    page.should have_selector('h1', {text: 'Users: Show', visible: true})
+    expect(page).to have_selector('h1', {text: 'Users: Show', visible: true})
   end
 
   context 'payment screen' do
