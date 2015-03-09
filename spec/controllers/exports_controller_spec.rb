@@ -49,6 +49,8 @@ RSpec.describe ExportsController, :type => :controller do
     context 'when Export has no file' do
       it "renders the page" do
         export = Export.create! valid_attributes
+        export.file = nil
+        export.save
         get :show, {:id => export.to_param}, valid_session
         expect(response).to render_template("show")
       end

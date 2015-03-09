@@ -8,10 +8,10 @@ class ExportsController < ApplicationController
 
   # GET /exports/1
   def show
-    if @export.file.try(:path).nil?
-      render :show
-    else
+    if @export.has_file?
       send_file @export.file.path
+    else
+      render :show
     end
   end
 
