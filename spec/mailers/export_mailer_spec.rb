@@ -23,7 +23,7 @@ RSpec.describe ExportMailer, :type => :mailer do
     end
 
     it "has the attachment url" do
-      expect(mail).to have_body_text(@export.file.url)
+      expect(mail).to have_body_text("http://localhost:3000/admin/exports/#{@export.id}/download")
     end
   end
 
