@@ -13,20 +13,20 @@ describe "events/index" do
 
   it "should display date only once" do
     date = "#{@start_time.utc.to_s(:ordinal_date)} " + [@start_time.utc.strftime("%I:%M %p"), @end_time.utc.strftime("%I:%M %p")].join(' - ')
-    render 
+    render
     expect(rendered).to include(date)
   end
 
   it 'links to local site' do
     pending
     render
-    rendered.should have_tag(:a, content: 'Local', href: 'events/1')
+    expect(rendered).to have_tag(:a, content: 'Local', href: 'events/1')
   end
 
   it 'links to remote site' do
     pending
     render
-    rendered.should have_selector 'a', content: 'Remote', href: 'somewhereelse.com', target: '_blankrake'
+    expect(rendered).to have_selector 'a', content: 'Remote', href: 'somewhereelse.com', target: '_blankrake'
   end
 
 end

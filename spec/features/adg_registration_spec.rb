@@ -36,7 +36,7 @@ describe 'ADG registration' do
     end
 
     click_on 'Submit'
-    current_url.should match "/users/#{@user.id}"
+    expect(current_url).to match "/users/#{@user.id}"
   end
 
   it "User is redirected to registration if not logged-in" do

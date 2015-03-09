@@ -22,7 +22,7 @@ describe BusinessesController do
     end
     it 'redirects to payment' do
       business = Business.find_by_name('Testing Corp')
-      response.should redirect_to user_business_payment_path(@user, business)
+      expect(response).to redirect_to user_business_payment_path(@user, business)
     end
   end
 
@@ -30,18 +30,18 @@ describe BusinessesController do
     before do
       post :create, credit_card: {}
     end
-    it {assigns(:business).should be_kind_of(Business)}
-    it {response.should be_success}
-    it {response.should render_template :new}
+    it { expect(assigns(:business)).to be_kind_of(Business)}
+    it {expect(response).to be_success}
+    it {expect(response).to render_template :new}
   end
 
   context "on business params error" do
     before do
       post :create, "business" => {}, step: 1
     end
-    it {assigns(:business).should be_kind_of(Business)}
-    it {response.should be_success}
-    it {response.should render_template :new}
+    it { expect(assigns(:business)).to be_kind_of(Business) }
+    it {expect(response).to be_success}
+    it {expect(response).to render_template :new}
   end
 
   context "on get edit" do
@@ -57,7 +57,7 @@ describe BusinessesController do
     before do
       put :update, "business" => {}, :id => @business.id, :step => '1'
     end
-    it {response.should redirect_to  user_path(@user)}
+    it {expect(response).to redirect_to  user_path(@user)}
   end
 
   context "on get step 2" do
@@ -73,7 +73,7 @@ describe BusinessesController do
       put :register, business: {}, user_id: @user.id, id: @business.id, step: '2'
     end
     it {
-      response.should redirect_to user_business_register_path(@user, @business, step: 3)
+      expect(response).to redirect_to user_business_register_path(@user, @business, step: 3)
     }
   end
 
@@ -91,7 +91,7 @@ describe BusinessesController do
     end
 
     it {
-      response.should redirect_to user_business_register_path(@user, @business, step: 4)
+      expect(response).to redirect_to user_business_register_path(@user, @business, step: 4)
     }
   end
 
@@ -107,7 +107,7 @@ describe BusinessesController do
     before do
       put :register, business: {}, user_id: @user.id, id: @business.id, step: 4
     end
-    it {response.should redirect_to user_path(@user) }
+    it {expect(response).to redirect_to user_path(@user) }
   end
 
 end
