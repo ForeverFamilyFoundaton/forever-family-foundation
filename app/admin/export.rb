@@ -1,4 +1,6 @@
 ActiveAdmin.register Export do
+  actions :all, except: [:edit]
+  
   member_action :download, method: :get do
     send_file resource.file.path
   end
