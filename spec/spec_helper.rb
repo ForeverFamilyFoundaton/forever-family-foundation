@@ -17,8 +17,12 @@
 require 'rubygems'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
+require "paperclip/matchers"
 
 RSpec.configure do |config|
+  config.include Paperclip::Shoulda::Matchers
+  ActiveRecord::Migration.maintain_test_schema!
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

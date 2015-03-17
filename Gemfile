@@ -40,6 +40,10 @@ gem 'honeybadger', '~> 1.15.3'
 gem 'newrelic_rpm', '~> 3.8.0.218'
 gem 'non-stupid-digest-assets'
 gem 'ransack'
+gem "comma", "~> 3.2.1"
+gem 'delayed_job_active_record'
+gem 'figaro'
+
 
 group :test do
   gem 'poltergeist', '~> 1.6.0'
@@ -60,12 +64,13 @@ group :development do
   gem 'spring'
   gem 'guard'
   gem 'guard-rspec'
-  gem 'terminal-notifier-guard'
 end
 
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
+  gem 'rspec-nc'
+  gem 'rspec-rails', '~> 3.2.0'
 end
 
 gem 'rails_12factor', group: :production

@@ -5,6 +5,7 @@ ActiveAdmin.register User do
       end_of_association_chain.includes(:business)
     end
   end
+
   filter :membership_number
   filter :email
   filter :first_name
