@@ -1,8 +1,4 @@
 class Export < ActiveRecord::Base
-  has_attached_file :file
-  validates_attachment_content_type :file, content_type: "text/plain" 
-  after_create :save_csv
-
   paperclip_opts = {} 
   if Rails.env.production?
     paperclip_opts.merge!({
@@ -14,6 +10,11 @@ class Export < ActiveRecord::Base
       }
     })
   end
+
+  has_attached_file :file, paperclip_opts 
+  validates_attachment_content_type :file, content_type: "text/plain" 
+  after_create :save_csv
+
 
   def save_csv 
     self.file = File.new(generate_csv)
