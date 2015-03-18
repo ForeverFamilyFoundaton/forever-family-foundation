@@ -2,7 +2,8 @@ ActiveAdmin.register Export do
   actions :all, except: [:edit]
   
   member_action :download, method: :get do
-    send_file resource.file.path
+    file = open(resource.file.url) 
+    send_data file.read, filename: resource.file_file_name, type: "application/csv"
   end
 
   index do
