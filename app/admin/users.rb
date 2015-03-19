@@ -97,12 +97,12 @@ ActiveAdmin.register User do
         end
         row :promotional_media_mp3 do |biz|
           if biz && biz.promotional_media_mp3
-            link_to biz.promotional_media_mp3.attached_file_name, biz.promotional_media_mp3.attachment.url
+            link_to biz.promotional_media_mp3.attachment_file_name, biz.promotional_media_mp3.attachment.url
           end
         end
         row :promotional_media_upload do |biz|
           if biz && biz.promotional_media_upload
-            link_to biz.promotional_media_upload.attached_file_name, biz.promotional_media_upload.attachment.url
+            link_to biz.promotional_media_upload.attachment_file_name, biz.promotional_media_upload.attachment.url
           end
         end
       end
