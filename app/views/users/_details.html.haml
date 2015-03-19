@@ -2,6 +2,7 @@
   %h2 Personal Information
   .section_content
     %ul
+      %li= "Membership #: #{@user.membership_number}" 
       %li= @user.full_name
       %li= @user.email
       - if @user.home_phone.present?
