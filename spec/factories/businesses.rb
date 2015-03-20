@@ -24,7 +24,7 @@ FactoryGirl.define do
 
     trait :step_3 do
       # promotional_media_mp3 { fixture_file_upload(image_path) }
-      # promotional_media_upload  { fixture_file_upload(image_path) }
+      promotional_media_upload  { AttachedFile.new(attachment: fixture_file_upload(image_path)) }
       promotional_media_text 'Description'
       promotional_media_additional_notes 'Description'
     end
