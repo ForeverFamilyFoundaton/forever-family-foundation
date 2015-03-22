@@ -40,9 +40,9 @@ describe 'ADMIN: Users' do
   
   context 'with attachments' do
     it "renders the page sucessfully" do
-      create(:user, email: 'test@testing.com')
+      user
       click_link 'Users'
-      click_link 'test@testing.com'
+      click_link user.email
       expect(page).to have_content user.first_name 
     end
   end
