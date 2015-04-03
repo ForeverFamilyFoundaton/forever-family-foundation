@@ -12,6 +12,7 @@ ActiveAdmin.register_page "Dashboard" do
             li link_to 'Cms Images', admin_cms_images_path
             li link_to 'Cms Pages', admin_cms_pages_path
             li link_to 'Adg Questions', admin_adg_questions_path
+            li link_to 'Categories', admin_categories_path
             li link_to 'Config Variables', admin_config_variables_path
             li link_to 'Events', admin_events_path
             li link_to 'Exports', admin_exports_path

@@ -3,8 +3,11 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  attr_accessible :category_ids
   has_and_belongs_to_many :roles
+  has_many :user_categories
+  has_many :categories, through: :user_categories
+  
   has_one :address, :as => :addressable
   has_one :business
   has_many :family_members
@@ -27,7 +30,8 @@ class User < ActiveRecord::Base
       transition all => :confirmed
     end
   end
-
+  
+  accepts_nested_attributes_for :user_categories
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :family_members
 
@@ -65,6 +69,9 @@ class User < ActiveRecord::Base
     is_business
     preferences do |preferences|
       preferences.map(&:name).to_sentence
+    end
+    categories do |categories|
+      categories.map(&:name).to_sentence
     end
     address
     enrolled_from

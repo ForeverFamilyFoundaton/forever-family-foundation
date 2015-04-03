@@ -3,8 +3,8 @@ require 'feature_helper'
 describe 'ADMIN: Users' do
   before { sign_in_as_admin }
 
-  let(:user) { create(:user, business: business) }
   let(:business) { create(:business_complete ) }
+  let(:user) { create(:user, business: business) }
 
   it 'Creates a user' do
     click_link 'Users'
@@ -36,6 +36,15 @@ describe 'ADMIN: Users' do
     click_link 'Users'
     click_link 'Business Name'
     expect(page).to have_content user.business.name
+  end
+  
+  context 'with attachments' do
+    it "renders the page sucessfully" do
+      user
+      click_link 'Users'
+      click_link user.email
+      expect(page).to have_content user.first_name 
+    end
   end
 
   it "should show a preference column" do

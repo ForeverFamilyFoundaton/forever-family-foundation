@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+  permit_params category_ids: []
   menu false
   controller do
     def scoped_collection
@@ -15,6 +16,7 @@ ActiveAdmin.register User do
   filter :enrolled_from
   filter :do_not_mail
   filter :problems
+  filter :categories, as: :check_boxes
   filter :address_state_contains
   filter :address_country_contains
   filter :preferences, as: :check_boxes
@@ -31,6 +33,9 @@ ActiveAdmin.register User do
     column :address, sortable: false
     column :business_name, sortable: 'businesses.name' do |user|
       user.business && user.business.name
+    end
+    column 'Categories' do |user| 
+      user.categories.map(&:name).to_sentence
     end
     column 'Preferences' do |user| 
       user.try(:preferences).map(&:name).to_sentence
@@ -57,6 +62,9 @@ ActiveAdmin.register User do
       row :cell_phone
       row :home_phone
       row :work_phone
+      row :categories do
+        user.categories.map(&:name).to_sentence
+      end
       row :fax
       row :is_business
       row :address do
@@ -100,12 +108,12 @@ ActiveAdmin.register User do
         end
         row :promotional_media_mp3 do |biz|
           if biz && biz.promotional_media_mp3
-            link_to biz.promotional_media_mp3.attached_file_name, biz.promotional_media_mp3.attachment.url
+            link_to biz.promotional_media_mp3.attachment_file_name, biz.promotional_media_mp3.attachment.url
           end
         end
         row :promotional_media_upload do |biz|
           if biz && biz.promotional_media_upload
-            link_to biz.promotional_media_upload.attached_file_name, biz.promotional_media_upload.attachment.url
+            link_to biz.promotional_media_upload.attachment_file_name, biz.promotional_media_upload.attachment.url
           end
         end
       end
@@ -157,6 +165,7 @@ ActiveAdmin.register User do
       f.input :created_at, start_year: 2004
       f.input :updated_at, start_year: 2004
       f.input :problems
+      f.input :categories, as: :check_boxes
       f.input :profile_preferences, as: :check_boxes
       f.inputs "Address", for: [:address, f.object.address || Address.new] do |address|
         address.input :address
@@ -189,6 +198,9 @@ ActiveAdmin.register User do
     column :is_business
     column('Preferences') do |user| 
       user.try(:preferences).map(&:name).to_sentence
+    end
+    column('Categories') do |user| 
+      user.try(:categories).map(&:name).to_sentence
     end
     column("Address: Street") { |user| user.address.try(:address) }
     column("Address: City") { |user| user.address.try(:city) }
