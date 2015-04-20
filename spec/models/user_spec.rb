@@ -13,6 +13,7 @@ describe User do
   it { should have_many :preferences }
   it { should have_many :profile_preferences }
   it { should have_many :adg_preferences }
+  it { should have_many(:categories).through(:user_categories) }  
 
   it { should_not allow_mass_assignment_of :crypted_password }
   it { should_not allow_mass_assignment_of :password_salt }
