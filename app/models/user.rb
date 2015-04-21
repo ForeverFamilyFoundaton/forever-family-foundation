@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :encryptable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  attr_accessible :category_ids
+  attr_accessible :category_ids, :categories
   has_and_belongs_to_many :roles
   has_many :user_categories
   has_many :categories, through: :user_categories
