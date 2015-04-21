@@ -1,5 +1,4 @@
 ActiveAdmin.register User do
-  permit_params category_ids: []
   menu false
   controller do
     def scoped_collection
