@@ -13,6 +13,7 @@ ActiveAdmin.register User do
   filter :last_name
   filter :is_business
   filter :enrolled_from
+  filter :snail_mail
   filter :do_not_mail
   filter :problems
   filter :categories, as: :check_boxes
@@ -33,10 +34,10 @@ ActiveAdmin.register User do
     column :business_name, sortable: 'businesses.name' do |user|
       user.business && user.business.name
     end
-    column 'Categories' do |user| 
+    column 'Categories' do |user|
       user.categories.map(&:name).to_sentence
     end
-    column 'Preferences' do |user| 
+    column 'Preferences' do |user|
       user.try(:preferences).map(&:name).to_sentence
     end
     column :enrolled_at, sortable: :enrolled_at do |user|
@@ -117,7 +118,7 @@ ActiveAdmin.register User do
         end
       end
     end
-    
+
     table_for user.adg_answers do
       column "Question" do |question|
         question.question
@@ -195,10 +196,10 @@ ActiveAdmin.register User do
     column :work_phone
     column :fax
     column :is_business
-    column('Preferences') do |user| 
+    column('Preferences') do |user|
       user.try(:preferences).map(&:name).to_sentence
     end
-    column('Categories') do |user| 
+    column('Categories') do |user|
       user.try(:categories).map(&:name).to_sentence
     end
     column("Address: Street") { |user| user.address.try(:address) }
