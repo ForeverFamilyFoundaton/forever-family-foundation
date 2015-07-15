@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.2.2'
 
 gem 'protected_attributes'
 
@@ -47,7 +47,6 @@ gem 'figaro'
 
 group :test do
   gem 'poltergeist', '~> 1.6.0'
-  gem 'rspec-rails', '~> 3.2.0'
   gem 'faker', '~> 1.4.1'
   gem 'selenium-webdriver', '2.41.0'
   gem 'factory_girl_rails', '4.4.1'

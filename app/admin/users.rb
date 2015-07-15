@@ -73,6 +73,7 @@ ActiveAdmin.register User do
       row :enrolled_from
       row :enrolled_at
       row :do_not_mail
+      row :snail_mail
       row :last_sign_in_at
       row :created_at
       row :updated_at
@@ -90,6 +91,7 @@ ActiveAdmin.register User do
         row :promotional_media_text
         row :promotional_media_additional_notes
         row :do_not_mail
+        row :snail_mail
         row :completed_step
         row :business_card do |biz|
           if biz && biz.business_card
@@ -161,6 +163,7 @@ ActiveAdmin.register User do
       f.input :enrolled_from
       f.input :enrolled_at, start_year: 2004
       f.input :do_not_mail
+      f.input :snail_mail
       f.input :last_sign_in_at
       f.input :created_at, start_year: 2004
       f.input :updated_at, start_year: 2004
@@ -210,6 +213,7 @@ ActiveAdmin.register User do
     column :enrolled_from
     column :enrolled_at
     column :do_not_mail
+    column :snail_mail
     column :last_sign_in_at
     column :created_at
     column :updated_at
