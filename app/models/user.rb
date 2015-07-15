@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :user_categories
   has_many :categories, through: :user_categories
-  
+
   has_one :address, :as => :addressable
   has_one :business
   has_many :family_members
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
       transition all => :confirmed
     end
   end
-  
+
   accepts_nested_attributes_for :user_categories
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :family_members
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
   after_create :welcome_message
 
   scope :registered_for_adg, -> { includes(:adg_answers).where.not(adg_answers: { id: nil }) }
-  
+
   comma do
     id
     membership_number
@@ -76,6 +76,7 @@ class User < ActiveRecord::Base
     address
     enrolled_from
     enrolled_at
+    snail_mail
     do_not_mail
     last_sign_in_at
     created_at
