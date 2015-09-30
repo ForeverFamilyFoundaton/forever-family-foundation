@@ -6,7 +6,7 @@ class Announcement < ActiveRecord::Base
   validates :body, presence: true
   validates :start_date, presence: true, uniqueness: true
   validates :end_date, presence: true, uniqueness: true
-  validate :overlapping_dates, on: :create
+  validate :overlapping_dates
   validate :start_date_before_end_date
 
   def date_range
@@ -15,7 +15,7 @@ class Announcement < ActiveRecord::Base
 
   def overlapping_dates
     announcements = Announcement.all
-    errors.add(:base, "Announcement conflicts with other announcements") if announcements.any? { |announcement| announcement.date_range.overlaps? date_range }
+    errors.add(:base, "Conflicts with other Announcements (overlapping dates)") if announcements.any? { |announcement| announcement.date_range.overlaps? date_range }
   end
 
   def start_date_before_end_date
@@ -23,7 +23,8 @@ class Announcement < ActiveRecord::Base
   end
   
   def self.current
-    where("end_date >= ?", Date.today).first
+    where("end_date >= :end_date AND start_date <= :start_date", {end_date: Date.today, start_date: Date.today}).order(:start_date).first
+    
   end
   
   def exists?
