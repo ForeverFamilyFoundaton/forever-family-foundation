@@ -68,6 +68,7 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
+  gem 'pry-stack_explorer'
   gem 'rspec-nc'
   gem 'rspec-rails', '~> 3.2.0'
 end
