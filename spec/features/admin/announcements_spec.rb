@@ -26,7 +26,7 @@ describe 'ADMIN: Announcements' do
   end
   
  
-  it "fails announcements with overlapping dates" do
+  it "fails announcements with overlapping end date" do
     user
     click_link 'Announcements'
     click_link 'New Announcement'
