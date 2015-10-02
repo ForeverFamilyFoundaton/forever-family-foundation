@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Announcement do
   let(:announcement) { create(:announcement, start_date: 1.day.from_now, end_date: 5.days.from_now) }
+  let(:announcement_2) { build(:announcement, start_date: 5.days.from_now, body: "another test") }
 
   it 'is invalid without #button' do
     announcement.button = nil
@@ -31,10 +32,9 @@ describe Announcement do
   context 'validate overlapping dates' do
     before do
       announcement
+      announcement_2
     end
     it 'is invalid with overlapping dates' do
-      announcement_2 = build(:announcement, start_date: 5.days.from_now, body: "another test")
-      #expect(announcement_2.valid?).to eq false
       expect(announcement_2).not_to be_valid
     end
   end
