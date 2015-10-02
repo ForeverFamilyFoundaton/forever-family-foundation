@@ -1,22 +1,28 @@
 class Announcement < ActiveRecord::Base
-  attr_accessible :start_date, :end_date, :button, :link, :body
+  attr_accessible :id, :start_date, :end_date, :button, :link, :body
 
   validates :button, presence: true
   validates :link, presence: true
   validates :body, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validate :start_date_before_end_date
   validate :overlapping_dates
   validate :start_date_before_end_date
 
   def overlapping_dates
-    if Announcement.exists?(start_date: start_date..end_date) || Announcement.exists?(end_date: start_date..end_date)
-      errors.add(:base, "Conflicts with other Announcements (overlapping dates)")
-    end
+  		find_dates = Announcement.where(start_date: start_date..end_date).ids
+  		find_dates +=  Announcement.where(end_date: start_date..end_date).ids
+  		if (find_dates.count(id) < find_dates.count)
+  			errors.add(:base, "Conflicts with other Announcements (overlapping dates)")
+  		end
   end
 
+
   def start_date_before_end_date
-    errors.add(:end_date, "cannot be earlier than start date") if start_date > end_date
+    if start_date && end_date && start_date > end_date
+      errors.add(:end_date, "cannot be earlier than start date") 
+    end
   end
 
   def self.current
