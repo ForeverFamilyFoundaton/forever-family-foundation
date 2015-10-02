@@ -10,13 +10,12 @@ class Announcement < ActiveRecord::Base
   validate :start_date_before_end_date
 
   def overlapping_dates
-  		find_dates = Announcement.where(start_date: start_date..end_date).ids
-  		find_dates +=  Announcement.where(end_date: start_date..end_date).ids
-  		if (find_dates.count(id) < find_dates.count)
-  			errors.add(:base, "Conflicts with other Announcements (overlapping dates)")
+  	Announcement.find_each do | d |
+  		if (start_date <= d.end_date) && (end_date >= d.start_date) && (id != d.id)
+  			errors.add(:base, "Conflicts with other Announcements " + d.start_date.to_s + ", " + d.end_date.to_s)
   		end
+  	end
   end
-
 
   def start_date_before_end_date
     if start_date && end_date && start_date > end_date
