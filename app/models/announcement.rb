@@ -6,7 +6,6 @@ class Announcement < ActiveRecord::Base
   validates :body, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validate :start_date_before_end_date
   validate :overlapping_dates
   validate :start_date_before_end_date
 
