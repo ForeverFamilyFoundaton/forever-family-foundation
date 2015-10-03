@@ -1,5 +1,5 @@
 class Announcement < ActiveRecord::Base
-  attr_accessible :id, :start_date, :end_date, :button, :link, :body
+  attr_accessible :start_date, :end_date, :button, :link, :body
 
   validates :button, presence: true
   validates :link, presence: true

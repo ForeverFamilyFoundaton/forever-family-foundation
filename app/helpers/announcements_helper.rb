@@ -4,7 +4,6 @@ module AnnouncementsHelper
   end
 
   def current_announcement
-    return @curr_announcement if defined? @curr_announcement
     @curr_announcement = Announcement.current
   end
 
