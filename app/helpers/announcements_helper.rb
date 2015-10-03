@@ -4,7 +4,7 @@ module AnnouncementsHelper
   end
 
   def current_announcement
-    @current_announcement = Announcement.current
+    @curr_announcement = Announcement.current
   end
 
   def no_announcement
