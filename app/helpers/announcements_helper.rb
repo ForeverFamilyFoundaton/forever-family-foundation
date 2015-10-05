@@ -11,3 +11,4 @@ module AnnouncementsHelper
   	current_announcement.nil? or announcement_hidden?(current_announcement)
   end
 end
+
