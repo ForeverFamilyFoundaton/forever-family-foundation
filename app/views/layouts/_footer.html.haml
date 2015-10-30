@@ -1,39 +1,39 @@
 #footer
-  %p Forever Family Foundation, Inc., (FFF), makes a reasonable effort to insure that the information posted on our website is accurate and reliable, however FFF does not guarantee or warrant that the information on this website is complete, accurate, or up-to-date. FFF assumes no responsibility for the use or application of any posted material. This website is intended solely for the purpose of electronically providing the public with general subject related information and convenient access to data resources. In no event does FFF, its volunteers, staff, or agents assume responsibility or liability for any decision made or action taken by you in reliance on advice or information posted on this website. FFF's website links to websites maintained by other entities. Reasonable precautions are taken to link only to websites which are appropriate, accurate, and maintained by reputable organizations or individuals. However, those web pages are not under the control of FFF and FFF is not responsible for the information, advice, or opinions expressed in those linked sites or any of their links.
+  %p= I18n.t('footers.fff_disclaimer')
 
   %ul#footer_nav
     %li
-      %a{:href => '/site/after_life_discussion_group'} Afterlife Discussion Groups
+      %a{:href => '/site/after_life_discussion_group'}= t('navigation.site.afterlife_discussion_groups')
     %li
-      %a{:href => '/site/certified_mediums'} Certified Mediums
+      %a{:href => '/site/certified_mediums'}= t('navigation.site.certified_mediums')
     %li
-      %a{:href => '/site/signs_of_life_newsletter'} Signs Of Life Newsletter
+      %a{:href => '/site/signs_of_life_newsletter'}= t('navigation.site.signs_of_life_newsletter')
     %li
-      %a{:href => '/site/after_life_science'} Afterlife Science
+      %a{:href => '/site/after_life_science'}=t('navigation.site.afterlife_science')
     %li
-      %a{:href => '/site/grief_and_loss'} Grief and Loss
+      %a{:href => '/site/grief_and_loss'}= t('navigation.site.grief_and_loss')
     %li
-      %a{:href => '/site/support_and_information'} Support & information
+      %a{:href => '/site/support_and_information'}= t('navigation.site.support_and_information')
     %li
-      %a{:href => '/site/signs_of_life_radio'} Signs of life Radio
+      %a{:href => '/site/signs_of_life_radio'}= t('navbar.signs_of_life_radio')
     %li
-      %a{:href => '/events'} Events
+      %a{:href => '/events'}= t('navbar.events')
     %li
-      %a{:href => "/site/store"} FFF Store
+      %a{:href => "/site/store"}= t('navbar.fff_store')
     %li
-      %a{:href => '/site/volunteers'} Volunteers
+      %a{:href => '/site/volunteers'}= t('navbar.volunteers')
     %li
-      %a{:href => '/site/contributions'} Contributions
+      %a{:href => '/site/contributions'}= t('navbar.contributions')
     %li
-      %a{:href => '/users/sign_up'} Registration
+      %a{:href => '/users/sign_up'}= t('navigation.site.registration')
+    %li
+      %a{:href => '/site/privacy'}= t('navbar.privacy_policy')
+    %li
+      %a{:href => '/site/terms'}= t('navbar.terms_of_use')
+    %li
+      %a{:href => '/site/contact'}= t('navbar.contact')
     %li.last
-      All content © copyright 2009 UMEC. All rights reserved.
-    %li
-      %a{:href => '/site/privacy'} Privacy Policy
-    %li
-      %a{:href => '/site/terms'} Terms of use
-    %li.last
-      %a{:href => '/site/contact'} Contact
+      %p= t('footers.copy_right')
 
 %script(src="https://wms-na.amazon-adsystem.com/20070822/US/js/link-enhancer-common.js?tag=wwwforeverfam-20&linkId=HTGMGECVRAG4YU6R")
 

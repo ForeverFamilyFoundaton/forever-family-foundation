@@ -62,6 +62,10 @@ en:
     forgot_password: Forgot Password
     password_reset_mail_subject: Password Reset Instructions
 
+  footers:
+    fff_disclaimer: "Forever Family Foundation, Inc., (FFF), makes a reasonable effort to insure that the information posted on our website is accurate and reliable, however FFF does not guarantee or warrant that the information on this website is complete, accurate, or up-to-date. FFF assumes no responsibility for the use or application of any posted material. This website is intended solely for the purpose of electronically providing the public with general subject related information and convenient access to data resources. In no event does FFF, its volunteers, staff, or agents assume responsibility or liability for any decision made or action taken by you in reliance on advice or information posted on this website. FFF's website links to websites maintained by other entities. Reasonable precautions are taken to link only to websites which are appropriate, accurate, and maintained by reputable organizations or individuals. However, those web pages are not under the control of FFF and FFF is not responsible for the information, advice, or opinions expressed in those linked sites or any of their links."
+    copy_right: All content © copyright 2009-2015 UMEC. All rights reserved.
+
   flash:
     user:
       create:
