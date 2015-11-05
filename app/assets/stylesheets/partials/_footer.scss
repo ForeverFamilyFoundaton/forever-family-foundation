@@ -5,12 +5,12 @@
   margin:auto;
   text-align:center;
   p {
-    padding: $padd-top $padd-sides 0;
+    padding: $padd-top $padd-sides 0 $padd-sides;
     text-align:left;
   }
 
   ul#footer_nav{
-    padding:$padd-top $padd-sides 0 $padd-sides;
+    padding: 0 $padd-sides 0 $padd-sides;
     li {
       @include inline-block;
       border-right:1px solid $light-blue;
@@ -19,7 +19,7 @@
       font-size:11px;
       a {
         text-decoration:none;
-        padding:0 $padd-sides;
+        padding: 0 $padd-sides 0 $padd-sides;
         color:$light-blue;
         font-size:11px;
 
@@ -31,7 +31,7 @@
         border:0;
       }
       &.no_link {
-        padding-right:$padd-sides;
+        padding: 0 $padd-sides 0 $padd-sides;
       }
     }
   }
