@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.2.3'
 
 gem 'protected_attributes'
 
 gem 'rails', '~> 4.1.4'
-gem 'pg', '~> 0.17.1'
+gem 'pg', '~> 0.18'
 gem 'unicorn'
 # Gems used only for assets and not required
 # in production environments by default.
@@ -46,15 +46,16 @@ gem 'figaro'
 
 
 group :test do
+  gem 'rspec-rails', '~> 3.2.0'
   gem 'poltergeist', '~> 1.6.0'
   gem 'faker', '~> 1.4.1'
-  gem 'selenium-webdriver', '2.41.0'
+  gem 'selenium-webdriver', '~> 2.48'
   gem 'factory_girl_rails', '4.4.1'
   gem 'shoulda-matchers', '2.6.1'
   gem 'capybara', '2.4.4'
   gem 'database_cleaner', '~> 1.3.0', require: false
   gem 'email_spec', '~> 1.6.0'
-  gem 'webmock', '~> 1.18.0'
+  gem 'webmock', '~> 1.22'
   gem 'timecop', '~> 0.7.1'
   gem 'capybara-screenshot', '1.0.6'
 end
@@ -69,8 +70,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-stack_explorer'
-  gem 'rspec-nc'
-  gem 'rspec-rails', '~> 3.2.0'
 end
 
 gem 'rails_12factor', group: :production
