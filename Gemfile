@@ -43,6 +43,7 @@ gem 'ransack'
 gem "comma", "~> 3.2.1"
 gem 'delayed_job_active_record'
 gem 'figaro'
+gem 'net-ssh', '~> 3.0.1'
 
 
 group :test do
@@ -58,6 +59,7 @@ group :test do
   gem 'webmock', '~> 1.22'
   gem 'timecop', '~> 0.7.1'
   gem 'capybara-screenshot', '1.0.6'
+  gem 'rspec_junit_formatter', '0.2.2'
 end
 
 group :development do
