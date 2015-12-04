@@ -43,6 +43,7 @@ gem 'ransack'
 gem "comma", "~> 3.2.1"
 gem 'delayed_job_active_record'
 gem 'figaro'
+gem 'net-ssh', '~> 3.0.1'
 
 
 group :test do
