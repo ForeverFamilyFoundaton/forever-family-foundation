@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   has_many :profile_preferences, -> {where("preferences.preference_type = 'Profile'")},
     through: :user_preference_selections,
     source: :preference
+  has_many :subscription_preferences, -> {where("preferences.preference_type = 'Subscription'")},
+    through: :user_preference_selections,
+    source: :preference
   has_many :adg_preferences, -> { where("preferences.preference_type = 'ADG'") },
     through: :user_preference_selections,
     source: :preference
@@ -35,7 +38,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :family_members
 
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :terms_of_use, :is_business, :state, :fax, :enrolled_from, :id, :membership_number, :problems, :do_not_mail, :enrolled_at, :snail_mail
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :subscription_preference_ids, :terms_of_use, :is_business, :state, :fax, :enrolled_from, :id, :membership_number, :problems, :do_not_mail, :enrolled_at, :snail_mail
 
   validates_presence_of     :email
   validates_confirmation_of :email, :if => :email_changed?

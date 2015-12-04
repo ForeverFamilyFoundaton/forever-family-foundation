@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/ambethia/recaptcha.git
+  revision: fd5bb843a27f29847891f0301466afb94dd29956
+  specs:
+    recaptcha (0.6.0)
+      json
+
+GIT
   remote: git://github.com/stefanpenner/country_select.git
   revision: 0d9c97d795ded70c23fb3215e0e18905d6a99ed4
   specs:
@@ -523,6 +530,7 @@ DEPENDENCIES
   rails_12factor
   ranked-model (~> 0.4.0)
   ransack
+  recaptcha!
   redcarpet (~> 3.1.2)
   rspec-rails (~> 3.2.0)
   rspec_junit_formatter (= 0.2.2)

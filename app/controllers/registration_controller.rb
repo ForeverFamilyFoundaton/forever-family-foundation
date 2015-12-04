@@ -8,7 +8,7 @@ class RegistrationController < Devise::RegistrationsController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if verify_recaptcha && @user.save
       flash[:notice] = I18n.t('flash.user.create.success')
       sign_in(@user)
       if @user.is_business?

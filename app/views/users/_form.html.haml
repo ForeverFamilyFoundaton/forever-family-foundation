@@ -50,4 +50,14 @@
         %p.clear
           = check_box_tag "user[profile_preference_ids][]", profile_preference.id, @user.profile_preferences.include?(profile_preference)
           = profile_preference.name
+        %p.clear
+  .form_section
+    %h2 Subscription
+    .form_fields
+      - Preference.subscription_preferences.each do |s_preference|
+        %p.clear
+          = radio_button_tag "user[subscription_preference_ids][]", s_preference.id, @user.subscription_preferences.include?(s_preference)
+          = s_preference.name
+        %p.clear
+
 
