@@ -26,6 +26,23 @@
         -@family_members.each do |member|
           %li= member.name_and_relationship
 
+- unless Preference.profile_preferences.empty?
+  .form_section
+    %h2 Preferences
+    .form_fields
+      - Preference.profile_preferences.each do |p|
+        %p.clear
+          = check_box_tag "user[p_ids][]", p.id, @user.profile_preferences.include?(p), disabled: true
+          = p.name
+  .form_section
+    %h2 Subscription
+    .form_fields
+      - Preference.subscription_preferences.each do |s|
+        %p.clear
+          = radio_button_tag "user[s_ids][]", s.id, @user.subscription_preferences.include?(s), disabled: true
+          = s.name
+        %p.clear
+
 -if @business.present?
   .page_section
     %h2 Business Details
@@ -54,14 +71,14 @@
     %h2 Business Media
     .section_content
       %fieldset
-        %legend Bussines Card
+        %legend Business Card
         - if @business.business_card.present?
           = image_tag @business.business_card.attachment.url(:thumb)
         - else
           = link_to 'Upload', edit_user_business_path(@user,@business,step: 3)
 
       %fieldset
-        %legend Bussines logo
+        %legend Business logo
         - if @business.business_logo.present?
           = image_tag  @business.business_logo.attachment.url(:thumb)
         - else
