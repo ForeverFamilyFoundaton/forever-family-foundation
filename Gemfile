@@ -57,6 +57,7 @@ group :test do
   gem 'webmock', '~> 1.18.0'
   gem 'timecop', '~> 0.7.1'
   gem 'capybara-screenshot', '1.0.6'
+  gem 'rspec_junit_formatter', '0.2.2'
 end
 
 group :development do
