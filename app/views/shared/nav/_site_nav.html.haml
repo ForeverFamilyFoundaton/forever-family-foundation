@@ -1,5 +1,5 @@
 %ul.nav#site_nav
-  - if current_user and !current_user.biz? || !current_user.business.reg_complete?
+  - if current_user and !current_user.biz? || !current_user.business.registered?
     %li
       = link_to t('navigation.site.business_registration'), new_user_business_path(current_user)
 

@@ -2,7 +2,7 @@
   %h2 Personal Information
   .section_content
     %ul
-      %li= "Membership #: #{@user.membership_number}" 
+      %li= "Membership #: #{@user.membership_number}"
       %li= @user.full_name
       %li= @user.email
       - if @user.home_phone.present?
@@ -35,7 +35,7 @@
           = check_box_tag "user[p_ids][]", p.id, @user.profile_preferences.include?(p), disabled: true
           = p.name
   .form_section
-    %h2 Subscription
+    %h2 Free Subscription Options
     .form_fields
       - Preference.subscription_preferences.each do |s|
         %p.clear
@@ -52,7 +52,6 @@
         %li= @business.name
         %li= @business.address.address
         %li= [@business.address.city, @business.address.state].join(', ') + ' '  + @business.address.zip
-
       %h3 Business Contact:
       %ul
         %li= @business.contact_name
@@ -66,7 +65,10 @@
         %li= [@business.billing_address.city, @business.billing_address.state].join(', ') + ' ' + @business.billing_address.zip
 
       %p= link_to 'Edit Business Details', edit_user_business_path(@user,@business,step: 1)
-
+  .page_section
+    %h2 Business Payment
+    .section_content
+      %p= link_to 'Business Payment', user_business_payment_path(@user,@business,step: 1)
   .page_section
     %h2 Business Media
     .section_content

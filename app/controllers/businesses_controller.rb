@@ -63,9 +63,7 @@ class BusinessesController < ApplicationController
   end
 
   def register
-    params[:step] ||= session[:step]
-    session[:step] = params[:step].to_i
-    next_step = session[:step] + 1
+    next_step = params[:step].to_i + 1  #   session[:step] + 1
 
     @user = current_user
     @business = current_user.business
@@ -107,13 +105,13 @@ class BusinessesController < ApplicationController
   private
 
   def continue_registration
-    if session[:step].present?
-      if session[:step] == 2
+    if !params[:step].nil?
+      if params[:step]==2
         render :payment
       else
         redirect_to user_business_register_path(
           current_user, current_user.business,
-        step: session[:step] )
+        step: params[:step])
       end
     end
   end
