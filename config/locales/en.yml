@@ -90,7 +90,7 @@ en:
     business:
       reg_step_complete: "Completed step %{step} of business registration"
       create:
-        success: Business Account regestered! Please remember to return to your profile to update any changes in your contact information.
+        success: Business Account registered! Please remember to return to your profile to update any changes in your contact information.
       update:
         success: Business details updated successfully.
       payment:
@@ -98,7 +98,7 @@ en:
     adg:
       user_required: THERE IS NO COST TO ATTEND AN AFTERLIFE DISCUSSION GROUP, HOWEVER IT IS ONLY OPEN TO MEMBERS OF FOREVER FAMILY FOUNDATION.
       answers_updated: Afterlife Discusion Group registration completed
-    admin:    
+    admin:
       exports:
         create:
           notice: We will email you when the Export CSV is ready.

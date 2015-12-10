@@ -36,5 +36,9 @@ class Business < ActiveRecord::Base
   def reg_complete?
     completed_step == TOTAL_REG_STEPS
   end
+
+  def registered?
+    completed_step >= 1
+  end
 end
 
