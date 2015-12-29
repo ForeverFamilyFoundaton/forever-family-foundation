@@ -4,38 +4,23 @@ ruby '2.2.3'
 
 gem 'protected_attributes'
 
-gem 'rails', '~> 4.2', '>= 4.2.5'
+gem 'rails', '~> 4.1.4'
 gem 'pg', '~> 0.18'
-# gem 'unicorn'
-gem 'puma'
-
+gem 'unicorn'
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'actionmailer', '~> 4.2', '>= 4.2.5'
-gem 'actionpack', '~> 4.2', '>= 4.2.5'
-gem 'actionview', '~> 4.2', '>= 4.2.5'
-gem 'activejob', '~> 4.2', '>= 4.2.5'
-gem 'activemodel', '~> 4.2', '>= 4.2.5'
-gem 'activerecord', '~> 4.2', '>= 4.2.5'
-gem 'activesupport', '~> 4.2', '>= 4.2.5'
-gem 'railties', '~> 4.2', '>= 4.2.5'
-
-gem 'activeadmin', '1.0.0.pre1'
-gem 'devise', '~> 3.5.0'
-gem 'jquery-rails', '~> 4.0'
-gem 'jquery-ui-rails', '~> 5.0'
-#gem "sass-rails", "~> 4.0.2"
+gem 'jquery-rails', '~> 3.1.1'
+gem 'jquery-ui-rails', '4.2.1'
+gem "sass-rails", "~> 4.0.2"
 gem 'coffee-rails', '4.0.1'
 gem 'uglifier', '~> 2.5.0'
-gem 'compass-rails', '~> 2.0', '>= 2.0.4'
-gem 'compass-blueprint'
-gem 'sass-rails', '~> 5.0', '>= 5.0.1'
-gem 'sprockets', '~> 2.12', '>= 2.12.4'
-
+gem 'compass-rails', '~> 1.1.7'
 gem 'haml', '~> 4.0.5'
+gem 'devise', '~> 3.2.4'
 gem 'cancan', '~> 1.6.10'
+gem 'activeadmin', git: 'https://github.com/gregbell/active_admin', ref: '4f445b51c22b12af2cdde57fe2ce9835c32ef88e'
 gem 'state_machine'
-gem 'paperclip', '~> 4.3', '>= 4.3.2'
+gem 'paperclip', '4.2.0'
 gem 'fog', '1.34.0'
 gem 'acts_as_tree', '~> 1.6.1'
 gem 'redcarpet', '~> 3.1.2'
@@ -61,23 +46,21 @@ gem 'figaro'
 gem "recaptcha", require: "recaptcha/rails", github: "ambethia/recaptcha"
 gem 'net-ssh', '~> 3.0.1'
 
+
 group :test do
-  gem 'rspec-rails', '~> 3.4'
-  gem 'rspec-core', '~> 3.4', '>= 3.4.1'
-  gem 'capybara', '2.5.0'
-  gem 'poltergeist', '~> 1.8', '>= 1.8.1'
-  gem 'faker', '~> 1.6', '>= 1.6.1'
-
+  gem 'rspec-rails', '~> 3.2.0'
+  gem 'poltergeist', '~> 1.6.0'
+  gem 'faker', '~> 1.4.1'
   gem 'selenium-webdriver', '~> 2.48'
-  gem 'factory_girl_rails', '~> 4.5'
-  gem 'shoulda-matchers', '2.7.0'  # important unresolved in latest
-
-  gem 'database_cleaner', '~> 1.5.1', require: false
+  gem 'factory_girl_rails', '4.4.1'
+  gem 'shoulda-matchers', '2.6.1'
+  gem 'capybara', '2.4.4'
+  gem 'database_cleaner', '~> 1.3.0', require: false
   gem 'email_spec', '~> 1.6.0'
   gem 'webmock', '~> 1.22'
-  gem 'timecop', '~> 0.8.0'
-  gem 'capybara-screenshot', '1.0.11'
-  gem 'rspec_junit_formatter', '0.2.3'
+  gem 'timecop', '~> 0.7.1'
+  gem 'capybara-screenshot', '1.0.6'
+  gem 'rspec_junit_formatter', '0.2.2'
 end
 
 group :development do

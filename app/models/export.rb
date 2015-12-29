@@ -19,7 +19,7 @@ class Export < ActiveRecord::Base
   def save_csv
     self.file = File.new(generate_csv)
     save!
-    ExportMailer.ready(self).deliver_now
+    ExportMailer.ready(self).deliver
   end
   handle_asynchronously :save_csv
 
