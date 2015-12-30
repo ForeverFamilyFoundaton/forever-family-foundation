@@ -345,6 +345,7 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
+    puma (2.15.3)
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -378,7 +379,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
-    rb-fsevent (0.9.6)
+    rb-fsevent (0.9.7)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redcarpet (3.1.2)
@@ -526,6 +527,7 @@ DEPENDENCIES
   protected_attributes
   pry
   pry-stack_explorer
+  puma
   rails (~> 4.1.4)
   rails_12factor
   ranked-model (~> 0.4.0)
