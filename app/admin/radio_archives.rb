@@ -25,8 +25,8 @@ ActiveAdmin.register RadioArchive do
       recording_form.input :attachment, as: :file
     end
 
-    f.has_many :embeded_links do |embeded_link|
-      embeded_link.inputs "Embedded Links" do
+    f.inputs "Embedded Links" do
+      f.has_many :embeded_links do |embeded_link|    
         embeded_link.input :title
         embeded_link.input :body
       end

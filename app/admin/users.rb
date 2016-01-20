@@ -20,6 +20,8 @@ ActiveAdmin.register User do
   filter :address_state_contains
   filter :address_country_contains
   filter :preferences, as: :check_boxes
+  filter :profile_preferences, as: :check_boxes
+  filter :subscription_preferences, as: :check_boxes
 
   scope "Registered for ADG", :registered_for_adg
 
@@ -132,10 +134,17 @@ ActiveAdmin.register User do
     end
 
     table_for user.profile_preferences do
-      column "Preferences" do |question|
+      column "Profile Preferences" do |question|
         question.name
       end
     end
+
+    table_for user.subscription_preferences do
+      column "Subscription Preferences" do |question|
+        question.name
+      end
+    end
+
     table_for user.family_members do
       column :family_member, :name_and_relationship
     end
@@ -169,7 +178,8 @@ ActiveAdmin.register User do
       f.input :updated_at, start_year: 2004
       f.input :problems
       f.input :categories, as: :check_boxes
-      f.input :profile_preferences, as: :check_boxes
+      f.input :profile_preferences, as: :check_boxes, collection: Preference.profile_preferences
+      f.input :subscription_preferences, as: :check_boxes, collection: Preference.subscription_preferences
       f.inputs "Address", for: [:address, f.object.address || Address.new] do |address|
         address.input :address
         address.input :city
