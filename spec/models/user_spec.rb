@@ -12,6 +12,7 @@ describe User do
   it { should validate_uniqueness_of :membership_number }
   it { should have_many :preferences }
   it { should have_many :profile_preferences }
+  it { should have_many :subscription_preferences }
   it { should have_many :adg_preferences }
   it { should have_many(:categories).through(:user_categories) }  
 
