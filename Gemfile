@@ -12,7 +12,7 @@ gem 'puma'
 # in production environments by default.
 gem 'activeadmin', '~> 1.0.0.pre2'
 gem 'acts_as_tree', '~> 2.4.0'
-gem 'aws-sdk', '~> 2.2.12'
+gem 'aws-sdk', '< 2.0'
 gem 'bourbon', '~> 4.2.6'
 gem 'cancan', '~> 1.6.10'
 gem 'chronic', '~> 0.10.2'
