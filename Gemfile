@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.2.3'
-
+ruby '2.3.0'
 
 gem 'protected_attributes'
 
@@ -58,7 +57,7 @@ group :test do
   gem 'faker', '~> 1.6.1'
   gem 'poltergeist', '~> 1.8.1'
   gem 'rspec_junit_formatter', '0.2.3'
-  gem 'rspec-rails', '~> 3.2.0'
+  gem 'rspec-rails', '~> 3.4.0'
   gem 'selenium-webdriver', '~> 2.48'
   gem 'shoulda-matchers', '2.8.0'
   gem 'timecop', '~> 0.8.0'
