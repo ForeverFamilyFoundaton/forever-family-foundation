@@ -12,7 +12,7 @@ ActiveAdmin.register Preference do
   form do |f|
     f.inputs 'Details' do
       f.input :name
-      f.input :preference_type, as: :select, collection: ['ADG', 'Profile']
+      f.input :preference_type, as: :select, collection: ['ADG', 'Profile', 'Subscription']
     end
     f.actions
   end
