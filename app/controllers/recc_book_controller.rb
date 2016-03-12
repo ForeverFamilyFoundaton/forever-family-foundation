@@ -1,0 +1,2 @@
+class ReccBookController < ApplicationController
+end
