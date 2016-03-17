@@ -19,7 +19,7 @@ button::-moz-focus-inner {
 //  text-shadow: 0px -1px 1px rgba(0, 0, 0, .8);
 
   &:hover {
-    @include linear-gradient(top, #f37873 0%, #db504d 50%, #cb0500 50%, #a20601 100%);
+    @include linear-gradient(top, #A5CE9C 0%, #00B800 50%, #00B800 50%, #A5CE9C 100%);
     cursor: pointer;
   }
 
