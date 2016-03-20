@@ -1,11 +1,10 @@
-ActiveAdmin.register ReccBookCategory do |variable|
+ActiveAdmin.register RecommendedBookCategory do 
   menu false
   config.filters = false
 
   index do
     column :id
     column :name
-    #column :reccbookcat_id
 
     actions
   end
@@ -13,7 +12,6 @@ ActiveAdmin.register ReccBookCategory do |variable|
   form do |f|
     f.inputs 'Details' do
       f.input :name
-      #f.input :reccbookcat_id
     end
     f.actions
   end
