@@ -1,0 +1,12 @@
+- RecommendedBookCategory.all.select do |s|
+  .page_section
+    %h2= s.name 
+    %br
+    - RecommendedBookGroup.where("recommended_book_category_id = ?", s.id).select do |recc_group|
+      
+      - RecommendedBook.where("id = ?", recc_group.recommended_book_id).select do |recc_book|
+
+        %a= link_to recc_book.title, recc_book.amazon_link
+        %p= recc_book.author
+    %br
+-# = paginate @recc_books

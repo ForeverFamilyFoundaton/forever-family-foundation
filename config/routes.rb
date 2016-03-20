@@ -15,6 +15,7 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   resources :events
   resources :radio_archives
+  resources :recommended_book
   resource :adg_registration
 
   get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
