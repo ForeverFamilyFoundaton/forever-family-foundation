@@ -6,7 +6,7 @@
       
       - RecommendedBook.where("id = ?", recc_group.recommended_book_id).select do |recc_book|
 
-        %a= link_to recc_book.title, recc_book.amazon_link
+        %a= link_to recc_book.title, recc_book.amazon_link, :target => "_blank"
         %p= recc_book.author
     %br
--# = paginate @recc_books
+
