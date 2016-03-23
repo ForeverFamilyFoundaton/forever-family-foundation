@@ -6,7 +6,7 @@
       
       - RecommendedBook.where("id = ?", recc_group.recommended_book_id).select do |recc_book|
 
-        %a= link_to recc_book.title, recc_book.amazon_link, :target => "_blank"
+        %a= link_to image_tag(recc_book.title + ".jpg"), recc_book.amazon_link, :target => "_blank"
         %p= recc_book.author
     %br
 
