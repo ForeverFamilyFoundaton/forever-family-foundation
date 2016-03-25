@@ -12,7 +12,7 @@ describe "events/index" do
   end
 
   it "should display date only once" do
-    date = "#{@start_time.utc.to_s(:ordinal_date)} " + [@start_time.utc.strftime("%I:%M %p"), @end_time.utc.strftime("%I:%M %p")].join(' - ')
+    date = "#{@start_time.utc.to_s(:ordinal_date)} " + [@start_time.utc.strftime("%l:%M %p"), @end_time.utc.strftime("%l:%M %p")].join(' - ')
     render
     expect(rendered).to include(date)
   end
