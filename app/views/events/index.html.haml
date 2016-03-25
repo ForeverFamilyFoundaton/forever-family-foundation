@@ -1,10 +1,14 @@
-%h3 Upcoming Events
 %ul.events
   - @events.each do |event|
-    %li
+    .page_section
+      %h2= event.times.gsub!(/0(\d:\d\d)/,' \1')
+      %div{:class => "center-block"}
+      %br
       - if !event.url.blank?
-        %h4=link_to event.title, event.url, target: '_blank'
+        %center
+          %h4= link_to event.title, event.url, target: '_blank'
       - else
-        %h4=link_to event.title, event
-      %h5= event.times
+        %center
+          %h4= link_to event.title, event
+      -#%h5= event.times
       %p= truncate_html event.description, length: 200
