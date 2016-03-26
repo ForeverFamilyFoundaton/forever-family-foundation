@@ -1,9 +1,8 @@
 %ul.events
   - @events.each do |event|
     .page_section
-      %h2= event.times.gsub!(/0(\d:\d\d)/,' \1')
+      %h2= event.times
       %div{:class => "center-block"}
-      %br
       - if !event.url.blank?
         %center
           %h4= link_to event.title, event.url, target: '_blank'
