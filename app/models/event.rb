@@ -4,12 +4,12 @@ class Event < ActiveRecord::Base
   validates_presence_of :end_time
   validates_presence_of :title
 
-  attr_accessible :start_time, :end_time, :title, :description, :url
+  attr_accessible :start_time, :end_time, :title, :description, :url, :pic_link
 
   scope :upcoming, -> { where("start_time >= ?", Time.now).order('start_time asc').limit(4) }
   scope :all_upcoming, -> { where("start_time >= ?", Time.now).order('start_time asc') }
 
-  attr_accessible :title, :url, :description, :start_time, :end_time
+  attr_accessible :title, :url, :pic_link, :description, :start_time, :end_time
 
   def times
     if start_time.day == end_time.day
