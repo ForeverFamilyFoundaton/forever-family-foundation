@@ -25,6 +25,7 @@ ActiveAdmin.register Event do
     f.inputs 'Details' do
       f.input :title
       f.input :url
+      f.input :pic_link
       f.input :description
       f.input :start_time
       f.input :end_time

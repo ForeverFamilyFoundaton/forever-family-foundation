@@ -2,12 +2,16 @@
   - @events.each do |event|
     .page_section
       %h2= event.times
-      %div{:class => "center-block"}
-      - if !event.url.blank?
-        %center
-          %h4= link_to event.title, event.url, target: '_blank'
-      - else
-        %center
-          %h4= link_to event.title, event
-      -#%h5= event.times
-      %p= truncate_html event.description, length: 200
+      
+      - if !event.pic_link.blank?
+        .event_pic
+          %a= image_tag(event.pic_link, width: "90em")
+      %div{:class => "inline-block"}
+        - if !event.url.blank?
+          %center
+            %h4= link_to event.title, event.url, target: '_blank'
+        - else
+          %center
+            %h4= link_to event.title, event
+        -#%h5= event.times
+        %p= truncate_html event.description, length: 200
