@@ -34,7 +34,7 @@ describe Event do
     let(:date) { Event.new(title: "hello", start_time: Time.now, end_time: Time.now + 1.minute) }
 
     it "should format with one day" do
-      same_date = "#{date.start_time.to_s(:ordinal_date)} " + [date.start_time.strftime("%l:%M %p"), date.end_time.strftime("%I:%M %p")].join(' - ')
+      same_date = "#{date.start_time.to_s(:ordinal_date)} " + [date.start_time.strftime("%l:%M %p"), date.end_time.strftime("%l:%M %p")].join(' - ')
       expect(date.times).to eq(same_date)
     end
   end

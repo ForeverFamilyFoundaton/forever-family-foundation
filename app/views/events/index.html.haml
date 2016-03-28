@@ -5,7 +5,7 @@
       
       - if !event.pic_link.blank?
         .event_pic
-          %a= image_tag(event.pic_link, width: "90em")
+          %a= link_to image_tag(event.pic_link, width: "90em"), event.url, target: '_blank'
       %div{:class => "inline-block"}
         - if !event.url.blank?
           %center
