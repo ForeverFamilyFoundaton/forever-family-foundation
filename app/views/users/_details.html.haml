@@ -1,5 +1,5 @@
 .page_section
-  %h2 Personal Information
+  %h2.page_section_header Personal Information
   .section_content
     %ul
       %li= "Membership #: #{@user.membership_number}"
@@ -20,22 +20,22 @@
 
 -if @family_members.present?
   .page_section
-    %h2 Family Members
-    .section_content
+    %h2.page_section_header Family Members
+    .page_section_content
       %ul
         -@family_members.each do |member|
           %li= member.name_and_relationship
 
 - unless Preference.profile_preferences.empty?
   .form_section
-    %h2 Preferences
+    %h2.form_section_header Preferences
     .form_fields
       - Preference.profile_preferences.each do |p|
         %p.clear
           = check_box_tag "user[p_ids][]", p.id, @user.profile_preferences.include?(p), disabled: true
           = p.name
   .form_section
-    %h2 Free Subscription Options
+    %h2.form_section_header Free Subscription Options
     .form_fields
       - Preference.subscription_preferences.each do |s|
         %p.clear
@@ -45,7 +45,7 @@
 
 -if @business.present?
   .page_section
-    %h2 Business Details
+    %h2.form_section_header Business Details
     .section_content
       %h3 Business Address:
       %ul
@@ -66,11 +66,11 @@
 
       %p= link_to 'Edit Business Details', edit_user_business_path(@user,@business,step: 1)
   .page_section
-    %h2 Business Payment
+    %h2.form_section_header Business Payment
     .section_content
       %p= link_to 'Business Payment', user_business_payment_path(@user,@business,step: 1)
   .page_section
-    %h2 Business Media
+    %h2.form_section_header Business Media
     .section_content
       %fieldset
         %legend Business Card
@@ -99,8 +99,8 @@
 
       %p= link_to 'Edit Business Media', edit_user_business_path(@user,@business,step: 3)
 
-  .page_section
-    %h2 Promotional Media
+  .form_section
+    %h2.form_section_header Promotional Media
     .section_content
 
       %fieldset

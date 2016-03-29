@@ -1,7 +1,7 @@
 %ul.events
   - @events.each do |event|
     .page_section
-      %h2= event.times
+      %h2.page_section_header= event.times
       
       - if !event.pic_link.blank?
         .event_pic
