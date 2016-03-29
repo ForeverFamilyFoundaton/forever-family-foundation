@@ -12,7 +12,7 @@
   ul#footer_nav{
     padding: 0 $padd-sides 0 $padd-sides;
     li {
-      @include inline-block;
+      display: inline-block;
       border-right:1px solid $light-blue;
       margin:$padd-sides/2 0;
       color:$light-blue;
