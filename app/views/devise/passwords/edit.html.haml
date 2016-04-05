@@ -1,6 +1,6 @@
 = render "shared/error_messages", :target => @user
 .form_section
-  %h2 New Password
+  %h2.form_section_header New Password
   .form_fields
     = simple_form_for(@user, :as => @user, :url => user_password_path, :html => { :method => :put }) do |f|
       = f.input :reset_password_token, as: :hidden

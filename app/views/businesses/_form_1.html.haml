@@ -1,7 +1,7 @@
 = render "shared/error_messages", :target => @business
 = hidden_field_tag :step, 1
 .form_section
-  %h2 Business information
+  %h2.form_section_header Business information
   .form_fields
     .group.biz_address
       = f.input :name, label: t('name_of_business')
@@ -19,7 +19,7 @@
       = f.input :fax, label: t('labels.fax_number')
 
 .form_section
-  %h2 Billing Address
+  %h2.form_section_header Billing Address
   .form_fields
     %p.use_biz_address
       = check_box_tag :use_biz_address
