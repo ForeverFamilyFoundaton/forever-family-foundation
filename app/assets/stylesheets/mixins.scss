@@ -3,7 +3,7 @@
   margin: 0;
 
   li {
-    @include inline-block;
+    display: inline-block;
 
     margin:0;
     padding:0 10px;
