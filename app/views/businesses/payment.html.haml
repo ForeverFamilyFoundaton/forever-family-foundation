@@ -1,7 +1,7 @@
 = render("shared/error_messages", target: @business) if @business
 = simple_form_for :credit_card, :url => user_business_payment_path(@user, @business) do |f|
   .form_section
-    %h2 Payment Information
+    %h2.form_section_header Payment Information
     .form_fields
       = hidden_field_tag :step, 2
       = f.input :name, label: I18n.t('labels.credit_card_name')
