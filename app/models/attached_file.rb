@@ -1,13 +1,19 @@
+require 'filemagic'
+
 class AttachedFile < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
   
   paperclip_opts = { styles: { thumb: '200x200>' } }
-  if Rails.env.production?
+
+  # April 10, 2016 
+  # This block setup to use S3 in development and production environments
+  #
+  if Rails.env.production? || Rails.env.development?
     paperclip_opts.merge!(
       {
         storage: :s3,
         s3_credentials: {
-          bucket: 'fff_attached_files',
+          bucket: ENV['AWS_S3_BUCKET_NAME'],
           access_key_id: ENV['AWS_ACCESS_KEY_ID'],
           secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
         }
@@ -16,6 +22,18 @@ class AttachedFile < ActiveRecord::Base
   end
 
   has_attached_file :attachment, paperclip_opts
+
+  before_save :set_content_type
+
+  #
+  # ensure the content-type on S3 is correct, there has been some problems with it in FFF usage
+  #
+  def set_content_type
+    self.attachment.options.merge!(s3_headers: {
+                                    'Content-Type' => self.attachment_content_type || 'text/plain'
+                                    })
+    self.attachment.send :initialize_storage
+  end
 
   do_not_validate_attachment_file_type :attachment
 
@@ -31,3 +49,4 @@ class AttachedFile < ActiveRecord::Base
   end
 
 end
+

@@ -25,6 +25,8 @@
       %ul
         -@family_members.each do |member|
           %li= member.name_and_relationship
+      
+    %a= link_to 'Edit Personal Information', edit_user_registration_path
 
 - unless Preference.profile_preferences.empty?
   .form_section
@@ -34,6 +36,9 @@
         %p.clear
           = check_box_tag "user[p_ids][]", p.id, @user.profile_preferences.include?(p), disabled: true
           = p.name
+      
+    %a= link_to 'Edit Personal Information', edit_user_registration_path
+
   .form_section
     %h2.form_section_header Free Subscription Options
     .form_fields
@@ -42,6 +47,7 @@
           = radio_button_tag "user[s_ids][]", s.id, @user.subscription_preferences.include?(s), disabled: true
           = s.name
         %p.clear
+    %a= link_to 'Edit Personal Information', edit_user_registration_path
 
 -if @business.present?
   .page_section

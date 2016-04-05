@@ -2,7 +2,8 @@
 !!!
 %html{html_attrs}
   %head
-    %title= t("site_name")
+    = t = request.path
+    %title= t("site_name") + " - " + t[/.*\/(.*)/,1].gsub(/_/," ").capitalize
     = favicon_link_tag "favicon.ico"
     = stylesheet_link_tag    'application'
     = javascript_include_tag 'https://js.stripe.com/v1/'

@@ -1,5 +1,5 @@
 .form_section
-  %h2 Login Info
+  %h2.form_section_header Login Info
   .form_fields
     .group
       = form.input :email, label: t('labels.email'), required: true
@@ -8,10 +8,13 @@
       .group
         = form.input :password, label: t('labels.password'), required: true
         = form.input :password_confirmation, label: t('labels.password_confirmation'), required: true, :class => 'password'
-        %p.red * Minimum 6 characters
+        %p.red Password minimum 6 characters
+        %br
+        %p.red ATTENTION
+        %p Before registering as a New Member, please be sure that this is the first time you are registering. Duplicate memberships create unnecessary expenses for the foundation. If you are unsure about your membership status, try logging in using all email addresses that you may have used in the past. 
 
 .form_section
-  %h2 Basic Info
+  %h2.form_section_header Basic Info
   .form_fields
     .group
       = form.input :first_name, label: t('labels.first_name'), required: true
@@ -21,7 +24,10 @@
       = form.input :cell_phone, label: t('labels.cell_phone')
       = form.input :home_phone, label: t('labels.home_phone')
       = form.input :work_phone, label: t('labels.work_phone')
-
+    %br
+    %p.red PLEASE BE CAREFUL
+    %p to accurately enter your address fields as returned mail depletes vital foundation funds.
+    %br
     = form.fields_for :address do |address_form|
       .group
         = address_form.input :address, label: t('labels.address'), required: true
@@ -31,10 +37,10 @@
         = address_form.input :country, priority: ["United States"], input_html: { class: :country }
 
 
-    %p.red * Please be careful to accurately enter your address fields as returned mail depletes vital foundation funds.
+
 
 .form_section
-  %h2 Family Members
+  %h2.form_section_header Family Members
   .form_fields
     = form.fields_for :family_members do |family_member_form|
       .group
@@ -44,7 +50,7 @@
 
 - unless Preference.profile_preferences.empty?
   .form_section
-    %h2 Profile Preferences
+    %h2.form_section_header Profile Preferences
     .form_fields
       - Preference.profile_preferences.each do |profile_preference|
         %p.clear
@@ -52,7 +58,7 @@
           = profile_preference.name
         %p.clear
   .form_section
-    %h2 Free Subscription Options
+    %h2.form_section_header Free Subscription Options
     .form_fields
       - Preference.subscription_preferences.each do |s_preference|
         %p.clear
