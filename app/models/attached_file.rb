@@ -2,12 +2,16 @@ class AttachedFile < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
   
   paperclip_opts = { styles: { thumb: '200x200>' } }
-  if Rails.env.production?
+
+  # April 10, 2016 
+  # This block setup to use S3 in development and production environments
+  #
+  if Rails.env.production? || Rails.env.development?
     paperclip_opts.merge!(
       {
         storage: :s3,
         s3_credentials: {
-          bucket: 'fff_attached_files',
+          bucket: ENV['AWS_S3_BUCKET_NAME'],
           access_key_id: ENV['AWS_ACCESS_KEY_ID'],
           secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
         }
