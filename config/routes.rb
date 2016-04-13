@@ -17,9 +17,13 @@ ForeverFamilyFoundation::Application.routes.draw do
   resources :radio_archives
   resources :recommended_book
   resource :adg_registration
+  resource :redirects
 
   get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
   get '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'
+
+  get '/certifiedmediums' => 'redirects#certifiedmediums'
+  get '/hello' => 'redirects#hello'
 
   resources :users do
     get :confirm
