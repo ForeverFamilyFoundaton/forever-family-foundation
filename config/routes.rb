@@ -17,9 +17,21 @@ ForeverFamilyFoundation::Application.routes.draw do
   resources :radio_archives
   resources :recommended_book
   resource :adg_registration
+  resource :redirects
 
   get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
   get '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'
+
+  # Redirects
+  get '/certifiedmediums' => 'redirects#certified_mediums'
+  get '/Suicide' => 'redirects#suicide'
+  get '/contributions' => 'redirects#contributions'
+  get '/signsofliferadio' => 'redirects#signs_of_life_radio'
+  get '/signsofliferadioLISTEN' => 'redirects#signs_of_life_radio'
+  get '/radio' => 'redirects#signs_of_life_radio'
+  get '/radio2007' => 'redirects#signs_of_life_radio'
+  get '/SanFransiscoTravel' => 'redirects#home_page'
+  get '/NewYork2008CC' => 'redirects#home_page'
 
   resources :users do
     get :confirm
