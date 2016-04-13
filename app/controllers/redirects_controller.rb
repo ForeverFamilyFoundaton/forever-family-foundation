@@ -17,4 +17,10 @@ class RedirectsController < ApplicationController
   def events
     redirect_to :events, :status => :moved_permanently
   end
+  def recommended_books
+    redirect_to :recommended_book_index, :status => :moved_permanently
+  end
+  def guest_house_brochure
+    redirect_to "http://s3.amazonaws.com/fff_attached_files/attached_files/attachments/000/000/433/original/TheGuestHouse-brochure.pdf?2014", :status => :moved_permanently
+  end
 end
