@@ -13,6 +13,8 @@ ActiveAdmin.register AttachedFile do
     column 'Type' do |q|
       q.attachment_content_type
     end
+    column :updated_at
+    
     column "Actions" do |q|
       link_to "Delete", admin_attached_file_path(q, method: :delete)
     end
