@@ -23,4 +23,7 @@ class RedirectsController < ApplicationController
   def guest_house_brochure
     redirect_to "http://s3.amazonaws.com/fff_attached_files/attached_files/attachments/000/000/433/original/TheGuestHouse-brochure.pdf?2014", :status => :moved_permanently
   end
+  def sitemap
+    redirect_to "http://s3.amazonaws.com/fff_attached_files/attached_files/attachments/000/000/671/original/sitemap_forever.xml?2016" #, :status => :moved_permanently
+  end
 end

@@ -22,7 +22,11 @@ ForeverFamilyFoundation::Application.routes.draw do
   get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
   get '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'
 
+
+  #get '/sitemap.xml', to: redirect("http://s3.amazonaws.com/fff_attached_files/attached_files/attachments/000/000/670/original/sitemap.xml?2016"), as: :sitemap
+
   # Redirects
+  get '/sitemap' => 'redirects#sitemap' #'http://s3.amazonaws.com/fff_attached_files/attached_files/attachments/000/000/670/original/sitemap.xml?2016'
   get '/certifiedmediums' => 'redirects#certified_mediums'
   get '/Suicide' => 'redirects#suicide'
   get '/contributions' => 'redirects#contributions'
