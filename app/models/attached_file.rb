@@ -1,3 +1,5 @@
+require 'filemagic'
+
 class AttachedFile < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
   
@@ -21,6 +23,18 @@ class AttachedFile < ActiveRecord::Base
 
   has_attached_file :attachment, paperclip_opts
 
+  before_save :set_content_type
+
+  #
+  # ensure the content-type on S3 is correct, there has been some problems with it in FFF usage
+  #
+  def set_content_type
+    self.attachment.options.merge!(s3_headers: {
+                                    'Content-Type' => self.attachment_content_type || 'text/plain'
+                                    })
+    self.attachment.send :initialize_storage
+  end
+
   do_not_validate_attachment_file_type :attachment
 
   attr_accessible :attachment, :kind
@@ -35,3 +49,4 @@ class AttachedFile < ActiveRecord::Base
   end
 
 end
+
