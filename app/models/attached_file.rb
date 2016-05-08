@@ -1,5 +1,3 @@
-require 'filemagic'
-
 class AttachedFile < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
   
