@@ -6,6 +6,6 @@ class Address < ActiveRecord::Base
   attr_accessible :address, :city, :state, :zip, :country
 
   def to_s
-    "#{address} #{city}, #{state} #{zip} #{country}"
+    "#{address}, #{city}, #{state}, #{zip}, #{country}"
   end
 end
