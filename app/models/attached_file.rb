@@ -24,9 +24,27 @@ class AttachedFile < ActiveRecord::Base
   before_save :set_content_type
 
   #
-  # ensure the content-type on S3 is correct, there has been some problems with it in FFF usage
+  # explicitly set some content_type using file extension
+  # if not one of the explicits, then default to what paperclip thinks it is
   #
   def set_content_type
+    extension = File.extname(attachment_file_name).downcase
+    case extension
+      when '.pdf'
+        self.attachment_content_type = 'application/pdf'
+      when '.txt', ''
+        self.attachment_content_type = 'text/plain'
+      when '.csv.'
+        self.attachment_content_type = 'text/csv'
+      when '.jpg'
+        self.attachment_content_type = 'image/jpeg'
+      when '.png'
+        self.attachment_content_type = 'image/png'
+      when '.xml'
+        self.attachment_content_type = 'text/xml'
+      when '.bmp'
+        self.attachment_content_type = 'image/bmp'
+    end
     self.attachment.options.merge!(s3_headers: {
                                     'Content-Type' => self.attachment_content_type || 'text/plain'
                                     })
