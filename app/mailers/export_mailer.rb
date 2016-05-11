@@ -3,6 +3,6 @@ class ExportMailer < ActionMailer::Base
 
   def ready(export)
     @export = export
-    mail(to: "4everfam@optonline.net", subject: "Users export ready")
+    mail(to: "director@foreverfamilyfoundation.com", subject: "Users export ready")
   end
 end
