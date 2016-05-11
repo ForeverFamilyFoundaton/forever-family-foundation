@@ -5,7 +5,7 @@ class Address < ActiveRecord::Base
   validates_presence_of :address, :city, :state, :zip
   attr_accessible :address, :city, :state, :zip, :country
 
-  # def to_s
-  #   "#{address}, #{city}, #{state}, #{zip}, #{country}"
-  # end
+  def to_s
+    "#{address} #{city}, #{state} #{zip} #{country}"
+  end
 end
