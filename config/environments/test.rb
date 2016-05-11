@@ -34,5 +34,9 @@ ForeverFamilyFoundation::Application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000'}
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  ENV['RECAPTCHA_PUBLIC_KEY'] = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+  ENV['RECAPTCHA_PRIVATE_KEY'] = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+  
 end
 
