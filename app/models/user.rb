@@ -76,7 +76,11 @@ class User < ActiveRecord::Base
     categories do |categories|
       categories.map(&:name).to_sentence
     end
-    address
+    address :address
+    address :city
+    address :state
+    address :zip
+    address :country
     enrolled_from
     enrolled_at
     snail_mail
