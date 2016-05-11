@@ -18,7 +18,7 @@ RSpec.describe ExportMailer, :type => :mailer do
 
     it "renders the headers" do
       expect(mail.subject).to eq("Users export ready")
-      expect(mail.to).to eq(["4everfam@optonline.net"])
+      expect(mail.to).to eq(["director@foreverfamilyfoundation.com"])
       expect(mail.from).to eq(["admin@foreverfamilyfoundation.com"])
     end
 
