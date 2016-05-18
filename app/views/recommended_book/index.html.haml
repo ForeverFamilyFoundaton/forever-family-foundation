@@ -5,7 +5,7 @@
     - RecommendedBookGroup.where("recommended_book_category_id = ?", s.id).select do |recc_group|
       
       - RecommendedBook.where("id = ?", recc_group.recommended_book_id).select do |recc_book|
-        %p= raw(recc_book.amazon_link)
+        = raw(recc_book.amazon_link)
         %p= recc_book.author
     %br
 
