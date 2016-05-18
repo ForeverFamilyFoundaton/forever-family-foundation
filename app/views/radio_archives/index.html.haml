@@ -20,6 +20,6 @@
           %legend Books &amp; Links
           %ul
             - archive.embeded_links.each do |embeded_link|
-              %li= embeded_link.body.html_safe
+              %li= raw(embeded_link.body)
 
 = paginate @archives
