@@ -37,9 +37,9 @@ gem 'non-stupid-digest-assets'
 gem 'paperclip', '4.3.6' # '4.3.2' use with 'aws-sdk', '< 2.0'
 gem 'ranked-model', '~> 0.4.0'
 gem 'ransack'
-gem 'recaptcha', '1.0.2', require: "recaptcha/rails"
+#gem 'recaptcha', '2.0.0'  #'1.0.2', require: "recaptcha/rails"
+gem "recaptcha", require: "recaptcha/rails"
 gem 'redcarpet', '~> 3.3.4'
-#gem 'ruby-filemagic', '~> 0.7.1'
 gem "sass-rails", "~> 5.0.4"
 gem 'simple_form', '~> 3.0'
 gem 'state_machine'

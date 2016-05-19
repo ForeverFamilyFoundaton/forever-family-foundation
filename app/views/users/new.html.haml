@@ -5,4 +5,6 @@
   = f.input :is_business, label: t('labels.business_reg_acceptance_html'), title: 'Business Registration', as: :boolean, require: true
   = recaptcha_tags
   = render :partial => 'shared/form_submit', :locals => { :text => t('register') }
+  //<div class="g-recaptcha" data-sitekey="6LeZQBITAAAAAIw5BhrgviCX5N-mSDYrvLEhE9et"></div>
+  .g-recaptcha{ 'data-sitekey' => '6LeZQBITAAAAAIw5BhrgviCX5N-mSDYrvLEhE9et' }
 
