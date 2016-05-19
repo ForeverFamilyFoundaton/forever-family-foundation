@@ -1,3 +1,6 @@
+#
+# New users are created in RegistrationController
+#
 class UsersController < ApplicationController
 
   def show
