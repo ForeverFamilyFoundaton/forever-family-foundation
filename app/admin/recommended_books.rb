@@ -18,6 +18,8 @@ ActiveAdmin.register RecommendedBook do
       row :title
       row :author
       row :amazon_link
+      row :uk_amazon_link
+      row :cad_amazon_link
       table_for recc_book.recommended_book_categories do
         column "Book Categories" do |f|
           f.name
@@ -31,6 +33,8 @@ ActiveAdmin.register RecommendedBook do
       f.input :title
       f.input :author
       f.input :amazon_link
+      f.input :uk_amazon_link
+      f.input :cad_amazon_link
       f.input :recommended_book_categories, as: :check_boxes
     end
     f.actions

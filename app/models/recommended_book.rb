@@ -6,6 +6,7 @@ class RecommendedBook < ActiveRecord::Base
   validates :title, presence: true
   
   attr_accessible :title, :category, :author, :amazon_link, :recommended_book_category_ids, :recommended_book_ids
+  attr_accessible :uk_amazon_link, :cad_amazon_link
 
 
 end

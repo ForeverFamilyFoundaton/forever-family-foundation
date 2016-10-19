@@ -1,11 +1,17 @@
+
+= javascript_include_tag 'recommended_books.js'
+
 - RecommendedBookCategory.all.select do |s|
   .page_section
     %h2.page_section_header= s.name 
-    %br
     - RecommendedBookGroup.where("recommended_book_category_id = ?", s.id).select do |recc_group|
-      
-      - RecommendedBook.where("id = ?", recc_group.recommended_book_id).select do |recc_book|
-        = raw(recc_book.amazon_link)
-        %p= recc_book.author
-    %br
+      .page_section_content
+        - RecommendedBook.where("id = ?", recc_group.recommended_book_id).select do |recc_book|
+          .amazonauthor= raw(recc_book.amazon_link)
+          %p.amazonauthor= recc_book.author
+          .amazonbutton
+            %p.shrinkwrap= "Available at " 
+            .usamazonbutton= raw(recc_book.amazon_link) if !recc_book.amazon_link.blank?
+            .ukamazonbutton= raw(recc_book.uk_amazon_link) if !recc_book.uk_amazon_link.blank?
+            .cadamazonbutton= raw(recc_book.cad_amazon_link) if !recc_book.cad_amazon_link.blank?
 
