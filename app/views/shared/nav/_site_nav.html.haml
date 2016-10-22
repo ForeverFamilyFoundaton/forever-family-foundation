@@ -4,13 +4,18 @@
       = link_to t('navigation.site.business_registration'), new_user_business_path(current_user)
 
   %li
+    = link_to t('navigation.global.events'), events_path 
+  %li
     = link_to t('navigation.site.after_life_discussion_group'), '/site/after_life_discussion_group'
+  %li
+    = link_to t("navigation.site.after_life_science"), '/site/after_life_science'
   %li.current
-    = link_to t("navigation.site.certified_mediums"), '/site/certified_mediums'
+    = link_to t('navigation.global.signs_of_life_radio'), '/site/signs_of_life_radio'
   %li
     = link_to t("navigation.site.signs_of_life_magazine"), '/site/signs_of_life_newsletter'
   %li
-    = link_to t("navigation.site.after_life_science"), '/site/after_life_science'
+  %li
+    = link_to t("navigation.site.certified_mediums"), '/site/certified_mediums'
   %li
     = link_to t("navigation.site.grief_and_loss"), '/site/grief_and_loss'
   %li
@@ -18,6 +23,10 @@
   %li
     = link_to t("navigation.Recommended_Books"), '/recommended_book'
   %li
-    =# link_to t("navigation.site.calendar_of_events"), events_path
   %li
-    =# link_to t("navigation.site.registration"), new_account_path
+    = link_to t('navigation.global.volunteers'), '/site/volunteers'
+  %li
+    = link_to t('navigation.global.store'), '/site/store'
+  %li.last
+    = link_to t('navigation.global.contributions'), '/site/contributions'
+      
