@@ -4,14 +4,14 @@ en:
     global:
       adg_registration: Afterlife Discussion Group Enrollment
       signs_of_life_radio: Signs of Life Radio
-      events: Events
+      events: Upcoming Events
       store: FFF Store
       volunteers: Volunteers
       contributions: Contributions
     user:
       login: Login
       register: Register
-      become_a_member: Become a Member
+      become_a_member: Sign Up
     site:
       after_life_discussion_group: Afterlife Discussion Groups
       certified_mediums: Certified Mediums

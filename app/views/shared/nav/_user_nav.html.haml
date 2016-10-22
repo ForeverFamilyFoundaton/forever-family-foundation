@@ -1,4 +1,6 @@
 %ul.nav#user_nav
+  %li.first
+    = link_to t('navigation.home'), root_path
   - if current_user.present?
     %li.first
       = link_to t("navigation.my_profile"), user_path(current_user)
