@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.3.3'
 
 gem 'protected_attributes'
 
@@ -10,8 +10,10 @@ gem 'puma'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'activeadmin', '~> 1.0.0.pre2'
+#gem 'activeadmin', github: 'activeadmin/activeadmin'
+#gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'acts_as_tree', '~> 2.4.0'
-gem 'aws-sdk', '<= 2.0'
+gem 'aws-sdk', '~>2.3' # '<= 2.0'
 gem 'bourbon', '~> 4.2.6'
 gem 'cancan', '~> 1.6.10'
 gem 'chronic', '~> 0.10.2'
@@ -34,7 +36,7 @@ gem 'launchy', '~> 2.1'
 gem 'net-ssh', '~> 3.0.1'
 gem 'newrelic_rpm', '~> 3.13'
 gem 'non-stupid-digest-assets'
-gem 'paperclip', '4.3.6' # '4.3.2' use with 'aws-sdk', '< 2.0'
+gem 'paperclip', '5.1.0' # '4.3.6' # '4.3.2' use with 'aws-sdk', '< 2.0'
 gem 'ranked-model', '~> 0.4.0'
 gem 'ransack'
 #gem 'recaptcha', '2.0.0'  #'1.0.2', require: "recaptcha/rails"

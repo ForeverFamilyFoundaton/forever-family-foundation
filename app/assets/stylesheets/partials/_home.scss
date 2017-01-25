@@ -4,6 +4,21 @@
   font-weight: bold;
 }
 
+.pt24 {font-size:24px;}
+.sofia {font-family:'Sofia'; text-transform:none;}
+.italic {font-style:italic;}
+
+// this is the "free" star
+.free_star {
+  position:absolute;
+  top:5px;
+  right:5px;
+  background:transparent image-url('free-star.gif') no-repeat top;
+  height:59px;
+  width:90px;
+}
+
+// this is the split box
 .callout {
   @include box-shadow(#ccc -3px 3px 3px);
   float:left;
@@ -15,6 +30,10 @@
     float:left;
     width:50%;
     margin:0;
+  }
+
+  .video-bottom-margin{
+    margin-bottom:15px;
   }
 
   h2 {
@@ -30,11 +49,13 @@
     padding: 10px;
     margin:0;
   }
-  .signs_of_life_radio {
+  .callout-left {
     h2 {
       border-right:1px solid white;
       @include border-top-left-radius($default-border-radius);
     }
+    
+  
 
     img.right {
       float:right;
@@ -42,27 +63,22 @@
     }
   }
 
-  .become_a_member {
+  .callout-right {
     position:relative;
-    h2 {
+    #h2-free{
       border-left:1px solid white;
       @include border-top-right-radius($default-border-radius);
       margin-bottom:25px;
     }
-
-    h3 {
-      text-transform:uppercase;
-      padding:5px 10px 0 10px;
-      margin:0;
+    h2 {
+      border-right:1px solid white;
+      @include border-top-right-radius($default-border-radius);
     }
 
-    .free_star {
-      position:absolute;
-      top:5px;
-      right:5px;
-      background:transparent image-url('free-star.gif') no-repeat top;
-      height:59px;
-      width:90px;
+    h3 {
+      //text-transform:uppercase;
+      padding:5px 10px 0 10px;
+      margin:0;
     }
 
   }
