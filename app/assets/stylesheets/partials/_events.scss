@@ -16,9 +16,11 @@ ul.events {
 }
 
 .upcoming_events {
+  @include box-shadow(#ccc -3px 3px 3px);
   float:right;
   margin:0 0 5px 5px;
   text-align:center;
+  @include border-radius($default-border-radius);
   max-width: 350px;
   h2 {
     margin:0;

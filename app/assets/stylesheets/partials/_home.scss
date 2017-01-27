@@ -4,6 +4,10 @@
   font-weight: bold;
 }
 
+.pt24 {font-size:24px;}
+.sofia {font-family:'Sofia'; text-transform:none;}
+.italic {font-style:italic;}
+
 // this is the "free" star
 .free_star {
   position:absolute;
@@ -72,7 +76,7 @@
     }
 
     h3 {
-      text-transform:uppercase;
+      //text-transform:uppercase;
       padding:5px 10px 0 10px;
       margin:0;
     }
