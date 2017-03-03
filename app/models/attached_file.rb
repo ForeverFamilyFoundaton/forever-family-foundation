@@ -10,9 +10,9 @@ class AttachedFile < ActiveRecord::Base
     paperclip_opts.merge!(
       {
         storage: :s3,
-        s3_region: 'us-east-1', #ENV['AWS_REGION'],
+        s3_region: ENV['AWS_REGION'],
         s3_credentials: {
-          bucket: ENV['AWS_S3_BUCKET_NAME'],
+          bucket: ENV['AWS_S3_ATTACH_FILES'],
           access_key_id: ENV['AWS_ACCESS_KEY_ID'],
           secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
         }
