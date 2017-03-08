@@ -11,6 +11,7 @@ class SiteController < ApplicationController
   def certified_mediums; end
   def contact; end
   def contributions; end
+  def conciousness_blogs; end
   def grief_and_loss; end
   def index; end
   def logged_in_index; end
