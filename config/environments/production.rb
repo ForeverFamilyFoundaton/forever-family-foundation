@@ -79,4 +79,7 @@ ForeverFamilyFoundation::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Force using SSL for entire site
+  config.force_ssl = true
 end
