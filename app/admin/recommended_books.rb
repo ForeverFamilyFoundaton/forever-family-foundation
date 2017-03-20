@@ -3,6 +3,9 @@ ActiveAdmin.register RecommendedBook do
   config.filters = false
 
   index do |recc_book|
+    column :id do |q|
+      q.id.to_s
+    end
     column :title
     column 'Book Categories' do |f|
       f.try(:recommended_book_categories).map(&:name).to_sentence
