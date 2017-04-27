@@ -8,6 +8,10 @@ class RegistrationController < Devise::RegistrationsController
 
   def create
     @user = User.new(params[:user])
+    if Rails.env.development?
+      verify_recaptcha = true
+      logger.debug "---- forcing recaptcha = true -----"
+    end
     if verify_recaptcha && @user.save
       flash[:notice] = I18n.t('flash.user.create.success')
       sign_in(@user)
