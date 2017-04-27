@@ -1,0 +1,88 @@
+<%= form_for(@sitterform) do |f| %>
+  <% if @sitterform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sitterform.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+      <% @sitterform.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id, "SitterformID" %>
+    <%= f.text_field :id, :disabled => true %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id, "User ID" %>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cell %>
+    <%= f.text_field :cell %>
+  </div>
+
+  <div class="field">
+    <%= f.label :alt_email %>
+    <%= f.text_field :alt_email %>
+  </div>
+    <div class="field">
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+  </div>
+    <div class="field">
+    <%= f.label :facebook %>
+    <%= f.text_field :facebook %>
+  </div>
+  <div class="field">
+    <%= f.label :pinterest %>
+    <%= f.text_field :pinterest %>
+  </div>
+    <div class="field">
+    <%= f.label :instagram %>
+    <%= f.text_field :instagram %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter %>
+    <%= f.text_field :twitter %>
+  </div>
+  <div class="field">
+    <%= f.label :youtube %>
+    <%= f.text_field :youtube %>
+  </div>
+  <div class="field">
+    <%= f.label :blog %>
+    <%= f.text_field :blog %>
+  </div>
+    <div class="field">
+    <%= f.label :related_contact_info %>
+    <%= f.text_field :related_contact_info %>
+  </div>
+    <div class="field">
+    <%= f.label :been_to_medium %>
+    <%= f.check_box :been_to_medium %>
+  </div>
+  <div class="field">
+    <%= f.label :consider_yourself %>
+    <%= f.text_field :consider_yourself %>
+  </div>
+  <div class="field">
+    <%= f.label :lost_loved_one %>
+    <%= f.check_box :lost_loved_one %>
+  </div>
+  <div class="field">
+    <%= f.label :signature %>
+    <%= f.text_field :signature %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
