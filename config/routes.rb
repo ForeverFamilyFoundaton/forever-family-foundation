@@ -18,6 +18,7 @@ ForeverFamilyFoundation::Application.routes.draw do
   resources :recommended_book
   resource :adg_registration
   resource :redirects
+  resources :sitterforms
 
   get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
   get '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'

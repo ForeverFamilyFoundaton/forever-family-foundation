@@ -49,7 +49,7 @@ gem 'stripe', '~> 1.33.0'
 gem 'taps', '~> 0.3.24'
 gem 'truncate_html', '~> 0.9.2'
 gem 'uglifier', '~> 2.7.2'
-
+gem 'seed_dump'
 
 group :test do
   gem 'capybara', '2.6.0'
@@ -79,4 +79,6 @@ group :development, :test do
   gem 'pry-stack_explorer'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
