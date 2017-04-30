@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>ID:</strong>
+  <strong>SitterformID:</strong>
   <%= @sitterform.id %>
 </p>
 <p>
@@ -64,6 +64,11 @@
   <strong>Lost loved one:</strong>
   <%= @sitterform.lost_loved_one %>
 </p>
+
+    <% for t in @sitterform.known_deads %>
+      <%= t.name %> <%= t.relationship.name %> </br>
+    <%end%>
+
 <p>
   <strong>Signature:</strong>
   <%= @sitterform.signature %>

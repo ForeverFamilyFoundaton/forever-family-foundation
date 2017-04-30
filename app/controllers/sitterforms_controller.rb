@@ -1,4 +1,5 @@
 class SitterformsController < ApplicationController
+  before_action :set_sitterform, only: [:show, :edit, :update, :destroy]
 
   def index
     logger.debug "----- Sitterforms index -----"
@@ -7,19 +8,25 @@ class SitterformsController < ApplicationController
 
   def new
     logger.debug "----- Sitterforms new -----"
-    @sitterform = Sitterform.new
+    logger.debug "----- "+ current_user.id.to_s + " -----"
+    # user = Sitterform.find(:user_id current_user.id)
+    @sitterform = Sitterform.find_by(user_id: current_user.id) || Sitterform.new()
+    @relationships = Relationship.all
+    @sitterform.known_deads.build 
+    logger.debug "@sitterform.known_deads ----- "+ @sitterform.known_deads.inspect + " -----"
     @sitterform.user_id = current_user.id
-    logger.debug "----- current_user.id.to_s -----"
+    logger.debug "----- " + current_user.id.to_s + " -----"
   end
 
   def show
     logger.debug "----- Sitterforms show -----"
-    @sitterform = Sitterform.find(params[:id])
+    # @sitterform = Sitterform.find(params[:id])
   end
 
   def edit
     logger.debug "----- Sitterforms edit -----"
     @sitterform = Sitterform.find(params[:id])
+    logger.debug "===== " + @sitterform.inspect + " ====="
   end
 
   # POST /sitterforms
@@ -44,6 +51,7 @@ class SitterformsController < ApplicationController
   def update
     @sitterform = Sitterform.find(params[:id])
     logger.debug "----- Sitterforms update -----"
+    logger.debug "sitterform.inspect -----" + @sitterform.inspect + " -----"
     respond_to do |format|
       if @sitterform.update(sitterform_params)
         format.html { redirect_to @sitterform, notice: 'Sitterform was successfully updated.' }
@@ -69,8 +77,17 @@ class SitterformsController < ApplicationController
 
   private
 
+    def set_sitterform
+      @sitterform = Sitterform.find(params[:id])
+      logger.debug "----- set_sitterform -----"
+      logger.debug @sitterform.inspect
+    end
+
     def sitterform_params
-      params.require(:sitterform).permit(:user_id, :phone, :alt_email, :cell, :website, :facebook, :pinterest, :instagram, :twitter, :youtube, :blog, :related_contact_info, :been_to_medium, :consider_yourself, :lost_loved_one, :signature)
+      params.require(:sitterform).permit(:user_id, :phone, :alt_email, :cell, :website, :facebook, :pinterest, \
+        :instagram, :twitter, :youtube, :blog, :related_contact_info, :been_to_medium, :consider_yourself, \
+        :lost_loved_one, :signature, \
+        known_deads_attributes:[:id, :user_id, :relationship_id, :sitterform_id, :name, :_destroy])
     end
 end
 

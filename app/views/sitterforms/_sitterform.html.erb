@@ -11,61 +11,77 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :id, "SitterformID" %>
-    <%= f.text_field :id, :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id, "User ID" %>
-    <%= f.text_field :user_id %>
-  </div>
+<div class='form_section' style="border: 1px solid red;">
+  <h2 class='form_section_header'>Additional Information</h2>
+    <div class="field">
+      <%= f.label :id, "SitterformID" %>
+      <%= f.text_field :id, :disabled => true %>
+    </div>
+    <div class="field">
+      <%= f.label :user_id, "User ID" %>
+      <%= f.text_field :user_id %>
+    </div>
 
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-  </div>
+    <div>
+      <div class="field">
+        <%= f.label :phone %> <br>
+        <%= f.text_field :phone %>
+      </div>
 
-  <div class="field">
-    <%= f.label :cell %>
-    <%= f.text_field :cell %>
-  </div>
+      <div class="field">
+        <%= f.label :cell %> <br>
+        <%= f.text_field :cell %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :alt_email %>
-    <%= f.text_field :alt_email %>
-  </div>
     <div class="field">
-    <%= f.label :website %>
-    <%= f.text_field :website %>
-  </div>
+      <%= f.label :alt_email, "Alternate Email Address" %> <br>
+      <%= f.text_field :alt_email %>
+    </div>
+</div>
+<br>
+<div class='form_section'>
+  <h2 class='form_section_header'>Social Media</h2>
     <div class="field">
-    <%= f.label :facebook %>
-    <%= f.text_field :facebook %>
-  </div>
-  <div class="field">
-    <%= f.label :pinterest %>
-    <%= f.text_field :pinterest %>
-  </div>
+      <%= f.label :website%>
+      <%= f.text_field :website %>
+    </div>
+    <div class="field", style="width:300px;'">
+      <%= f.label :facebook %>
+      <%= f.text_field :facebook %>
+    </div>
     <div class="field">
-    <%= f.label :instagram %>
-    <%= f.text_field :instagram %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter %>
-    <%= f.text_field :twitter %>
-  </div>
-  <div class="field">
-    <%= f.label :youtube %>
-    <%= f.text_field :youtube %>
-  </div>
-  <div class="field">
-    <%= f.label :blog %>
-    <%= f.text_field :blog %>
-  </div>
+      <%= f.label :pinterest %>
+      <%= f.text_field :pinterest %>
+    </div>
+      <div class="field">
+      <%= f.label :instagram %>
+      <%= f.text_field :instagram %>
+    </div>
     <div class="field">
-    <%= f.label :related_contact_info %>
-    <%= f.text_field :related_contact_info %>
-  </div>
+      <%= f.label :twitter %>
+      <%= f.text_field :twitter %>
+    </div>
+    <div class="field">
+      <%= f.label :youtube %>
+      <%= f.text_field :youtube %>
+    </div>
+    <div class="field">
+      <%= f.label :blog %>
+      <%= f.text_field :blog, size: 40 %>
+    </div>
+</div>
+
+<div class='form_section' style="border: 1px solid red;">
+  <h2 class='form_section_header'>Related Field</h2>
+    <p>Do you work in any other fields related to Health, Healing, or Spirituality?<br>
+    Please provide contact information:</p>
+    <div class="field">
+      <%= f.label :related_contact_info%> </br>
+      <%= f.text_area :related_contact_info, size: 40 %>
+    </div>
+</div>
+
     <div class="field">
     <%= f.label :been_to_medium %>
     <%= f.check_box :been_to_medium %>
@@ -75,11 +91,18 @@
     <%= f.text_field :consider_yourself %>
   </div>
   <div class="field">
-    <%= f.label :lost_loved_one %>
     <%= f.check_box :lost_loved_one %>
-  </div>
+    <%= f.label :lost_loved_one %>
+
+  <p> render here </p>
+  <% for known_dead in @sitterform.known_deads %>
+    <%= f.fields_for :known_deads, known_dead do |builder| %>
+      <%= render 'known_dead_form', f: builder %>
+    <%end%>
+  <%end%>
+
   <div class="field">
-    <%= f.label :signature %>
+    <%= f.label :signature, "Electronic Signature" %>
     <%= f.text_field :signature %>
   </div>
   <div class="actions">

@@ -27,6 +27,7 @@ ActiveAdmin.register User do
 
   index do
     column 'Membership Number', :membership_number
+    column :id
     column :first_name
     column :last_name
     column :email, sortable: :email do |user|
@@ -68,6 +69,7 @@ ActiveAdmin.register User do
         user.categories.map(&:name).to_sentence
       end
       row :fax
+      row :sitter_registration
       row :is_business
       row :address do
         user.address
@@ -166,6 +168,7 @@ ActiveAdmin.register User do
       f.input :home_phone
       f.input :work_phone
       f.input :fax
+      f.input :sitter_registration
       f.input :is_business do |user|
         user.business.present?
       end
