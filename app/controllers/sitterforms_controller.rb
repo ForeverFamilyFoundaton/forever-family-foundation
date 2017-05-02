@@ -10,11 +10,22 @@ class SitterformsController < ApplicationController
     logger.debug "----- Sitterforms new -----"
     logger.debug "----- "+ current_user.id.to_s + " -----"
     # user = Sitterform.find(:user_id current_user.id)
-    @sitterform = Sitterform.find_by(user_id: current_user.id) || Sitterform.new()
+    if Sitterform.exists?(user_id: current_user.id)
+      logger.debug "---- sitterform exists ----"
+      @sitterforms = Sitterform.find_by(user_id: current_user.id)
+      logger.debug "---- " + @sitterforms.known_deads.inspect + " ----"
+      n = @sitterforms.known_deads.count
+      (5-n).times {@sitterforms.known_deads.build}
+    else
+      logger.debug "---- sitterform new ----"
+      Sitterform.new()
+      5.times {@sitterforms.known_deads.build}
+    end
     @relationships = Relationship.all
-    @sitterform.known_deads.build 
-    logger.debug "@sitterform.known_deads ----- "+ @sitterform.known_deads.inspect + " -----"
-    @sitterform.user_id = current_user.id
+
+    logger.debug "@sitterform -----" + @sitterforms.inspect + " -----"
+    logger.debug "@sitterform.known_deads ----- "+ @sitterforms.known_deads.inspect + " -----"
+    @sitterforms.user_id = current_user.id
     logger.debug "----- " + current_user.id.to_s + " -----"
   end
 
@@ -25,8 +36,10 @@ class SitterformsController < ApplicationController
 
   def edit
     logger.debug "----- Sitterforms edit -----"
-    @sitterform = Sitterform.find(params[:id])
-    logger.debug "===== " + @sitterform.inspect + " ====="
+    @sitterforms = Sitterform.find(params[:id])
+    n = @sitterforms.known_deads.count
+    (5-n).times {@sitterforms.known_deads.build}
+    logger.debug "===== " + @sitterforms.inspect + " ====="
   end
 
   # POST /sitterforms
@@ -49,11 +62,12 @@ class SitterformsController < ApplicationController
   # PATCH/PUT /sitterforms/1
   # PATCH/PUT /sitterforms/1.json
   def update
-    @sitterform = Sitterform.find(params[:id])
-    logger.debug "----- Sitterforms update -----"
-    logger.debug "sitterform.inspect -----" + @sitterform.inspect + " -----"
+    logger.debug "----- Sitterforms UPDATE -----"
+    logger.debug "sitterform_params ----- " + sitterform_params.inspect + " -----"
+    # logger.debug ">>>>> " + params['known_deads_attributes'].inspect + " <<<<<"
+
     respond_to do |format|
-      if @sitterform.update(sitterform_params)
+      if @sitterform.update_attributes(sitterform_params)
         format.html { redirect_to @sitterform, notice: 'Sitterform was successfully updated.' }
         format.json { render :show, status: :ok, location: @sitterform }
       else
@@ -79,15 +93,14 @@ class SitterformsController < ApplicationController
 
     def set_sitterform
       @sitterform = Sitterform.find(params[:id])
-      logger.debug "----- set_sitterform -----"
-      logger.debug @sitterform.inspect
+ 
     end
 
     def sitterform_params
       params.require(:sitterform).permit(:user_id, :phone, :alt_email, :cell, :website, :facebook, :pinterest, \
-        :instagram, :twitter, :youtube, :blog, :related_contact_info, :been_to_medium, :consider_yourself, \
-        :lost_loved_one, :signature, \
-        known_deads_attributes:[:id, :user_id, :relationship_id, :sitterform_id, :name, :_destroy])
+        :instagram, :twitter, :youtube, :blog, :related_contact_info, :been_to_medium, :belief_type_id, \
+        :lost_loved_one, \
+        [known_deads_attributes: [:id, :user_id, :relationship_id, :sitterform_id, :name, :_destroy]], :signature)
     end
 end
 

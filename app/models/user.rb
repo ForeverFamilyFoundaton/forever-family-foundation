@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :family_members
   has_many :known_deads
   has_many :relationships, through: :known_deads
-  accepts_nested_attributes_for :known_deads, allow_destroy: true
+  accepts_nested_attributes_for :known_deads, reject_if: proc { |a| a[:name].blank? }, allow_destroy: true
   has_many :adg_answers
   has_many :notes
   has_many :user_preference_selections
@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :family_members
 
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :email_confirmation, :middle_name, :cell_phone, :work_phone, :home_phone, :address_attributes, :family_members_attributes, :profile_preference_ids, :subscription_preference_ids, :terms_of_use, :is_business, :state, :fax, :enrolled_from, :id, :membership_number, :problems, :do_not_mail, :enrolled_at, :snail_mail, :sitter_registration
-
+  attr_accessible :known_deads_attributes
   validates_presence_of     :email
   validates_confirmation_of :email, :if => :email_changed?
   validates_uniqueness_of   :email, case_sensitive: false, allow_blank: true, if: :email_changed?

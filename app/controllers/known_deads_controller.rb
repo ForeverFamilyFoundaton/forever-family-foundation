@@ -59,7 +59,7 @@ class KnownDeadsController < ApplicationController
     end
 
     def known_dead_params
-      params.require(:known_dead).permit(:user_id, :relationship_id, :sitterform_id, :name, :relationship)
+      params.require(:known_dead).permit(:id, :user_id, :relationship_id, :sitterform_id, :name, :relationship)
     end
 end
 

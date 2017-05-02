@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Name</th>
       <th>Typeof</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @relationships.each do |relationship| %>
       <tr>
+        <td><%= relationship.id %></td>
         <td><%= relationship.name %></td>
         <td><%= relationship.typeof %></td>
         <td><%= link_to 'Show', relationship %></td>

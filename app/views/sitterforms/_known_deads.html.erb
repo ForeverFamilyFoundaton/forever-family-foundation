@@ -1,0 +1,12 @@
+<%= fields_for :known_deads_attributes, known_deads do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :relationship_id, "Relationship" %>
+    <%= f.select :relationship_id, Relationship.all.collect { |p| [ p.name, p.id ] } %>
+    <div>
+    <%= f.check_box :_destroy %>
+    <%= f.label :_destroy, "remove" %>
+    </div>
+<% end %>
+<p>out partial </p>

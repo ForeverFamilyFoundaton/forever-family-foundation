@@ -1,14 +1,6 @@
-<fieldset>
 
-  <%= f.label :name %> <br />
+  <%= f.label :name %> 
   <%= f.text_field :name %>
 
-  <div>
-  <%= f.label :reltionship_id, "Relationship" %> <br />
-  <%= f.select :relationship_id, Relationship.all.collect { |p| [ p.name, p.id ] } %>
-  </div>
-  <div>
-  <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "remove" %>
-  </div>
-</fieldset>
+  <%= f.label :reltionship_id, "Relationship" %>
+  <%= f.select :relationship_id, Relationship.all.collect { |p| [ p.name, p.id ] } %></br>
