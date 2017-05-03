@@ -1,0 +1,13 @@
+
+Relationship.create!([  {name: "Mother", typeof: "family"}, ])
+Relationship.create!([  {name: "Father", typeof: "family"}, ])
+Relationship.create!([  {name: "Sister", typeof: "family"}, ])
+Relationship.create!([  {name: "Brother", typeof: "family"}, ])
+Relationship.create!([  {name: "Uncle", typeof: "family"}, ])
+Relationship.create!([  {name: "Aunt", typeof: "family"}, ])
+Relationship.create!([  {name: "Husband", typeof: "family"}, ])
+Relationship.create!([  {name: "Wife", typeof: "family"}, ])
+Relationship.create!([  {name: "Son", typeof: "family"}, ])
+Relationship.create!([  {name: "Daughter", typeof: "family"}, ])
+Relationship.create!([  {name: "Other", typeof: "family"} ])
+Relationship.create!([  {name: "Someone", typeof: "family"} ])
