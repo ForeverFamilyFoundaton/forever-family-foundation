@@ -5,7 +5,6 @@
   - if current_user and !current_user.biz? || !current_user.business.registered?
     %li
       = link_to t('navigation.site.business_registration'), new_user_business_path(current_user)
-
   %li
     = link_to t('navigation.global.events'), events_path 
   %li

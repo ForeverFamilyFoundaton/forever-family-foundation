@@ -9,6 +9,10 @@
   <%= @sitterform.user_id %>
 </p>
 <p>
+  <strong>User Name:</strong>
+  <%= @sitterform.user.first_name %>
+</p>
+<p>
   <strong>Phone:</strong>
   <%= @sitterform.phone %>
 </p>
@@ -58,7 +62,11 @@
 </p>
 <p>
   <strong>Consider yourself:</strong>
+  <%- if @sitterform.belief_type.nil? %>
+  <p> No belief type </p>
+  <%-else %>
   <%= @sitterform.belief_type.name %>
+  <% end %>
 </p>
 <p>
   <strong>Lost loved one:</strong>
@@ -66,7 +74,7 @@
 </p>
 
     <% for t in @sitterform.known_deads %>
-      <%= t.name %> <%= t.relationship.name %> </br>
+      <strong>Name</strong><%= t.name %> <strong>Relationship</strong><%= t.relationship.name %> </br>
     <%end%>
 
 <p>
