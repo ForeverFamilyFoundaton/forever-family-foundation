@@ -72,10 +72,13 @@
   <strong>Lost loved one:</strong>
   <%= @sitterform.lost_loved_one %>
 </p>
-
-    <% for t in @sitterform.known_deads %>
-      <strong>Name</strong><%= t.name %> <strong>Relationship</strong><%= t.relationship.name %> </br>
-    <%end%>
+    <%- if @sitterform.known_deads.nil? %>
+      <p>No known deceaseds</p>
+    <%-else %>
+      <% for t in @sitterform.known_deads %>
+        <strong>Name</strong><%= t.name %> <strong>Relationship</strong><%= t.relationship.name %> </br>
+      <%end%>
+    <% end %>
 
 <p>
   <strong>Signature:</strong>

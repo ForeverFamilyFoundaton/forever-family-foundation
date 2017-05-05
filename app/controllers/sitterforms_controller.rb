@@ -9,7 +9,7 @@ class SitterformsController < ApplicationController
   def new
     logger.debug "----- Sitterforms new -----"
     logger.debug "----- "+ current_user.id.to_s + " -----"
-    # user = Sitterform.find(:user_id current_user.id)
+    @user = User.find(current_user.id)
     if Sitterform.exists?(user_id: current_user.id)
       logger.debug "---- sitterform exists ----"
       @sitterforms = Sitterform.find_by(user_id: current_user.id)
@@ -38,6 +38,7 @@ class SitterformsController < ApplicationController
   def edit
     logger.debug "----- Sitterforms edit -----"
     @sitterforms = Sitterform.find(params[:id])
+    @user = User.find(@sitterforms.user_id)
     n = @sitterforms.known_deads.count
     (5-n).times {@sitterforms.known_deads.build}
     logger.debug "===== " + @sitterforms.inspect + " ====="
