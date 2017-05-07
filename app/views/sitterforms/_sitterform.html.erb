@@ -55,7 +55,7 @@
             <td><%= f.text_field :website, style: "width:80%" %></td>
           </tr>
           <tr>
-            <td style="border:1px solid red;"><%= f.label :facebook %></td>
+            <td><%= f.label :facebook %></td>
             <td><%= f.text_field :facebook, style: "width:80%" %></td>
           </tr>
           <tr>
@@ -124,11 +124,11 @@
     <div class="form_fields">
       <div>
         <%= f.check_box :lost_loved_one %>
-        <%= f.label :lost_loved_one, "Have you suffered the loss of a loved one? " %>
+        <%= f.label :lost_loved_one, "I have suffered the loss of a loved one? " %>
       </div>
   
       <br>
-      <p>If you answered yes, please list the number of deceased people who you would regard as a “significant personal loss.”<br><br>
+      <p>If you answered yes, please list the number of deceased people whom you would regard as a “significant personal loss.”<br><br>
       (1-5 entries, each with the following:  a) First Name b) Relationship <br>
       </p>
     </div>
@@ -166,11 +166,11 @@
   </div>
 </div>
 
-  <div class='form_section' style="border: 1px solid red;">
+  <div class='form_section'>
     <h2 class='form_section_header'>Signature</h2>
-      <div class="field">
-        <%= f.label :signature, "Electronic Signature" %>
-        <%= f.text_field :signature %>
+      <div class="form_fields">
+        <%= f.label :signature, "Electronic Signature"%>
+        <%= f.text_field :signature, placeholder: "Please type your full name"  %>
       </div>
   </div>
 

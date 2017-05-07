@@ -1,16 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>SitterformID:</strong>
-  <%= @sitterform.id %>
-</p>
-<p>
-  <strong>UserID:</strong>
-  <%= @sitterform.user_id %>
-</p>
-<p>
   <strong>User Name:</strong>
-  <%= @sitterform.user.first_name %>
+  <%= @sitterform.user.full_name %>
 </p>
 <p>
   <strong>Phone:</strong>
@@ -61,7 +53,7 @@
   <%= @sitterform.been_to_medium %>
 </p>
 <p>
-  <strong>Consider yourself:</strong>
+  <strong>Regarding an Afterlife, which would you consider yourself to be?</strong><br/>
   <%- if @sitterform.belief_type.nil? %>
   <p> No belief type </p>
   <%-else %>
@@ -75,14 +67,25 @@
     <%- if @sitterform.known_deads.nil? %>
       <p>No known deceaseds</p>
     <%-else %>
+      <table>
+        <theader>
+        <th style="text-align:left;">Name</th>
+        <th style="text-align:left;">Relationship</th>
+        </theader>
+        <tbody>
       <% for t in @sitterform.known_deads %>
-        <strong>Name</strong><%= t.name %> <strong>Relationship</strong><%= t.relationship.name %> </br>
+        <tr>
+          <td><%= t.name%></td>
+          <td><%= t.relationship.name %></td>
+        </tr>
       <%end%>
+      </tbody>
+      </table>
     <% end %>
 
+<br/>
 <p>
   <strong>Signature:</strong>
   <%= @sitterform.signature %>
 </p>
-<%= link_to 'Edit', edit_sitterform_path(@sitterform) %> |
-<%= link_to 'Back', sitterforms_path %>
+
