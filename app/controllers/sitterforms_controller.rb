@@ -49,6 +49,9 @@ class SitterformsController < ApplicationController
   def create
     logger.debug "----- Sitterforms create -----"
     @sitterform = Sitterform.new(sitterform_params)
+    @sitterform.user_id = current_user.id
+    logger.debug "sitterform >>>>>" + @sitterform.inspect + "<<<<<"
+    logger.debug "user >>>>>" + @user.inspect + "<<<<<"
 
     respond_to do |format|
       if @sitterform.save
