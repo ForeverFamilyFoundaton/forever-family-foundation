@@ -14,74 +14,79 @@
     </div>
   <% end %>
 
- <%= 'Sitter Registration for ' + @user.full_name %><br>
+ <h2><%= 'Sitter Registration for ' + @user.full_name %><br></h2>
 <br>
 <br>
-  <div class='form_section' style="border: 1px solid red;">
+  <div class='form_section'>
     <h2 class='form_section_header'>Additional Information</h2>
       <div class="form_fields">
-        <%= f.label :id, "SitterformID" %>
+<!--         <%= f.label :id, "SitterformID" %>
         <%= f.text_field :id, :disabled => true %>
         <div class="field">
           <%= f.label :user_id, "User ID" %>
           <%= f.text_field :user_id %>
-        </div>
+        </div> -->
 
         
- 
-        <%= f.label :phone %>
-        <%= f.text_field :phone %><br>
-
-        <%= f.label :cell %>
-        <%= f.text_field :cell %>
-
-      <div class="field">
-        <%= f.label :alt_email, "Alternate Email" %>
-        <%= f.text_field :alt_email %>
-      </div>
+      <table>
+        <tr>
+          <td style="width:10%;"><%= f.label :phone %></td>
+          <td><%= f.text_field :phone %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :cell %></td>
+          <td><%= f.text_field :cell %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :alt_email, "Alternate Email" %></td>
+          <td><%= f.text_field :alt_email %></td>
+        </tr>
+      </table>
   </div>
   </div>
   <br>
   <div class='form_section'>
     <h2 class='form_section_header'>On-Line Presence</h2>
       <div class="form_fields">
-        <p>Do you have? If so, please provide link:</p><br>
-        <div>
-          <%= f.label :website%>
-          <%= f.text_field :website, style: "width:80%" %>
-        </div>
-        <div >
-          <%= f.label :facebook %>
-          <%= f.text_field :facebook, style: "width:80%" %>
-        </div>
-        <div >
-          <%= f.label :pinterest %>
-          <%= f.text_field :pinterest, style: "width:80%" %>
-        </div>
-        <div >
-          <%= f.label :instagram %>
-          <%= f.text_field :instagram, style: "width:80%" %>
-        </div>
-        <div >
-          <%= f.label :twitter %>
-          <%= f.text_field :twitter, style: "width:80%" %>
-        </div>
-        <div >
-          <%= f.label :youtube %>
-          <%= f.text_field :youtube, style: "width:80%" %>
-        </div>
-        <div >
-          <%= f.label :blog %>
-          <%= f.text_field :blog, style: "width:80%" %>
-        </div>
+        <p>Do you have? If so, please provide link:</p>
+        <table>
+          <tr>
+            <td style="width:5%;"><%= f.label :website%></td>
+            <td><%= f.text_field :website, style: "width:80%" %></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid red;"><%= f.label :facebook %></td>
+            <td><%= f.text_field :facebook, style: "width:80%" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :pinterest %></td>
+            <td><%= f.text_field :pinterest, style: "width:80%" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :instagram%></td>
+            <td><%= f.text_field :instagram, style: "width:80%" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :twitter %></td>
+            <td><%= f.text_field :twitter, style: "width:80%" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :youtube %></td>
+            <td><%= f.text_field :youtube, style: "width:80%" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :blog %></td>
+            <td><%= f.text_field :blog, style: "width:80%" %></td>
+          </tr>
+        </table>
       </div>
   </div>
 
-  <div class='form_section' style="border: 1px solid red;">
+  <div class='form_section'>
     <h2 class='form_section_header'>Related Field</h2>
       <div class="form_fields">
         <p>Do you work in any other fields related to Health, Healing, or Spirituality?<br>
-        Please provide contact information:</p>
+        If so, please provide contact information:</p>
         <div class="field">
           <%= f.label :related_contact_info%> </br>
           <%= f.text_area :related_contact_info, size: 40 %>
@@ -89,17 +94,18 @@
       </div>
   </div>
 
-  <div class='form_section' style="border: 1px solid red;">
+  <div class='form_section'>
     <h2 class='form_section_header'>Medium Contact</h2>
       <div class="form_fields">
         <div>
           <%= f.label :been_to_medium, "I have been to a Medium" %>
           <%= f.check_box :been_to_medium %>
         </div>
-
+        <br/>
         <div class="field">
-          <br>
-          <%= f.label :belief_type_id %><br>
+          <div>
+          <%= f.label :belief_type_id, "Regarding an Afterlife, which would you consider yourself to be?" %><br/>
+          </div>
 <!-- 
           <%= collection_radio_buttons(:sitterform, :belief_type_id, BeliefType.all, :id, :name) %>
            -->
@@ -113,7 +119,7 @@
       </div>
   </div>
 
-  <div class='form_section' style="border: 1px solid red;">
+  <div class='form_section'>
     <h2 class='form_section_header'>Lost Loved Ones</h2>
     <div class="form_fields">
       <div>
@@ -138,9 +144,10 @@
     </div>
   </div>
 
-<div class='form_section' style="border: 1px solid red;">
+<div class='form_section'>
   <h2 class='form_section_header'>Certification Program</h2>
   <div class="form_fields">
+  <p style="font-weight:bold">PURPOSE</p>
     <p>In fulfillment of the mission of the Forever Family Foundation, the foundation has embarked on the creation and establishment of a medium certification program/project.  The board of Forever Family Foundation has identified the need for an objective evaluation of those individuals who wish to publicly “validate” their mediumship abilities. In devising such a program, Forever Family Foundation seeks to: </p>
     <ol> 
       <li>Minimize the harm to the general public inflicted by fraudulent, unscrupulous practitioners who exploit their grief and vulnerabilities.</li>
@@ -165,6 +172,7 @@
         <%= f.label :signature, "Electronic Signature" %>
         <%= f.text_field :signature %>
       </div>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
