@@ -52,9 +52,9 @@ gem 'uglifier', '~> 2.7.2'
 gem 'seed_dump'
 
 group :test do
-  gem 'capybara', '2.6.0'
+  gem 'capybara',  '2.14.0'  #'2.6.0'
   gem 'capybara-screenshot', '1.0.11'
-  gem 'database_cleaner', '~> 1.5.1', require: false
+  gem 'database_cleaner', '1.6.0' #'~> 1.5.1', require: false
   gem 'email_spec', '~> 2.0.0'
   gem 'factory_girl_rails', '4.4.1'
   gem 'faker', '~> 1.6.1'
