@@ -38,7 +38,12 @@ class SitterformsController < ApplicationController
   def edit
     logger.debug "----- Sitterforms edit -----"
     @sitterforms = Sitterform.find(params[:id])
+    if (@sitterforms.user_id != current_user.id)
+      redirect_to root_path
+    end
+
     @user = User.find(@sitterforms.user_id)
+    logger.debug " >>> " + @sitterforms.user_id.to_s + "<<<>>>" + current_user.id.to_s + " <<<"
     n = @sitterforms.known_deads.count
     (5-n).times {@sitterforms.known_deads.build}
     logger.debug "===== " + @sitterforms.inspect + " ====="
