@@ -37,7 +37,7 @@ describe 'ADMIN: Users' do
     click_link 'Business Name'
     expect(page).to have_content user.business.name
   end
-  
+ 
   context 'with attachments' do
     it "renders the page sucessfully" do
       user
@@ -52,5 +52,15 @@ describe 'ADMIN: Users' do
     
     click_link 'Users'
     expect(page).to have_content "#{test.preferences.map(&:name).to_sentence}"
+  end
+
+  it "permission Sitter registration for user" do
+    create(:user, email: 'test@example.com')
+    click_link 'Users'
+    click_link 'test@example.com'
+    click_link 'Edit User'
+    check('Sitter registration')
+    click_button 'Update User'
+    expect(page).to have_content 'Yes'
   end
 end

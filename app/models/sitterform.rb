@@ -11,5 +11,5 @@ class Sitterform < ActiveRecord::Base
 
   attr_accessible :user_id, :phone, :alt_email, :cell, :website, :facebook, :pinterest, :instagram
   attr_accessible :twitter, :youtube, :blog, :related_contact_info, :been_to_medium, :belief_type_id
-  attr_accessible :lost_loved_one, :signature, :known_deads_attributes
+  attr_accessible :lost_loved_one, :signature, :known_deads_attributes, :medium_contacts
 end

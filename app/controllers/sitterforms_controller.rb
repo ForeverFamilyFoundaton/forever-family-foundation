@@ -109,8 +109,8 @@ class SitterformsController < ApplicationController
     def sitterform_params
       params.require(:sitterform).permit(:user_id, :phone, :alt_email, :cell, :website, :facebook, :pinterest, \
         :instagram, :twitter, :youtube, :blog, :related_contact_info, :been_to_medium, :belief_type_id, \
-        :lost_loved_one, \
-        [known_deads_attributes: [:id, :user_id, :relationship_id, :sitterform_id, :name, :_destroy]], :signature)
+        :lost_loved_one, :medium_contacts,\
+        [known_deads_attributes: [:id, :user_id, :relationship_id, :sitterform_id, :name, :year_of_death, :_destroy]], :signature)
     end
 end
 

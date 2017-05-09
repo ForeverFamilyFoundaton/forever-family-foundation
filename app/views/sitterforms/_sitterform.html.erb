@@ -1,6 +1,3 @@
-<h1 style="font-weight:bold;">POTENTIAL SITTER EVALUATION QUESTIONNAIRE</h1>
-<p style="color:red;">FFF Members recognized as possible additions to our MECP programs as sitters, will be given a password that can be utilized through their membership profile that will enable this form to be accessed for completion.  The data from the form will be part of their profile that only FFF admin can access.  An email to a designated fff recipient email account will notify us of the completion of the form.</p>
-
 <%= form_for(@sitterforms) do |f| %>
   <% if @sitterforms.errors.any? %>
     <div id="error_explanation">
@@ -46,9 +43,9 @@
   </div>
   <br>
   <div class='form_section'>
-    <h2 class='form_section_header'>On-Line Presence</h2>
+    <h2 class='form_section_header'>Social Networking</h2>
       <div class="form_fields">
-        <p>Do you have? If so, please provide link:</p>
+        <p> Please provide link (URL) for each of your social networking accounts below:</p>
         <table>
           <tr>
             <td style="width:5%;"><%= f.label :website%></td>
@@ -83,24 +80,25 @@
   </div>
 
   <div class='form_section'>
-    <h2 class='form_section_header'>Related Field</h2>
+    <h2 class='form_section_header'>Other Activities</h2>
       <div class="form_fields">
         <p>Do you work in any other fields related to Health, Healing, or Spirituality?<br>
         If so, please provide contact information:</p>
         <div class="field">
-          <%= f.label :related_contact_info%> </br>
           <%= f.text_area :related_contact_info, size: 40 %>
         </div>
       </div>
   </div>
 
   <div class='form_section'>
-    <h2 class='form_section_header'>Medium Contact</h2>
+    <h2 class='form_section_header'>Past Medium Contact</h2>
       <div class="form_fields">
-        <div>
+      <p> If you have been to a medium (or mediums), please list them by name.</p>
+        <%= f.text_area :medium_contacts, size: 40 %>
+<!--         <div>
           <%= f.label :been_to_medium, "I have been to a Medium" %>
           <%= f.check_box :been_to_medium %>
-        </div>
+        </div> -->
         <br/>
         <div class="field">
           <div>
@@ -120,27 +118,41 @@
   </div>
 
   <div class='form_section'>
-    <h2 class='form_section_header'>Lost Loved Ones</h2>
+    <h2 class='form_section_header'>Personal Loss</h2>
     <div class="form_fields">
       <div>
         <%= f.check_box :lost_loved_one %>
-        <%= f.label :lost_loved_one, "I have suffered the loss of a loved one? " %>
+        <%= f.label :lost_loved_one, "Have you suffered the loss of a loved one?" %>
       </div>
   
       <br>
-      <p>If you answered yes, please list the number of deceased people whom you would regard as a “significant personal loss.”<br><br>
-      (1-5 entries, each with the following:  a) First Name b) Relationship <br>
+      <p>If you answered yes, please list below up to five deceased people from whom you would like to connect. (1-5 entries, each with the following:  a) First Name b) Relationship c) Year of Death<br>
       </p>
     </div>
 
 
  </p>
     <div class="form_fields">
-    <% for known_dead in @sitterforms.known_deads %>
-      <%= f.fields_for :known_deads, known_dead do |builder| %>
-        <%= render 'known_dead_form', f: builder %>
-      <%end%>
-    <%end%>
+    <table>
+      <thead>
+        <tr>
+          <th style='text-align:left'>Name</th>
+          <th style='text-align:left'>Relationship</th>
+          <th style='text-align:left;width:10%'>Year of Death</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for known_dead in @sitterforms.known_deads %>
+          <%= f.fields_for :known_deads, known_dead do |builder| %>
+            <tr>
+              <td><%= builder.text_field :name %></td>
+              <td><%= builder.select :relationship_id, Relationship.all.collect { |p| [ p.name, p.id ] } %></td>
+              <td><%= builder.text_field :year_of_death, style: "width:80%" %></td>
+            </tr>
+          <%end%>
+        <%end%>
+      </tbody>
+    </table> 
     </div>
   </div>
 
@@ -158,7 +170,7 @@
     <ol>
       <li>As a part of the certification process, I understand that I will be participating in medium reading session(s) which may be video and/or audio taped.  This tape(s) will remain the property of Forever Family Foundation, Inc. <span style="color:red;">and cannot be retained or shared for any purposes by the sitter.</span></li>
       <li>I understand that my participation may be used for scientific, educational, among other charitable purposes and as such may result in the publication, reproduction or other use of results of my participation.</li>
-      <li>I fully release, indemnify and hold harmless Forever Family Foundation, its board, employees, agents, and others acting on their behalf, from any and all liability which may arise as a result of my participation and Certification.</li>
+      <li>I fully release, indemnify and hold harmless Forever Family Foundation, its board, employees, agents, and others acting on their behalf, from any and all liability which may arise as a result of my participation.</li>
       <li>I understand that due to Forever Family Foundation’s promise of confidentiality to the mediums, I cannot divulge medium participation nor their subsequent passing or failing in their certification attempt.</li>
       <li style="color:red;">I understand that I must keep my participation in and knowledge of this certification process private and confidential, as sharing such information may compromise the integrity of the process.</li>
       <li style="color:red;">As an active volunteer of Forever Family Foundation I will engage in promotion of the work of Forever Family Foundation (with the exception of the MECP program) via the social media networks in which I am engaged.</li>
