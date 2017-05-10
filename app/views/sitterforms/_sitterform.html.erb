@@ -120,14 +120,7 @@
   <div class='form_section'>
     <h2 class='form_section_header'>Personal Loss</h2>
     <div class="form_fields">
-      <div>
-        <%= f.check_box :lost_loved_one %>
-        <%= f.label :lost_loved_one, "Have you suffered the loss of a loved one?" %>
-      </div>
-  
-      <br>
-      <p>If you answered yes, please list below up to five deceased people from whom you would like to connect. (1-5 entries, each with the following:  a) First Name b) Relationship c) Year of Death<br>
-      </p>
+      <p>If you have suffered the loss of a loved one, please list below up to five deceased people with whom you would like to connect.</p>
     </div>
 
 
@@ -187,6 +180,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+   <!--  <%= f.submit %> -->
+   <%= render partial: 'shared/form_submit', locals: { text: 'Submit'} %>
+
   </div>
 <% end %>
