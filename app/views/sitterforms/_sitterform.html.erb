@@ -13,6 +13,8 @@
 
  <h2><%= 'Sitter Registration for ' + @user.full_name %><br></h2>
 <br>
+  <p>Please <span style="color:red;">answer all questions</span> to the best of you ability and do not leave blank spaces.<br>  <span style="color:red">If you do not have a specific answer to the question, please type "<b>none</b>" into the field.</span><br/>  Your responses will determine your eligibility to participate in this program.
+  </p>
 <br>
   <div class='form_section'>
     <h2 class='form_section_header'>Additional Information</h2>
@@ -45,35 +47,35 @@
   <div class='form_section'>
     <h2 class='form_section_header'>Social Networking</h2>
       <div class="form_fields">
-        <p> Please provide link (URL) for each of your social networking accounts below:</p>
+        <p><b> Please provide the link(s) (URL) for each of your social networking accounts below:</b></p>
         <table>
           <tr>
             <td style="width:5%;"><%= f.label :website%></td>
-            <td><%= f.text_field :website, style: "width:80%" %></td>
+            <td><%= f.text_field :website, style: "width:80%", placeholder: "Your personal website url" %></td>
           </tr>
           <tr>
             <td><%= f.label :facebook %></td>
-            <td><%= f.text_field :facebook, style: "width:80%" %></td>
+            <td><%= f.text_field :facebook, style: "width:80%", placeholder: "Link to your Facebook page" %></td>
           </tr>
           <tr>
             <td><%= f.label :pinterest %></td>
-            <td><%= f.text_field :pinterest, style: "width:80%" %></td>
+            <td><%= f.text_field :pinterest, style: "width:80%", placeholder: "Link to your Pinterest page" %></td>
           </tr>
           <tr>
             <td><%= f.label :instagram%></td>
-            <td><%= f.text_field :instagram, style: "width:80%" %></td>
+            <td><%= f.text_field :instagram, style: "width:80%", placeholder: "Link to your Instagram account" %></td>
           </tr>
           <tr>
             <td><%= f.label :twitter %></td>
-            <td><%= f.text_field :twitter, style: "width:80%" %></td>
+            <td><%= f.text_field :twitter, style: "width:80%", placeholder: "Link to your twitter feed" %></td>
           </tr>
           <tr>
             <td><%= f.label :youtube %></td>
-            <td><%= f.text_field :youtube, style: "width:80%" %></td>
+            <td><%= f.text_field :youtube, style: "width:80%", placeholder: "Link to your YouTube channel" %></td>
           </tr>
           <tr>
             <td><%= f.label :blog %></td>
-            <td><%= f.text_field :blog, style: "width:80%" %></td>
+            <td><%= f.text_field :blog, style: "width:80%", placeholder: "Link to your blog" %></td>
           </tr>
         </table>
       </div>
@@ -82,8 +84,8 @@
   <div class='form_section'>
     <h2 class='form_section_header'>Other Activities</h2>
       <div class="form_fields">
-        <p>Do you work in any other fields related to Health, Healing, or Spirituality?<br>
-        If so, please provide contact information:</p>
+        <p><b>Do you work in any other fields related to Health, Healing, or Spirituality?<br>
+        If so, please provide contact information:</b></p>
         <div class="field">
           <%= f.text_area :related_contact_info, size: 40 %>
         </div>
@@ -93,7 +95,7 @@
   <div class='form_section'>
     <h2 class='form_section_header'>Past Medium Contact</h2>
       <div class="form_fields">
-      <p> If you have been to a medium (or mediums), please list them by name.</p>
+      <p><b> If you have been to a medium (or mediums), please list them by name.</b></p>
         <%= f.text_area :medium_contacts, size: 40 %>
 <!--         <div>
           <%= f.label :been_to_medium, "I have been to a Medium" %>
@@ -120,7 +122,7 @@
   <div class='form_section'>
     <h2 class='form_section_header'>Personal Loss</h2>
     <div class="form_fields">
-      <p>If you have suffered the loss of a loved one, please list below up to five deceased people with whom you would like to connect.</p>
+      <p><b>If you have suffered the loss of a loved one, please list below the first name of up to five deceased people with whom you would like to connect.</b></p>
     </div>
 
 
@@ -175,7 +177,11 @@
     <h2 class='form_section_header'>Signature</h2>
       <div class="form_fields">
         <%= f.label :signature, "Electronic Signature"%>
-        <%= f.text_field :signature, placeholder: "Please type your full name"  %>
+        <%= f.text_field :signature, style: "width:50%", placeholder: "Please type your full name"  %>
+      </div>
+      <div class="form_fields">
+        <%= f.check_box :signature_checkbox%>
+        <p>I understand that checking this box constitutes <span><b>a legal signature</b></span> confirming that I acknowledge and warrant the truthfulness of the information provided in this document</p>
       </div>
   </div>
 
