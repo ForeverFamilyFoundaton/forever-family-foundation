@@ -52,6 +52,7 @@ gem 'uglifier', '~> 2.7.2'
 gem 'seed_dump'
 
 group :test do
+  gem 'byebug', platform: :mri
   gem 'capybara',  '2.14.0'  #'2.6.0'
   gem 'capybara-screenshot', '1.0.11'
   gem 'database_cleaner', '1.6.0' #'~> 1.5.1', require: false
@@ -74,6 +75,7 @@ group :development do
 end
 
 group :development, :test do
+
   gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-stack_explorer'

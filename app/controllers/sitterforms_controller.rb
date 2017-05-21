@@ -7,46 +7,46 @@ class SitterformsController < ApplicationController
   end
 
   def new
-    logger.debug "----- Sitterforms new -----"
+    logger.debug "----- Sitterforms new entry -----"
     logger.debug "----- "+ current_user.id.to_s + " -----"
     @user = User.find(current_user.id)
     if Sitterform.exists?(user_id: current_user.id)
       logger.debug "---- sitterform exists ----"
-      @sitterforms = Sitterform.find_by(user_id: current_user.id)
-      n = @sitterforms.known_deads.count
-      (5-n).times {@sitterforms.known_deads.build}
-      redirect_to action: 'edit', id: @sitterforms.id
+      @sitterform = Sitterform.find_by(user_id: current_user.id)
+      n = @sitterform.known_deads.count
+      (5-n).times {@sitterform.known_deads.build}
+      redirect_to action: 'edit', id: @sitterform.id
     else
       logger.debug "---- sitterform new ----"
-      @sitterforms = Sitterform.new()
-      5.times {@sitterforms.known_deads.build}
+      @sitterform = Sitterform.new()
+      5.times {@sitterform.known_deads.build}
     end
     logger.debug "----- still in Sitterforms new -----"
     @relationships = Relationship.all
 
-    logger.debug "@sitterform -----" + @sitterforms.inspect + " -----"
-    logger.debug "@sitterform.known_deads ----- "+ @sitterforms.known_deads.inspect + " -----"
-    @sitterforms.user_id = current_user.id
+    logger.debug "@sitterform -----" + @sitterform.inspect + " -----"
+    logger.debug "@sitterform.known_deads ----- "+ @sitterform.known_deads.inspect + " -----"
+    @sitterform.user_id = current_user.id
     logger.debug "----- " + current_user.id.to_s + " -----"
   end
 
   def show
     logger.debug "----- Sitterforms show -----"
-    @sitterforms = Sitterform.find(params[:id])
+    @sitterform = Sitterform.find(params[:id])
   end
 
   def edit
     logger.debug "----- Sitterforms edit -----"
-    @sitterforms = Sitterform.find(params[:id])
-    if (@sitterforms.user_id != current_user.id)
+    @sitterform = Sitterform.find(params[:id])
+    if (@sitterform.user_id != current_user.id)
       redirect_to root_path
     end
 
-    @user = User.find(@sitterforms.user_id)
-    logger.debug " >>> " + @sitterforms.user_id.to_s + "<<<>>>" + current_user.id.to_s + " <<<"
-    n = @sitterforms.known_deads.count
-    (5-n).times {@sitterforms.known_deads.build}
-    logger.debug "===== " + @sitterforms.inspect + " ====="
+    @user = User.find(@sitterform.user_id)
+    logger.debug " >>> " + @sitterform.user_id.to_s + "<<<>>>" + current_user.id.to_s + " <<<"
+    n = @sitterform.known_deads.count
+    (5-n).times {@sitterform.known_deads.build}
+    logger.debug "===== " + @sitterform.inspect + " ====="
   end
 
   # POST /sitterforms
@@ -73,14 +73,18 @@ class SitterformsController < ApplicationController
   # PATCH/PUT /sitterforms/1.json
   def update
     logger.debug "----- Sitterforms UPDATE -----"
+    logger.debug "error count>>>>> " + @sitterform.errors.count.to_s
+    logger.debug "@sitterform ----- " + @sitterform.inspect + " -----"
     logger.debug "sitterform_params ----- " + sitterform_params.inspect + " -----"
     # logger.debug ">>>>> " + params['known_deads_attributes'].inspect + " <<<<<"
 
     respond_to do |format|
-      if @sitterform.update_attributes(sitterform_params)
+      if @sitterform.update(sitterform_params)
         format.html { redirect_to @sitterform, notice: 'Sitterform was successfully updated.' }
         format.json { render :show, status: :ok, location: @sitterform }
       else
+        logger.debug "@sitterform2 ----- " + @sitterform.inspect + " -----"
+        logger.debug "@sitterform.errors >>>>> " + @sitterform.errors.to_s + "<<<<<"
         format.html { render :edit }
         format.json { render json: @sitterform.errors, status: :unprocessable_entity }
       end
@@ -110,7 +114,7 @@ class SitterformsController < ApplicationController
       params.require(:sitterform).permit(:user_id, :phone, :alt_email, :cell, :website, :facebook, :pinterest, \
         :instagram, :twitter, :youtube, :blog, :related_contact_info, :been_to_medium, :belief_type_id, \
         :lost_loved_one, :medium_contacts,\
-        [known_deads_attributes: [:id, :user_id, :relationship_id, :sitterform_id, :name, :year_of_death, :_destroy]], :signature)
+        [known_deads_attributes: [:id, :user_id, :relationship_id, :sitterform_id, :name, :year_of_death, :_destroy]], :signature, :signature_checkbox)
     end
 end
 

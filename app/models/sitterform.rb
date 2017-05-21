@@ -8,22 +8,20 @@ class Sitterform < ActiveRecord::Base
   has_many :relationships, through: :known_deads
 
   validates :user_id, presence: true
-  validate :signature_and_checkbox
+  validate :signature_and_checkbox # see below custom validation
 
   attr_accessible :user_id, :phone, :alt_email, :cell, :website, :facebook, :pinterest, :instagram
   attr_accessible :twitter, :youtube, :blog, :related_contact_info, :been_to_medium, :belief_type_id
   attr_accessible :lost_loved_one, :signature, :known_deads_attributes, :medium_contacts
+  attr_accessible :signature_checkbox
 
   private
-    # def signature_and_checkbox
-    #   if !sitterform.signature.empty?
-    #     if !sitterform.signature_checkbox
-    #       flash[:notice] "signature checkbox must be checked"
-    #     end
-    #   else
-
-    #   elsif sitterform.signature.empty? 
-
-    #   elsif !sitterform.signature_checkbox
-    # end
+    # if signature is signed, checkbox MUST also be ticked
+    def signature_and_checkbox
+      if !self.signature.empty?
+        if !self.signature_checkbox
+          self.errors.add(:signature_checkbox, 'needs to be checked')
+        end
+      end
+    end
 end

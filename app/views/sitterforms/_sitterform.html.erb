@@ -1,17 +1,17 @@
-<%= form_for(@sitterforms) do |f| %>
-  <% if @sitterforms.errors.any? %>
+<%= form_for(@sitterform) do |f| %>
+  <% if @sitterform.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@sitterforms.errors.count, "error") %> prohibited this test from being saved:</h2>
+      <h2><%= pluralize(@sitterform.errors.count, "error") %> prohibited this test from being saved:</h2>
 
       <ul>
-      <% @sitterforms.errors.full_messages.each do |message| %>
+      <% @sitterform.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
- <h2><%= 'Sitter Registration for ' + @user.full_name %><br></h2>
+ <h2><%= 'Sitter Registration for ' + @sitterform.user.full_name %><br></h2>
 <br>
   <p>Please <span style="color:red;">answer all questions</span> to the best of you ability and do not leave blank spaces.<br>  <span style="color:red">If you do not have a specific answer to the question, please type "<b>none</b>" into the field.</span><br/>  Your responses will determine your eligibility to participate in this program.
   </p>
@@ -137,7 +137,7 @@
         </tr>
       </thead>
       <tbody>
-        <% for known_dead in @sitterforms.known_deads %>
+        <% for known_dead in @sitterform.known_deads %>
           <%= f.fields_for :known_deads, known_dead do |builder| %>
             <tr>
               <td><%= builder.text_field :name %></td>
