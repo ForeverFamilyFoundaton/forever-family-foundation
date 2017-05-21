@@ -33,6 +33,7 @@ ActiveAdmin.register Sitterform do
       row :belief_type
       row :lost_loved_one
       row :signature
+      row :signature_checkbox
       table_for sitter.known_deads do
         column "Known Deceaseds" do |f|
           "Name: " + f.name + "   relationship: " + f.relationship.name
@@ -80,6 +81,7 @@ ActiveAdmin.register Sitterform do
       end
 
       f.input :signature
+      f.input :signature_checkbox
     end
     f.actions
   end

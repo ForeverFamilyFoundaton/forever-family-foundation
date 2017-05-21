@@ -1,5 +1,5 @@
 %ul.nav#site_nav
-  - if current_user and current_user.sitter_registration
+  - if current_user and current_user.sitter_registration and !current_user.sitterform.signature_checkbox
     %li
       = link_to "Sitter Registration Form", new_sitterform_path, {:style=>"color:red;"}
   - if current_user and !current_user.biz? || !current_user.business.registered?
