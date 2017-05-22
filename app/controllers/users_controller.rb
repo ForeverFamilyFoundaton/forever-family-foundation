@@ -4,12 +4,16 @@
 class UsersController < ApplicationController
 
   def show
-    @user = current_user
-    @family_members = current_user.family_members
-    @business = current_user.business
+    logger.debug "----- Users show -----"
+    if (!current_user.nil?)
+      @user = current_user
+      @family_members = current_user.family_members
+      @business = current_user.business
+    end
   end
 
   def update
+    logger.debug "----- Users update -----"
     @user = current_user
     if @user.update_attributes params[:user]
       redirect_to @user

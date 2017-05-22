@@ -60,6 +60,11 @@ class SitterformsController < ApplicationController
 
     respond_to do |format|
       if @sitterform.save
+        if @sitterform.signature_checkbox
+          @user = current_user
+          @user.sitter_registration = false
+          @user.save
+        end
         format.html { redirect_to @sitterform, notice: 'Sitterform was successfully created.' }
         format.json { render :show, status: :created, location: @sitterform }
       else
@@ -80,6 +85,11 @@ class SitterformsController < ApplicationController
 
     respond_to do |format|
       if @sitterform.update(sitterform_params)
+        if @sitterform.signature_checkbox
+          @user = current_user
+          @user.sitter_registration = false
+          @user.save
+        end
         format.html { redirect_to @sitterform, notice: 'Sitterform was successfully updated.' }
         format.json { render :show, status: :ok, location: @sitterform }
       else

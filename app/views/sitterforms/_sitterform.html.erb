@@ -185,7 +185,7 @@
         <%= f.text_field :signature, style: "width:50%", placeholder: "Please type your full name"  %>
       </div>
       <div class="form_fields">
-        <%= f.check_box :signature_checkbox%>
+        <%= f.check_box :signature_checkbox, id: "sig_check_box", type: 'visible'%>
         <p>I understand that checking this box constitutes <span><b>a legal signature</b></span> confirming that I acknowledge and warrant the truthfulness of the information provided in this document</p>
       </div>
   </div>
