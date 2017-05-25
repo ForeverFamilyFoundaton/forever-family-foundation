@@ -24,14 +24,6 @@
   <div class='form_section'>
     <h2 class='form_section_header'>Additional Information</h2>
       <div class="form_fields">
-<!--         <%= f.label :id, "SitterformID" %>
-        <%= f.text_field :id, :disabled => true %>
-        <div class="field">
-          <%= f.label :user_id, "User ID" %>
-          <%= f.text_field :user_id %>
-        </div> -->
-
-        
       <table>
         <tr>
           <td style="width:10%;"><%= f.label :phone %></td>
@@ -92,7 +84,7 @@
         <p><b>Do you work in any other fields related to Health, Healing, or Spirituality?<br>
         If so, please provide contact information:</b></p>
         <div class="field">
-          <%= f.text_area :related_contact_info, size: 40 %>
+          <%= f.text_area :related_contact_info, size: 40, placeholder: "Related field contact information" %>
         </div>
       </div>
   </div>
@@ -101,7 +93,7 @@
     <h2 class='form_section_header'>Past Medium Contact</h2>
       <div class="form_fields">
       <p><b> If you have been to a medium (or mediums), please list them by name.</b></p>
-        <%= f.text_area :medium_contacts, size: 40 %>
+        <%= f.text_area :medium_contacts, size: 40, placeholder: "Medium contact names" %>
 <!--         <div>
           <%= f.label :been_to_medium, "I have been to a Medium" %>
           <%= f.check_box :been_to_medium %>
@@ -145,9 +137,9 @@
         <% for known_dead in @sitterform.known_deads %>
           <%= f.fields_for :known_deads, known_dead do |builder| %>
             <tr>
-              <td><%= builder.text_field :name %></td>
+              <td><%= builder.text_field :name, placeholder: "First name" %></td>
               <td><%= builder.select :relationship_id, Relationship.all.collect { |p| [ p.name, p.id ] } %></td>
-              <td><%= builder.text_field :year_of_death, style: "width:80%" %></td>
+              <td><%= builder.text_field :year_of_death, placeholder: "YYYY", style: "width:100%" %></td>
             </tr>
           <%end%>
         <%end%>
@@ -182,7 +174,7 @@
     <h2 class='form_section_header'>Signature</h2>
       <div class="form_fields">
         <%= f.label :signature, "Electronic Signature"%>
-        <%= f.text_field :signature, style: "width:50%", placeholder: "Please type your full name"  %>
+        <%= f.text_field :signature, style: "width:50%", placeholder: "Your Full Name"  %>
       </div>
       <div class="form_fields">
         <%= f.check_box :signature_checkbox, id: "sig_check_box", type: 'visible'%>
