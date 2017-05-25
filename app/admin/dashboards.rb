@@ -21,6 +21,8 @@ ActiveAdmin.register_page "Dashboard" do
             li link_to 'Radio Archives', admin_radio_archives_path
             li link_to 'Recommended Books', admin_recommended_books_path
             li link_to 'Recommended Book Categories', admin_recommended_book_categories_path
+            li link_to 'Relationships', admin_relationships_path
+            li link_to 'Sitter Registration', admin_sitterforms_path
             li link_to 'Users', admin_users_path
             li link_to 'Admin Users', admin_admin_users_path
           end

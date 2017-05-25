@@ -1,0 +1,15 @@
+<%= simple_form_for(@known_dead) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :user_id %>
+    <%= f.input :sitterform_id %>
+    <%= f.input :name %>
+    <%= f.select :relationship_id, Relationship.all.collect { |p| [ p.name, p.id ] } %>
+
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

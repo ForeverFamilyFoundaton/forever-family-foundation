@@ -1,0 +1,190 @@
+<%= form_for(@sitterform) do |f| %>
+  <% if @sitterform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sitterform.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+      <% @sitterform.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <h2><%= 'Sitter Registration for ' + @sitterform.user.full_name %><br></h2>
+<br>
+  <p>Please <span style="color:red;">answer all questions</span> to the best of you ability and do not leave any blank spaces.<br>  <span style="color:red">If you do not have a specific answer to the question, please type "<b>none</b>" into the field.</span><br/> </p> 
+  <p style="font-weight:bold">
+  Your responses will determine your eligibility to participate in this program.
+  </p>
+
+  <p>You do not need to fill out the form in one sitting and may return to this form as often as necessary until you <span style="color:red">sign and check the signature box for final submission</span>.
+  </p>
+<br>
+  <div class='form_section'>
+    <h2 class='form_section_header'>Additional Information</h2>
+      <div class="form_fields">
+      <table>
+        <tr>
+          <td style="width:10%;"><%= f.label :phone %></td>
+          <td><%= f.text_field :phone %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :cell %></td>
+          <td><%= f.text_field :cell %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :alt_email, "Alternate Email" %></td>
+          <td><%= f.text_field :alt_email %></td>
+        </tr>
+      </table>
+  </div>
+  </div>
+  <br>
+  <div class='form_section'>
+    <h2 class='form_section_header'>Social Networking</h2>
+      <div class="form_fields">
+        <p><b> Please provide the link(s) (URL) for each of your social networking accounts below:</b></p>
+        <table>
+          <tr>
+            <td style="width:5%;"><%= f.label :website%></td>
+            <td><%= f.text_field :website, style: "width:80%", placeholder: "Your personal website url" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :facebook %></td>
+            <td><%= f.text_field :facebook, style: "width:80%", placeholder: "Link to your Facebook page" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :pinterest %></td>
+            <td><%= f.text_field :pinterest, style: "width:80%", placeholder: "Link to your Pinterest page" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :instagram%></td>
+            <td><%= f.text_field :instagram, style: "width:80%", placeholder: "Link to your Instagram account" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :twitter %></td>
+            <td><%= f.text_field :twitter, style: "width:80%", placeholder: "Link to your twitter feed" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :youtube %></td>
+            <td><%= f.text_field :youtube, style: "width:80%", placeholder: "Link to your YouTube channel" %></td>
+          </tr>
+          <tr>
+            <td><%= f.label :blog %></td>
+            <td><%= f.text_field :blog, style: "width:80%", placeholder: "Link to your blog" %></td>
+          </tr>
+        </table>
+      </div>
+  </div>
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Other Activities</h2>
+      <div class="form_fields">
+        <p><b>Do you work in any other fields related to Health, Healing, or Spirituality?<br>
+        If so, please provide contact information:</b></p>
+        <div class="field">
+          <%= f.text_area :related_contact_info, size: 40, placeholder: "Related field contact information" %>
+        </div>
+      </div>
+  </div>
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Past Medium Contact</h2>
+      <div class="form_fields">
+      <p><b> If you have been to a medium (or mediums), please list them by name.</b></p>
+        <%= f.text_area :medium_contacts, size: 40, placeholder: "Medium contact names" %>
+<!--         <div>
+          <%= f.label :been_to_medium, "I have been to a Medium" %>
+          <%= f.check_box :been_to_medium %>
+        </div> -->
+        <br/>
+        <div class="field">
+          <div>
+          <%= f.label :belief_type_id, "Regarding an Afterlife, which would you consider yourself to be?" %><br/>
+          </div>
+<!-- 
+          <%= collection_radio_buttons(:sitterform, :belief_type_id, BeliefType.all, :id, :name) %>
+           -->
+          <% BeliefType.all.each do |t| %>
+            <%= f.radio_button :belief_type_id, t.id %>
+            <%= f.label :belief_type_id, t.name %><br>
+<% end %>
+          <br>
+          <br>
+        </div>
+      </div>
+  </div>
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Personal Loss</h2>
+    <div class="form_fields">
+      <p><b>If you have suffered the loss of a loved one, please list below the first name of up to five deceased people with whom you would like to connect.</b></p>
+    </div>
+
+
+ </p>
+    <div class="form_fields">
+    <table>
+      <thead>
+        <tr>
+          <th style='text-align:left'>Name</th>
+          <th style='text-align:left'>Relationship</th>
+          <th style='text-align:left;width:10%'>Year of Death</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for known_dead in @sitterform.known_deads %>
+          <%= f.fields_for :known_deads, known_dead do |builder| %>
+            <tr>
+              <td><%= builder.text_field :name, placeholder: "First name" %></td>
+              <td><%= builder.select :relationship_id, Relationship.all.collect { |p| [ p.name, p.id ] } %></td>
+              <td><%= builder.text_field :year_of_death, placeholder: "YYYY", style: "width:100%" %></td>
+            </tr>
+          <%end%>
+        <%end%>
+      </tbody>
+    </table> 
+    </div>
+  </div>
+
+<div class='form_section'>
+  <h2 class='form_section_header'>Certification Program</h2>
+  <div class="form_fields">
+  <p style="font-weight:bold">PURPOSE</p>
+    <p>In fulfillment of the mission of the Forever Family Foundation, the foundation has embarked on the creation and establishment of a medium certification program/project.  The board of Forever Family Foundation has identified the need for an objective evaluation of those individuals who wish to publicly “validate” their mediumship abilities. In devising such a program, Forever Family Foundation seeks to: </p>
+    <ol> 
+      <li>Minimize the harm to the general public inflicted by fraudulent, unscrupulous practitioners who exploit their grief and vulnerabilities.</li>
+      <li>Set a standard which must be met by mediums before they are recognized as having attained a basic level of proficiency in the field so as to be a benefit to the public.></li>
+      <li>Procure data through scientific, objective observation for use in the Forever Family Foundation supported research endeavors.</li>
+    </ol>
+    <p style="font-weight:bold">CONDITIONS AND TERMS OF PARTICIPATION AS A SITTER IN THE PROGRAM:</p>
+    <ol>
+      <li>As a part of the certification process, I understand that I will be participating in medium reading session(s) which may be video and/or audio taped.  This tape(s) will remain the property of Forever Family Foundation, Inc. <span style="color:red;">and cannot be retained or shared for any purposes by the sitter.</span></li>
+      <li>I understand that my participation may be used for scientific, educational, among other charitable purposes and as such may result in the publication, reproduction or other use of results of my participation.</li>
+      <li>I fully release, indemnify and hold harmless Forever Family Foundation, its board, employees, agents, and others acting on their behalf, from any and all liability which may arise as a result of my participation.</li>
+      <li>I understand that due to Forever Family Foundation’s promise of confidentiality to the mediums, I cannot divulge medium participation nor their subsequent passing or failing in their certification attempt.</li>
+      <li style="color:red;">I understand that I must keep my participation in and knowledge of this certification process private and confidential, as sharing such information may compromise the integrity of the process.</li>
+      <li style="color:red;">As an active volunteer of Forever Family Foundation I will engage in promotion of the work of Forever Family Foundation (with the exception of the MECP program) via the social media networks in which I am engaged.</li>
+    </ol>
+  </div>
+</div>
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Signature</h2>
+      <div class="form_fields">
+        <%= f.label :signature, "Electronic Signature"%>
+        <%= f.text_field :signature, style: "width:50%", placeholder: "Your Full Name"  %>
+      </div>
+      <div class="form_fields">
+        <%= f.check_box :signature_checkbox, id: "sig_check_box", type: 'visible'%>
+        <p>I understand that checking this box constitutes <span><b>a legal signature</b></span> confirming that I acknowledge and warrant the truthfulness of the information provided in this document</p>
+      </div>
+  </div>
+
+  <div class="actions">
+   <!--  <%= f.submit %> -->
+   <%= render partial: 'shared/form_submit', locals: { text: 'Submit'} %>
+
+  </div>
+<% end %>

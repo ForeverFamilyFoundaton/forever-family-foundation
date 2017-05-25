@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @known_dead.user_id %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @known_dead.name %>
+</p>
+<p>
+
+
+<%= link_to 'Edit', edit_known_dead_path(@known_dead) %> |
+<%= link_to 'Back', known_deads_path %>

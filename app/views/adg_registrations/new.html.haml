@@ -14,7 +14,7 @@
             = radio_button "adg_registration", "radio_val[#{adg_question.id}]", "no", :checked => (adg_answer.present? and adg_answer.radio_val == "no"), class: :no
 
 
-          %div.ansewer_field{style: "display: #{(adg_question.show_radio && adg_answer.try(:answer).blank?) ? 'none' : 'block'}"}
+          %div.answer_field{style: "display: #{(adg_question.show_radio && adg_answer.try(:answer).blank?) ? 'none' : 'block'}"}
             = text_area_tag "adg_registration[answer[#{adg_question.id}]]", adg_answer.try(:answer), class: :simple
 
 

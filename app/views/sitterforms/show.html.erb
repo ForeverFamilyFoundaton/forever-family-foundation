@@ -1,0 +1,92 @@
+
+<p>
+  <strong>User Name:</strong>
+  <%= @sitterform.user.full_name %>
+</p>
+<p>
+  <strong>Phone:</strong>
+  <%= @sitterform.phone %>
+</p>
+<p>
+  <strong>Alternate Email:</strong>
+  <%= @sitterform.alt_email %>
+</p>
+<p>
+  <strong>Website:</strong>
+  <%= @sitterform.website %>
+</p>
+<p>
+  <strong>Facebook:</strong>
+  <%= @sitterform.facebook %>
+</p>
+<p>
+  <strong>Pinterest:</strong>
+  <%= @sitterform.pinterest %>
+</p>
+<p>
+  <strong>Instagram:</strong>
+  <%= @sitterform.instagram %>
+</p>
+<p>
+  <strong>Twitter:</strong>
+  <%= @sitterform.twitter %>
+</p>
+<p>
+  <strong>Youtube:</strong>
+  <%= @sitterform.youtube %>
+</p>
+<p>
+  <strong>Blog:</strong>
+  <%= @sitterform.blog %>
+</p>
+<p>
+  <strong>Other Activities Contact Info:</strong>
+  <%= @sitterform.related_contact_info %>
+</p>
+<p>
+  <strong>Twitter:</strong>
+  <%= @sitterform.twitter %>
+</p>
+<p>
+  <strong>Mediums I've Contacted:</strong>
+  <%= @sitterform.medium_contacts %>
+</p>
+<p>
+  <strong>Regarding an Afterlife, which would you consider yourself to be?</strong><br/>
+  <%- if @sitterform.belief_type.nil? %>
+  <p> No belief type </p>
+  <%-else %>
+  <%= @sitterform.belief_type.name %>
+  <% end %>
+</p>
+<p>
+  <strong>Lost loved one:</strong>
+  <%= @sitterform.lost_loved_one %>
+</p>
+    <%- if @sitterform.known_deads.nil? %>
+      <p>No known deceaseds</p>
+    <%-else %>
+      <table>
+        <theader>
+        <th style="text-align:left;">Name</th>
+        <th style="text-align:left;">Relationship</th>
+        <th style="text-align:left;">Year of Death</th>
+        </theader>
+        <tbody>
+      <% for t in @sitterform.known_deads %>
+        <tr>
+          <td><%= t.name%></td>
+          <td><%= t.relationship.name %></td>
+          <td><%= t.year_of_death %></td>
+        </tr>
+      <%end%>
+      </tbody>
+      </table>
+    <% end %>
+
+<br/>
+<p>
+  <strong>Signature:</strong>
+  <%= @sitterform.signature %>
+</p>
+

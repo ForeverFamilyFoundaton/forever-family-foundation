@@ -49,12 +49,13 @@ gem 'stripe', '~> 1.33.0'
 gem 'taps', '~> 0.3.24'
 gem 'truncate_html', '~> 0.9.2'
 gem 'uglifier', '~> 2.7.2'
-
+gem 'seed_dump'
 
 group :test do
-  gem 'capybara', '2.6.0'
+  gem 'byebug', platform: :mri
+  gem 'capybara',  '2.14.0'  #'2.6.0'
   gem 'capybara-screenshot', '1.0.11'
-  gem 'database_cleaner', '~> 1.5.1', require: false
+  gem 'database_cleaner', '1.6.0' #'~> 1.5.1', require: false
   gem 'email_spec', '~> 2.0.0'
   gem 'factory_girl_rails', '4.4.1'
   gem 'faker', '~> 1.6.1'
@@ -74,9 +75,12 @@ group :development do
 end
 
 group :development, :test do
+
   gem 'dotenv-rails'
   gem 'pry'
   gem 'pry-stack_explorer'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end

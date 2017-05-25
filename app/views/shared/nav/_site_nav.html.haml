@@ -1,8 +1,10 @@
 %ul.nav#site_nav
+  - if !current_user.nil? and current_user.sitter_registration
+    %li
+      = link_to "Sitter Registration Form", new_sitterform_path, {:style=>"color:red;"}
   - if current_user and !current_user.biz? || !current_user.business.registered?
     %li
       = link_to t('navigation.site.business_registration'), new_user_business_path(current_user)
-
   %li
     = link_to t('navigation.global.events'), events_path 
   %li

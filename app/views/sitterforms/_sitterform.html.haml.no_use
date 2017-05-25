@@ -1,0 +1,6 @@
+.form_section
+  %h2.form_section_header Contact Info
+  .form_fields
+    .group
+      = sitterform.input :phone, label: t('labels.phone'), required: true
+      = sitterform.input :mobile, label: t('labels.mobile'), required: true

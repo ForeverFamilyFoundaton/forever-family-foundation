@@ -7,8 +7,11 @@ class RegistrationController < Devise::RegistrationsController
   end
 
   def create
+
     @user = User.new(params[:user])
-    if verify_recaptcha && @user.save
+    
+    # to get around recaptcha localhost domain
+    if (verify_recaptcha || Rails.env.development? )&& @user.save
       flash[:notice] = I18n.t('flash.user.create.success')
       sign_in(@user)
       if @user.is_business?

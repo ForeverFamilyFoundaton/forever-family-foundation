@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Known Deads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User ID</th>
+      <th>Sitterform ID</th>
+      <th>Name</th>
+      <th>Relationship</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @known_dead.each do |f| %>
+      <tr>
+        <td><%= f.id %></td>
+        <td><%= f.user_id %></td>
+        <td><%= f.sitterform_id %></td>
+        <td><%= f.name %></td>
+        <td><%= f.relationship.name %></td>
+        <td><%= link_to 'Show', f %></td>
+        <td><%= link_to 'Edit', edit_known_dead_path(f) %></td>
+        <td><%= link_to 'Destroy', f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Known dead', new_known_dead_path %>

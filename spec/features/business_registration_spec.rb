@@ -1,6 +1,7 @@
 require 'feature_helper'
 
 describe 'Business registration' do
+#pending "Times out during testing"
 
   before do
     @user = FactoryGirl.create(:user, { email: 'abc@example.com'})

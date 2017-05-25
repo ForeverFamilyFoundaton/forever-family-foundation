@@ -1,0 +1,10 @@
+
+<%= f.fields_for :known_deads, known_dead do |builder| %>
+  <%= f.label :name %> 
+  <%= f.text_field :name %>
+
+  <%= f.label :reltionship_id, "Relationship" %>
+  <%= f.select :relationship_id, Relationship.all.collect { |p| [ p.name, p.id ] } %></br>
+
+  <%= f.label :year_of_death %> 
+  <%= f.text_field :year_of_death %>

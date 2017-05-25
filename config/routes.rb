@@ -1,5 +1,11 @@
 ForeverFamilyFoundation::Application.routes.draw do
 
+  resources :belief_types
+  resources :tests
+  resources :known_deads
+  resources :relationships
+  resources :relationships
+  resources :relationships
   root :to => 'site#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -18,6 +24,8 @@ ForeverFamilyFoundation::Application.routes.draw do
   resources :recommended_book
   resource :adg_registration
   resource :redirects
+  resources :sitterforms
+  resources :known_deads
 
   get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
   get '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'
