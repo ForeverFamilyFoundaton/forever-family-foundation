@@ -5,7 +5,7 @@ ruby '2.3.3'
 gem 'protected_attributes'
 
 gem 'rails', '~> 4.2.5'
-gem 'pg', '~> 0.18.4'
+gem 'pg', '~> 0.20.0'
 gem 'puma'
 # Gems used only for assets and not required
 # in production environments by default.
