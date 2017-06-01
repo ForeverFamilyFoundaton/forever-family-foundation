@@ -35,7 +35,7 @@ class Sitterform < ActiveRecord::Base
           end
           if d[:year_of_death].empty?
             self.errors.add(:year_of_death, 'needs to be filled in for ' + d[:name])
-          elsif (d[:yesr_of_death].to_i < 1900 || d[:year_of_death].to_i > 2017)
+          elsif (d[:year_of_death].to_i < 1900 || d[:year_of_death].to_i > 2017)
             self.errors.add(:year_of_death, 'invalid for ' + d[:name])
           end
         end
