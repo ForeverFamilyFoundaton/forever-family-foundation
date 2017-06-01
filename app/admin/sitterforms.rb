@@ -61,7 +61,6 @@ ActiveAdmin.register Sitterform do
       # f.input :belief_types, label: "Regarding an Afterlife, which would you consider yourself to be?",  as: :check_boxes     
       
       f.inputs "Regarding an Afterlife, which would you consider yourself to be?" do
-        f.input :been_to_medium
         f.input :belief_type do |belief|
           belief.input :name
         end
@@ -69,7 +68,6 @@ ActiveAdmin.register Sitterform do
       # f.inputs :known_deads_name
  
       f.inputs 'Lost Loved Ones' do
-        f.input :lost_loved_one
         f.has_many :known_deads do |known_dead|
           known_dead.input :name
           known_dead.input :relationship
