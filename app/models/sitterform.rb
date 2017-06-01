@@ -7,7 +7,9 @@ class Sitterform < ActiveRecord::Base
 
   has_many :relationships, through: :known_deads
 
-  validates :user_id, presence: true
+  validates_presence_of :belief_type_id
+  validates_presence_of :user_id
+  validate :relationship_and_date
   validate :signature_and_checkbox # see below custom validation
 
   attr_accessible :user_id, :phone, :alt_email, :cell, :website, :facebook, :pinterest, :instagram
@@ -21,6 +23,21 @@ class Sitterform < ActiveRecord::Base
       if !self.signature.empty?
         if !self.signature_checkbox
           self.errors.add(:signature_checkbox, 'needs to be checked')
+        end
+      end
+    end
+
+    def relationship_and_date
+      self.known_deads.each do |d|
+        if !d[:name].blank?
+          if d[:relationship_id] == 1
+            self.errors.add(:relationship, 'needs to be selected for ' + d[:name])
+          end
+          if d[:year_of_death].empty?
+            self.errors.add(:year_of_death, 'needs to be filled in for ' + d[:name])
+          elsif (d[:yesr_of_death].to_i < 1900 || d[:year_of_death].to_i > 2017)
+            self.errors.add(:year_of_death, 'invalid for ' + d[:name])
+          end
         end
       end
     end

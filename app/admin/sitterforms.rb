@@ -28,14 +28,11 @@ ActiveAdmin.register Sitterform do
       row :youtube
       row :blog
       row :related_contact_info
-      row :been_to_medium
-      row :related_contact_info
       row :belief_type
-      row :lost_loved_one
       row :signature
       row :signature_checkbox
       table_for sitter.known_deads do
-        column "Known Deceaseds" do |f|
+        column "Lost Loved Ones" do |f|
           "Name: " + f.name + "   relationship: " + f.relationship.name
         end
       end
