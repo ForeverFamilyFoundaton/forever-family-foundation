@@ -55,6 +55,7 @@ ActiveAdmin.register Sitterform do
         f.input :youtube, :input_html => {:rows => 1}
         f.input :blog, :input_html => {:rows => 1}
         f.input :related_contact_info
+        f.input :medium_contacts
       end
  
 
