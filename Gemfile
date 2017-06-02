@@ -23,38 +23,39 @@ gem 'compass-blueprint', '~> 1.0'
 gem 'compass-rails', '~> 2.0.5'
 gem 'country_select', '~>2.5.0'
 gem 'css3buttons', '~> 1.0.1'
-gem 'delayed_job_active_record'
+gem 'delayed_job_active_record', '4.1.1'
 gem 'devise', '~> 3.5.4'
-gem 'figaro'
+gem 'figaro', '1.1.1'
 gem 'fog', '1.37.0'
 gem 'haml', '~> 4.0.5'
 gem 'honeybadger', '~> 2.0.12'
 gem 'jquery-rails', '~> 4.1.0'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'kaminari', '~> 0.16.1'
-gem 'launchy', '~> 2.1'
 gem 'net-ssh', '~> 3.0.1'
 gem 'newrelic_rpm', '~> 3.13'
 gem 'non-stupid-digest-assets'
 gem 'paperclip', '5.1.0' # '4.3.6' # '4.3.2' use with 'aws-sdk', '< 2.0'
 gem 'ranked-model', '~> 0.4.0'
-gem 'ransack'
+gem 'ransack', '1.8.2'
 #gem 'recaptcha', '2.0.0'  #'1.0.2', require: "recaptcha/rails"
 gem "recaptcha", require: "recaptcha/rails"
 gem 'redcarpet', '~> 3.3.4'
 gem "sass-rails", "~> 5.0.4"
 gem 'simple_form', '~> 3.0'
-gem 'state_machine'
+gem 'state_machine', '1.2.0'
 gem 'stripe', '~> 1.33.0'
 gem 'taps', '~> 0.3.24'
 gem 'truncate_html', '~> 0.9.2'
 gem 'uglifier', '~> 2.7.2'
-gem 'seed_dump'
+gem 'seed_dump', '3.2.4'
 
 group :test do
   gem 'byebug', platform: :mri
-  gem 'capybara',  '2.14.0'  #'2.6.0'
-  gem 'capybara-screenshot', '1.0.11'
+  gem 'capybara',  '~> 2.13'  #'2.6.0'
+  gem 'capybara-screenshot', '~> 1.0'
+  gem 'capybara-webkit', '~> 1.14'
+  gem 'launchy', '~> 2.4'
   gem 'database_cleaner', '1.6.0' #'~> 1.5.1', require: false
   gem 'email_spec', '~> 2.0.0'
   gem 'factory_girl_rails', '4.4.1'
@@ -69,16 +70,16 @@ group :test do
 end
 
 group :development do
-  gem 'guard'
-  gem 'guard-rspec'
-  gem 'spring'
+  gem 'guard', '2.14.0'
+  gem 'guard-rspec', '4.7.3'
+  gem 'spring', '2.0.0'
 end
 
 group :development, :test do
 
-  gem 'dotenv-rails'
-  gem 'pry'
-  gem 'pry-stack_explorer'
+  gem 'dotenv-rails', '2.1.1'
+  gem 'pry', '0.10.4'
+  gem 'pry-stack_explorer', '0.4.9.2'
 end
 
 group :production do

@@ -39,17 +39,17 @@ describe 'Sitter registration' do
     expect(page).to have_content 'Signature checkbox needs to be checked'
   end
 
-  # it 'Sitterform signature and signature_checkbox', :sitterform do
+  # it 'Sitterform signature and signature_checkbox', :driver => :webkit, type: :sitterform do
   #   visit '/login'
   #   sign_in(@user2)
-  #   visit '/login'
+  #   visit '/'
   #   click_link('Sitter Registration Form')
-  #   choose('A total non-believer')
+  #   #choose('sitterform_belief_type_id_1', visible: false)
+  #   page.execute_script("document.getElementById('sitterform_belief_type_id_1').ch‌​ecked = true")
   #   fill_in('Electronic Signature', :with => 'John Doe')
   #   page.check("sig_check_box")
   #   #find(:css, "#sig_check_box").set(true)
   #   click_button('Submit')
-    
     
   #   expect(page).to have_content 'Sitterform was successfully'
   # end
