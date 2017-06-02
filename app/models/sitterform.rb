@@ -35,8 +35,8 @@ class Sitterform < ActiveRecord::Base
           end
           if d[:year_of_death].empty?
             self.errors.add(:year_of_death, 'needs to be filled in for ' + d[:name])
-          elsif (d[:year_of_death].to_i < 1900 || d[:year_of_death].to_i > 2017)
-            self.errors.add(:year_of_death, 'invalid for ' + d[:name])
+          elsif (d[:year_of_death].to_i < 1900 || d[:year_of_death].to_i > Date.current.year)
+            self.errors.add(:year_of_death, 'must be between 1900- ' + Date.current.year.to_s + " for "+ d[:name])
           end
         end
       end

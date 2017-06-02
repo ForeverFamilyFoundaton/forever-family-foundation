@@ -1,6 +1,8 @@
 require 'rails_helper'
 require 'database_cleaner'
 require 'capybara/poltergeist'
+require 'capybara/rspec'
+Capybara.javascript_driver = :webkit
 
 include ActionDispatch::TestProcess
 
