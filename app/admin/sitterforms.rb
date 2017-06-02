@@ -28,6 +28,7 @@ ActiveAdmin.register Sitterform do
       row :youtube
       row :blog
       row :related_contact_info
+      row :medium_contacts
       row :belief_type
       row :signature
       row :signature_checkbox
