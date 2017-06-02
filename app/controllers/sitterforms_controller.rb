@@ -14,14 +14,11 @@ class SitterformsController < ApplicationController
       logger.debug "---- sitterform exists ----"
       @sitterform = Sitterform.find_by(user_id: current_user.id)
       build_known_deads
-      # n = @sitterform.known_deads.count
-      # (5-n).times {@sitterform.known_deads.build}
       redirect_to action: 'edit', id: @sitterform.id
     else
       logger.debug "---- sitterform new ----"
       @sitterform = Sitterform.new()
       build_known_deads
-      5.times {@sitterform.known_deads.build}
     end
     logger.debug "----- still in Sitterforms new -----"
     @relationships = Relationship.all
