@@ -9,7 +9,7 @@ gem 'pg', '~> 0.20.0'
 gem 'puma'
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'activeadmin', '~> 1.0.0.pre2'
+gem 'activeadmin', '1.0.0.pre4'
 #gem 'activeadmin', github: 'activeadmin/activeadmin'
 #gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'acts_as_tree', '~> 2.4.0'
