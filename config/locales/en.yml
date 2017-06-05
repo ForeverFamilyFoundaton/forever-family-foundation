@@ -25,7 +25,7 @@ en:
     cell_phone: Cell phone
     work_phone: Work phone
     remeber_me: Remeber me
-    terms_of_use_acceptance_html: Yes, I accept the <a href='/site/terms' class='popup'>Terms of Use</a> & <a href='/site/privacy' class='popup'>Privacy Policy</a>
+    terms_of_use_acceptance_html: Yes, I accept the <a href='/site/terms' class='popup'>Terms of Use</a> & <a href='/site/privacy' class='popup'>Privacy Policy</a> and <a href='/site/community' class='popup'>FFF Community</a>
     business_reg_acceptance_html: I am registering a business <a class='popup' href='/site/business_membership'>Business Membership</a>. Charges will apply.
     contact_name: Contact Name
     contact_email: Contact Email
