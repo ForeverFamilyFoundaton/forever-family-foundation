@@ -18,7 +18,7 @@ ActiveAdmin.register RadioArchive do
       f.input :title
       f.input :guest
       f.input :date, start_year: 2000, end_year: Date.today.year + 1
-      f.input :format, as: :select, collection: ['Signs of Life', 'Mediums & Messages', 'The Gathering']
+      f.input :format, as: :select, collection: ['Signs of Life', 'Mediums & Messages', 'The Gathering', 'Medium Insights']
     end
 
     f.inputs "Recording", :for => [:attached_file, f.object.attached_file || AttachedFile.new] do |recording_form|
