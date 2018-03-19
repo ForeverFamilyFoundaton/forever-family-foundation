@@ -169,7 +169,7 @@ ActiveAdmin.register User do
       f.input :home_phone
       f.input :work_phone
       f.input :fax
-      f.input :medium_registration
+      f.input :medium_registration, as: :boolean
       f.input :sitter_registration
       f.input :is_business do |user|
         user.business.present?
