@@ -69,6 +69,7 @@ ActiveAdmin.register User do
         user.categories.map(&:name).to_sentence
       end
       row :fax
+      row :medium_registration
       row :sitter_registration
       row :is_business
       row :address do
@@ -168,6 +169,7 @@ ActiveAdmin.register User do
       f.input :home_phone
       f.input :work_phone
       f.input :fax
+      f.input :medium_registration
       f.input :sitter_registration
       f.input :is_business do |user|
         user.business.present?
