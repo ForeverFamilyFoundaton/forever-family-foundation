@@ -70,7 +70,21 @@ ActiveAdmin.register User do
       end
       row :fax
       row :medium_registration
+      row :link_to_mediumform do
+        if user.mediumform.present?
+          link_to('Mediumform is Here', admin_mediumform_path(user.mediumform.id))
+        else
+          status_tag("No Mediumform Available")
+        end
+      end
       row :sitter_registration
+      row :link_to_sitterform do
+        if user.sitterform.present?
+          link_to('Sitterform is Here', admin_sitterform_path(user.sitterform.id))
+        else
+          status_tag("No Sitterform Available")
+        end
+      end
       row :is_business
       row :address do
         user.address
