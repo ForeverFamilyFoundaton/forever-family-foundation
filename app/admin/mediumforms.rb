@@ -16,7 +16,7 @@ ActiveAdmin.register Mediumform do
 
   show do |medium|
     attributes_table do
-      row :id
+      row :user_id
       row :phone
       row :cell
       row :use_professional

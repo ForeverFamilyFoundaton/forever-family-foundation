@@ -3,44 +3,30 @@
   <strong>User Name:</strong>
   <%= @mediumform.user.full_name %>
 </p>
-<p>
-  <strong>Phone:</strong>
-  <%= @mediumform.professional_phone_number %>
-</p>
-<p>
-  <strong>Alternate Email:</strong>
-  <%= @mediumform.personal_email %>
-</p>
-<p>
-  <strong>Website:</strong>
-  <%= @mediumform.website %>
-</p>
-<p>
-  <strong>Facebook:</strong>
-  <%= @mediumform.facebook %>
-</p>
-<p>
-  <strong>Pinterest:</strong>
-  <%= @mediumform.pinterest %>
-</p>
-<p>
-  <strong>Instagram:</strong>
-  <%= @mediumform.instagram %>
-</p>
-<p>
-  <strong>Twitter:</strong>
-  <%= @mediumform.twitter %>
-</p>
-<p>
-  <strong>Youtube:</strong>
-  <%= @mediumform.youtube %>
-</p>
-<p>
-  <strong>Blog:</strong>
-  <%= @mediumform.blog %>
-</p>
-<p>
-  <strong>Signature:</strong>
-  <%= @mediumform.signature %>
-</p>
+<p><h2><b>Alternative - Professional</b></h2></p>
+<p><strong>Use Professional: </strong><%= @mediumform.use_professional %></p>
+<p><strong>Professional Name: </strong><%= @mediumform.professional_name %></p>
+<p><strong>Professional Address 1: </strong><%= @mediumform.professional_address_line1 %></p>
+<p><strong>Professional Address 2: </strong><%= @mediumform.professional_address_line2 %></p>
+<p><strong>Professional Phone Number: </strong><%= @mediumform.professional_phone_number %></p>
+<p><strong>Professional Email: </strong><%= @mediumform.professional_email%></p>
 
+<p><h2><b>Alternative - Personal</b></h2></p>
+<p><strong>Use Personal: </strong><%= @mediumform.use_personal %></p>
+<p><strong>Personal Name: </strong><%= @mediumform.personal_name %></p>
+<p><strong>Personal Address 1: </strong><%= @mediumform.personal_address_line1 %></p>
+<p><strong>Personal Address 2: </strong><%= @mediumform.personal_address_line2 %></p>
+<p><strong>Personal Phone Number: </strong><%= @mediumform.personal_phone_number %></p>
+<p><strong>Personal Email: </strong><%= @mediumform.personal_email%></p>
+
+<p><h1 style="background-color:yellow"><b>Social Media</b></h1></p>
+<p><strong>Website: </strong><%= @mediumform.website %></p>
+<p><strong>Facebook: </strong><%= @mediumform.facebook %></p>
+<p><strong>Pinterest: </strong><%= @mediumform.pinterest %></p>
+<p><strong>Instagram: </strong><%= @mediumform.instagram %></p>
+<p><strong>Twitter: </strong><%= @mediumform.twitter %></p>
+<p><strong>Youtube: </strong><%= @mediumform.youtube %></p>
+<p><strong>Blog: </strong><%= @mediumform.blog %></p>
+
+<p><h2><b>Other Activities</b></h2></p>
+<p><%= @mediumform.other_businesses %></p>

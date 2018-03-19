@@ -13,13 +13,13 @@ class Mediumform < ActiveRecord::Base
   attr_accessible :user_id
   attr_accessible :use_professional, :professional_name, :professional_address_line1, :professional_address_line2
   attr_accessible :professional_phone_number, :professional_email
-  attr_accessible :use_personal, :personal_name, :personal_address_line, :personal_address_line2
+  attr_accessible :use_personal, :personal_name, :personal_address_line1, :personal_address_line2
   attr_accessible :personal_phone_number, :personal_email
 
   attr_accessible :other_businesses, :health_healing
       
   attr_accessible :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other
-  attr_accessible :sitter1, :sitter2, :sitter3, :sitter, :sitter5
+  attr_accessible :sitter1, :sitter2, :sitter3, :sitter4, :sitter5
 
   attr_accessible :signature_checkbox, :signature
 
