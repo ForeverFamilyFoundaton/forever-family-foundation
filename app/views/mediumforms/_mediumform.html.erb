@@ -24,8 +24,8 @@
   <div class='form_section'>
     <h2 class='form_section_header'>Forever Family Foundation Information</h2>
       <div class='form_fields'>
-        <table>
-          <tr><td><%= radio_button_tag "contactme", :other_businesses %> <b>Use this information to contact me</b></td></tr>
+        <table style="font-size: 13px;">
+          <tr><td><%= radio_button_tag "contactme", :other_businesses %> <span style="color:red;"><b>Use this information to contact me</b> choice between this and Alternative Information below</span></td></tr>
         </table>
         <table>
           <tr>
@@ -60,8 +60,8 @@
   <div class='form_section'>
     <h1 class='form_section_header'>Alternative Contact Information</h1>
       <div class='form_fields'>
-        <table>
-          <tr><td><%= radio_button_tag "contactme", :other_businesses %> <b>Use this information to contact me</b></td></tr>
+        <table style="font-size: 14px;">
+          <tr><td><%= radio_button_tag "contactme", :other_businesses %> <b><span style="color:red;">Use this information to contact me</span></b></td></tr>
         </table>
         <table style="font-size:13px">
           <tr><b>The below is:</b>
