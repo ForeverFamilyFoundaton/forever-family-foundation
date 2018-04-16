@@ -24,10 +24,11 @@
   <div class='form_section'>
     <h2 class='form_section_header'>Forever Family Foundation Information</h2>
       <div class='form_fields'>
-        <table style="font-size: 13px;">
+<!--         <table style="font-size: 13px;">
           <tr><td><%= radio_button_tag "contactme", :other_businesses %> <span style="color:red;"><b>Use this information to contact me</b> choice between this and Alternative Information below</span></td></tr>
         </table>
-        <table>
+ -->        
+          <table>
           <tr>
             <td style="font-size: 14px;"><b>First Name: </b><%= @mediumform.user.first_name %></td>
             <td style="font-size: 14px;"><b>Middle Name: </b><%= @mediumform.user.middle_name %></td>
@@ -60,9 +61,10 @@
   <div class='form_section'>
     <h1 class='form_section_header'>Alternative Contact Information</h1>
       <div class='form_fields'>
-        <table style="font-size: 14px;">
+<!--         <table style="font-size: 14px;">
           <tr><td><%= radio_button_tag "contactme", :other_businesses %> <b><span style="color:red;">Use this information to contact me</span></b></td></tr>
         </table>
+ -->        
         <table style="font-size:13px">
           <tr><b>The below is:</b>
             <td><%= radio_button_tag "below", :other_businesses %> Personal Contact Information</td>
@@ -179,6 +181,9 @@
 
           <b>5) As a medium, is your first priority to bring forth evidence of survival or messages of love? Explain why.</b><br>
           <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Evidence of survival or messages of love" %><br>
+
+          <b>6) What is the difference between information received psychically and information received from a discarnate entity?</b><br>
+          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Differences in receiving information" %><br>
       </div>
   </div>
  
@@ -189,8 +194,7 @@
         <b>1) How did you hear about Forever Family Foundation’s Medium Evaluation Certification Process?</b><br>
           <%= f.text_area :other_businesses, style: "width:90%", placeholder: "How did you hear about us" %>
 
-        <p><b>2) Have you been working as a medium full time? <br>
-          If so, for how long? <br>
+        <p><b>2) Have you been working as a medium full time? If so, for how long? <br>
         <p><b>If you are not working as a medium full time, please explain why, and if you have plans to do so in the future<br>
         <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Your work as a medium" %>
         <br>
@@ -230,11 +234,7 @@
       <br>
       <b>5) Have you ever received formal education, training, or mentorship in Mediumship?<br>
       (If so, please list specifics)</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Mediumship training information" %><br>
-
-      <b>6) What is the difference between information received psychically and information received from a discarnate entity?</b><br>
-      <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Differences in receiving information" %><br>
-        
+          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Mediumship training information" %><br>        
      </div>
   </div>
 
@@ -245,14 +245,14 @@
         <%= f.text_area :other_businesses, style: "width:90%", placeholder: "No communication or information is coming through" %><br>
          
 
-        <p><b>2) If you were conducting a reading and received dire information about the sitter’s health or possible demise, would you communicate this information to the sitter? If so, in what way?</b><br>
+        <p><b>2) If you were conducting a reading and received dire information about the sitter’s health or possible demise, would you communicate this information to the sitter?<br>If so, in what way?</b><br>
         <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Handle dire information" %>
         <br>
         
         <b>3) If you were in public and received information from a spirit that belonged to a complete stranger, what would you do with that information?</b><br>
         <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Deal with strangers" %><br>
 
-        <b>4) Have you offered your time without pay to any organizations, particularly not-for-profit organizations, in order to benefit the greater good<br>
+        <b>4) Have you offered your time without pay to any organizations, particularly not-for-profit organizations, in order to benefit the greater good?<br>
         Please explain and provide contact people of such organizations.</b><br>
         <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Probono work" %><br>
         <br>
