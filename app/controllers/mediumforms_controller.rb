@@ -119,9 +119,14 @@ class MediumformsController < ApplicationController
         :use_personal, :personal_name, :personal_address_line, :personal_address_line2, \
         :personal_phone_number, :personal_email, \
         :other_businesses, :health_healing, \
+        :other_primary_owner, :other_related, :other_not_related,
         :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other, \
-        :sitter1, :sitter2, :sitter3, :sitter, :sitter5, \
-        :signature_checkbox, :signature)
+        :sitter1, :sitter2, :sitter3, :sitter4, :sitter5, \
+        :signature_checkbox, :signature, \
+        :ethics1, :ethics2, :ethics3, :ethics4, \
+        :became_aware, :immediate_family, :life_event, :specific_goal, :medium_priority, \
+        :different_info, :hear_about_fff, :medium_history, :mediumship_training, \
+        :other_classify, :self_classify)
     end
 end
 

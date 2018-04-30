@@ -21,6 +21,13 @@ class Mediumform < ActiveRecord::Base
   attr_accessible :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other
   attr_accessible :sitter1, :sitter2, :sitter3, :sitter4, :sitter5
 
+  attr_accessible :ethics1, :ethics2, :ethics3, :ethics4
+  attr_accessible :other_primary_owner, :other_related, :other_not_related
+  attr_accessible :became_aware, :immediate_family, :life_event, :specific_goal, :medium_priority
+  attr_accessible :different_info, :hear_about_fff, :medium_history, :mediumship_training
+  attr_accessible :kind_of_readings
+  attr_accessible :self_classify, :other_classify
+
   attr_accessible :signature_checkbox, :signature
 
   private

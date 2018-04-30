@@ -50,11 +50,6 @@
             <td style="font-size: 14px;"><b>Zip: </b><%= @mediumform.user.address.zip %></td>
           </tr>
         </table>
-        <b>The above is:</b>
-        <table style="font-size:13px">
-          <tr><td><%= radio_button_tag "above", :other_businesses %> Personal Contact Information</td>
-              <td><%= radio_button_tag "above", :other_businesses %> Professional Contact Information</td></tr>
-        </table>
       </div>
   </div>
 
@@ -67,43 +62,60 @@
  -->        
         <table style="font-size:13px">
           <tr><b>The below is:</b>
-            <td><%= radio_button_tag "below", :other_businesses %> Personal Contact Information</td>
-          <td><%= radio_button_tag "below", :other_businesses %> Professional Contact Information</td></tr>
+            <td><%= radio_button_tag "below", :use_professional %> Personal Contact Information</td>
+          <td><%= radio_button_tag "below", :use_professional %> Professional Contact Information</td></tr>
         </table>
-        <table>
+         <table>
           <tr>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
-            <td colspan="1" style="height:0px"></td>
+            <td style="font-size: 14px;"><b>First Name:</b></td>
+            <td style="font-size: 14px;"><b>Middle Name:</b></td>
+            <td><b>Last Name: </b></td>
           </tr>
           <tr>
-            <td class="medium_label" colspan="3"><b>Name: </b></td>
-            <td colspan="4"><%= f.text_field :professional_name, style: "width:100%", placeholder: "Professional Name"%></td>
+            <td><%= f.text_field :alt_first_name, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_middle_name, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_last_name, maxlength: 15, style: "width:70%" %></td>
           </tr>
           <tr>
-            <td class="medium_label" colspan="3"><b>Address Line 1: </b></td>
-            <td colspan="4"><%= f.text_field :professional_address_line1, style: "width:100%"%></td>
+            <td style="font-size: 14px;"><b>Cell Phone:</b></td>
+            <td style="font-size: 14px;"><b>Home Phone:</b></td>
+            <td style="font-size: 14px;"><b>Work Phone:</b></td>
           </tr>
           <tr>
-            <td class="medium_label" colspan="3"><b>Address Line 2: </b></td>
-            <td colspan="4"><%= f.text_field :professional_address_line2, style: "width:100%"%></td>
+            <td><%= f.text_field :alt_mobile_name, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_work_phone, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_city, maxlength: 15, style: "width:70%" %></td>
           </tr>
           <tr>
-            <td class="medium_label" colspan="3"><b>Phone Number: </b></td>
-            <td colspan="4"><%= f.text_field :professional_phone_number, style: "width:100%"%></td>
+            <td style="font-size: 14px;"><b>Alternate Email: </b></td>
+            <td style="font-size: 14px;"><b>Alternate Email: </b></td>
+            <td style="font-size: 14px;"><b>Alternate Email: </b></td>
           </tr>
           <tr>
-            <td class="medium_label" colspan="3"><b>Email: </b></td>
-            <td colspan="4"><%= f.text_field :professional_email, style: "width:100%"%></td>
+            <td><%= f.text_field :alt_mobile_name, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_work_phone, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_city, maxlength: 15, style: "width:70%" %></td>
           </tr>
-          <br>
+          <tr>
+            <td style="font-size: 14px;"><b>Address Line 1: </b></td></tr>
+            <tr><td colspan="4"><%= f.text_field :professional_address_line1, maxlength: 15, style: "width:100%" %></td>
+            </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>Address Line 2: </b></td></tr>
+            <tr><td colspan="4"><%= f.text_field :professional_address_line2, maxlength: 15, style: "width:100%" %></td>
+            </tr>
+          </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>City: </b></td>
+            <td style="font-size: 14px;"><b>State: </b></td>
+            <td style="font-size: 14px;"><b>Zip: </b></td>
+          </tr>
+
+          <tr>
+            <td><%= f.text_field :alt_city, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_state, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_zipcode, maxlength: 15, style: "width:70%" %></td>
+          </tr>
         </table>
       </div>
   </div>
@@ -115,49 +127,64 @@
         <table>
           <tr>
             <td class="medium_label" style="width:0.5%;"><%= f.label :website%></td>
-            <td class='sf'><%= f.text_field :website, style: "width:80%", placeholder: "Link to your website" %></td>
+            <td><%= f.text_field :website, style: "width:85%", maxlength:50, placeholder: "Link to your website" %></td>
           </tr>
           <tr>
             <td class="medium_label"><%= f.label :facebook %></td>
-            <td class='sf'><%= f.text_field :facebook, style: "width:80%", placeholder: "Link to your Facebook page" %></td>
+            <td><%= f.text_field :facebook, style: "width:85%", maxlength:50, placeholder: "Link to your Facebook page" %></td>
           </tr>
           <tr>
             <td class="medium_label"><%= f.label :pinterest %></td>
-            <td><%= f.text_field :pinterest, style: "width:80%", placeholder: "Link to your Pinterest page" %></td>
+            <td><%= f.text_field :pinterest, style: "width:85%", maxlength:50, placeholder: "Link to your Pinterest page" %></td>
           </tr>
           <tr>
             <td class="medium_label"><%= f.label :instagram%></td>
-            <td><%= f.text_field :instagram, style: "width:80%", placeholder: "Link to your Instagram account" %></td>
+            <td><%= f.text_field :instagram, style: "width:85%", maxlength:50, placeholder: "Link to your Instagram account" %></td>
           </tr>
           <tr>
             <td class="medium_label"><%= f.label :twitter %></td>
-            <td><%= f.text_field :twitter, style: "width:80%", placeholder: "Link to your twitter feed" %></td>
+            <td><%= f.text_field :twitter, style: "width:85%", maxlength:50, placeholder: "Link to your twitter feed" %></td>
           </tr>
           <tr>
             <td class="medium_label"><%= f.label :youtube %></td>
-            <td><%= f.text_field :youtube, style: "width:80%", placeholder: "Link to your YouTube channel" %></td>
+            <td><%= f.text_field :youtube, style: "width:85%", maxlength:50, placeholder: "Link to your YouTube channel" %></td>
           </tr>
           <tr>
             <td class="medium_label"><%= f.label :blog %></td>
-            <td><%= f.text_field :blog, style: "width:80%", placeholder: "Link to your blog" %></td>
+            <td><%= f.text_field :blog, style: "width:85%", maxlength:50, placeholder: "Link to your blog" %></td>
           </tr>
         </table>
       </div>
   </div>
 
+<!--    <div class='form_section'>
+    <h2 class='form_section_header'>New Section</h2>
+      <div class="form_fields">
+        <%= f.text_field :website, size:20, placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, size:40, placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, size:60, placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, size:80, placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:20%", placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:40%", placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:60%", placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:80%", placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:100%", placeholder: "Link to your website" %>
+      </div>
+  </div>   -->    
+
   <div class='form_section'>
     <h2 class='form_section_header'>Other Activities</h2>
       <div class="form_fields">
           <b>1) In the following space give contact information for any other businesses in which you are the primary owner:</b><br>
-          <%= f.text_area :blog, style: "width:90%", placeholder: "Contact information for other businesses" %><br>
+          <%= f.text_area :other_primary_owner, maxlength: 500, placeholder: "Contact information for other businesses", class: 'big_box' %><br>
 
           <p><b>2) Do you work in any other fields related to Health, Healing, or Spirituality?<br>
           If so, please provide details:<br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Other Health, Healing, or Spirituality work" %>
+          <%= f.text_area :other_related, maxlength: 500, placeholder: "Other Health, Healing, or Spirituality work", class: 'big_box' %>
           <br>
         
           <b>3) Do you do work in any other fields that are NOT related to Health, Healing, or Spirituality? Please provide details:</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Non Health, Healing, or Spirituality work" %>
+          <%= f.text_area :other_not_related, placeholder: "Non Health, Healing, or Spirituality work", class: 'big_box' %>
       </div>
   </div>
 
@@ -165,25 +192,25 @@
     <h2 class='form_section_header'>Intuitive Information</h2>
       <div class="form_fields">
           <b>1) When did you become aware that you were able to communicate with spirit?</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Aware of spirit communication" %>
+          <%= f.text_area :became_aware, class: 'big_box', placeholder: "Aware of spirit communication" %>
 
           <p><b>2) Do you have immediate family members with the same ability?<br>
           If so, please provide details:<br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Immediate family members" %>
+          <%= f.text_area :immediate_family, class: 'big_box', placeholder: "Immediate family members" %>
           <br>
         
           <b>3) Did the recognition of this ability coincide with any particular event in your life?<br>
           Please explain.</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Related life event" %><br>
+          <%= f.text_area :life_event, class: 'big_box', placeholder: "Related life event" %><br>
 
           <b>4) Why do you wish to work with discarnate entities in the field of survival of consciousness?<br> Is there a specific goal you hope to achieve in this work?</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Your specific goals" %><br>
+          <%= f.text_area :specific_goal, class: 'big_box', placeholder: "Your specific goals" %><br>
 
           <b>5) As a medium, is your first priority to bring forth evidence of survival or messages of love? Explain why.</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Evidence of survival or messages of love" %><br>
+          <%= f.text_area :medium_priority, class: 'big_box', placeholder: "Evidence of survival or messages of love" %><br>
 
           <b>6) What is the difference between information received psychically and information received from a discarnate entity?</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Differences in receiving information" %><br>
+          <%= f.text_area :different_info, class: 'big_box', placeholder: "Differences in receiving information" %><br>
       </div>
   </div>
  
@@ -192,49 +219,49 @@
     <h2 class='form_section_header'>Professional Information</h2>
       <div class="form_fields">
         <b>1) How did you hear about Forever Family Foundation’s Medium Evaluation Certification Process?</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "How did you hear about us" %>
+          <%= f.text_area :hear_about_fff, class: 'big_box', placeholder: "How did you hear about us" %>
 
         <p><b>2) Have you been working as a medium full time? If so, for how long? <br>
         <p><b>If you are not working as a medium full time, please explain why, and if you have plans to do so in the future<br>
-        <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Your work as a medium" %>
+        <%= f.text_area :medium_history, class: 'big_box', placeholder: "Your work as a medium" %>
         <br>
         
         <div style= "font-size: 13px"><b>3) What kind of readings do you offer in your practice?</b><br></div>
         <table style="font-size:13px">
           <tr>
-            <td><%= check_box_tag :use_professional %>Phone Readings</td>
+            <td><%= check_box_tag :kind_of_readings %>Phone Readings</td>
           </tr>
           <tr>
-            <td><%= check_box_tag :use_professional %>Face to face Readings</td>
+            <td><%= check_box_tag :kind_of_readings %>Face to face Readings</td>
           </tr>
           <tr>
-            <td><%= check_box_tag :use_professional %>Email readings</td>
+            <td><%= check_box_tag :kind_of_readings %>Email readings</td>
           </tr>
           <tr>
-            <td><%= check_box_tag :use_professional %>Internet/Skype</td>
+            <td><%= check_box_tag :kind_of_readings %>Internet/Skype</td>
           </tr>
           <tr>
-            <td><%= check_box_tag :use_professional %>Do not presently practice as a medium</td>
+            <td><%= check_box_tag :kind_of_readings %>Do not presently practice as a medium</td>
           </tr>
         </table>
       
         <br>
         <div style= "font-size: 13px"><b>4) How do you classify yourself as a professional?</b><br></div>
         <table style="font-size:13px">
-          <tr><td><%= check_box_tag "proclass", :other_businesses %> Medium</td></tr>
-          <tr><td><%= check_box_tag "proclass", :other_businesses %> Channeler</td></tr>
-          <tr><td><%= check_box_tag "proclass", :other_businesses %> Psychic/Clairvoyant</td></tr>
-          <tr><td><%= check_box_tag "proclass", :other_businesses %> Medical Intuitive</td></tr>
-          <tr><td><%= check_box_tag "proclass", :other_businesses %> Healer</td></tr>
-          <tr><td><%= check_box_tag "proclass", :other_businesses %> Life Coach/Business Coach</td></tr>
+          <tr><td><%= check_box_tag "proclass", :self_classify %> Medium</td></tr>
+          <tr><td><%= check_box_tag "proclass", :self_classify %> Channeler</td></tr>
+          <tr><td><%= check_box_tag "proclass", :self_classify %> Psychic/Clairvoyant</td></tr>
+          <tr><td><%= check_box_tag "proclass", :self_classify %> Medical Intuitive</td></tr>
+          <tr><td><%= check_box_tag "proclass", :self_classify %> Healer</td></tr>
+          <tr><td><%= check_box_tag "proclass", :self_classify %> Life Coach/Business Coach</td></tr>
           <tr><td><%= check_box_tag "proclass", :other_businesses %> Other 
-          <%= f.text_field :other_businesses, style: "width:20%", placeholder: "Other classification" %></td></tr>
+          <%= f.text_field :other_classify, style: "width:40%", maxlength: 30, placeholder: "Other classification" %></td></tr>
         </table>
 
       <br>
       <b>5) Have you ever received formal education, training, or mentorship in Mediumship?<br>
       (If so, please list specifics)</b><br>
-          <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Mediumship training information" %><br>        
+          <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br>        
      </div>
   </div>
 
@@ -242,26 +269,29 @@
     <h2 class='form_section_header'>ETHICS QUESTIONNAIRE</h2>
       <div class="form_fields">
         <b>1) How do you handle a situation where you are engaged in providing your services to a sitter and no communication or information is coming through?</b><br>
-        <%= f.text_area :other_businesses, style: "width:90%", placeholder: "No communication or information is coming through" %><br>
+        <%= f.text_area :ethics1, class: 'big_box', placeholder: "No communication or information is coming through" %><br>
          
 
         <p><b>2) If you were conducting a reading and received dire information about the sitter’s health or possible demise, would you communicate this information to the sitter?<br>If so, in what way?</b><br>
-        <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Handle dire information" %>
+        <%= f.text_area :ethics2, class: 'big_box', placeholder: "Handle dire information" %>
         <br>
         
         <b>3) If you were in public and received information from a spirit that belonged to a complete stranger, what would you do with that information?</b><br>
-        <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Deal with strangers" %><br>
+        <%= f.text_area :ethics3, class: 'big_box', placeholder: "Deal with strangers" %><br>
 
         <b>4) Have you offered your time without pay to any organizations, particularly not-for-profit organizations, in order to benefit the greater good?<br>
         Please explain and provide contact people of such organizations.</b><br>
-        <%= f.text_area :other_businesses, style: "width:90%", placeholder: "Probono work" %><br>
+        <%= f.text_area :ethics4, class: 'big_box', placeholder: "Probono work" %><br>
         <br>
       </div>
   </div>
 
   <div class='form_section'>
     <h2 class='form_section_header'>Signature</h2>
+
       <div class="form_fields">
+        <p>You can reedit and submit this form as often as you like. <br>
+        <span style="color:red;">Once you sign and check the Signature box, you will not be able to change your information.</span><br><br></p>
         <%= f.label :signature, "Electronic Signature"%>
         <%= f.text_field :signature, style: "width:50%", placeholder: "Your Full Name"  %>
       </div>
