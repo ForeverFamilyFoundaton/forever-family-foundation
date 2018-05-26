@@ -13,15 +13,20 @@ class MediumformsController < ApplicationController
     if Mediumform.exists?(user_id: current_user.id)
       logger.debug "---- mediumform exists ----"
       @mediumform = Mediumform.find_by(user_id: current_user.id)
+      @mediumpreference = MediumformPreference.selfclassify_preferences
+      logger.debug "-----------got preference---------"
     else
         logger.debug "---- mediumform new ----"
          @mediumform = Mediumform.new()
+         @mediumpreference = MediumformPreference.selfclassify_preferences
+         logger.debug "@mediumpreference -----" + @mediumpreference.inspect + " -----"
     end
     logger.debug "----- still in Mediumforms new -----"
 
     logger.debug "@mediumform -----" + @mediumform.inspect + " -----"
     @mediumform.user_id = current_user.id
     logger.debug "----- " + current_user.id.to_s + " -----"
+    logger.debug "----DONE----"
   end
 
   def show
@@ -77,7 +82,8 @@ class MediumformsController < ApplicationController
     logger.debug "mediumform_params ----- " + mediumform_params.inspect + " -----"
 
     respond_to do |format|
-      if @mediumform.update(mediumform_params)
+      #if @mediumform.update(mediumform_params)
+      if @mediumform.update_attributes params[:mediumform]
         if @mediumform.signature_checkbox
           @user = current_user
           @user.medium_registration = false
@@ -114,19 +120,21 @@ class MediumformsController < ApplicationController
 
     def mediumform_params
       params.require(:mediumform).permit(:user_id, \
-        :use_professional, :professional_name, :professional_address_line1, :professional_address_line2, \
+        :personalprofessional, :professional_name, :professional_address_line1, :professional_address_line2, \
         :professional_phone_number, :professional_email, \
-        :use_personal, :personal_name, :personal_address_line, :personal_address_line2, \
-        :personal_phone_number, :personal_email, \
         :other_businesses, :health_healing, \
-        :other_primary_owner, :other_related, :other_not_related,
         :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other, \
         :sitter1, :sitter2, :sitter3, :sitter4, :sitter5, \
-        :signature_checkbox, :signature, \
-        :ethics1, :ethics2, :ethics3, :ethics4, \
+        :medium_status, :test_date, :application_date, \
+        :alt_first_name, :alt_middle_name, :alt_last_name, \
+        :alt_work_phone, :alt_mobile_phone, :alt_email, \
+        :alt_address_line1, :alt_address_line2, :alt_city, :alt_state, :alt_zipcode, :alt_country, \
+        :other_primary_owner, :other_related, :other_not_related, \
         :became_aware, :immediate_family, :life_event, :specific_goal, :medium_priority, \
         :different_info, :hear_about_fff, :medium_history, :mediumship_training, \
-        :other_classify, :self_classify)
+        :kind_of_readings, :self_classify, :other_classify, \
+        :ethics1, :ethics2, :ethics3, :ethics4, \
+        :signature_checkbox, :signature,  :mediumform_preference_ids =>[])
     end
 end
 

@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'mediumform.js' %>
+
 <%= form_for(@mediumform) do |f| %>
   <% if @mediumform.errors.any? %>
     <div id="error_explanation">
@@ -27,7 +29,13 @@
 <!--         <table style="font-size: 13px;">
           <tr><td><%= radio_button_tag "contactme", :other_businesses %> <span style="color:red;"><b>Use this information to contact me</b> choice between this and Alternative Information below</span></td></tr>
         </table>
- -->        
+ -->  
+         <table style="font-size:13px">
+          <tr><b>This information is:</b>
+            <tr><td>
+              <%= f.radio_button :personalprofessional, :use_personal, :checked => @mediumform.personalprofessional == "use_personal"%>Personal Information</td>
+            <td><%= f.radio_button :personalprofessional, :use_professional, :checked => @mediumform.personalprofessional == "use_professional"%> Professional Information</td></tr>
+        </table>
           <table>
           <tr>
             <td style="font-size: 14px;"><b>First Name: </b><%= @mediumform.user.first_name %></td>
@@ -52,19 +60,15 @@
         </table>
       </div>
   </div>
-
+<p>We need both your personal and business contact information.<br>Please indicate which your profile is and then complete the other in the Alternative Information fields.</p>
   <div class='form_section'>
-    <h1 class='form_section_header'>Alternative Contact Information</h1>
+    <h1 class='form_section_header' id='alternateinfo'>Alternative Contact Information</h1>
       <div class='form_fields'>
 <!--         <table style="font-size: 14px;">
           <tr><td><%= radio_button_tag "contactme", :other_businesses %> <b><span style="color:red;">Use this information to contact me</span></b></td></tr>
-        </table>
+        </table>zs
  -->        
-        <table style="font-size:13px">
-          <tr><b>The below is:</b>
-            <td><%= radio_button_tag "below", :use_professional %> Personal Contact Information</td>
-          <td><%= radio_button_tag "below", :use_professional %> Professional Contact Information</td></tr>
-        </table>
+
          <table>
           <tr>
             <td style="font-size: 14px;"><b>First Name:</b></td>
@@ -82,7 +86,7 @@
             <td style="font-size: 14px;"><b>Work Phone:</b></td>
           </tr>
           <tr>
-            <td><%= f.text_field :alt_mobile_name, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_mobile_phone, maxlength: 15, style: "width:70%" %></td>
             <td><%= f.text_field :alt_work_phone, maxlength: 15, style: "width:70%" %></td>
             <td><%= f.text_field :alt_city, maxlength: 15, style: "width:70%" %></td>
           </tr>
@@ -92,17 +96,17 @@
             <td style="font-size: 14px;"><b>Alternate Email: </b></td>
           </tr>
           <tr>
-            <td><%= f.text_field :alt_mobile_name, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_mobile_phone, maxlength: 15, style: "width:70%" %></td>
             <td><%= f.text_field :alt_work_phone, maxlength: 15, style: "width:70%" %></td>
             <td><%= f.text_field :alt_city, maxlength: 15, style: "width:70%" %></td>
           </tr>
           <tr>
             <td style="font-size: 14px;"><b>Address Line 1: </b></td></tr>
-            <tr><td colspan="4"><%= f.text_field :professional_address_line1, maxlength: 15, style: "width:100%" %></td>
+            <tr><td colspan="4"><%= f.text_field :alt_address_line1, maxlength: 15, style: "width:100%" %></td>
             </tr>
           <tr>
             <td style="font-size: 14px;"><b>Address Line 2: </b></td></tr>
-            <tr><td colspan="4"><%= f.text_field :professional_address_line2, maxlength: 15, style: "width:100%" %></td>
+            <tr><td colspan="4"><%= f.text_field :alt_address_line2, maxlength: 15, style: "width:100%" %></td>
             </tr>
           </tr>
           <tr>
@@ -228,40 +232,44 @@
         
         <div style= "font-size: 13px"><b>3) What kind of readings do you offer in your practice?</b><br></div>
         <table style="font-size:13px">
-          <tr>
-            <td><%= check_box_tag :kind_of_readings %>Phone Readings</td>
-          </tr>
-          <tr>
-            <td><%= check_box_tag :kind_of_readings %>Face to face Readings</td>
-          </tr>
-          <tr>
-            <td><%= check_box_tag :kind_of_readings %>Email readings</td>
-          </tr>
-          <tr>
-            <td><%= check_box_tag :kind_of_readings %>Internet/Skype</td>
-          </tr>
-          <tr>
-            <td><%= check_box_tag :kind_of_readings %>Do not presently practice as a medium</td>
-          </tr>
+
+          <div class='input-group'>
+            <%= hidden_field_tag "mediumform[mediumform_preference_ids][]", nil %>
+            <% MediumformPreference.practice_preferences.all.each do |mediumform_preference| %>
+            <tr><td><%= check_box_tag "mediumform[mediumform_preference_ids][]", mediumform_preference.id, 
+                              @mediumform.mediumform_preference_ids.include?(mediumform_preference.id), 
+                id: dom_id(mediumform_preference)%>
+            <%= label_tag dom_id(mediumform_preference), mediumform_preference.name %></td></tr>
+            <% end %>
+          </div>
+          
         </table>
       
         <br>
         <div style= "font-size: 13px"><b>4) How do you classify yourself as a professional?</b><br></div>
         <table style="font-size:13px">
-          <tr><td><%= check_box_tag "proclass", :self_classify %> Medium</td></tr>
-          <tr><td><%= check_box_tag "proclass", :self_classify %> Channeler</td></tr>
-          <tr><td><%= check_box_tag "proclass", :self_classify %> Psychic/Clairvoyant</td></tr>
-          <tr><td><%= check_box_tag "proclass", :self_classify %> Medical Intuitive</td></tr>
-          <tr><td><%= check_box_tag "proclass", :self_classify %> Healer</td></tr>
-          <tr><td><%= check_box_tag "proclass", :self_classify %> Life Coach/Business Coach</td></tr>
-          <tr><td><%= check_box_tag "proclass", :other_businesses %> Other 
-          <%= f.text_field :other_classify, style: "width:40%", maxlength: 30, placeholder: "Other classification" %></td></tr>
+
+          <div class='input-group'>
+            <%= hidden_field_tag "mediumform[mediumform_preference_ids][]", nil %>
+            <% MediumformPreference.selfclassify_preferences.all.each do |mediumform_preference| %>
+            <tr><td><%= check_box_tag "mediumform[mediumform_preference_ids][]", mediumform_preference.id, 
+                              @mediumform.mediumform_preference_ids.include?(mediumform_preference.id), 
+                id: dom_id(mediumform_preference)%>
+            <%= label_tag dom_id(mediumform_preference), mediumform_preference.name %></td></tr>
+            <% end %>
+          </div>
+
+
+          <tr><td><%= f.text_field :other_classify, style: "width:40%", maxlength: 30, placeholder: "Other classification" %></td></tr>
         </table>
 
       <br>
       <b>5) Have you ever received formal education, training, or mentorship in Mediumship?<br>
       (If so, please list specifics)</b><br>
-          <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br>        
+          <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br> 
+
+      <b>6) Are you certified with any other organizations?  If so, please provide details.</b><br>
+          <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br>  
      </div>
   </div>
 
@@ -290,8 +298,8 @@
     <h2 class='form_section_header'>Signature</h2>
 
       <div class="form_fields">
-        <p>You can reedit and submit this form as often as you like. <br>
-        <span style="color:red;">Once you sign and check the Signature box, you will not be able to change your information.</span><br><br></p>
+        <p>You can edit and submit this form as often as you like. <br>
+        <span style="color:red;">Once you sign and check the Signature box, you will not be able to change your details.</span><br><br></p>
         <%= f.label :signature, "Electronic Signature"%>
         <%= f.text_field :signature, style: "width:50%", placeholder: "Your Full Name"  %>
       </div>
