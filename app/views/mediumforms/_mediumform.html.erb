@@ -33,8 +33,8 @@
          <table style="font-size:13px">
           <tr><b>This information is:</b>
             <tr><td>
-              <%= f.radio_button :personalprofessional, :use_personal, :checked => @mediumform.personalprofessional == "use_personal"%>Personal Information</td>
-            <td><%= f.radio_button :personalprofessional, :use_professional, :checked => @mediumform.personalprofessional == "use_professional"%> Professional Information</td></tr>
+              <%= f.radio_button :personalprofessional, :use_fff, :checked => @mediumform.personalprofessional == "use_fff"%>Personal Information</td>
+            <td><%= f.radio_button :personalprofessional, :use_alternate, :checked => @mediumform.personalprofessional == "use_alternate"%> Professional Information</td></tr>
         </table>
           <table>
           <tr>
@@ -62,7 +62,7 @@
   </div>
 <p>We need both your personal and business contact information.<br>Please indicate which your profile is and then complete the other in the Alternative Information fields.</p>
   <div class='form_section'>
-    <h1 class='form_section_header' id='alternateinfo'>Alternative Contact Information</h1>
+    <h1 class='form_section_header' id='alternateinfo'>Alternate Contact Information</h1>
       <div class='form_fields'>
 <!--         <table style="font-size: 14px;">
           <tr><td><%= radio_button_tag "contactme", :other_businesses %> <b><span style="color:red;">Use this information to contact me</span></b></td></tr>
@@ -242,7 +242,7 @@
             <%= label_tag dom_id(mediumform_preference), mediumform_preference.name %></td></tr>
             <% end %>
           </div>
-          
+
         </table>
       
         <br>
@@ -269,7 +269,7 @@
           <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br> 
 
       <b>6) Are you certified with any other organizations?  If so, please provide details.</b><br>
-          <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br>  
+          <%= f.text_area :other_certification, class: 'big_box', placeholder: "Mediumship training information" %><br>  
      </div>
   </div>
 

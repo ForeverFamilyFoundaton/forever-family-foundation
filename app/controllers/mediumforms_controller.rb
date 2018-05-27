@@ -120,8 +120,9 @@ class MediumformsController < ApplicationController
 
     def mediumform_params
       params.require(:mediumform).permit(:user_id, \
-        :personalprofessional, :professional_name, :professional_address_line1, :professional_address_line2, \
-        :professional_phone_number, :professional_email, \
+        :personalprofessional,
+        #:professional_name, :professional_address_line1, :professional_address_line2, \
+        #:professional_phone_number, :professional_email, \
         :other_businesses, :health_healing, \
         :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other, \
         :sitter1, :sitter2, :sitter3, :sitter4, :sitter5, \
@@ -134,6 +135,7 @@ class MediumformsController < ApplicationController
         :different_info, :hear_about_fff, :medium_history, :mediumship_training, \
         :kind_of_readings, :self_classify, :other_classify, \
         :ethics1, :ethics2, :ethics3, :ethics4, \
+        :other_certification, \
         :signature_checkbox, :signature,  :mediumform_preference_ids =>[])
     end
 end

@@ -21,8 +21,9 @@ class Mediumform < ActiveRecord::Base
   attr_accessible :mediumform_preference_ids
 
   attr_accessible :user_id
-  attr_accessible :personalprofessional, :professional_name, :professional_address_line1, :professional_address_line2
-  attr_accessible :professional_phone_number, :professional_email
+  attr_accessible :personalprofessional
+  #, :professional_name, :professional_address_line1, :professional_address_line2
+  #attr_accessible :professional_phone_number, :professional_email
 
   # attr_accessible :personal_name, :personal_address_line1, :personal_address_line2
   # attr_accessible :personal_phone_number, :personal_email
@@ -43,7 +44,7 @@ class Mediumform < ActiveRecord::Base
   attr_accessible :became_aware, :immediate_family, :life_event, :specific_goal, :medium_priority
   attr_accessible :different_info, :hear_about_fff, :medium_history, :mediumship_training
   attr_accessible :kind_of_readings, :self_classify, :other_classify
-
+  attr_accessible :other_certification
   attr_accessible :ethics1, :ethics2, :ethics3, :ethics4
 
   attr_accessible :signature_checkbox, :signature
