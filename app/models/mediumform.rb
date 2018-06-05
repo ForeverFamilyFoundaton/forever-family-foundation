@@ -29,7 +29,8 @@ class Mediumform < ActiveRecord::Base
   # attr_accessible :personal_phone_number, :personal_email
 
   attr_accessible :other_businesses, :health_healing
-      
+  
+  attr_accessible :MEPC_Failed, :MEPC_Removed, :admin_notes
   attr_accessible :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other
   
   attr_accessible :sitter1, :sitter2, :sitter3, :sitter4, :sitter5

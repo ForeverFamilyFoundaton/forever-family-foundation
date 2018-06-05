@@ -15,6 +15,9 @@ ActiveAdmin.register Mediumform do
     attributes_table do
       row :user_id
       row :personalprofessional
+      row :MEPC_Removed
+      row :MEPC_Failed
+      row :admin_notes
       panel "ALTERNATE INFORMATION" do
         attributes_table_for medium  do
           row :alt_first_name
@@ -133,6 +136,9 @@ ActiveAdmin.register Mediumform do
     f.inputs 'Details' do
       f.input :user_id, input_html: {disabled: true}
       f.input :personalprofessional
+      f.input :MEPC_Removed, start_year: 2017
+      f.input :MEPC_Failed, start_year: 2017
+      f.input :admin_notes
       f.inputs 'Alternate Information' do
         f.input :alt_first_name
         f.input :alt_middle_name

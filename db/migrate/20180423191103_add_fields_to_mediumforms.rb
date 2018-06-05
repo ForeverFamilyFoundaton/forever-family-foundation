@@ -1,5 +1,6 @@
 class AddFieldsToMediumforms < ActiveRecord::Migration
   def change
+    add_column :mediumforms, :personalprofessional, :string
     add_column :mediumforms, :other_primary_owner, :string
     add_column :mediumforms, :other_related, :string
     add_column :mediumforms, :other_not_related, :string

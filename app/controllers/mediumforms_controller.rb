@@ -124,6 +124,7 @@ class MediumformsController < ApplicationController
         #:professional_name, :professional_address_line1, :professional_address_line2, \
         #:professional_phone_number, :professional_email, \
         :other_businesses, :health_healing, \
+        :MEPC_Removed, :MEPC_Failed, :admin_notes\
         :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other, \
         :sitter1, :sitter2, :sitter3, :sitter4, :sitter5, \
         :medium_status, :test_date, :application_date, \
