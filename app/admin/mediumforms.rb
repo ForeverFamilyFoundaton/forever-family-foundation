@@ -109,10 +109,7 @@ ActiveAdmin.register Mediumform do
             end
             medium.other_classify
           end
-          row "4a) Other Classification" do
-            
-            medium.other_classify
-          end 
+
           row "5) Have you ever received formal education, training, or mentorship in Mediumship?" do
             medium.mediumship_training
           end
