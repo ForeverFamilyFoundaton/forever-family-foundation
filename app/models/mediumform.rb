@@ -17,6 +17,9 @@ class Mediumform < ActiveRecord::Base
   has_many :selfclassify_preferences, -> {where("preference_type = 'SelfClassify'")},
     through: :mediumform_preference_selections,
     source: :mediumform_preference
+  has_many :practice_preferences, -> {where("preference_type = 'Practice'")},
+    through: :mediumform_preference_selections,
+    source: :mediumform_preference
 
   attr_accessible :mediumform_preference_ids
 

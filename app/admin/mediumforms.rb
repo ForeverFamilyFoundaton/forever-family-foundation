@@ -88,25 +88,41 @@ ActiveAdmin.register Mediumform do
       panel "PROFESSIONAL INFORMATION" do
         attributes_table_for medium do
           row "1) How did you hear about Forever Family Foundation’s Medium Evaluation Certification Process?" do
-            medium.hear_about_fff
+              medium.hear_about_fff
           end
           row "2) Have you been working as a medium full time? If so, for how long? If you are not working as a medium full time, please explain why, and if you have plans to do so in the future" do
             medium.medium_history
           end
-          row "3) What kind of readings do you offer in your practice?" do
-            medium.life_event
+          row " " do
+            table_for medium.practice_preferences do
+              column "3) What kind of readings do you offer in your practice?" do |question|
+                question.name
+              end
+            end
+            #medium.life_event
           end
-          row "4) How do you classify yourself as a professional?" do
-            medium.specific_goal
+          row " " do
+            table_for medium.selfclassify_preferences do
+              column "4) How do you classify yourself as a professional?" do |question|
+                question.name
+              end
+            end
+            medium.other_classify
           end
+          row "4a) Other Classification" do
+            
+            medium.other_classify
+          end 
           row "5) Have you ever received formal education, training, or mentorship in Mediumship?" do
             medium.mediumship_training
           end
+  
           row "6) Are you certified with any other organizations?  If so, please provide details." do
             medium.other_certification
           end
         end
       end
+
       panel "ETHICS QUESTIONNAIRE" do
         attributes_table_for medium do
           row "1) How do you handle a situation where you are engaged in providing your services to a sitter and no communication or information is coming through?" do
