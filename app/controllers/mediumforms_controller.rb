@@ -126,9 +126,11 @@ class MediumformsController < ApplicationController
         :MEPC_Removed, :MEPC_Failed, :admin_notes,\
         :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other, \
         :sitter1, :sitter2, :sitter3, :sitter4, :sitter5, \
+        :sitterA, :sitterB, :sitterC, :sitterD, :sitterE, \
         :medium_status, :test_date, :application_date, \
         :alt_first_name, :alt_middle_name, :alt_last_name, \
-        :alt_work_phone, :alt_mobile_phone, :alt_email, \
+        :alt_mobile_phone, :alt_work_phone, :alt_home_phone, \
+        :alt_work_email, :alt_home_email, \
         :alt_address_line1, :alt_address_line2, :alt_city, :alt_state, :alt_zipcode, :alt_country, \
         :other_primary_owner, :other_related, :other_not_related, \
         :became_aware, :immediate_family, :life_event, :specific_goal, :medium_priority, \

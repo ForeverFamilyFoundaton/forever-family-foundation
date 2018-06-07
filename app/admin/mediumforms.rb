@@ -41,13 +41,22 @@ ActiveAdmin.register Mediumform do
           row :blog
         end
       end
-      panel "SITTERS" do
+      panel "SITTERS SET 1" do
         attributes_table_for medium  do
           row :sitter1
           row :sitter2
           row :sitter3
           row :sitter4
           row :sitter5
+        end
+      end
+      panel "SITTERS SET 2" do
+        attributes_table_for medium  do
+          row :sitterA
+          row :sitterB
+          row :sitterC
+          row :sitterD
+          row :sitterE
         end
       end
       panel "OTHER ACTIVITIES" do

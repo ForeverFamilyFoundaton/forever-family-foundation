@@ -37,12 +37,15 @@ class Mediumform < ActiveRecord::Base
   attr_accessible :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other
   
   attr_accessible :sitter1, :sitter2, :sitter3, :sitter4, :sitter5
+  attr_accessible :sitterA, :sitterB, :sitterC, :sitterD, :sitterE
 
   attr_accessible :medium_status, :test_date, :application_date
 
   attr_accessible :alt_first_name, :alt_middle_name, :alt_last_name
   attr_accessible :alt_address_line1, :alt_address_line2
-  attr_accessible :alt_work_phone, :alt_mobile_phone, :alt_address, :alt_city, :alt_state, :alt_zipcode, :alt_country, :alt_email
+  attr_accessible :alt_work_phone, :alt_mobile_phone
+  attr_accessible :alt_work_email, :alt_home_email
+  attr_accessible :alt_address, :alt_city, :alt_state, :alt_zipcode, :alt_country, :alt_email
 
   attr_accessible :other_primary_owner, :other_related, :other_not_related
   attr_accessible :became_aware, :immediate_family, :life_event, :specific_goal, :medium_priority
