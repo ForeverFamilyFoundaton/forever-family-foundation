@@ -37,7 +37,7 @@ class Mediumform < ActiveRecord::Base
   attr_accessible :website, :blog, :facebook, :pinterest, :instagram, :twitter, :youtube, :other
   
   attr_accessible :sitter1, :sitter2, :sitter3, :sitter4, :sitter5
-  attr_accessible :sitterA, :sitterB, :sitterC, :sitterD, :sitterE
+  attr_accessible :SitterA, :SitterB, :SitterC, :SitterD, :SitterE
 
   attr_accessible :medium_status, :test_date, :application_date
 

@@ -52,11 +52,11 @@ ActiveAdmin.register Mediumform do
       end
       panel "SITTERS SET 2" do
         attributes_table_for medium  do
-          row :sitterA
-          row :sitterB
-          row :sitterC
-          row :sitterD
-          row :sitterE
+          row :SitterA
+          row :SitterB
+          row :SitterC
+          row :SitterD
+          row :SitterE
         end
       end
       panel "OTHER ACTIVITIES" do
@@ -191,12 +191,20 @@ ActiveAdmin.register Mediumform do
         f.input :youtube, :input_html => {:rows => 1}
         f.input :blog, :input_html => {:rows => 1}
       end
-      f.inputs 'SITTERS' do
+      f.inputs 'SITTERS SET 1' do
         f.input :sitter1
         f.input :sitter2  
         f.input :sitter3
         f.input :sitter4
         f.input :sitter5
+      end
+
+      f.inputs 'SITTERS SET 2' do
+        f.input :SitterA
+        f.input :SitterB  
+        f.input :SitterC
+        f.input :SitterD
+        f.input :SitterE
       end
       
       f.inputs "OTHER ACTIVITIES"  do
