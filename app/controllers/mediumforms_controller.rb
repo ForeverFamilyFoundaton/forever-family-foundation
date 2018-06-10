@@ -64,7 +64,7 @@ class MediumformsController < ApplicationController
           @user.medium_registration = false
           @user.save
         end
-        format.html { redirect_to root_path, notice: 'Mediumform was successfully created2.' }
+        format.html { redirect_to root_path, notice: 'Mediumform was successfully created.' }
         #format.html { redirect_to @mediumform, notice: 'Mediumform was successfully created.' }
         #format.json { render :show, status: :created, location: @mediumform }
       else
