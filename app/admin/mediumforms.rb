@@ -25,6 +25,9 @@ ActiveAdmin.register Mediumform do
           row :alt_last_name
           row :alt_address_line1
           row :alt_address_line2
+          row :alt_city
+          row :alt_state
+          row :alt_zipcode
           row :alt_mobile_phone
           row :alt_work_phone
           row :alt_email
