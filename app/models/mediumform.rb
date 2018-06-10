@@ -43,7 +43,7 @@ class Mediumform < ActiveRecord::Base
 
   attr_accessible :alt_first_name, :alt_middle_name, :alt_last_name
   attr_accessible :alt_address_line1, :alt_address_line2
-  attr_accessible :alt_work_phone, :alt_mobile_phone
+  attr_accessible :alt_work_phone, :alt_mobile_phone, :alt_home_phone
   attr_accessible :alt_work_email, :alt_home_email
   attr_accessible :alt_address, :alt_city, :alt_state, :alt_zipcode, :alt_country, :alt_email
 
