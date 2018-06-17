@@ -1,0 +1,2 @@
+module MediumformsHelper
+end

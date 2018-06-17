@@ -20,23 +20,57 @@
 
   <p>You do not need to fill out the form in one sitting and may return to this form as often as necessary until you <span style="color:red">sign and check the signature box for final submission</span>.
   </p>
+  <div class='form_section'>
+    <h2 class='form_section_header'>Forever Family Foundation Information</h2>
+      <div>
+        <table>
+          <tr>
+            <td class='sf'><b>First Name: </b><%= @sitterform.user.first_name %></td>
+            <td class='sf'><b>Middle Name: </b><%= @sitterform.user.middle_name %></td>
+            <td class='sf'><b>Last Name: </b><%= @sitterform.user.last_name %></td>
+          </tr>
+          <br>
+          <tr>
+            <td class='sf'><b>Cell Phone: </b></td>
+            <td class='sf'><b>Work Phone: </b></td>
+            <td class='sf'><b>Home Phone: </b> </td>
+          </tr>
+          <br>
+          <tr>
+            <td class='sf'><b>Address: </b><%= @sitterform.user.address.address %></td>
+            <td class='sf'><b>City: </b><%= @sitterform.user.address.city %></td>
+            <td class='sf'><b>State: </b><%= @sitterform.user.address.state %></td>
+          </tr>
+          <tr>
+            <td class='sf'><b>Zip: </b><%= @sitterform.user.address.zip %></td>
+            <td class='sf'><b>Country: </b><%= @sitterform.user.address.country %></td>
+          </tr>
+        </table>
+      </div>
+  </div>
 <br>
   <div class='form_section'>
     <h2 class='form_section_header'>Additional Information</h2>
       <div class="form_fields">
       <table>
-        <tr>
-          <td style="width:10%;"><%= f.label :phone %></td>
-          <td><%= f.text_field :phone %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :cell %></td>
-          <td><%= f.text_field :cell %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :alt_email, "Alternate Email" %></td>
-          <td><%= f.text_field :alt_email %></td>
-        </tr>
+          <tr>
+            <td class='sf'><b>Pro Name: </b><%= @sitterform.user.first_name %></td>
+            <td class='sf'><b>Middle Name: </b><%= @sitterform.user.middle_name %></td>
+            <td class='sf'><b>Last Name: </b><%= @sitterform.user.last_name %></td>
+          </tr>
+          <tr>
+            <td class="sf"> <%= f.label "fp" %><%= f.text_field :phone %></td>
+            <!-- <td style="width:10%;font-size: 10"><%= f.label :phone %></td> -->
+            <!-- <td class="sf"><%= f.text_field :phone %> -->
+            <td class="sf"> <%= f.label "sp" %><%= f.text_field :phone %></td>
+            <!-- <td style="width:10%;font-size: 10"><%= f.label :phone %></td> -->
+            <!-- <td class="sf"><%= f.text_field :phone %></td> -->
+            <td class="sf"><%= f.label :cell %><%= f.text_field :cell %></td>
+          </tr>
+          <tr>
+            <td class='sf'><%= f.label :alt_email, "Alternate Email" %></td>
+            <td><%= f.text_field :alt_email %></td>
+          </tr>
       </table>
   </div>
   </div>
@@ -48,11 +82,11 @@
         <table>
           <tr>
             <td style="width:5%;"><%= f.label :website%></td>
-            <td><%= f.text_field :website, style: "width:80%", placeholder: "Your personal website url" %></td>
+            <td class='sf'><%= f.text_field :website, style: "width:80%", placeholder: "Your personal website url" %></td>
           </tr>
           <tr>
             <td><%= f.label :facebook %></td>
-            <td><%= f.text_field :facebook, style: "width:80%", placeholder: "Link to your Facebook page" %></td>
+            <td class='sf'><%= f.text_field :facebook, style: "width:80%", placeholder: "Link to your Facebook page" %></td>
           </tr>
           <tr>
             <td><%= f.label :pinterest %></td>

@@ -25,6 +25,7 @@ ForeverFamilyFoundation::Application.routes.draw do
   resource :adg_registration
   resource :redirects
   resources :sitterforms
+  resources :mediumforms
   resources :known_deads
 
   get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'

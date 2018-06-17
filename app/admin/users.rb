@@ -69,6 +69,14 @@ ActiveAdmin.register User do
         user.categories.map(&:name).to_sentence
       end
       row :fax
+      row :medium_registration
+      row :link_to_mediumform do
+        if user.mediumform.present?
+          link_to('Mediumform is Here', admin_mediumform_path(user.mediumform.id))
+        else
+          status_tag("No Mediumform Available")
+        end
+      end
       row :sitter_registration
       row :link_to_sitterform do
         if user.sitterform.present?
@@ -175,6 +183,7 @@ ActiveAdmin.register User do
       f.input :home_phone
       f.input :work_phone
       f.input :fax
+      f.input :medium_registration, as: :boolean
       f.input :sitter_registration, as: :boolean
       f.input :is_business do |user|
         user.business.present?

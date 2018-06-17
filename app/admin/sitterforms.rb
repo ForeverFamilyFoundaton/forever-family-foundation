@@ -17,6 +17,7 @@ ActiveAdmin.register Sitterform do
   show do |sitter|
     attributes_table do
       row :id
+      row :user_id
       row :phone
       row :cell
       row :alt_email

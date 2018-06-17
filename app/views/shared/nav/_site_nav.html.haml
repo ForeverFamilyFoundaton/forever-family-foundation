@@ -1,4 +1,7 @@
 %ul.nav#site_nav
+  - if !current_user.nil? and current_user.medium_registration
+    %li
+      = link_to "Medium Registration Form", new_mediumform_path, {:style=>"color:red;"}
   - if !current_user.nil? and current_user.sitter_registration
     %li
       = link_to "Sitter Registration Form", new_sitterform_path, {:style=>"color:red;"}

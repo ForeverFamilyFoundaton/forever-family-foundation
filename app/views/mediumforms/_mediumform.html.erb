@@ -1,0 +1,314 @@
+<%= javascript_include_tag 'mediumform.js' %>
+
+<%= form_for(@mediumform) do |f| %>
+  <% if @mediumform.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mediumform.errors.count, "error") %> prohibited this test from being saved:</h2>
+
+      <ul>
+      <% @mediumform.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <h2><%= 'Medium Registration for ' + @mediumform.user.full_name %><br></h2>
+<br>
+  <p>Please <span style="color:red;">answer all questions</span> to the best of you ability and do not leave any blank spaces.<br>  <span style="color:red">If you do not have a specific answer to the question, please type "<b>none</b>" into the field.</span><br/> </p> 
+  <p style="font-weight:bold">
+  Your responses will determine your eligibility to participate in this program.
+  </p>
+
+  <p>You do not need to fill out the form in one sitting and may <span style="color:red;">save this form by clicking on
+     <b>Submit</b> without signing</span>.  You can then return to this form as often as necessary until you <span style="color:red">sign and check the signature box for your final submission</span>.
+  </p>
+  <div class='form_section'>
+    <h2 class='form_section_header'>Forever Family Foundation Information</h2>
+      <div class='form_fields'>
+<!--         <table style="font-size: 13px;">
+          <tr><td><%= radio_button_tag "contactme", :other_businesses %> <span style="color:red;"><b>Use this information to contact me</b> choice between this and Alternative Information below</span></td></tr>
+        </table>
+ -->  
+         <table style="font-size:13px">
+          <tr><b>This information is:</b>
+            <tr><td>
+                <%= f.radio_button :personalprofessional, :alternate_is_professional, :checked => @mediumform.personalprofessional == "alternate_is_professional"%>Personal Information</td>
+            <td><%= f.radio_button :personalprofessional, :fff_is_professional, :checked => @mediumform.personalprofessional == "fff_is_professional"%> Professional Information</td></tr>
+        </table>
+          <table>
+          <tr>
+            <td style="font-size: 14px;"><b>First Name: </b><%= @mediumform.user.first_name %></td>
+            <td style="font-size: 14px;"><b>Middle Name: </b><%= @mediumform.user.middle_name %></td>
+            <td style="font-size: 14px;"><b>Last Name: </b><%= @mediumform.user.last_name %></td>
+          </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>Cell Phone: </b><%= @mediumform.user.cell_phone %></td>
+            <td style="font-size: 14px;"><b>Home Phone: </b><%= @mediumform.user.home_phone %></td>
+            <td style="font-size: 14px;"><b>Work Phone: </b><%= @mediumform.user.work_phone %></td>
+          </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>Email: </b><%= @mediumform.user.email %></td>
+          <tr>
+            <td style="font-size: 14px;"><b>Address: </b><%= @mediumform.user.address.address %></td>
+          </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>City: </b><%= @mediumform.user.address.city %></td>
+            <td style="font-size: 14px;"><b>State: </b><%= @mediumform.user.address.state %></td>
+            <td style="font-size: 14px;"><b>Zip: </b><%= @mediumform.user.address.zip %></td>
+          </tr>
+        </table>
+      </div>
+  </div>
+<p>We need both your personal and business contact information.<br>Please indicate which your profile is and then complete the other in the Alternative Information fields.</p>
+  <div class='form_section'>
+    <h1 class='form_section_header' id='alternateinfo'>Alternate Contact Information</h1>
+      <div class='form_fields'>
+<!--         <table style="font-size: 14px;">
+          <tr><td><%= radio_button_tag "contactme", :other_businesses %> <b><span style="color:red;">Use this information to contact me</span></b></td></tr>
+        </table>zs
+ -->        
+
+         <table>
+          <tr>
+            <td style="font-size: 14px;"><b>First Name:</b></td>
+            <td style="font-size: 14px;"><b>Middle Name:</b></td>
+            <td><b>Last Name: </b></td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :alt_first_name, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_middle_name, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_last_name, maxlength: 15, style: "width:70%" %></td>
+          </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>Alt Cell Phone:</b></td>
+            <td style="font-size: 14px;"><b>Alt Home Phone:</b></td>
+            <td style="font-size: 14px;"><b>Alt Work Phone:</b></td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :alt_mobile_phone, maxlength: 20, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_home_phone, maxlength: 20, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_work_phone, maxlength: 20, style: "width:70%" %></td>
+          </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>Alt Work Email: </b></td>
+            <td style="font-size: 14px;"><b>Alt Home Email: </b></td>
+          </tr>
+          <tr>
+            <td><%= f.text_field :alt_work_email, maxlength: 30, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_home_email, maxlength: 30, style: "width:70%" %></td>
+          </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>Address Line 1: </b></td></tr>
+            <tr><td colspan="4"><%= f.text_field :alt_address_line1, maxlength: 50, style: "width:100%" %></td>
+            </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>Address Line 2: </b></td></tr>
+            <tr><td colspan="4"><%= f.text_field :alt_address_line2, maxlength: 50, style: "width:100%" %></td>
+            </tr>
+          </tr>
+          <tr>
+            <td style="font-size: 14px;"><b>City: </b></td>
+            <td style="font-size: 14px;"><b>State: </b></td>
+            <td style="font-size: 14px;"><b>Zip: </b></td>
+          </tr>
+
+          <tr>
+            <td><%= f.text_field :alt_city, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_state, maxlength: 15, style: "width:70%" %></td>
+            <td><%= f.text_field :alt_zipcode, maxlength: 15, style: "width:70%" %></td>
+          </tr>
+        </table>
+      </div>
+  </div>
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Social Media</h2>
+      <div class="form_fields">
+        <p><b> Please provide the link(s) (URLs) for each of your social networking accounts below:</b></p>
+        <table>
+          <tr>
+            <td class="medium_label" style="width:0.5%;"><%= f.label :website%></td>
+            <td><%= f.text_field :website, style: "width:85%", maxlength:50, placeholder: "Link to your website" %></td>
+          </tr>
+          <tr>
+            <td class="medium_label"><%= f.label :facebook %></td>
+            <td><%= f.text_field :facebook, style: "width:85%", maxlength:50, placeholder: "Link to your Facebook page" %></td>
+          </tr>
+          <tr>
+            <td class="medium_label"><%= f.label :pinterest %></td>
+            <td><%= f.text_field :pinterest, style: "width:85%", maxlength:50, placeholder: "Link to your Pinterest page" %></td>
+          </tr>
+          <tr>
+            <td class="medium_label"><%= f.label :instagram%></td>
+            <td><%= f.text_field :instagram, style: "width:85%", maxlength:50, placeholder: "Link to your Instagram account" %></td>
+          </tr>
+          <tr>
+            <td class="medium_label"><%= f.label :twitter %></td>
+            <td><%= f.text_field :twitter, style: "width:85%", maxlength:50, placeholder: "Link to your twitter feed" %></td>
+          </tr>
+          <tr>
+            <td class="medium_label"><%= f.label :youtube %></td>
+            <td><%= f.text_field :youtube, style: "width:85%", maxlength:50, placeholder: "Link to your YouTube channel" %></td>
+          </tr>
+          <tr>
+            <td class="medium_label"><%= f.label :blog %></td>
+            <td><%= f.text_field :blog, style: "width:85%", maxlength:50, placeholder: "Link to your blog" %></td>
+          </tr>
+        </table>
+      </div>
+  </div>
+
+<!--    <div class='form_section'>
+    <h2 class='form_section_header'>New Section</h2>
+      <div class="form_fields">
+        <%= f.text_field :website, size:20, placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, size:40, placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, size:60, placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, size:80, placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:20%", placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:40%", placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:60%", placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:80%", placeholder: "Link to your website" %><br>
+        <%= f.text_field :website, style: "width:100%", placeholder: "Link to your website" %>
+      </div>
+  </div>   -->    
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Other Activities</h2>
+      <div class="form_fields">
+          <b>1) In the following space give contact information for any other businesses in which you are the primary owner:</b><br>
+          <%= f.text_area :other_primary_owner, maxlength: 500, placeholder: "Contact information for other businesses", class: 'big_box' %><br>
+
+          <p><b>2) Do you work in any other fields related to Health, Healing, or Spirituality?<br>
+          If so, please provide details:<br>
+          <%= f.text_area :other_related, maxlength: 500, placeholder: "Other Health, Healing, or Spirituality work", class: 'big_box' %>
+          <br>
+        
+          <b>3) Do you do work in any other fields that are NOT related to Health, Healing, or Spirituality? Please provide details:</b><br>
+          <%= f.text_area :other_not_related, placeholder: "Non Health, Healing, or Spirituality work", class: 'big_box' %>
+      </div>
+  </div>
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Intuitive Information</h2>
+      <div class="form_fields">
+          <b>1) When did you become aware that you were able to communicate with spirit?</b><br>
+          <%= f.text_area :became_aware, class: 'big_box', placeholder: "Aware of spirit communication" %>
+
+          <p><b>2) Do you have immediate family members with the same ability?<br>
+          If so, please provide details:<br>
+          <%= f.text_area :immediate_family, class: 'big_box', placeholder: "Immediate family members" %>
+          <br>
+        
+          <b>3) Did the recognition of this ability coincide with any particular event in your life?<br>
+          Please explain.</b><br>
+          <%= f.text_area :life_event, class: 'big_box', placeholder: "Related life event" %><br>
+
+          <b>4) Why do you wish to work with discarnate entities in the field of survival of consciousness?<br> Is there a specific goal you hope to achieve in this work?</b><br>
+          <%= f.text_area :specific_goal, class: 'big_box', placeholder: "Your specific goals" %><br>
+
+          <b>5) As a medium, is your first priority to bring forth evidence of survival or messages of love? Explain why.</b><br>
+          <%= f.text_area :medium_priority, class: 'big_box', placeholder: "Evidence of survival or messages of love" %><br>
+
+          <b>6) What is the difference between information received psychically and information received from a discarnate entity?</b><br>
+          <%= f.text_area :different_info, class: 'big_box', placeholder: "Differences in receiving information" %><br>
+      </div>
+  </div>
+ 
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Professional Information</h2>
+      <div class="form_fields">
+        <b>1) How did you hear about Forever Family Foundation’s Medium Evaluation Certification Process?</b><br>
+          <%= f.text_area :hear_about_fff, class: 'big_box', placeholder: "How did you hear about us" %>
+
+        <p><b>2) Have you been working as a medium full time? If so, for how long? <br>
+        <p><b>If you are not working as a medium full time, please explain why, and if you have plans to do so in the future<br>
+        <%= f.text_area :medium_history, class: 'big_box', placeholder: "Your work as a medium" %>
+        <br>
+        
+        <div style= "font-size: 13px"><b>3) What kind of readings do you offer in your practice?</b><br></div>
+        <table style="font-size:13px">
+
+          <div class='input-group'>
+            <%= hidden_field_tag "mediumform[mediumform_preference_ids][]", nil %>
+            <% MediumformPreference.practice_preferences.all.each do |mediumform_preference| %>
+            <tr><td><%= check_box_tag "mediumform[mediumform_preference_ids][]", mediumform_preference.id, 
+                              @mediumform.mediumform_preference_ids.include?(mediumform_preference.id), 
+                id: dom_id(mediumform_preference)%>
+            <%= label_tag dom_id(mediumform_preference), mediumform_preference.name %></td></tr>
+            <% end %>
+          </div>
+
+        </table>
+      
+        <br>
+        <div style= "font-size: 13px"><b>4) How do you classify yourself as a professional?</b><br></div>
+        <table style="font-size:13px">
+
+          <div class='input-group'>
+            <%= hidden_field_tag "mediumform[mediumform_preference_ids][]", nil %>
+            <% MediumformPreference.selfclassify_preferences.all.each do |mediumform_preference| %>
+            <tr><td><%= check_box_tag "mediumform[mediumform_preference_ids][]", mediumform_preference.id, 
+                              @mediumform.mediumform_preference_ids.include?(mediumform_preference.id), 
+                id: dom_id(mediumform_preference)%>
+            <%= label_tag dom_id(mediumform_preference), mediumform_preference.name %></td></tr>
+            <% end %>
+          </div>
+
+
+          <tr><td><%= f.text_field :other_classify, style: "width:40%", maxlength: 30, placeholder: "Other classification" %></td></tr>
+        </table>
+
+      <br>
+      <b>5) Have you ever received formal education, training, or mentorship in Mediumship?<br>
+      (If so, please list specifics)</b><br>
+          <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br> 
+
+      <b>6) Are you certified with any other organizations?  If so, please provide details.</b><br>
+          <%= f.text_area :other_certification, class: 'big_box', placeholder: "Mediumship training information" %><br>  
+     </div>
+  </div>
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>ETHICS QUESTIONNAIRE</h2>
+      <div class="form_fields">
+        <b>1) How do you handle a situation where you are engaged in providing your services to a sitter and no communication or information is coming through?</b><br>
+        <%= f.text_area :ethics1, class: 'big_box', placeholder: "No communication or information is coming through" %><br>
+         
+
+        <p><b>2) If you were conducting a reading and received dire information about the sitter’s health or possible demise, would you communicate this information to the sitter?<br>If so, in what way?</b><br>
+        <%= f.text_area :ethics2, class: 'big_box', placeholder: "Handle dire information" %>
+        <br>
+        
+        <b>3) If you were in public and received information from a spirit that belonged to a complete stranger, what would you do with that information?</b><br>
+        <%= f.text_area :ethics3, class: 'big_box', placeholder: "Deal with strangers" %><br>
+
+        <b>4) Have you offered your time without pay to any organizations, particularly not-for-profit organizations, in order to benefit the greater good?<br>
+        Please explain and provide contact people of such organizations.</b><br>
+        <%= f.text_area :ethics4, class: 'big_box', placeholder: "Probono work" %><br>
+        <br>
+      </div>
+  </div>
+
+  <div class='form_section'>
+    <h2 class='form_section_header'>Signature</h2>
+
+      <div class="form_fields">
+        <p>You can edit and submit this form as often as you like. <br>
+        <span style="color:red;">Once you sign and check the Signature box, you will not be able to change your details.</span><br><br></p>
+        <%= f.label :signature, "Electronic Signature"%>
+        <%= f.text_field :signature, style: "width:50%", placeholder: "Your Full Name"  %>
+      </div>
+      <div class="form_fields">
+        <%= f.check_box :signature_checkbox, id: "sig_check_box", type: 'visible'%>
+        <p>I understand that checking this box constitutes <span><b>a legal signature</b></span> confirming that I warrant the truthfulness of the information provided in
+        this document.</p>
+      </div>
+  </div>
+  <div class="actions">
+   <!--  <%= f.submit %> -->
+    <%= render partial: 'shared/form_submit', locals: { text: 'Submit'} %>
+  </div>
+<% end %>

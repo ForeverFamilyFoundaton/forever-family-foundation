@@ -1,4 +1,4 @@
-ActiveAdmin.register Preference do
+ActiveAdmin.register MediumformPreference do
   menu false
   config.filters = false
 
@@ -12,7 +12,7 @@ ActiveAdmin.register Preference do
   form do |f|
     f.inputs 'Details' do
       f.input :name
-      f.input :preference_type, as: :select, collection: ['ADG', 'Profile', 'Subscription', 'Medium']
+      f.input :preference_type, as: :select, collection: ['SelfClassify', 'Practice']
     end
     f.actions
   end

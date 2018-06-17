@@ -7,7 +7,7 @@ describe 'Business registration' do
     @user = FactoryGirl.create(:user, { email: 'abc@example.com'})
   end
 
-  it 'Business registration', :js do
+  it 'Business registration' do
     sign_in(@user)
     visit new_user_business_path(@user)
     fill_in_biz_reg
