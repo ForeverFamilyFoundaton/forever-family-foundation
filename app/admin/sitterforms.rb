@@ -29,14 +29,12 @@ ActiveAdmin.register Sitterform do
       row :youtube
       row :blog
       row :related_contact_info
-      row :been_to_medium
-      row :related_contact_info
+      row :medium_contacts
       row :belief_type
-      row :lost_loved_one
       row :signature
       row :signature_checkbox
       table_for sitter.known_deads do
-        column "Known Deceaseds" do |f|
+        column "Lost Loved Ones" do |f|
           "Name: " + f.name + "   relationship: " + f.relationship.name
         end
       end
@@ -58,6 +56,7 @@ ActiveAdmin.register Sitterform do
         f.input :youtube, :input_html => {:rows => 1}
         f.input :blog, :input_html => {:rows => 1}
         f.input :related_contact_info
+        f.input :medium_contacts
       end
  
 
@@ -65,7 +64,6 @@ ActiveAdmin.register Sitterform do
       # f.input :belief_types, label: "Regarding an Afterlife, which would you consider yourself to be?",  as: :check_boxes     
       
       f.inputs "Regarding an Afterlife, which would you consider yourself to be?" do
-        f.input :been_to_medium
         f.input :belief_type do |belief|
           belief.input :name
         end
@@ -73,7 +71,6 @@ ActiveAdmin.register Sitterform do
       # f.inputs :known_deads_name
  
       f.inputs 'Lost Loved Ones' do
-        f.input :lost_loved_one
         f.has_many :known_deads do |known_dead|
           known_dead.input :name
           known_dead.input :relationship

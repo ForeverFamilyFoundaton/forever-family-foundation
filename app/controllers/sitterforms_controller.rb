@@ -13,13 +13,12 @@ class SitterformsController < ApplicationController
     if Sitterform.exists?(user_id: current_user.id)
       logger.debug "---- sitterform exists ----"
       @sitterform = Sitterform.find_by(user_id: current_user.id)
-      n = @sitterform.known_deads.count
-      (5-n).times {@sitterform.known_deads.build}
+      build_known_deads
       redirect_to action: 'edit', id: @sitterform.id
     else
       logger.debug "---- sitterform new ----"
       @sitterform = Sitterform.new()
-      5.times {@sitterform.known_deads.build}
+      build_known_deads
     end
     logger.debug "----- still in Sitterforms new -----"
     @relationships = Relationship.all
@@ -95,6 +94,7 @@ class SitterformsController < ApplicationController
       else
         logger.debug "@sitterform2 ----- " + @sitterform.inspect + " -----"
         logger.debug "@sitterform.errors >>>>> " + @sitterform.errors.to_s + "<<<<<"
+        build_known_deads
         format.html { render :edit }
         format.json { render json: @sitterform.errors, status: :unprocessable_entity }
       end
@@ -114,6 +114,15 @@ class SitterformsController < ApplicationController
   end
 
   private
+
+    def build_known_deads
+      if @sitterform.known_deads.nil?
+        5.times {@sitterform.known_deads.build}
+      else
+        n = @sitterform.known_deads.count
+        (5-n).times {@sitterform.known_deads.build}
+      end
+    end
 
     def set_sitterform
       @sitterform = Sitterform.find(params[:id])
