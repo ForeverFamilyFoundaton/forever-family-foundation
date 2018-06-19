@@ -90,7 +90,11 @@ class MediumformsController < ApplicationController
           @user.medium_registration = false
           @user.save
         end
-        format.html { redirect_to root_path, notice: 'Mediumform was successfully updated.' }
+        if @mediumform.signature_checkbox
+          format.html { redirect_to root_path, notice: 'Mediumform was successfully completed.' }
+        else
+          format.html { redirect_to root_path, notice: 'Mediumform was successfully updated.' }
+        end
       else
         logger.debug "@mediumform2 ----- " + @mediumform.inspect + " -----"
         logger.debug "@mediumform.errors >>>>> " + @mediumform.errors.to_s + "<<<<<"
