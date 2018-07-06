@@ -5,10 +5,8 @@ ActiveAdmin.register Mediumform do
   index do |mediumform|
     column :id
     column :user_id
-    column :signature
-    column :signature_checkbox
-    column :MEPC_Removed
-    column :MEPC_Failed
+    column :email
+    column :mobile
 
     actions
   end
