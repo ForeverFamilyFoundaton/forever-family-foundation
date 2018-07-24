@@ -49,31 +49,6 @@
       </div>
   </div>
 <br>
-  <div class='form_section'>
-    <h2 class='form_section_header'>Additional Information</h2>
-      <div class="form_fields">
-      <table>
-          <tr>
-            <td class='sf'><b>Pro Name: </b><%= @sitterform.user.first_name %></td>
-            <td class='sf'><b>Middle Name: </b><%= @sitterform.user.middle_name %></td>
-            <td class='sf'><b>Last Name: </b><%= @sitterform.user.last_name %></td>
-          </tr>
-          <tr>
-            <td class="sf"> <%= f.label "fp" %><%= f.text_field :phone %></td>
-            <!-- <td style="width:10%;font-size: 10"><%= f.label :phone %></td> -->
-            <!-- <td class="sf"><%= f.text_field :phone %> -->
-            <td class="sf"> <%= f.label "sp" %><%= f.text_field :phone %></td>
-            <!-- <td style="width:10%;font-size: 10"><%= f.label :phone %></td> -->
-            <!-- <td class="sf"><%= f.text_field :phone %></td> -->
-            <td class="sf"><%= f.label :cell %><%= f.text_field :cell %></td>
-          </tr>
-          <tr>
-            <td class='sf'><%= f.label :alt_email, "Alternate Email" %></td>
-            <td><%= f.text_field :alt_email %></td>
-          </tr>
-      </table>
-  </div>
-  </div>
   <br>
   <div class='form_section'>
     <h2 class='form_section_header'>Social Networking</h2>
