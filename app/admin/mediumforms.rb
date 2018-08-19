@@ -7,7 +7,12 @@ ActiveAdmin.register Mediumform do
     column :user_id
     column :email
     column :mobile
-
+    column :created_at, sortable: :created_at do |mediumform|
+      mediumform.created_at.localtime.strftime("%B %d, %Y %H:%M")
+    end
+    column :updated_at, sortable: :updated_at do |mediumform|
+      mediumform.updated_at.localtime.strftime("%B %d, %Y %H:%M")
+    end
     actions
   end
 
