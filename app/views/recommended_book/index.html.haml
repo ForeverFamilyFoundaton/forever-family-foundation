@@ -10,8 +10,15 @@
           .amazonauthor= raw(recc_book.amazon_link)
           %p.amazonauthor= recc_book.author
           .amazonbutton
-            %p.shrinkwrap= "Available at " 
-            .usamazonbutton= raw(recc_book.amazon_link) if !recc_book.amazon_link.blank?
-            .ukamazonbutton= raw(recc_book.uk_amazon_link) if !recc_book.uk_amazon_link.blank?
-            .cadamazonbutton= raw(recc_book.cad_amazon_link) if !recc_book.cad_amazon_link.blank?
+          %p.shrinkwrap= "Available on Amazon (please choose appropriate currency if available) "
+          %br
+          %p.shrinkwrap= "USD:   "
+          =raw(recc_book.amazon_link) if !recc_book.amazon_link.blank?
+          %br
+          %p.shrinkwrap= "GBP: " if !recc_book.uk_amazon_link.blank?
+          = raw(recc_book.uk_amazon_link) if !recc_book.uk_amazon_link.blank?
+          %br
+          %p.shrinkwrap= "CAD: " if !recc_book.cad_amazon_link.blank?
+          = link_to "Amazon Canada", raw(recc_book.cad_amazon_link) if !recc_book.cad_amazon_link.blank?
+
 
