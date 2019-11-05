@@ -7,7 +7,7 @@
       = link_to "Sitter Registration Form", new_sitterform_path, {:style=>"color:red;"}
   - if current_user and !current_user.biz? || !current_user.business.registered?
     %li
-      = link_to t('navigation.site.business_registration'), new_user_business_path(current_user)
+      = link_to t('navigation.site.business_registration'), new_user_business_path(current_user), :onclick => "business_membership_registration()"
   %li
     = link_to t('navigation.global.events'), events_path 
   %li
@@ -31,9 +31,9 @@
     = link_to t("navigation.Recommended_Books"), '/recommended_book'
   %li
   %li
-    = link_to t('navigation.global.volunteers'), '/site/volunteers'
+    = link_to t('navigation.global.volunteers'), '/site/volunteers', :onclick => "volunteer_email_click()"
   %li
-    = link_to t('navigation.global.store'), '/site/store'
+    = link_to t('navigation.global.store'), '/site/store', :onclick => "store_cart()"
   %li.last
-    = link_to t('navigation.global.contributions'), '/site/contributions'
+    = link_to t('navigation.global.contributions'), '/site/contributions', :onclick => "just_give_click()"
       

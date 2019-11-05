@@ -21,9 +21,9 @@
     %li
       %a{:href => "/site/store"}= t('navigation.site.fff_store')
     %li
-      %a{:href => '/site/volunteers'}= t('navigation.site.volunteers')
+      %a{:href => '/site/volunteers', :onclick => "volunteer_email_click()"}= t('navigation.site.volunteers')
     %li
-      %a{:href => '/site/contributions'}= t('navigation.site.contributions')
+      %a{:href => '/site/contributions', :onclick => "just_give_click()"}= t('navigation.site.contributions')
     %li
       %a{:href => '/users/sign_up'}= t('navigation.site.registration')
     %li
@@ -31,7 +31,7 @@
     %li
       %a{:href => '/site/terms'}= t('navigation.site.terms_of_use')
     %li
-      %a{:href => '/site/contact'}= t('navigation.site.contact')
+      %a{:href => '/site/contact', :onclick => "contact_email_click()"}= t('navigation.site.contact')
     %li.last
       %p= t('footers.copy_right')
 #amzn-assoc-ad-24b27324-72e2-4be0-be23-01ada1876838
