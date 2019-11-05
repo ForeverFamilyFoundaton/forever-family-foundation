@@ -6,31 +6,32 @@
       = button_tag 'Make a Donation', class: :fff_button, :onclick => "donation_click()"
 
   %li
-    = link_to image_tag('sign-registry.gif'), 'http://thesignregistry.com/', :target => '_blank'
+    = link_to image_tag('sign-registry.gif'), 'http://thesignregistry.com/', :target => '_blank', :onclick => "the_sign_registry_click()"
 
   %li
     = t('layout.support_us_by_shopping')
 
   %li
-    = link_to image_tag('igive.gif'), 'http://www.igive.com/welcome/warmwelcome3.cfm?c=43517',:target => '_blank'
+    = link_to image_tag('igive.gif'), 'http://www.igive.com/welcome/warmwelcome3.cfm?c=43517',:target => '_blank', :onclick => "igive_click()"
 
   %li
     = link_to image_tag('amazon.gif'), 'http://www.amazon.com/?&tag=wwwforeverfam-20&camp=211041&creative=374001&linkCode=qs1&adid=0HB3V5GYRTKAGAEYQQE2&', :target => '_blank'
 
   %li
     %p= t('layout.find_us_on')
-    = link_to image_tag('facebook.png'), 'http://www.facebook.com/pages/Forever-Family-Foundation/351375650093',:target => '_blank'
+    = link_to image_tag('facebook.png'), 'https://www.facebook.com/ForeverFamilyFoundation/',:target => '_blank', :onclick => "facebook_click()"
+    //= link_to image_tag('facebook.png'), 'http://www.facebook.com/pages/Forever-Family-Foundation/351375650093',:target => '_blank'
 
-    = link_to image_tag('instagram.png'), 'https://www.instagram.com/foreverfamilyfoundation', :target => '_blank'
+    = link_to image_tag('instagram.png'), 'https://www.instagram.com/foreverfamilyfoundation', :target => '_blank', :onclick => "instagram_click()"
 
-    = link_to image_tag('pinterest.png'), 'https://www.pinterest.com/fffafterlife/', :target => '_blank'
+    = link_to image_tag('pinterest.png'), 'https://www.pinterest.com/fffafterlife/', :target => '_blank', :onclick => "pinterest_click()"
 
     %br
-    = link_to image_tag('linkedin.png'), 'https://www.linkedin.com/company/forever-family-foundation', :target => '_blank'
+    = link_to image_tag('linkedin.png'), 'https://www.linkedin.com/company/forever-family-foundation', :target => '_blank', :onclick => "linkedin_click()"
 
-    = link_to image_tag('twitter.png'), 'https://twitter.com/FFFAfterlife', :target => '_blank'
+    = link_to image_tag('twitter.png'), 'https://twitter.com/FFFAfterlife', :target => '_blank', :onclick => "twitter_click()"
 
-    = link_to image_tag('youtube.png'), 'https://www.youtube.com/user/AfterlifeEducation', :target => '_blank'
+    = link_to image_tag('youtube.png'), 'https://www.youtube.com/user/AfterlifeEducation', :target => '_blank', :onclick => "youtube_click()"
 
   %li
     #google_translate_element
