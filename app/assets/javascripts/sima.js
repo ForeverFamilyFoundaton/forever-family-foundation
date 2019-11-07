@@ -4,6 +4,10 @@ function test_alert() {
   alert("hello");
 }
 
+function test_alert2() {
+  alert("hello2");
+}
+
 function contact_email_click() {
   ga('send', 'event', { eventCategory: 'Contact', eventAction: 'Email', eventLabel: 'Click'});
 }
