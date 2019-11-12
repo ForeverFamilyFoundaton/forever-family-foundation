@@ -14,7 +14,7 @@
 
   %li
     %p= t('layout.amazon_affiliate')
-    = link_to image_tag('amazon.gif'), 'http://www.amazon.com/?&tag=wwwforeverfam-20&camp=211041&creative=374001&linkCode=qs1&adid=0HB3V5GYRTKAGAEYQQE2&', :target => '_blank'
+    = link_to image_tag('amazon.gif'), 'http://www.amazon.com/?&tag=wwwforeverfam-20&camp=211041&creative=374001&linkCode=qs1&adid=0HB3V5GYRTKAGAEYQQE2&', :target => '_blank', :onclick => "amazon_click()"
 
   %li
     %p= t('layout.find_us_on')
