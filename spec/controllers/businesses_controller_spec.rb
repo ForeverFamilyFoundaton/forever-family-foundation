@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe BusinessesController do
+RSpec.describe BusinessesController do
   setup_user
 
   before do

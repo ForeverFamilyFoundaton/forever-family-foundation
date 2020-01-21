@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe RedirectsController do
+RSpec.describe RedirectsController do
 
   it "radio should redirect" do
     expect(get: 'radio').to be_routable

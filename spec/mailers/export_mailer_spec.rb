@@ -1,5 +1,3 @@
-require "rails_helper"
-
 RSpec.describe ExportMailer, :type => :mailer do
   include EmailSpec::Helpers
   include EmailSpec::Matchers

@@ -1,4 +1,10 @@
 ForeverFamilyFoundation::Application.configure do
+  config.after_initialize do
+    # Do not change -synced with browser stub in test.js
+    t = Time.local(2018, 10, 2, 11, 5, 0)
+    Timecop.travel(t)
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
@@ -37,6 +43,5 @@ ForeverFamilyFoundation::Application.configure do
 
   ENV['RECAPTCHA_PUBLIC_KEY'] = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
   ENV['RECAPTCHA_PRIVATE_KEY'] = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
-  
-end
 
+end

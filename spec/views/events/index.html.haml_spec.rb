@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe "events/index" do
+RSpec.describe "events/index" do
   # let(:start_time) { Time.now + 1.day }
   # let(:end_time) { start_time + 2.hours }
   before do

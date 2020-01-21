@@ -1,6 +1,4 @@
-require 'feature_helper'
-
-describe 'ADMIN: Users' do
+RSpec.feature 'ADMIN: Users' do
   before { sign_in_as_admin }
 
   let(:business) { create(:business_complete ) }
@@ -37,19 +35,19 @@ describe 'ADMIN: Users' do
     click_link 'Business Name'
     expect(page).to have_content user.business.name
   end
- 
+
   context 'with attachments' do
     it "renders the page sucessfully" do
       user
       click_link 'Users'
       click_link user.email
-      expect(page).to have_content user.first_name 
+      expect(page).to have_content user.first_name
     end
   end
 
   it "should show a preference column" do
     test = create(:user, email: 'hello@example.com', preferences: [Preference.create(name: "hello world")])
-    
+
     click_link 'Users'
     expect(page).to have_content "#{test.preferences.map(&:name).to_sentence}"
   end

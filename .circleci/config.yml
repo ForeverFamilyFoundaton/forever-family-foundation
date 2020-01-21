@@ -1,0 +1,141 @@
+---
+version: 2
+jobs:
+  build:
+    working_directory: ~/your-app-name
+    docker:
+      - image: circleci/ruby:2.4.1
+        environment:
+          PGHOST: localhost
+          PGUSER: your-app-name
+          RAILS_ENV: test
+      - image: postgres:9.5
+        environment:
+          POSTGRES_USER: your-app-name
+          POSTGRES_DB: your-app-name_test
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: your-app-name-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: your-app-name-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Setup the environment
+      - run: cp .sample.env .env
+
+      # Setup the database
+      - run: bundle exec rake db:setup
+
+      # Run the tests
+      - run: bundle exec rake
+
+# # Ruby CircleCI 2.0 configuration file
+# #
+# # Check https://circleci.com/docs/2.0/language-ruby/ for more details
+# #
+# version: 2
+# jobs:
+#   build:
+#     working_directory: ~/repo
+#     docker:
+#       - image: circleci/ruby:2.5.3-node-browsers
+#         environment:
+#           BUNDLE_JOBS: 3
+#           BUNDLE_RETRY: 3
+#           BUNDLE_PATH: vendor/bundle
+#           PGHOST: 127.0.0.1
+#           PGUSER: circleci
+#           RAILS_ENV: test
+#       - image: circleci/postgres:9.5-alpine
+#         environment:
+#           - POSTGRES_USER: circleci
+#           - POSTGRES_DB: feedbacks_test
+#           - POSTGRES_PASSWORD: ""
+#     steps:
+#       - checkout
+#       - run: sudo apt-get update
+#       - run:
+#           name: Install CapybaraWebkit Dependencies
+#           command: sudo apt-get install qt5-default libqt5webkit5-dev gstreamer1.0-plugins-base gstreamer1.0-tools gstreamer1.0-x
+#       - run:
+#           name: Install Chrome
+#           command: |
+#             wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+#             sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+#             sudo apt-get update
+#             sudo apt-get -y install google-chrome-stable
+#       - restore_cache:
+#           keys:
+#           - v1-dependencies-{{ checksum "Gemfile.lock" }}
+#           - v1-dependencies-
+#       - run:
+#           name: Install Dependencies
+#           command: |
+#             bundle install --jobs=4 --retry=3 --path vendor/bundle
+#       - save_cache:
+#           paths:
+#             - ./vendor/bundle
+#           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+#       - run:
+#           name: Set App Config
+#           command: "cat config/application.yml.example | sed -e 's/^/export /' | sed -e 's/: */=/' >> $BASH_ENV"
+#       - run: bundle exec rake db:create
+#       - run: bundle exec rake db:schema:load
+#       # test
+#       - run:
+#           name: Install JUnit coverage reporter
+#           command: yarn add --dev jest-junit
+#       - run:
+#           name: Run Javascript tests with JUnit as reporter
+#           command: npm test app/javascript --ci --runInBand --reporters=default --reporters=jest-junit
+#           environment:
+#             JEST_JUNIT_OUTPUT: "/tmp/test-results/jest/results.xml"
+#       - run:
+#           name: run ruby tests
+#           command: |
+#             mkdir /tmp/test-results
+#             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings --timings-type=classname)"
+
+#              xvfb-run -a bundle exec rspec --format progress \
+#                             --format RspecJunitFormatter \
+#                             --out /tmp/test-results/rspec/results.xml \
+#                             --format progress \
+#                             $TEST_FILES
+
+#       # collect reports
+#       - store_test_results:
+#           path: /tmp/test-results
+#       - store_artifacts:
+#           path: /tmp/test-results
+#           destination: test-results
+#       - store_artifacts:
+#           path: /tmp/capybara
+
+#       # Deploy
+#       - run: bash .circleci/setup-heroku.sh
+#       - add_ssh_keys:
+#           fingerprints:
+#             - "bd:7f:12:a8:5d:88:6f:9f:ef:3d:91:49:ce:a9:f0:ca"
+#       - run:
+#           name: Deploy Master to Heroku
+#           command: |
+#             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#               git push --force git@heroku.com:feedbacksapp.git HEAD:refs/heads/master
+#               heroku run rails db:migrate -a feedbacksapp
+#               heroku restart -a feedbacksapp
+#             fi

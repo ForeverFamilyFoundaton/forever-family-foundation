@@ -1,12 +1,10 @@
-require 'rails_helper'
-
-describe Sitterform, :sitterform, type: :model do
+RSpec.describe Sitterform, :sitterform, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
   let(:valid_params) {{title: 'A Title', author: 'John Doe', amazon_link: 'http://google.com'}}
 
-  it { should have_many(:known_deads) }  
-  it { should have_many(:relationships) }  
-  # it { should have_many(:recommended_book_categories).through(:recommended_book_groups) }  
+  it { should have_many(:known_deads) }
+  it { should have_many(:relationships) }
+  # it { should have_many(:recommended_book_categories).through(:recommended_book_groups) }
 
   it { should allow_mass_assignment_of :user_id }
 

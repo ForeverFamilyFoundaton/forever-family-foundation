@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe SiteController do
+RSpec.describe SiteController do
 	it 'renders cms pages by id' do
 		@cms_page = CmsPage.create! reference_string: 'Test Page', title: 'Test'
 		get :page, id: @cms_page.id

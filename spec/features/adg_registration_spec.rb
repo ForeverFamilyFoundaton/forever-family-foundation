@@ -1,6 +1,4 @@
-require 'feature_helper'
-
-describe 'ADG registration' do
+RSpec.feature 'ADG registration' do
 
   before do
     @adg_question1 = AdgQuestion.create!(question: 'Do you Believe In GOD?', show_radio: true)

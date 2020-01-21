@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe Event do
+RSpec.describe Event do
   before(:all) do
     @events = FactoryGirl.create_list(:event, 4)
   end
@@ -20,7 +18,7 @@ describe Event do
   it { is_expected.to allow_mass_assignment_of :url }
 
   describe "Upcoming events" do
-    let(:upcoming) { Event.upcoming.map(&:start_time) } 
+    let(:upcoming) { Event.upcoming.map(&:start_time) }
     let(:first_time) { upcoming.first.to_i }
     let(:second_time) { upcoming[1].to_i }
 

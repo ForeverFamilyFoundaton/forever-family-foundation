@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.3.3'
+ruby '2.5.3'
 
 gem 'protected_attributes'
 
@@ -23,8 +23,8 @@ gem 'compass-blueprint', '~> 1.0'
 gem 'compass-rails', '~> 2.0.5'
 gem 'country_select', '~>2.5.0'
 gem 'css3buttons', '~> 1.0.1'
-gem 'delayed_job_active_record', '4.1.1'
-gem 'devise', '~> 3.5.4'
+gem 'delayed_job_active_record'
+gem 'devise'
 gem 'figaro', '1.1.1'
 gem 'fog', '1.37.0'
 gem 'haml', '~> 4.0.5'
@@ -41,7 +41,7 @@ gem 'ransack', '1.8.2'
 #gem 'recaptcha', '2.0.0'  #'1.0.2', require: "recaptcha/rails"
 gem "recaptcha", require: "recaptcha/rails"
 gem 'redcarpet', '~> 3.3.4'
-gem "sass-rails", "~> 5.0.4"
+gem "sass-rails"
 gem 'simple_form', '~> 3.0'
 gem 'state_machine', '1.2.0'
 gem 'stripe', '~> 1.33.0'
@@ -52,21 +52,19 @@ gem 'seed_dump', '3.2.4'
 
 group :test do
   gem 'byebug', platform: :mri
-  gem 'capybara',  '~> 2.13'  #'2.6.0'
-  gem 'capybara-screenshot', '~> 1.0'
-  gem 'capybara-webkit', '~> 1.14'
-  gem 'launchy', '~> 2.4'
-  gem 'database_cleaner', '1.6.0' #'~> 1.5.1', require: false
+  gem 'capybara'
+  gem 'capybara-email'
+  gem 'database_cleaner'
   gem 'email_spec', '~> 2.0.0'
   gem 'factory_girl_rails', '4.4.1'
   gem 'faker', '~> 1.6.1'
-  gem 'poltergeist', '~> 1.8.1'
   gem 'rspec_junit_formatter', '0.2.3'
-  gem 'rspec-rails', '~> 3.4.0'
-  gem 'selenium-webdriver', '~> 2.48'
-  gem 'shoulda-matchers', '2.8.0'
-  gem 'timecop', '~> 0.8.0'
-  gem 'webmock', '~> 1.22'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+  gem 'timecop'
+  gem 'webdrivers'
+  gem 'webmock'
 end
 
 group :development do

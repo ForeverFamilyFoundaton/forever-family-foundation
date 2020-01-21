@@ -1,14 +1,12 @@
-require 'feature_helper'
-
-describe 'User edit' do
+RSpec.feature 'User edit' do
   before do
     @user = FactoryGirl.create(:user, { email: 'abc@example.com'})
   end
 
-  it 'Edit sections' do
+  it 'Edit sections', :chrome do
     stub_request(:any, 'https://js.stripe.com/v1/').to_return body: File.new(Rails.root + 'spec/support/stripe.js').read
     allow(Stripe::Charge).to receive(:create) { true }
-    sign_in(@user)
+    sign_in @user
     visit new_user_business_path(@user)
     fill_in_biz_reg
     click_on 'Submit'

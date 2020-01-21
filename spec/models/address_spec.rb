@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe Address do
+RSpec.describe Address do
   it { should belong_to :addressable }
   it { should validate_presence_of :address }
   it { should validate_presence_of :city }

@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe BusinessAssignment do
+RSpec.describe BusinessAssignment do
   it { should belong_to :user }
   it { should belong_to :business }
   it { should validate_presence_of :user_id }

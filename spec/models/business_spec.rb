@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe Business do
+RSpec.describe Business do
   it { should have_one :address }
   it { should have_one :business_card }
   it { should have_one :business_logo }

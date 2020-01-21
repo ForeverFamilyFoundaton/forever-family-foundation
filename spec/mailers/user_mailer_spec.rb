@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe UserMailer do
+RSpec.describe UserMailer do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
 
