@@ -564,7 +564,7 @@ DEPENDENCIES
   email_spec (~> 2.0.0)
   factory_girl_rails (= 4.4.1)
   faker (~> 1.6.1)
-  figaro (= 1.1.1)
+  figaro
   fog (= 1.37.0)
   guard (= 2.14.0)
   guard-rspec (= 4.7.3)
