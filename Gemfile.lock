@@ -362,7 +362,7 @@ GEM
       shellany (~> 0.0)
     optimist (3.0.0)
     orm_adapter (0.5.0)
-    paperclip (5.1.0)
+    paperclip (5.2.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -576,7 +576,7 @@ DEPENDENCIES
   net-ssh (~> 3.0.1)
   newrelic_rpm (~> 3.13)
   non-stupid-digest-assets
-  paperclip (= 5.1.0)
+  paperclip (= 5.2.0)
   pg (~> 0.20.0)
   protected_attributes
   pry (= 0.10.4)
