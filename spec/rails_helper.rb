@@ -5,12 +5,15 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'webmock'
-require 'support/shoulda_matchers'
-require 'support/helpers'
-require 'support/delayed_job'
-require 'support/webmock'
-require 'support/factory_bot'
 require "paperclip/matchers"
+
+require 'support/database_cleaner'
+require 'support/delayed_job'
+require 'support/factory_bot'
+require 'support/helpers'
+require 'support/shoulda_matchers'
+require 'support/steps'
+require 'support/webmock'
 
 include WebMock::API
 
@@ -31,8 +34,6 @@ module ControllerMacros
     end
   end
 end
-
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

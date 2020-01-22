@@ -35,7 +35,7 @@ gem 'kaminari', '~> 0.16.1'
 gem 'net-ssh', '~> 3.0.1'
 gem 'newrelic_rpm', '~> 3.13'
 gem 'non-stupid-digest-assets'
-gem 'paperclip', '5.1.0'
+gem 'paperclip'
 gem 'ranked-model'
 gem 'ransack', '1.8.2'
 gem "recaptcha", require: "recaptcha/rails"

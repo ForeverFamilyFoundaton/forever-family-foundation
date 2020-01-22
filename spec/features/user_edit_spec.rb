@@ -4,7 +4,6 @@ RSpec.feature 'User edit' do
   end
 
   it 'Edit sections', :chrome do
-    stub_request(:any, 'https://js.stripe.com/v1/').to_return body: File.new(Rails.root + 'spec/support/stripe.js').read
     allow(Stripe::Charge).to receive(:create) { true }
     sign_in @user
     visit new_user_business_path(@user)
