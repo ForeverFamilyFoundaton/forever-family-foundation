@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :admin_user_empty do
   end
   factory :admin_user do

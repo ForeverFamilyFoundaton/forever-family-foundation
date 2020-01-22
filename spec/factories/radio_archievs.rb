@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :radio_archive do |n|
     format { ['The Gathering', 'Signs of Life', 'Mediums & Messages'].sample }
     date { Time.now }

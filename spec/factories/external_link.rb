@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :external_link do |n|
 
     text { Faker::Lorem.sentence }

@@ -8,8 +8,8 @@ require 'webmock'
 require 'support/shoulda_matchers'
 require 'support/helpers'
 require 'support/delayed_job'
-require 'support/test_process'
 require 'support/webmock'
+require 'support/factory_bot'
 require "paperclip/matchers"
 
 include WebMock::API
@@ -27,7 +27,7 @@ module ControllerMacros
   def setup_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      @user = FactoryGirl.create(:user)
+      @user = create(:user)
     end
   end
 end
@@ -40,7 +40,6 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
-  config.include FactoryGirl::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
   config.include Paperclip::Shoulda::Matchers
