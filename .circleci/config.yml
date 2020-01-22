@@ -7,11 +7,11 @@ jobs:
       - image: circleci/ruby:2.5.3-node-browsers
         environment:
           PGHOST: localhost
-          PGUSER: forever-family-foundation
+          PGUSER: circleci
           RAILS_ENV: test
       - image: postgres:9.5
         environment:
-          POSTGRES_USER: forever-family-foundation
+          POSTGRES_USER: circleci
           POSTGRES_DB: forever-family-foundation_test
           POSTGRES_PASSWORD: ""
     steps:
