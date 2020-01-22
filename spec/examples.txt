@@ -151,9 +151,9 @@ example_id                                                       | status  | run
 ./spec/models/event_spec.rb[1:8]                                 | passed  | 0.00222 seconds |
 ./spec/models/event_spec.rb[1:9:1]                               | passed  | 0.00311 seconds |
 ./spec/models/event_spec.rb[1:10:1]                              | passed  | 0.00213 seconds |
-./spec/models/export_spec.rb[1:1]                                | passed  | 0.03109 seconds |
-./spec/models/export_spec.rb[1:2:1]                              | passed  | 0.17883 seconds |
-./spec/models/export_spec.rb[1:2:2]                              | passed  | 0.15562 seconds |
+./spec/models/export_spec.rb[1:1]                                | passed  | 0.16307 seconds |
+./spec/models/export_spec.rb[1:2:1]                              | passed  | 0.51298 seconds |
+./spec/models/export_spec.rb[1:2:2]                              | passed  | 0.1538 seconds  |
 ./spec/models/family_member_spec.rb[1:1]                         | passed  | 0.00242 seconds |
 ./spec/models/family_member_spec.rb[1:2]                         | passed  | 0.00151 seconds |
 ./spec/models/known_dead_spec.rb[1:1]                            | passed  | 0.00183 seconds |
