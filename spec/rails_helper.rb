@@ -7,7 +7,7 @@ require 'rspec/rails'
 require 'webmock'
 require "paperclip/matchers"
 
-require 'support/database_cleaner'
+require 'support/js_drivers'
 require 'support/delayed_job'
 require 'support/factory_bot'
 require 'support/helpers'

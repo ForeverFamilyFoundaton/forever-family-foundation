@@ -1,5 +1,4 @@
 ForeverFamilyFoundation::Application.routes.draw do
-
   resources :belief_types
   resources :tests
   resources :known_deads

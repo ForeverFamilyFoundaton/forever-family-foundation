@@ -15,7 +15,6 @@ class Export < ActiveRecord::Base
   validates_attachment_content_type :file, content_type: "text/plain"
   after_create :save_csv
 
-
   def save_csv
     self.file = File.new(generate_csv)
     save!

@@ -7,7 +7,9 @@ button::-moz-focus-inner {
 /* Blue and Orange
 *******************************************************************************/
 @mixin fff_button {
-  @include linear-gradient(top, #f7e1bb 0%, #fd972f 50%, #ff8400 50%, #ffab00 100%);
+  @include background-image(linear-gradient(
+    top, #f7e1bb 0%, #fd972f 50%, #ff8400 50%, #ffab00 100%
+  ));
   border: 3px solid $dark-blue;
   @include border-radius(20px);
 
@@ -19,12 +21,12 @@ button::-moz-focus-inner {
 //  text-shadow: 0px -1px 1px rgba(0, 0, 0, .8);
 
   &:hover {
-    @include linear-gradient(top, #A5CE9C 0%, #00B800 50%, #00B800 50%, #A5CE9C 100%);
+    @include background-image(linear-gradient(top, #A5CE9C 0%, #00B800 50%, #00B800 50%, #A5CE9C 100%));
     cursor: pointer;
   }
 
   &:active {
-    @include linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%);
+    @include background-image(linear-gradient(top, #d43c28 0%, #ad3224 50%, #9c1500 50%, #700d00 100%));
 //    @include box-shadow(inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4));
   }
 }

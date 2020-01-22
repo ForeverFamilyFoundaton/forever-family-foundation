@@ -15,7 +15,7 @@ RSpec.describe RadioArchivesController do
 
   it "searches" do
     create(:radio_archive, title: "The polar bear")
-    get :index, q: "[title_or_guest_cont]=The polar bear"
+    get :index, params: { q: "[title_or_guest_cont]=The polar bear" }
     expect(assigns[:archives].first.title).to eq("The polar bear")
   end
 end

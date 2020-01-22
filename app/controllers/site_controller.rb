@@ -1,9 +1,7 @@
 class SiteController < ApplicationController
-  skip_before_filter :authenticate_admin_user!, :only => [:index]
-  before_filter :get_events
+  before_action :get_events
 
-  def page
-  end
+  def page; end
   def after_life_discussion_group; end
   def after_life_science; end
   def radio_archives; end
