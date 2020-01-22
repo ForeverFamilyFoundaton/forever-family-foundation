@@ -2,7 +2,7 @@ RSpec.describe BusinessesController do
   setup_user
 
   before do
-    @business = FactoryGirl.create(:business, :user_id => @user.id)
+    @business = FactoryBot.create(:business, :user_id => @user.id)
     sign_in @user
   end
 
@@ -16,7 +16,7 @@ RSpec.describe BusinessesController do
 
   context "on create business" do
     before do
-      post :create, business: FactoryGirl.attributes_for(:business, name: 'Testing Corp'), step: 1
+      post :create, business: FactoryBot.attributes_for(:business, name: 'Testing Corp'), step: 1
     end
     it 'redirects to payment' do
       business = Business.find_by_name('Testing Corp')
@@ -44,7 +44,7 @@ RSpec.describe BusinessesController do
 
   context "on get edit" do
     before do
-      business = FactoryGirl.create(:business, :user_id => @user.id)
+      business = FactoryBot.create(:business, :user_id => @user.id)
       get :edit, :user_id => @user.id, :id => business.id, step: 1
     end
     it {should respond_with :success}

@@ -1,6 +1,6 @@
 RSpec.describe Event do
   before(:all) do
-    @events = FactoryGirl.create_list(:event, 4)
+    @events = FactoryBot.create_list(:event, 4)
   end
 
   after(:all) do

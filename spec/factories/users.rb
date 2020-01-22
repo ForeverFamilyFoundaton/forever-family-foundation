@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :user do |n|
     sequence(:email) {|n| "user#{n}@example.com" }
     email_confirmation { email }
@@ -26,6 +25,4 @@ FactoryBot.define do
     address_attributes {FactoryBot.attributes_for(:address)}
     welcomed {true}
   end
-
-
 end

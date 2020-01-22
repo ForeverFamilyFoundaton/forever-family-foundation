@@ -5,7 +5,7 @@ RSpec.feature 'ADG registration' do
     @adg_question2 = AdgQuestion.create!(question: 'Do you believe that there is something that survives after physical death?', show_radio: true )
     @adg_question3 = AdgQuestion.create!(question: 'What specific topics are you interested in discussing?', show_radio: true )
     @adg_question4 = AdgQuestion.create!(question: 'What books have you read in this topic', show_radio: true )
-    @user = FactoryGirl.create(:user)
+    @user = FactoryBot.create(:user)
   end
 
   it 'Answer ADG questions', js: true do
