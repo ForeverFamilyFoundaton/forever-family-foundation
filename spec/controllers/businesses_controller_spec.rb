@@ -8,7 +8,7 @@ RSpec.describe BusinessesController do
 
   context "on get new" do
     before do
-      get :new, :user_id => @user.id
+      get :new, params: { :user_id => @user.id }
     end
     it { should respond_with :success }
     it { should render_template :new }
@@ -16,8 +16,12 @@ RSpec.describe BusinessesController do
 
   context "on create business" do
     before do
-      post :create, business: FactoryBot.attributes_for(:business, name: 'Testing Corp'), step: 1
+      post :create, params: {
+        business: FactoryBot.attributes_for(:business, name: 'Testing Corp'),
+        step: 1
+      }
     end
+
     it 'redirects to payment' do
       business = Business.find_by_name('Testing Corp')
       expect(response).to redirect_to user_business_payment_path(@user, business)
@@ -26,7 +30,7 @@ RSpec.describe BusinessesController do
 
   context 'on process payment' do
     before do
-      post :create, credit_card: {}
+      post :create, params: { credit_card: {} }
     end
     it { expect(assigns(:business)).to be_kind_of(Business)}
     it {expect(response).to be_success}
@@ -35,7 +39,7 @@ RSpec.describe BusinessesController do
 
   context "on business params error" do
     before do
-      post :create, "business" => {}, step: 1
+      post :create, params: { "business" => {}, step: 1 }
     end
     it { expect(assigns(:business)).to be_kind_of(Business) }
     it {expect(response).to be_success}
@@ -45,7 +49,7 @@ RSpec.describe BusinessesController do
   context "on get edit" do
     before do
       business = FactoryBot.create(:business, :user_id => @user.id)
-      get :edit, :user_id => @user.id, :id => business.id, step: 1
+      get :edit, params: { :user_id => @user.id, :id => business.id, step: 1 }
     end
     it {should respond_with :success}
     it {should render_template :edit}
@@ -53,14 +57,18 @@ RSpec.describe BusinessesController do
 
   context "on updating business" do
     before do
-      put :update, "business" => {}, :id => @business.id, :step => '1'
+      put :update, params: {
+        "business" => {}, :id => @business.id, :step => '1'
+      }
     end
     it {expect(response).to redirect_to  user_path(@user)}
   end
 
   context "on get step 2" do
     before do
-      get :register, user_id: @user.id, id: @business.id, step: 2
+      get :register, params: {
+        user_id: @user.id, id: @business.id, step: 2
+      }
     end
     it {should respond_with :success}
     it {should render_template :register}
@@ -68,7 +76,9 @@ RSpec.describe BusinessesController do
 
   context "on finishing step 2" do
     before do
-      put :register, business: {}, user_id: @user.id, id: @business.id, step: '2'
+      put :register, params: {
+        business: {}, user_id: @user.id, id: @business.id, step: '2'
+      }
     end
     it {
       expect(response).to redirect_to user_business_register_path(@user, @business, step: 3)
@@ -77,7 +87,9 @@ RSpec.describe BusinessesController do
 
   context "on get step 3" do
     before do
-      get :register, :user_id => @user.id, :id => @business.id, :step => '3'
+      get :register, params: {
+        :user_id => @user.id, :id => @business.id, :step => '3'
+      }
     end
     it {should respond_with :success}
     it {should render_template :register}
@@ -85,7 +97,9 @@ RSpec.describe BusinessesController do
 
   context "on finishing step 3" do
     before do
-      put :register, "business" => {}, :user_id => @user.id, :id => @business.id, step: 3
+      put :register, params: {
+        "business" => {}, :user_id => @user.id, :id => @business.id, step: 3
+      }
     end
 
     it {
@@ -95,7 +109,9 @@ RSpec.describe BusinessesController do
 
   context "on get step 4" do
     before do
-      get :edit, :user_id => @user.id, :id => @business.id, :step => '4'
+      get :edit, params: {
+        :user_id => @user.id, :id => @business.id, :step => '4'
+      }
     end
     it {should respond_with :success}
     it {should render_template :edit}
@@ -103,7 +119,9 @@ RSpec.describe BusinessesController do
 
   context "on finishing step 4" do
     before do
-      put :register, business: {}, user_id: @user.id, id: @business.id, step: 4
+      put :register, params: {
+        business: {}, user_id: @user.id, id: @business.id, step: 4
+      }
     end
     it {expect(response).to redirect_to user_path(@user) }
   end

@@ -1,9 +1,9 @@
 class AttachedFile < ActiveRecord::Base
   belongs_to :attachable, polymorphic: true
-  
+
   paperclip_opts = { styles: { thumb: '200x200>' } }
 
-  # April 10, 2016 
+  # April 10, 2016
   # This block setup to use S3 in development and production environments
   #
   if Rails.env.production? || Rails.env.development?

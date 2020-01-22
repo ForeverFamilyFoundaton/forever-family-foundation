@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_filter :continue_registration, only: [:new]
+  before_action :continue_registration, only: [:new]
 
   def new
     params[:step] ||= 1

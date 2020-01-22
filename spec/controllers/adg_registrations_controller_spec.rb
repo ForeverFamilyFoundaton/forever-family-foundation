@@ -30,7 +30,7 @@ RSpec.describe AdgRegistrationsController do
     context "on get new" do
       it 'responds with success' do
         get :new
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it 'renders new' do
@@ -49,7 +49,7 @@ RSpec.describe AdgRegistrationsController do
 
       it 'responds with success' do
         get :new
-        expect(response).to be_success
+        expect(response).to be_successful
       end
 
       it 'renders new' do
@@ -78,7 +78,7 @@ RSpec.describe AdgRegistrationsController do
       end
 
       it 'saves the adg answers' do
-        post :create, :adg_registration => @params
+        post :create, params: { :adg_registration => @params }
         @user.adg_answers.each do |adg_answer|
           expect(
             @params[:answer][adg_answer.adg_question_id]
@@ -90,12 +90,12 @@ RSpec.describe AdgRegistrationsController do
       end
 
       it "emails the user" do
-        post :create, :adg_registration => @params
+        post :create, params: { :adg_registration => @params }
         expect(ActionMailer::Base.deliveries.count).to eq(1)
       end
 
       it 'saves the adg preferences' do
-        post :create, :adg_registration => @params
+        post :create, params: { :adg_registration => @params }
         expect(@user.adg_preferences).to eq [@p1]
       end
     end

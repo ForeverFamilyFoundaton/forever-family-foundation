@@ -1,6 +1,5 @@
 class AdgRegistrationsController < ApplicationController
-  before_filter :require_registration, :only => [:new]
-  skip_before_filter :adg_redirect
+  before_action :require_registration, :only => [:new]
 
   def new
     session[:adg_registration] = nil
@@ -20,7 +19,7 @@ class AdgRegistrationsController < ApplicationController
     end
     current_user.update_attribute(:adg_preference_ids, params[:adg_registration][:adg_preference_ids])
     UserNotifier.send_adg_email(current_user)
-    
+
     flash[:notice] = I18n.t('flash.adg.answers_updated')
     redirect_to current_user
   end
