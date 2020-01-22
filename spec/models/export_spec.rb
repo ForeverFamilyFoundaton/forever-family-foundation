@@ -3,10 +3,6 @@ RSpec.describe Export do
     @users = FactoryBot.create_list(:user, 2)
   end
 
-  after do
-    @users.map(&:destroy)
-  end
-
   it { is_expected.to have_attached_file(:file) }
 
   describe "#save_csv" do
