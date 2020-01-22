@@ -1,13 +1,11 @@
-require 'feature_helper'
-
-describe 'Business registration' do
+RSpec.feature 'Business registration' do
 #pending "Times out during testing"
 
   before do
     @user = FactoryGirl.create(:user, { email: 'abc@example.com'})
   end
 
-  it 'Business registration' do
+  scenario 'Business registration', :js do
     sign_in(@user)
     visit new_user_business_path(@user)
     fill_in_biz_reg
@@ -35,7 +33,7 @@ describe 'Business registration' do
     expect(page_address.path).to match "users/#{@user.id}"
   end
 
-  it 'Biz reg, skip all pages' do
+  scenario 'Biz reg, skip all pages' do
     sign_in(@user)
     visit new_user_business_path(@user)
     fill_in_biz_reg
@@ -48,7 +46,7 @@ describe 'Business registration' do
   end
 
   context 'payment screen' do
-    it 'processec payment' do
+    scenario 'processec payment' do
       sign_in(@user)
       visit new_user_business_path(@user)
       fill_in_biz_reg

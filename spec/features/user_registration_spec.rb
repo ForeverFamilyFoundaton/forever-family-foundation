@@ -1,7 +1,4 @@
-require 'feature_helper'
-
-describe 'User registration' do
-
+RSpec.feature 'User registration' do
   it "non biz reg'" do
     visit '/users/sign_up'
     fill_in_reg(email: 'qwe@example.com')

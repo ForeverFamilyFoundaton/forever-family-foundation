@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe Announcement do
+RSpec.describe Announcement do
   let(:announcement) { create(:announcement, start_date: 1.day.from_now, end_date: 5.days.from_now) }
   let(:announcement_2) { build(:announcement, start_date: 5.days.from_now, body: "another test") }
 

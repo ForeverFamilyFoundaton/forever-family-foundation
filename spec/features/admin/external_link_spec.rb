@@ -1,6 +1,4 @@
-require 'feature_helper'
-
-feature 'Admin area: External Links' do
+RSpec.feature 'Admin area: External Links' do
 
   before do
     sign_in_as_admin

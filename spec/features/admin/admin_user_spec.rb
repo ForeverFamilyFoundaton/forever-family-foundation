@@ -1,6 +1,4 @@
-require 'feature_helper'
-
-describe 'ADMIN: AdminUsers' do
+RSpec.feature 'ADMIN: AdminUsers' do
   before { sign_in_as_admin }
 
   let(:business) { create(:business_complete ) }

@@ -1,7 +1,4 @@
-require 'feature_helper'
-
-describe 'Sitter registration' do
-
+RSpec.feature 'Sitter registration' do
   before do
     @user = FactoryGirl.create(:user, { email: 'abc@example.com', password: 'password'})
     @user2 = FactoryGirl.create(:user, { email: 'qwe@example.com', password: 'password', sitter_registration: true})
@@ -50,11 +47,11 @@ describe 'Sitter registration' do
   #   page.check("sig_check_box")
   #   #find(:css, "#sig_check_box").set(true)
   #   click_button('Submit')
-    
+
   #   expect(page).to have_content 'Sitterform was successfully'
   # end
 
-  
+
   # it 'biz reg' do
   #   visit '/users/login'
   #   fill_in "user_email", :with => 'asd@example.com'

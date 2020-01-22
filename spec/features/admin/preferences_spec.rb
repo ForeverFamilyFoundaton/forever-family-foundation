@@ -1,7 +1,4 @@
-require 'feature_helper'
-
-feature 'Admin area: Preferences' do
-
+RSpec.feature 'Admin area: Preferences' do
   before do
     sign_in_as_admin
   end

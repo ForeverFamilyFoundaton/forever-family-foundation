@@ -1,12 +1,10 @@
-require 'feature_helper'
+RSpec.feature 'ADMIN: Announcements' do
 
-describe 'ADMIN: Announcements' do
-  
   before { sign_in_as_admin }
-  
+
   let(:business) { create(:business_complete ) }
   let(:user) { create(:user, business: business) }
- 
+
   it "successfully creates new announcement" do
     user
     click_link 'Announcements'
@@ -21,11 +19,11 @@ describe 'ADMIN: Announcements' do
     select 'January', from: 'announcement[end_date(2i)]'
     select '20', from: 'announcement[end_date(3i)]'
     click_on 'Create Announcement'
-    
+
     expect(page).to have_content('Announcement was successfully created')
   end
-  
- 
+
+
   it "fails announcements with overlapping end date" do
     user
     click_link 'Announcements'
@@ -53,7 +51,7 @@ describe 'ADMIN: Announcements' do
     select 'January', from: 'announcement[end_date(2i)]'
     select '25', from: 'announcement[end_date(3i)]'
     click_on 'Create Announcement'
-    
-    expect(page).to have_content('New Announcement Conflicts with other Announcements')    
+
+    expect(page).to have_content('New Announcement Conflicts with other Announcements')
   end
 end

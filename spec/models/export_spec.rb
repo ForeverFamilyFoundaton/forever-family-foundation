@@ -1,10 +1,6 @@
-require 'rails_helper'
-
-describe Export do
+RSpec.describe Export do
   before do
     @users = FactoryGirl.create_list(:user, 2)
-    ActionMailer::Base.delivery_method = :test
-    Delayed::Worker.delay_jobs = false
   end
 
   after do
@@ -22,7 +18,9 @@ describe Export do
     end
 
     it "sends email" do
-      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      expect { Export.create }.to change {
+        ActionMailer::Base.deliveries.count
+      }.by(1)
     end
   end
 end

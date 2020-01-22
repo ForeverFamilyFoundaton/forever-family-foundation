@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe AdgRegistrationsController do
+RSpec.describe AdgRegistrationsController do
   setup_user
 
   before do

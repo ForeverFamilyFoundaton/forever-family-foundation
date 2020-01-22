@@ -1,6 +1,4 @@
-require 'rails_helper'
-
-describe BillingAddress do
+RSpec.describe BillingAddress do
   it { should belong_to :business }
   it { should validate_presence_of :city }
   it { should validate_presence_of :address }

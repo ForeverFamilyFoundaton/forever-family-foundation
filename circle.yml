@@ -1,8 +1,0 @@
-deployment:
-  production:
-    branch: master
-    commands:
-      - heroku maintenance:on --app forever-family-foundation
-      - git push git@heroku.com:forever-family-foundation.git $CIRCLE_SHA1:refs/heads/master
-      - heroku run rake db:migrate --app forever-family-foundation
-      - heroku maintenance:off --app forever-family-foundation
