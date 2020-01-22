@@ -1,6 +1,6 @@
 RSpec.describe Export do
   before do
-    @users = FactoryGirl.create_list(:user, 2)
+    @users = FactoryBot.create_list(:user, 2)
   end
 
   after do

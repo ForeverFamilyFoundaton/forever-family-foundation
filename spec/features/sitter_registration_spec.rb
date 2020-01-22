@@ -1,7 +1,7 @@
 RSpec.feature 'Sitter registration' do
   before do
-    @user = FactoryGirl.create(:user, { email: 'abc@example.com', password: 'password'})
-    @user2 = FactoryGirl.create(:user, { email: 'qwe@example.com', password: 'password', sitter_registration: true})
+    @user = FactoryBot.create(:user, { email: 'abc@example.com', password: 'password'})
+    @user2 = FactoryBot.create(:user, { email: 'qwe@example.com', password: 'password', sitter_registration: true})
   end
 
   it 'Sitterform login with no sitter_registration flag', :sitterform do

@@ -2,7 +2,7 @@ RSpec.feature 'Business registration' do
 #pending "Times out during testing"
 
   before do
-    @user = FactoryGirl.create(:user, { email: 'abc@example.com'})
+    @user = FactoryBot.create(:user, { email: 'abc@example.com'})
   end
 
   scenario 'Business registration', :js do

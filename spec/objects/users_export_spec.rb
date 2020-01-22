@@ -1,6 +1,6 @@
 RSpec.describe UsersExport do
   before do
-    @users = FactoryGirl.create_list(:user, 3)
+    @users = FactoryBot.create_list(:user, 3)
   end
 
   subject { UsersExport.new(@users) }

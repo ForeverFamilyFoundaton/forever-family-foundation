@@ -41,10 +41,10 @@ RSpec.describe AdgRegistrationsController do
 
     context "on get new with adg questions" do
       setup do
-        FactoryGirl.create(:user)
-        FactoryGirl.create(:adg_question)
-        FactoryGirl.create(:first_adg_question)
-        FactoryGirl.create(:second_adg_question)
+        create(:user)
+        create(:adg_question)
+        create(:first_adg_question)
+        create(:second_adg_question)
       end
 
       it 'responds with success' do
@@ -60,10 +60,10 @@ RSpec.describe AdgRegistrationsController do
 
     context "on create adg registration" do
       before do
-        @q1 = FactoryGirl.create(:adg_question)
-        @q2 = FactoryGirl.create(:first_adg_question)
-        @q3 = FactoryGirl.create(:second_adg_question)
-        @p1 = FactoryGirl.create(:preference_adg)
+        @q1 = create(:adg_question)
+        @q2 = create(:first_adg_question)
+        @q3 = create(:second_adg_question)
+        @p1 = create(:preference_adg)
         @params = {
           :answer => {
             @q1.id => 'answer1',

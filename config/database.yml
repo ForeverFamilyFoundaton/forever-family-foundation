@@ -1,0 +1,12 @@
+development:
+  encoding: utf8
+  adapter: postgresql
+  database: fff_data
+  username: <%= `whoami` %>
+
+test:
+  encoding: utf8
+  pool: 10
+  adapter: postgresql
+  database: fff_test
+  username: <%= `whoami` %>

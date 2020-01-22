@@ -1,6 +1,6 @@
 RSpec.feature 'User edit' do
   before do
-    @user = FactoryGirl.create(:user, { email: 'abc@example.com'})
+    @user = FactoryBot.create(:user, { email: 'abc@example.com'})
   end
 
   it 'Edit sections', :chrome do

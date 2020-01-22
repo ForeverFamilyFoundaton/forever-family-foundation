@@ -4,7 +4,7 @@ RSpec.describe ExportMailer, :type => :mailer do
 
   describe "ready" do
     before do
-      @users = FactoryGirl.create_list(:user, 2)
+      @users = FactoryBot.create_list(:user, 2)
       @export = Export.create
     end
 
