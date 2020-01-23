@@ -1,4 +1,4 @@
-class CreateBeliefTypeSelections < ActiveRecord::Migration
+class CreateBeliefTypeSelections < ActiveRecord::Migration[4.2]
   def change
     create_table :belief_type_selections do |t|
       t.integer :belief_type_id

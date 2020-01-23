@@ -1,4 +1,4 @@
-class CreateUsersProfilePreferences < ActiveRecord::Migration
+class CreateUsersProfilePreferences < ActiveRecord::Migration[4.2]
   def self.up
     create_table :users_profile_preferences, :id => false do |t|
       t.references :user

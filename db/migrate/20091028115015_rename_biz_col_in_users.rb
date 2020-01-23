@@ -1,4 +1,4 @@
-class RenameBizColInUsers < ActiveRecord::Migration
+class RenameBizColInUsers < ActiveRecord::Migration[4.2]
   def self.up
     rename_column :users, :business, :is_business
   end

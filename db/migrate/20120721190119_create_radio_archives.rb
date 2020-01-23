@@ -1,4 +1,4 @@
-class CreateRadioArchives < ActiveRecord::Migration
+class CreateRadioArchives < ActiveRecord::Migration[4.2]
   def change
     create_table :radio_archives do |t|
       t.string :format

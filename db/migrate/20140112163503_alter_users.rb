@@ -1,4 +1,4 @@
-class AlterUsers < ActiveRecord::Migration
+class AlterUsers < ActiveRecord::Migration[4.2]
   def up
     remove_column :users, :email
     add_column :users, :email, :string

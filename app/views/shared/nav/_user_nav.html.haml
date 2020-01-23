@@ -4,7 +4,7 @@
   - if current_user.present?
     %li.first
       = link_to t("navigation.my_profile"), user_path(current_user)
-    %li.last      
+    %li.last
       = link_to t("navigation.user.logout"), logout_path, :method => :delete
   - else
     %li.first

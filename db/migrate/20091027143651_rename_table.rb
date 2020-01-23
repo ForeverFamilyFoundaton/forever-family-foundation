@@ -1,4 +1,4 @@
-class RenameTable < ActiveRecord::Migration
+class RenameTable < ActiveRecord::Migration[4.2]
   def self.up
     rename_table :after_life_discussion_group_questions, :adg_questions
     rename_table :user_family_members, :family_members

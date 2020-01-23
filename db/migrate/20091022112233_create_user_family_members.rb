@@ -1,4 +1,4 @@
-class CreateUserFamilyMembers < ActiveRecord::Migration
+class CreateUserFamilyMembers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :user_family_members do |t|
       t.references :user

@@ -1,4 +1,4 @@
-class AddTimestampsToMediumforms < ActiveRecord::Migration
+class AddTimestampsToMediumforms < ActiveRecord::Migration[4.2]
   def change
     # Add timestamps column, but without a NOT NULL constraint
     add_timestamps :mediumforms, null: true
@@ -11,7 +11,7 @@ class AddTimestampsToMediumforms < ActiveRecord::Migration
     # Restore NOT NULL constraints to be in line with the Rails default
     change_column_null :mediumforms, :created_at, false
     change_column_null :mediumforms, :updated_at, false
-    
+
     # ...
   end
 end

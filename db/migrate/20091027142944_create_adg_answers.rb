@@ -1,4 +1,4 @@
-class CreateAdgAnswers < ActiveRecord::Migration
+class CreateAdgAnswers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :adg_answers do |t|
       t.references :user

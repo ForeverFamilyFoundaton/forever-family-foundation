@@ -1,4 +1,4 @@
-class AddUrlToEvents < ActiveRecord::Migration
+class AddUrlToEvents < ActiveRecord::Migration[4.2]
   def change
     add_column :events, :url, :string
 

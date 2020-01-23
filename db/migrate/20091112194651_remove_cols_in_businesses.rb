@@ -1,4 +1,4 @@
-class RemoveColsInBusinesses < ActiveRecord::Migration
+class RemoveColsInBusinesses < ActiveRecord::Migration[4.2]
   def self.up
     remove_column :businesses, :business_card_file_name
     remove_column :businesses, :business_card_content_type

@@ -1,4 +1,4 @@
-class CreateProfilePreferences < ActiveRecord::Migration
+class CreateProfilePreferences < ActiveRecord::Migration[4.2]
   def self.up
     create_table :profile_preferences do |t|
       t.string :name

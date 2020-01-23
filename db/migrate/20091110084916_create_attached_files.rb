@@ -1,4 +1,4 @@
-class CreateAttachedFiles < ActiveRecord::Migration
+class CreateAttachedFiles < ActiveRecord::Migration[4.2]
   def self.up
     create_table :attached_files do |t|
       t.references :attachable, :polymorphic => true

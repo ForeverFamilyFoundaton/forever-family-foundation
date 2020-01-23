@@ -1,4 +1,4 @@
-class CreateMediumforms < ActiveRecord::Migration
+class CreateMediumforms < ActiveRecord::Migration[4.2]
   def change
     create_table :mediumforms do |t|
       t.integer :user_id
