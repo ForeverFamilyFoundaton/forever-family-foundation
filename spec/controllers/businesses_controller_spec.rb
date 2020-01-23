@@ -17,6 +17,7 @@ RSpec.describe BusinessesController do
   context "on create business" do
     before do
       post :create, params: {
+        user_id: @user.id,
         business: FactoryBot.attributes_for(:business, name: 'Testing Corp'),
         step: 1
       }
@@ -30,19 +31,23 @@ RSpec.describe BusinessesController do
 
   context 'on process payment' do
     before do
-      post :create, params: { credit_card: {} }
+      post :create, params: {
+        user_id: @user.id,
+        credit_card: {} }
     end
     it { expect(assigns(:business)).to be_kind_of(Business)}
-    it {expect(response).to be_success}
+    it {expect(response).to be_successful }
     it {expect(response).to render_template :new}
   end
 
   context "on business params error" do
     before do
-      post :create, params: { "business" => {}, step: 1 }
+      post :create, params: {
+        user_id: @user.id,
+        "business" => {}, step: 1 }
     end
     it { expect(assigns(:business)).to be_kind_of(Business) }
-    it {expect(response).to be_success}
+    it {expect(response).to be_successful }
     it {expect(response).to render_template :new}
   end
 
@@ -58,6 +63,7 @@ RSpec.describe BusinessesController do
   context "on updating business" do
     before do
       put :update, params: {
+        user_id: @user.id,
         "business" => {}, :id => @business.id, :step => '1'
       }
     end
@@ -67,7 +73,7 @@ RSpec.describe BusinessesController do
   context "on get step 2" do
     before do
       get :register, params: {
-        user_id: @user.id, id: @business.id, step: 2
+        user_id: @user.id, business_id: @business.id, step: 2
       }
     end
     it {should respond_with :success}
@@ -77,7 +83,7 @@ RSpec.describe BusinessesController do
   context "on finishing step 2" do
     before do
       put :register, params: {
-        business: {}, user_id: @user.id, id: @business.id, step: '2'
+        business: {}, user_id: @user.id, business_id: @business.id, step: '2'
       }
     end
     it {
@@ -88,17 +94,19 @@ RSpec.describe BusinessesController do
   context "on get step 3" do
     before do
       get :register, params: {
-        :user_id => @user.id, :id => @business.id, :step => '3'
+        user_id: @user.id,
+        business_id: @business.id,
+        step: '3'
       }
     end
-    it {should respond_with :success}
-    it {should render_template :register}
+    it { should respond_with :success }
+    it { should render_template :register }
   end
 
   context "on finishing step 3" do
     before do
       put :register, params: {
-        "business" => {}, :user_id => @user.id, :id => @business.id, step: 3
+        "business" => {}, :user_id => @user.id, :business_id => @business.id, step: 3
       }
     end
 
@@ -120,7 +128,7 @@ RSpec.describe BusinessesController do
   context "on finishing step 4" do
     before do
       put :register, params: {
-        business: {}, user_id: @user.id, id: @business.id, step: 4
+        business: {}, user_id: @user.id, business_id: @business.id, step: 4
       }
     end
     it {expect(response).to redirect_to user_path(@user) }

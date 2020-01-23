@@ -72,6 +72,7 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   resource :events
 
-  get '/site/page/:id' => 'site#page', as: 'page'
-  get ':controller(/:action(/:id))'
+  get '/site/:action' => 'site#page', as: 'page'
+  # get '/site/page/:id' => 'site#page', as: 'page'
+  # get ':controller(/:action(/:id))'
 end

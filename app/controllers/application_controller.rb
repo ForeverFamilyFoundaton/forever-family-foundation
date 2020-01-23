@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
     when /contributions/ then :contributions
     end
   end
-private
+
+  private
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
@@ -40,7 +41,7 @@ private
 
   def get_cms_page
     return if request.fullpath =~ /admin/
-    @cms_page ||=  if current_reference_string == 'Site: Page'
+    @cms_page ||= if current_reference_string == 'Site: Page'
       CmsPage.find(params[:id])
     else
       CmsPage.get(current_reference_string)

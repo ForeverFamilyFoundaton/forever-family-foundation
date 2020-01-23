@@ -57,7 +57,6 @@ gem 'uglifier'
 gem 'seed_dump'
 
 group :test do
-  gem 'byebug'
   gem 'capybara'
   gem 'capybara-email'
   gem 'database_cleaner'
@@ -82,6 +81,7 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'byebug'
 end
 
 group :production do
