@@ -1,7 +1,14 @@
 ---
 version: 2.1
+orbs:
+  heroku: circleci/heroku@1.0.0
+workflows:
+  heroku_deploy:
+    jobs:
+      - build_and_test
+      - deploy
 jobs:
-  build:
+  build_and_test:
     working_directory: ~/forever-family-foundation
     docker:
       - image: circleci/ruby:2.5.3-node-browsers
@@ -73,17 +80,10 @@ jobs:
           destination: test-results
       - store_artifacts:
           path: /tmp/capybara
-
-#       # Deploy
-#       - run: bash .circleci/setup-heroku.sh
-#       - add_ssh_keys:
-#           fingerprints:
-#             - "bd:7f:12:a8:5d:88:6f:9f:ef:3d:91:49:ce:a9:f0:ca"
-#       - run:
-#           name: Deploy Master to Heroku
-#           command: |
-#             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#               git push --force git@heroku.com:feedbacksapp.git HEAD:refs/heads/master
-#               heroku run rails db:migrate -a feedbacksapp
-#               heroku restart -a feedbacksapp
-#             fi
+  deploy:
+    executor: heroku/default # Uses the basic buildpack-deps image, which has the prerequisites for installing heroku's CLI.
+    steps:
+      - checkout
+      - heroku/install # Runs the heroku install command, if necessary.
+      - heroku/deploy-via-git: # Deploys branch to Heroku via git push.
+          only-branch: master # If you specify an only-branch, the deploy will not occur for any other branch.

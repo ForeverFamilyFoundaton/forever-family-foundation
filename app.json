@@ -1,0 +1,12 @@
+{
+  "name": "Forever Family Foundation - Review App",
+  "website": "http://foreverfamilyfoundation.org",
+  "success_url": "/",
+  "addons": ["heroku-postgresql:standard-0"],
+  "env": {
+    "RAILS_ENV": "production",
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  }
+}
