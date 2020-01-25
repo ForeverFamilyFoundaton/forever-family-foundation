@@ -5,10 +5,10 @@
   "addons": ["heroku-postgresql:standard-0"],
   "env": {
     "RAILS_ENV": "production",
-    "RECAPTCHA_SITE_KEY": {
+    "RECAPTCHA_PUBLIC_KEY": {
       "required": true
     },
-    "RECAPTCHA_SECRET_KEY": {
+    "RECAPTCHA_PRIVATE_KEY": {
       "required": true
     }
   },
