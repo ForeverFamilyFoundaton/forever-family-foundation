@@ -45,7 +45,7 @@ gem 'non-stupid-digest-assets'
 gem 'paperclip'
 gem 'ranked-model'
 gem 'ransack'
-gem "recaptcha", require: "recaptcha/rails"
+gem 'recaptcha'
 gem 'redcarpet'
 gem 'sass-rails', '5.0.7'
 gem 'simple_form'
