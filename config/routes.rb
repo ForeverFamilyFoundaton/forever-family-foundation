@@ -52,12 +52,16 @@ ForeverFamilyFoundation::Application.routes.draw do
   get '/bookreview' => 'redirects#recommended_books'
   get '/images/GuestHouse/TheGuestHouse-brochure' => 'redirects#guest_house_brochure'
 
+  resource :user, only: [:edit] do
+    collection do
+      patch 'update_password'
+    end
+  end
 
   resources :users do
     get :confirm
     put :confirm
     get :edit_password
-    put :update_password
 
     resources :businesses do
       get :payment
