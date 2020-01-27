@@ -16,6 +16,21 @@
     },
     "GMAIL_PASSWORD": {
       "required": true
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_REGION": {
+      "required": true
+    },
+    "AWS_S3_ATTACH_FILES": {
+      "required": true
+    },
+    "AWS_S3_IMAGE_FILES": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
     }
   },
   "scripts": {

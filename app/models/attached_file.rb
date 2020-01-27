@@ -7,6 +7,7 @@ class AttachedFile < ActiveRecord::Base
 
   before_save :set_content_type
 
+  paperclip_opts.merge!( { bucket: ENV.fetch('AWS_S3_ATTACH_FILES') } )
   #
   # explicitly set some content_type using file extension
   # if not one of the explicits, then default to what paperclip thinks it is
