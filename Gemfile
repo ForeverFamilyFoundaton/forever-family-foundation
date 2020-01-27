@@ -19,7 +19,7 @@ gem 'puma'
 # in production environments by default.
 gem 'activeadmin'
 gem 'acts_as_tree', '~> 2.4.0'
-gem 'aws-sdk', '~>2.3' # '<= 2.0'
+gem 'aws-sdk-s3'
 gem 'bootsnap'
 gem 'bourbon'
 gem 'cancan'

@@ -10,6 +10,12 @@
     },
     "RECAPTCHA_PRIVATE_KEY": {
       "required": true
+    },
+    "GMAIL_USERNAME": {
+      "required": true
+    },
+    "GMAIL_PASSWORD": {
+      "required": true
     }
   },
   "scripts": {
