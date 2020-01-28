@@ -10,10 +10,10 @@
   },
   "env": {
     "RAILS_ENV": "production",
-    "RECAPTCHA_PUBLIC_KEY": {
+    "RECAPTCHA_SITE_KEY": {
       "required": true
     },
-    "RECAPTCHA_PRIVATE_KEY": {
+    "RECAPTCHA_SECRET_KEY": {
       "required": true
     },
     "GMAIL_USERNAME": {
