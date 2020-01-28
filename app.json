@@ -3,6 +3,11 @@
   "website": "http://foreverfamilyfoundation.org",
   "success_url": "/",
   "addons": ["heroku-postgresql:standard-0"],
+  "environments": {
+    "review": {
+      "addons": ["heroku-postgresql:standard-0"]
+    }
+  },
   "env": {
     "RAILS_ENV": "production",
     "RECAPTCHA_PUBLIC_KEY": {
@@ -36,12 +41,8 @@
       "required": true
     },
     "STRIPE_API_KEY": {
-      "description": "Stripe TEST key",
-      "value": "gw7kQHtJJFEieaR61IlHUjBMddK6x5CE"
-    },
-    "HONEYBADGER_API_KEY": {
       "required": true
-    }
+    },
   },
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
