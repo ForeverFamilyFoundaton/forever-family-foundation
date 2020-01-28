@@ -3,7 +3,7 @@ RSpec.feature 'User edit' do
     @user = FactoryBot.create(:user, { email: 'abc@example.com'})
   end
 
-  it 'Edit sections', :chrome do
+  it 'Edit sections' do
     allow(Stripe::Charge).to receive(:create) { true }
     sign_in @user
     visit new_user_business_path(@user)

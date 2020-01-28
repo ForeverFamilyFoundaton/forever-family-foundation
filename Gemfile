@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.5.3'
+ruby '2.5.7'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -69,6 +69,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'timecop'
+  gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
 end
