@@ -42,7 +42,7 @@
     },
     "STRIPE_API_KEY": {
       "required": true
-    },
+    }
   },
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
