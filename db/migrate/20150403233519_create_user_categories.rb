@@ -1,4 +1,4 @@
-class CreateUserCategories < ActiveRecord::Migration
+class CreateUserCategories < ActiveRecord::Migration[4.2]
   def change
     create_table :user_categories, id: false do |t|
       t.references :user, index: true

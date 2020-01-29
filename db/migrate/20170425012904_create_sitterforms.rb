@@ -1,4 +1,4 @@
-class CreateSitterforms < ActiveRecord::Migration
+class CreateSitterforms < ActiveRecord::Migration[4.2]
   def change
     create_table :sitterforms do |t|
       t.string :phone

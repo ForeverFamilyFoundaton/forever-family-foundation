@@ -1,5 +1,28 @@
 Rails.application.configure do
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  config.action_mailer.smtp_settings = {
+    address:               'smtp.gmail.com',
+    port:                  587,
+    domain:                'foreverfamilyfoundation.org',
+    user_name:             ENV['GMAIL_USERNAME'],
+    password:              ENV['GMAIL_PASSWORD'],
+    authentication:        'plain',
+    enable_starttls_auto:  true
+  }
+
+  config.action_mailer.default_url_options = {
+    host: 'foreverfamilyfoundation.com'
+  }
+
+  config.paperclip_defaults = {
+    storage: :s3,
+    preserve_files: true,
+    s3_credentials: {
+      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+      s3_region: ENV.fetch('AWS_REGION')
+    }
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

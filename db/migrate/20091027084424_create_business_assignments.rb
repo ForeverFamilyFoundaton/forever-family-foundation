@@ -1,4 +1,4 @@
-class CreateBusinessAssignments < ActiveRecord::Migration
+class CreateBusinessAssignments < ActiveRecord::Migration[4.2]
   def self.up
     create_table :business_assignments do |t|
       t.references :user

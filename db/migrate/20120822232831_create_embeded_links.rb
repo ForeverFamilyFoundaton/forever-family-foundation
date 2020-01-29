@@ -1,4 +1,4 @@
-class CreateEmbededLinks < ActiveRecord::Migration
+class CreateEmbededLinks < ActiveRecord::Migration[4.2]
   def change
     create_table :embeded_links do |t|
       t.text :body

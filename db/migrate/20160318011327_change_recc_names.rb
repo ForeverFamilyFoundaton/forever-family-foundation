@@ -1,4 +1,4 @@
-class ChangeReccNames < ActiveRecord::Migration
+class ChangeReccNames < ActiveRecord::Migration[4.2]
   def change
     rename_table :recc_books, :recommended_books
 

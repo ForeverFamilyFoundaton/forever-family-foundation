@@ -1,0 +1,50 @@
+{
+  "name": "Forever Family Foundation - Review App",
+  "website": "http://foreverfamilyfoundation.org",
+  "success_url": "/",
+  "addons": ["heroku-postgresql:standard-0"],
+  "environments": {
+    "review": {
+      "addons": ["heroku-postgresql:standard-0"]
+    }
+  },
+  "env": {
+    "RAILS_ENV": "production",
+    "RECAPTCHA_SITE_KEY": {
+      "required": true
+    },
+    "RECAPTCHA_SECRET_KEY": {
+      "required": true
+    },
+    "GMAIL_USERNAME": {
+      "required": true
+    },
+    "GMAIL_PASSWORD": {
+      "required": true
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "required": true
+    },
+    "AWS_REGION": {
+      "required": true
+    },
+    "AWS_S3_ATTACH_FILES": {
+      "required": true
+    },
+    "AWS_S3_IMAGE_FILES": {
+      "required": true
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "required": true
+    },
+    "STRIPE_PUBLIC_KEY": {
+      "required": true
+    },
+    "STRIPE_API_KEY": {
+      "required": true
+    }
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  }
+}

@@ -1,4 +1,4 @@
-class RemoveColsInAdgQuestions < ActiveRecord::Migration
+class RemoveColsInAdgQuestions < ActiveRecord::Migration[4.2]
   def self.up
     remove_column :adg_questions, :show_answer_by_textarea
     rename_column :adg_questions, :show_answer_by_radio, :show_radio

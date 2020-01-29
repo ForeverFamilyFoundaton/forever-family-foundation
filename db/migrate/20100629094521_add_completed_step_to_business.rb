@@ -1,4 +1,4 @@
-class AddCompletedStepToBusiness < ActiveRecord::Migration
+class AddCompletedStepToBusiness < ActiveRecord::Migration[4.2]
   def self.up
     add_column :businesses, :completed_step, :string
   end

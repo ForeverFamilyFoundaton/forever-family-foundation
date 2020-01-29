@@ -1,4 +1,4 @@
-class AddMoreSittersToMediumform < ActiveRecord::Migration
+class AddMoreSittersToMediumform < ActiveRecord::Migration[4.2]
   def change
     add_column :mediumforms, :SitterA, :string
     add_column :mediumforms, :SitterB, :string

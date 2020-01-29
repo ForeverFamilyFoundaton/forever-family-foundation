@@ -3,7 +3,6 @@
   = render :partial => "users/form", :locals => { :form => f }
   = f.input :terms_of_use, label: t('labels.terms_of_use_acceptance_html'), as: :boolean, require: true
   = f.input :is_business, label: t('labels.business_reg_acceptance_html'), title: 'Business Registration', as: :boolean, require: true
-  -# = recaptcha_tags
-  .g-recaptcha{ 'data-sitekey' => ENV['RECAPTCHA_PUBLIC_KEY'] }
+  = recaptcha_tags
   = render :partial => 'shared/form_submit_personal', :locals => { :text => t('register') }
-  
+

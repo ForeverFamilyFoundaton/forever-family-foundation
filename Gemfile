@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.5.3'
+ruby '2.5.7'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -19,7 +19,7 @@ gem 'puma'
 # in production environments by default.
 gem 'activeadmin'
 gem 'acts_as_tree', '~> 2.4.0'
-gem 'aws-sdk', '~>2.3' # '<= 2.0'
+gem 'aws-sdk-s3'
 gem 'bootsnap'
 gem 'bourbon'
 gem 'cancan'
@@ -45,7 +45,7 @@ gem 'non-stupid-digest-assets'
 gem 'paperclip'
 gem 'ranked-model'
 gem 'ransack'
-gem "recaptcha", require: "recaptcha/rails"
+gem 'recaptcha'
 gem 'redcarpet'
 gem 'sass-rails', '5.0.7'
 gem 'simple_form'
@@ -57,7 +57,6 @@ gem 'uglifier'
 gem 'seed_dump'
 
 group :test do
-  gem 'byebug'
   gem 'capybara'
   gem 'capybara-email'
   gem 'database_cleaner'
@@ -70,6 +69,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'timecop'
+  gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
 end
@@ -82,6 +82,7 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'byebug'
 end
 
 group :production do

@@ -1,4 +1,4 @@
-class CreateAfterLifeDiscussionGroupQuestions < ActiveRecord::Migration
+class CreateAfterLifeDiscussionGroupQuestions < ActiveRecord::Migration[4.2]
   def self.up
     create_table :after_life_discussion_group_questions do |t|
       t.string  :question

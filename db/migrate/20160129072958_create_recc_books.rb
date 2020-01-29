@@ -1,4 +1,4 @@
-class CreateReccBooks < ActiveRecord::Migration
+class CreateReccBooks < ActiveRecord::Migration[4.2]
   def change
     create_table :recc_books do |t|
       t.string :title

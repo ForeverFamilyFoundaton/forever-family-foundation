@@ -1,17 +1,9 @@
 class Export < ActiveRecord::Base
   paperclip_opts = {}
-  if Rails.env.production? || Rails.env.development?
-    paperclip_opts.merge!({
-      storage: :s3,
-      s3_credentials: {
-        bucket: 'fff_cms_exports',
-        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-      }
-    })
-  end
+  paperclip_opts.merge!({ bucket: 'fff_cms_exports' })
 
   has_attached_file :file, paperclip_opts
+
   validates_attachment_content_type :file, content_type: "text/plain"
   after_create :save_csv
 

@@ -1,4 +1,4 @@
-class CreateBillingAddresses < ActiveRecord::Migration
+class CreateBillingAddresses < ActiveRecord::Migration[4.2]
   def self.up
     create_table :billing_addresses do |t|
       t.string :address

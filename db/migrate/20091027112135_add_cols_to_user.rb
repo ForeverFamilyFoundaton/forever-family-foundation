@@ -1,4 +1,4 @@
-class AddColsToUser < ActiveRecord::Migration
+class AddColsToUser < ActiveRecord::Migration[4.2]
   def self.up
     add_column :users, :state, :string
     add_column :users, :business, :boolean, :default => false

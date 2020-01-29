@@ -1,4 +1,4 @@
-class CreateBusinesses < ActiveRecord::Migration
+class CreateBusinesses < ActiveRecord::Migration[4.2]
   def self.up
     create_table :businesses do |t|
       t.string :name

@@ -7,12 +7,9 @@ class RegistrationController < Devise::RegistrationsController
   end
 
   def create
-    logger.debug "------- Registration create -----"
     @user = User.new(params[:user])
-    
-    # to get around recaptcha localhost domain
-    logger.debug ">>>>>"+request.domain+"<<<<<"
-    if (verify_recaptcha || Rails.env.development? || (request.domain[0..5] == 'mighty'))&& @user.save
+
+    if verify_recaptcha(model: @user) && @user.save
       flash[:notice] = I18n.t('flash.user.create.success')
       sign_in(@user)
       if @user.is_business?
@@ -21,7 +18,6 @@ class RegistrationController < Devise::RegistrationsController
         redirect_to user_path(@user)
       end
     else
-      logger.debug "----- else -----"
       clean_up_passwords(@user)
       render '/users/new'
     end
@@ -32,5 +28,4 @@ class RegistrationController < Devise::RegistrationsController
     3.times { @user.family_members.build } if @user.family_members.empty?
     render 'users/edit'
   end
-
 end

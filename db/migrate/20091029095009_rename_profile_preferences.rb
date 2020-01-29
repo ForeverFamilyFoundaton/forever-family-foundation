@@ -1,4 +1,4 @@
-class RenameProfilePreferences < ActiveRecord::Migration
+class RenameProfilePreferences < ActiveRecord::Migration[4.2]
   def self.up
     rename_table :profile_preferences, :preferences
     rename_column :users_profile_preferences, :profile_preference_id, :preference_id
