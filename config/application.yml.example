@@ -6,7 +6,7 @@ AWS_S3_IMAGE_FILES:           fff_cms_images
 AWS_SECRET_ACCESS_KEY:        '123'
 GMAIL_PASSWORD:               'password'
 GMAIL_USERNAME:               info@foreverfamilyfoundation.org
-HONEYBADGER_API_KEY:          '123'
+ROLLBAR_ACCESS_TOKEN:          '123'
 HOST:                         foreverfamilyfoundation.org
 PAPERTRAIL_API_TOKEN:         '123'
 RECAPTCHA_PRIVATE_KEY:        '123'

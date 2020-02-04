@@ -8,5 +8,9 @@ config/application.yml
 log/*.log
 public/attached_files
 public/cms_images
+public/assets
+public/packs
+public/packs-test
 public/system
+node_modules/*
 tmp/
