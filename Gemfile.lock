@@ -318,7 +318,6 @@ GEM
       actionpack (>= 4.1)
       activesupport (>= 4.1)
     hashdiff (1.0.0)
-    honeybadger (4.5.6)
     htmlentities (4.3.4)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
@@ -461,6 +460,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rollbar (2.23.2)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -593,7 +593,6 @@ DEPENDENCIES
   guard
   guard-rspec
   haml
-  honeybadger
   jquery-rails
   jquery-ui-rails
   kaminari
@@ -611,6 +610,7 @@ DEPENDENCIES
   ransack
   recaptcha
   redcarpet
+  rollbar
   rspec-rails
   rspec_junit_formatter (= 0.2.3)
   sass-rails (= 5.0.7)
