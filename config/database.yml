@@ -1,7 +1,7 @@
 development:
   encoding: utf8
   adapter: postgresql
-  database: fff_data
+  database: fff_dev
   username: <%= `whoami` %>
 
 test:
