@@ -93,6 +93,11 @@ jobs:
     executor: heroku/default # Uses the basic buildpack-deps image, which has the prerequisites for installing heroku's CLI.
     steps:
       - checkout
-      - heroku/install # Runs the heroku install command, if necessary.
-      - heroku/deploy-via-git: # Deploys branch to Heroku via git push.
-          only-branch: master # If you specify an only-branch, the deploy will not occur for any other branch.
+      - heroku/install
+      - heroku/deploy-via-git:
+          only-branch: master
+      - run:
+          name: Heroku post-deploy steps
+          command: |
+            heroku run rails db:migrate -a forever-family-foundation
+            heroku restart -a forever-family-foundation
