@@ -6,9 +6,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'webmock'
 require "paperclip/matchers"
-
 require 'support/js_drivers'
-require 'support/delayed_job'
+require 'support/sidekiq'
 require 'support/factory_bot'
 require 'support/helpers'
 require 'support/shoulda_matchers'

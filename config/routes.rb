@@ -1,3 +1,6 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 ForeverFamilyFoundation::Application.routes.draw do
   resources :belief_types
   resources :tests
@@ -6,6 +9,10 @@ ForeverFamilyFoundation::Application.routes.draw do
   resources :relationships
   resources :relationships
   root :to => 'site#index'
+
+  authenticated :user, lambda { |user| user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
@@ -78,5 +85,4 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   get '/site/:action' => 'site#page', as: 'page'
   get '/site/page/:id' => 'site#page'
-  # get ':controller(/:action(/:id))'
 end
