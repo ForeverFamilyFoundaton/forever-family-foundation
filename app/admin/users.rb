@@ -1,5 +1,31 @@
 ActiveAdmin.register User do
   menu false
+
+  scope :active, :kept, default: true
+  scope :soft_deleted, :discarded
+  scope :all
+  scope 'Registered for ADG', :registered_for_adg
+
+
+  action_item :soft_delete, only: :show, if: proc{ !user.discarded? } do
+    link_to 'Soft-Delete', soft_delete_admin_user_path(user), method: :delete, data: { confirm: "Are you sure you want to soft-delete this user?" }
+  end
+
+  action_item :un_soft_delete, only: :show, if: proc{ user.discarded? } do
+    link_to 'Un-Soft-Delete', un_soft_delete_admin_user_path(user), method: :put, data: { confirm: "Are you sure you want to UN-soft-delete this user?" }
+  end
+
+  member_action :soft_delete, method: :delete do
+    resource.discard
+    redirect_to admin_users_path, notice: "User #{resource.id} has been soft-deleted."
+  end
+
+
+  member_action :un_soft_delete, method: :put do
+    resource.undiscard
+    redirect_to admin_users_path, notice: "User #{resource.id} has been reinstated."
+  end
+
   controller do
     def scoped_collection
       end_of_association_chain.includes(:business)
@@ -22,8 +48,6 @@ ActiveAdmin.register User do
   filter :preferences, as: :check_boxes
   filter :profile_preferences, as: :check_boxes
   filter :subscription_preferences, as: :check_boxes
-
-  scope "Registered for ADG", :registered_for_adg
 
   index do
     column 'Membership Number', :membership_number
@@ -56,6 +80,7 @@ ActiveAdmin.register User do
 
   show do |user|
     attributes_table do
+      row :deleted_at
       row :name do
         [user.first_name, user.middle_name, user.last_name].join(' ')
       end
