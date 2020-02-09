@@ -24,6 +24,7 @@ jobs:
           POSTGRES_USER: circleci
           POSTGRES_DB: forever-family-foundation_test
           POSTGRES_PASSWORD: ""
+      - image: redis
     steps:
       - checkout
       - run: sudo apt-get update

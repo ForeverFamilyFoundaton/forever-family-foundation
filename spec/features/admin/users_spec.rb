@@ -5,7 +5,7 @@ RSpec.feature 'ADMIN: Users' do
   let(:user) { create(:user, business: business) }
 
   it 'Creates a user' do
-    click_link 'Users'
+    click_on 'Users'
     click_on 'New User'
     fill_in 'First name', with: 'John'
     fill_in 'Last name', with: 'Doe'
@@ -22,8 +22,8 @@ RSpec.feature 'ADMIN: Users' do
 
   it 'edits a user without needing the password' do
     create(:user, email: 'test@example.com')
-    click_link 'Users'
-    click_link 'test@example.com'
+    click_on 'Users'
+    click_on 'View'
     click_on 'Edit User'
     click_on 'Update User'
     expect(page).to have_content('User was successfully updated.')
@@ -31,16 +31,16 @@ RSpec.feature 'ADMIN: Users' do
 
   it 'shows and sorts by #business.name'   do
     user
-    click_link 'Users'
-    click_link 'Business Name'
+    click_on 'Users'
+    click_on 'Business Name'
     expect(page).to have_content user.business.name
   end
 
   context 'with attachments' do
     it "renders the page sucessfully" do
       user
-      click_link 'Users'
-      click_link user.email
+      click_on 'Users'
+      click_on 'View'
       expect(page).to have_content user.first_name
     end
   end
@@ -48,15 +48,15 @@ RSpec.feature 'ADMIN: Users' do
   it "should show a preference column" do
     test = create(:user, email: 'hello@example.com', preferences: [Preference.create(name: "hello world")])
 
-    click_link 'Users'
+    click_on 'Users'
     expect(page).to have_content "#{test.preferences.map(&:name).to_sentence}"
   end
 
   it "permission Sitter registration for user" do
     create(:user, email: 'test@example.com')
-    click_link 'Users'
-    click_link 'test@example.com'
-    click_link 'Edit User'
+    click_on 'Users'
+    click_on 'View'
+    click_on 'Edit User'
     check('Sitter registration')
     click_button 'Update User'
     expect(page).to have_content 'Yes'

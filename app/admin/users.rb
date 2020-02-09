@@ -6,7 +6,6 @@ ActiveAdmin.register User do
   scope :all
   scope 'Registered for ADG', :registered_for_adg
 
-
   action_item :soft_delete, only: :show, if: proc{ !user.discarded? } do
     link_to 'Soft-Delete', soft_delete_admin_user_path(user), method: :delete, data: { confirm: "Are you sure you want to soft-delete this user?" }
   end
@@ -19,7 +18,6 @@ ActiveAdmin.register User do
     resource.discard
     redirect_to admin_users_path, notice: "User #{resource.id} has been soft-deleted."
   end
-
 
   member_action :un_soft_delete, method: :put do
     resource.undiscard
@@ -49,33 +47,15 @@ ActiveAdmin.register User do
   filter :profile_preferences, as: :check_boxes
   filter :subscription_preferences, as: :check_boxes
 
-  index do
+  index download_links: [:csv] do
     column 'Membership Number', :membership_number
-    column :id
     column :first_name
     column :last_name
-    column :email, sortable: :email do |user|
-      link_to user.email, admin_user_path(user)
-    end
-    column :address, sortable: false
+    column :email, sortable: :email
     column :business_name, sortable: 'businesses.name' do |user|
       user.business && user.business.name
     end
-    column 'Categories' do |user|
-      user.categories.map(&:name).to_sentence
-    end
-    column 'Preferences' do |user|
-      user.try(:preferences).map(&:name).to_sentence
-    end
-    column :enrolled_at, sortable: :enrolled_at do |user|
-      user.created_at.to_s(:admin)
-    end
-    column :created_at, sortable: :created_at do |user|
-      user.created_at.to_s(:admin)
-    end
-    column :updated_at, sortable: :updated_at do |user|
-      user.updated_at.to_s(:admin)
-    end
+    actions
   end
 
   show do |user|
@@ -239,38 +219,5 @@ ActiveAdmin.register User do
 
     end
     f.actions
-  end
-
-  csv do
-    column :id
-    column :membership_number
-    column :first_name
-    column :middle_name
-    column :last_name
-    column :email
-    column :cell_phone
-    column :home_phone
-    column :work_phone
-    column :fax
-    column :is_business
-    column('Preferences') do |user|
-      user.try(:preferences).map(&:name).to_sentence
-    end
-    column('Categories') do |user|
-      user.try(:categories).map(&:name).to_sentence
-    end
-    column("Address: Street") { |user| user.address.try(:address) }
-    column("Address: City") { |user| user.address.try(:city) }
-    column("Address: State") { |user| user.address.try(:state) }
-    column("Address: Zip") { |user| user.address.try(:zip) }
-    column("Address: Country") { |user| user.address.try(:country) }
-    column :enrolled_from
-    column :enrolled_at
-    column :do_not_mail
-    column :snail_mail
-    column :last_sign_in_at
-    column :created_at
-    column :updated_at
-    column :problems
   end
 end

@@ -5,7 +5,10 @@
   "addons": ["heroku-postgresql:standard-0"],
   "environments": {
     "review": {
-      "addons": ["heroku-postgresql:standard-0"]
+      "addons": [
+        "heroku-postgresql:standard-0",
+        "heroku-redis:hobby-dev"
+      ]
     }
   },
   "env": {
@@ -41,6 +44,9 @@
       "required": true
     },
     "STRIPE_API_KEY": {
+      "required": true
+    },
+    "SIDEKIQ_REDIS_URL": {
       "required": true
     }
   },

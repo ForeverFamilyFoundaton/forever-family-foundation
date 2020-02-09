@@ -6,6 +6,7 @@ ActiveAdmin.setup do |config|
   # for each of the active admin pages.
   #
   config.site_title = "Forever Family Foundation"
+  config.site_title_link = '/'
 
 
   # == Default Namespace
