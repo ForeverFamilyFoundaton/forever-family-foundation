@@ -2,6 +2,13 @@ require 'sidekiq/web'
 require 'sidekiq/cron/web'
 
 ForeverFamilyFoundation::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  authenticated :admin_user do
+    mount Sidekiq::Web, at: '/sidekiq'
+  end
+
   resources :belief_types
   resources :tests
   resources :known_deads
@@ -10,13 +17,6 @@ ForeverFamilyFoundation::Application.routes.draw do
   resources :relationships
   root :to => 'site#index'
 
-  authenticated :user, lambda { |user| user.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  ActiveAdmin.routes(self)
 
   devise_for :users, controllers: { :registrations => 'registration' }
 
