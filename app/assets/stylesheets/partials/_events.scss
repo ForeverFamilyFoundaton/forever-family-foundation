@@ -48,8 +48,26 @@ ul.events {
   }
 }
 
-.event_pic {
-  float: left;
-  max-width: 20em;
-  max-height: 20em;
+.event-summary {
+  .header {
+    .event-pic {
+      float: left;
+      margin-right: 10px;
+      width: 100px;
+    }
+  }
+  .header, .body {
+    padding: 10px;
+  }
+
+  .header h4 {
+    text-align: center;
+  }
+  .body {
+    margin-left: 100px;
+    p {
+      text-align: center;
+      margin-bottom: 2px;
+    }
+  }
 }

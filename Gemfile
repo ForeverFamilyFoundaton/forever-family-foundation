@@ -18,11 +18,11 @@ gem 'puma'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'activeadmin'
-gem 'acts_as_tree', '~> 2.4.0'
+gem 'acts_as_tree'
 gem 'aws-sdk-s3'
 gem 'bootsnap'
 gem 'bourbon'
-gem 'cancan'
+gem 'cancancan'
 gem 'chronic'
 gem 'coffee-rails'
 gem "comma"
@@ -33,14 +33,12 @@ gem 'css3buttons'
 gem 'devise'
 gem 'discard'
 gem 'figaro'
-gem 'fog', '1.37.0'
-gem 'haml'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'net-ssh'
 gem 'newrelic_rpm'
-gem 'non-stupid-digest-assets'
 gem 'paperclip'
 gem 'ranked-model'
 gem 'ransack'
@@ -54,9 +52,6 @@ gem 'sidekiq-failures'
 gem 'simple_form'
 gem 'state_machine'
 gem 'stripe'
-gem 'truncate_html', '~> 0.9.2'
-gem 'uglifier'
-gem 'seed_dump'
 
 group :test do
   gem 'capybara'
@@ -85,8 +80,4 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
