@@ -1,16 +1,11 @@
 %ul.events
   - @events.each do |event|
-    .page_section
+    - description = event.description.gsub("\n", '').gsub('</p>', "</p>\n").gsub('<br />', "<br />\n")
+    .page_section.event-summary
       %h2.page_section_header= event.times
-
-      - if !event.pic_link.blank?
-        .event_pic
-          %a= link_to image_tag(event.pic_link, width: "90em"), event.url, target: '_blank'
-      %div{class: "inline-block"}
-        - if !event.url.blank?
-          %center
-            %h4= link_to event.title, event.url, target: '_blank'
-        - else
-          %center
-            %h4= link_to event.title, event
-        %p= truncate_html event.description, length: 200
+      .header
+        - if !event.pic_link.blank?
+          = image_tag(event.pic_link, width: "90em", class: 'event-pic')
+        %h4= !event.url.blank? ? link_to(event.title, event.url, target: '_blank') : link_to(event.title, event)
+      .body
+        %p= simple_format truncate(strip_tags(description), length: 200)

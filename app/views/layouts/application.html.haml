@@ -13,9 +13,6 @@
         = render 'shared/partners'
 
       #content
-
-        = render 'shared/nav/global_nav'
-
         #content_main
           - if notice
             %p.notice= notice
@@ -29,7 +26,5 @@
           = yield if @cms_page.is_site_index?
           = blog @cms_page.body
           = yield if !@cms_page.is_site_index?
-
-      %div= render 'layouts/bottom_span'
     #footer_spacer
   = render 'layouts/footer'
