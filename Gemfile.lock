@@ -396,11 +396,11 @@ GEM
     shellany (0.0.1)
     shoulda-matchers (4.2.0)
       activesupport (>= 4.2.0)
-    sidekiq (5.2.7)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack (>= 1.5.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+    sidekiq (6.0.4)
+      connection_pool (>= 2.2.2)
+      rack (>= 2.0.0)
+      rack-protection (>= 2.0.0)
+      redis (>= 4.1.0)
     sidekiq-failures (1.0.0)
       sidekiq (>= 4.0.0)
     simple_form (5.0.1)
@@ -499,7 +499,7 @@ DEPENDENCIES
   sass-rails (= 5.0.7)
   selenium-webdriver
   shoulda-matchers
-  sidekiq (~> 5.2)
+  sidekiq
   sidekiq-failures
   simple_form
   spring
