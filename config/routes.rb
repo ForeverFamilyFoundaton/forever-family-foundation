@@ -4,9 +4,7 @@ ForeverFamilyFoundation::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  authenticated :admin_user do
-    mount Sidekiq::Web, at: '/sidekiq'
-  end
+  mount Sidekiq::Web, at: '/sidekiq'
 
   resources :belief_types
   resources :tests
