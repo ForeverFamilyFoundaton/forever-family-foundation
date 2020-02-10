@@ -14,3 +14,4 @@ public/packs-test
 public/system
 node_modules/*
 tmp/
+dump.rdb
