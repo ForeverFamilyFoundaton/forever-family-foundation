@@ -1,5 +1,4 @@
 require 'sidekiq/web'
-require 'sidekiq/cron/web'
 
 ForeverFamilyFoundation::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
