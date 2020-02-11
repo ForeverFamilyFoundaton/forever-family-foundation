@@ -12,7 +12,7 @@ module ForeverFamilyFoundation
     config.load_defaults 5.2
     config.active_record.belongs_to_required_by_default = false
     config.active_job.queue_adapter = :sidekiq
-    config.time_zone = 'Eastern Time (US & Canada)'
+    config.time_zone = 'UTC'
     config.i18n.default_locale = :en
     config.generators do |g|
       g.test_framework :rspec, views: false
