@@ -10,7 +10,7 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = {
-    host: 'foreverfamilyfoundation.com'
+    host: 'foreverfamilyfoundation.org'
   }
 
   config.paperclip_defaults = {

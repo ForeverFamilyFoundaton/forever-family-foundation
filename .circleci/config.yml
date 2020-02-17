@@ -19,7 +19,7 @@ jobs:
           PGHOST: localhost
           PGUSER: circleci
           RAILS_ENV: test
-      - image: postgres:9.5
+      - image: circleci/postgres:9.5-alpine
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: forever-family-foundation_test
