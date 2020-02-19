@@ -25,11 +25,15 @@ Rollbar.configure do |config|
   # has already been reported and logged the level will need to be changed
   # via the rollbar interface.
   # Valid levels: 'critical', 'error', 'warning', 'info', 'debug', 'ignore'
-  # 'ignore' will cause the exception to not be reported at all.
+    # 'ignore' will cause the exception to not be reported at all.
   # config.exception_level_filters.merge!('MyCriticalException' => 'critical')
   #
   # You can also specify a callable, which will be called with the exception instance.
   # config.exception_level_filters.merge!('MyCriticalException' => lambda { |e| 'critical' })
+  config.exception_level_filters.merge!({
+    'ActionController::RoutingError' => 'ignore',
+    'NoMethodError' => 'critical'
+  })
 
   # Enable asynchronous reporting (uses girl_friday or Threading if girl_friday
   # is not installed)
