@@ -220,4 +220,37 @@ ActiveAdmin.register User do
     end
     f.actions
   end
+
+  csv do
+    column :id
+    column :membership_number
+    column :first_name
+    column :middle_name
+    column :last_name
+    column :email
+    column :cell_phone
+    column :home_phone
+    column :work_phone
+    column :fax
+    column :is_business
+    column('Preferences') do |user|
+      user.try(:preferences).map(&:name).to_sentence
+    end
+    column('Categories') do |user|
+      user.try(:categories).map(&:name).to_sentence
+    end
+    column("Address: Street") { |user| user.address.try(:address) }
+    column("Address: City") { |user| user.address.try(:city) }
+    column("Address: State") { |user| user.address.try(:state) }
+    column("Address: Zip") { |user| user.address.try(:zip) }
+    column("Address: Country") { |user| user.address.try(:country) }
+    column :enrolled_from
+    column :enrolled_at
+    column :do_not_mail
+    column :snail_mail
+    column :last_sign_in_at
+    column :created_at
+    column :updated_at
+    column :problems
+  end
 end
