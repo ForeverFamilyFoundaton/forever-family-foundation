@@ -1,4 +1,5 @@
 class MediumformsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_mediumform, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -119,7 +120,7 @@ class MediumformsController < ApplicationController
 
     def set_mediumform
       @mediumform = Mediumform.find(params[:id])
- 
+
     end
 
     def mediumform_params
