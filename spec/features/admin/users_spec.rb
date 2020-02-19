@@ -1,11 +1,19 @@
-RSpec.feature 'ADMIN: Users' do
-  before { sign_in_as_admin }
+RSpec.feature 'As an admin user' do
+  let!(:business) { create(:business_complete ) }
+  let!(:user) do
+    create(
+      :user,
+      business: business,
+      preferences: [Preference.create(name: "hello world")]
+    )
+  end
 
-  let(:business) { create(:business_complete ) }
-  let(:user) { create(:user, business: business) }
-
-  it 'Creates a user' do
+  before do
+    sign_in_as_admin
     click_on 'Users'
+  end
+
+  scenario 'I can create a user' do
     click_on 'New User'
     fill_in 'First name', with: 'John'
     fill_in 'Last name', with: 'Doe'
@@ -20,45 +28,47 @@ RSpec.feature 'ADMIN: Users' do
     expect(page).to have_content('User was successfully created.')
   end
 
-  it 'edits a user without needing the password' do
-    create(:user, email: 'test@example.com')
-    click_on 'Users'
+  scenario 'I can edit a user without needing the password' do
     click_on 'View'
     click_on 'Edit User'
     click_on 'Update User'
     expect(page).to have_content('User was successfully updated.')
   end
 
-  it 'shows and sorts by #business.name'   do
-    user
-    click_on 'Users'
+  scenario 'I can sort Users by #business.name'   do
     click_on 'Business Name'
     expect(page).to have_content user.business.name
   end
 
   context 'with attachments' do
     it "renders the page sucessfully" do
-      user
-      click_on 'Users'
       click_on 'View'
       expect(page).to have_content user.first_name
     end
   end
 
   it "should show a preference column" do
-    test = create(:user, email: 'hello@example.com', preferences: [Preference.create(name: "hello world")])
-
-    click_on 'Users'
-    expect(page).to have_content "#{test.preferences.map(&:name).to_sentence}"
+    expect(page).to have_content "#{user.preferences.map(&:name).to_sentence}"
   end
 
   it "permission Sitter registration for user" do
-    create(:user, email: 'test@example.com')
-    click_on 'Users'
     click_on 'View'
     click_on 'Edit User'
     check('Sitter registration')
     click_button 'Update User'
     expect(page).to have_content 'Yes'
+  end
+
+  scenario 'CSV downloads contain association data' do
+    click_on 'CSV'
+    header = page.response_headers['Content-Disposition']
+    expect(header).to match /^attachment/
+    expect(header).to match /filename="users-#{Date.today}.csv"$/
+    expect(page).to have_content 'Address: street'
+    expect(page).to have_content 'Address: city'
+    expect(page).to have_content 'Address: state'
+    expect(page).to have_content 'Address: zip'
+    expect(page).to have_content 'Address: country'
+    expect(page).to have_content 'Preferences'
   end
 end
