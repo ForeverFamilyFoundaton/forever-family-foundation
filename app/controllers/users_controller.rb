@@ -1,7 +1,5 @@
-#
-# New users are created in RegistrationController
-#
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     logger.debug "----- Users show -----"
@@ -58,10 +56,4 @@ class UsersController < ApplicationController
       render "edit_password"
     end
   end
-
 end
-
-
-
-
-
