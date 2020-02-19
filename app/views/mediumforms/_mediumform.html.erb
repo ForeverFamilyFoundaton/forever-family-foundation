@@ -1,5 +1,3 @@
-<%= javascript_include_tag 'mediumform.js' %>
-
 <%= form_for(@mediumform) do |f| %>
   <% if @mediumform.errors.any? %>
     <div id="error_explanation">
@@ -15,7 +13,7 @@
 
  <h2><%= 'Medium Registration for ' + @mediumform.user.full_name %><br></h2>
 <br>
-  <p>Please <span style="color:red;">answer all questions</span> to the best of your ability and do not leave any blank spaces.<br>  <span style="color:red">If you do not have a specific answer to the question, please type "<b>none</b>" into the field.</span><br/> </p> 
+  <p>Please <span style="color:red;">answer all questions</span> to the best of your ability and do not leave any blank spaces.<br>  <span style="color:red">If you do not have a specific answer to the question, please type "<b>none</b>" into the field.</span><br/> </p>
   <p style="font-weight:bold">
   Your responses will determine your eligibility to participate in this program.
   </p>
@@ -29,7 +27,7 @@
 <!--         <table style="font-size: 13px;">
           <tr><td><%= radio_button_tag "contactme", :other_businesses %> <span style="color:red;"><b>Use this information to contact me</b> choice between this and Alternative Information below</span></td></tr>
         </table>
- -->  
+ -->
          <table style="font-size:13px">
           <tr><b>This information is:</b>
             <tr><td>
@@ -67,7 +65,7 @@
 <!--         <table style="font-size: 14px;">
           <tr><td><%= radio_button_tag "contactme", :other_businesses %> <b><span style="color:red;">Use this information to contact me</span></b></td></tr>
         </table>zs
- -->        
+ -->
 
          <table>
           <tr>
@@ -172,7 +170,7 @@
         <%= f.text_field :website, style: "width:80%", placeholder: "Link to your website" %><br>
         <%= f.text_field :website, style: "width:100%", placeholder: "Link to your website" %>
       </div>
-  </div>   -->    
+  </div>   -->
 
   <div class='form_section'>
     <h2 class='form_section_header'>Other Activities</h2>
@@ -184,7 +182,7 @@
           If so, please provide details:<br>
           <%= f.text_area :other_related, maxlength: 500, placeholder: "Other Health, Healing, or Spirituality work", class: 'big_box' %>
           <br>
-        
+
           <b>3) Do you do work in any other fields that are NOT related to Health, Healing, or Spirituality? Please provide details:</b><br>
           <%= f.text_area :other_not_related, placeholder: "Non Health, Healing, or Spirituality work", class: 'big_box' %>
       </div>
@@ -200,7 +198,7 @@
           If so, please provide details:<br>
           <%= f.text_area :immediate_family, class: 'big_box', placeholder: "Immediate family members" %>
           <br>
-        
+
           <b>3) Did the recognition of this ability coincide with any particular event in your life?<br>
           Please explain.</b><br>
           <%= f.text_area :life_event, class: 'big_box', placeholder: "Related life event" %><br>
@@ -215,7 +213,7 @@
           <%= f.text_area :different_info, class: 'big_box', placeholder: "Differences in receiving information" %><br>
       </div>
   </div>
- 
+
 
   <div class='form_section'>
     <h2 class='form_section_header'>Professional Information</h2>
@@ -227,22 +225,22 @@
         <p><b>If you are not working as a medium full time, please explain why, and if you have plans to do so in the future<br>
         <%= f.text_area :medium_history, class: 'big_box', placeholder: "Your work as a medium" %>
         <br>
-        
+
         <div style= "font-size: 13px"><b>3) What kind of readings do you offer in your practice?</b><br></div>
         <table style="font-size:13px">
 
           <div class='input-group'>
             <%= hidden_field_tag "mediumform[mediumform_preference_ids][]", nil %>
             <% MediumformPreference.practice_preferences.all.each do |mediumform_preference| %>
-            <tr><td><%= check_box_tag "mediumform[mediumform_preference_ids][]", mediumform_preference.id, 
-                              @mediumform.mediumform_preference_ids.include?(mediumform_preference.id), 
+            <tr><td><%= check_box_tag "mediumform[mediumform_preference_ids][]", mediumform_preference.id,
+                              @mediumform.mediumform_preference_ids.include?(mediumform_preference.id),
                 id: dom_id(mediumform_preference)%>
             <%= label_tag dom_id(mediumform_preference), mediumform_preference.name %></td></tr>
             <% end %>
           </div>
 
         </table>
-      
+
         <br>
         <div style= "font-size: 13px"><b>4) How do you classify yourself as a professional?</b><br></div>
         <table style="font-size:13px">
@@ -250,8 +248,8 @@
           <div class='input-group'>
             <%= hidden_field_tag "mediumform[mediumform_preference_ids][]", nil %>
             <% MediumformPreference.selfclassify_preferences.all.each do |mediumform_preference| %>
-            <tr><td><%= check_box_tag "mediumform[mediumform_preference_ids][]", mediumform_preference.id, 
-                              @mediumform.mediumform_preference_ids.include?(mediumform_preference.id), 
+            <tr><td><%= check_box_tag "mediumform[mediumform_preference_ids][]", mediumform_preference.id,
+                              @mediumform.mediumform_preference_ids.include?(mediumform_preference.id),
                 id: dom_id(mediumform_preference)%>
             <%= label_tag dom_id(mediumform_preference), mediumform_preference.name %></td></tr>
             <% end %>
@@ -264,10 +262,10 @@
       <br>
       <b>5) Have you ever received formal education, training, or mentorship in Mediumship?<br>
       (If so, please list specifics)</b><br>
-          <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br> 
+          <%= f.text_area :mediumship_training, class: 'big_box', placeholder: "Mediumship training information" %><br>
 
       <b>6) Are you certified with any other organizations?  If so, please provide details.</b><br>
-          <%= f.text_area :other_certification, class: 'big_box', placeholder: "Mediumship training information" %><br>  
+          <%= f.text_area :other_certification, class: 'big_box', placeholder: "Mediumship training information" %><br>
      </div>
   </div>
 
@@ -276,12 +274,12 @@
       <div class="form_fields">
         <b>1) How do you handle a situation where you are engaged in providing your services to a sitter and no communication or information is coming through?</b><br>
         <%= f.text_area :ethics1, class: 'big_box', placeholder: "No communication or information is coming through" %><br>
-         
+
 
         <p><b>2) If you were conducting a reading and received dire information about the sitter’s health or possible demise, would you communicate this information to the sitter?<br>If so, in what way?</b><br>
         <%= f.text_area :ethics2, class: 'big_box', placeholder: "Handle dire information" %>
         <br>
-        
+
         <b>3) If you were in public and received information from a spirit that belonged to a complete stranger, what would you do with that information?</b><br>
         <%= f.text_area :ethics3, class: 'big_box', placeholder: "Deal with strangers" %><br>
 
