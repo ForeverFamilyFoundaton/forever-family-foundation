@@ -3,6 +3,13 @@ RSpec.feature 'User edit' do
     @user = FactoryBot.create(:user, { email: 'abc@example.com'})
   end
 
+  context 'when not logged in' do
+    scenario 'user#show redirects to sign in page' do
+      visit '/users/foo'
+      expect(page).to have_content I18n.t('devise.failure.unauthenticated')
+    end
+  end
+
   it 'Edit sections' do
     allow(Stripe::Charge).to receive(:create) { true }
     sign_in @user
