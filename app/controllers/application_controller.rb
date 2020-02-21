@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  helper :all
+  protect_from_forgery
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   before_action :get_cms_page, :set_controller_and_action_names
 
   def current_page
@@ -17,7 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    redirect_to root_url, alert: exception.message
   end
 
   def set_controller_and_action_names
@@ -48,9 +50,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def record_not_found(e)
+    redirect_to root_path, notice: e.message
+  end
+
   def store_location
     session[:return_to] = request.fullpath
   end
-
 end
 
