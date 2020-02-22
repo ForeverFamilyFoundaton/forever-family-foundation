@@ -6,7 +6,7 @@ ActiveAdmin.register CmsPage do
       q.title
     end
     column 'URL' do |q|
-      link_to page_url(q), page_url(q)
+      link_to page_by_id_url(q), page_by_id_url(q)
     end
     column :updated_at
     column "Actions" do |q|

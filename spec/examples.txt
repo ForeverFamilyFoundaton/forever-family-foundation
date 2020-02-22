@@ -30,6 +30,9 @@ example_id                                                       | status  | run
 ./spec/controllers/businesses_controller_spec.rb[1:11:1]         | passed  | 0.02232 seconds |
 ./spec/controllers/businesses_controller_spec.rb[1:11:2]         | passed  | 0.02219 seconds |
 ./spec/controllers/businesses_controller_spec.rb[1:12:1]         | passed  | 0.02533 seconds |
+./spec/controllers/exceptions_controller_spec.rb[1:1:1]          | passed  | 0.03876 seconds |
+./spec/controllers/exceptions_controller_spec.rb[1:2:1]          | passed  | 0.00942 seconds |
+./spec/controllers/exceptions_controller_spec.rb[1:3:1]          | passed  | 0.00836 seconds |
 ./spec/controllers/radio_archives_controller_spec.rb[1:1]        | passed  | 0.03326 seconds |
 ./spec/controllers/radio_archives_controller_spec.rb[1:2]        | passed  | 0.03073 seconds |
 ./spec/controllers/radio_archives_controller_spec.rb[1:3]        | passed  | 0.04741 seconds |

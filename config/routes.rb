@@ -1,6 +1,10 @@
 require 'sidekiq/web'
 
 ForeverFamilyFoundation::Application.routes.draw do
+  match "/404", to: "exceptions#not_found", via: :all
+  match "/500", to: "exceptions#internal_error", via: :all
+  match "/422", to: "exceptions#unacceptable", via: :all
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -12,10 +16,10 @@ ForeverFamilyFoundation::Application.routes.draw do
   resources :relationships
   resources :relationships
   resources :relationships
-  root :to => 'site#index'
+  root to: 'site#index'
 
 
-  devise_for :users, controllers: { :registrations => 'registration' }
+  devise_for :users, controllers: { registrations: 'registration' }
 
   devise_scope :user do
     get '/login' => 'devise/sessions#new'
@@ -81,5 +85,5 @@ ForeverFamilyFoundation::Application.routes.draw do
   resource :events
 
   get '/site/:action' => 'site#page', as: 'page'
-  get '/site/page/:id' => 'site#page'
+  get '/site/page/:id' => 'site#page', as: 'page_by_id'
 end
