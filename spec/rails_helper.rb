@@ -7,6 +7,8 @@ require 'rspec/rails'
 require 'webmock'
 require "paperclip/matchers"
 require 'support/js_drivers'
+require 'support/devise'
+require 'support/capybara-host'
 require 'support/sidekiq'
 require 'support/factory_bot'
 require 'support/helpers'

@@ -3,21 +3,28 @@ require 'sidekiq/web'
 ForeverFamilyFoundation::Application.routes.draw do
   root to: 'site#index'
 
-  match "/404", to: "exceptions#not_found", via: :all
-  match "/500", to: "exceptions#internal_error", via: :all
-  match "/422", to: "exceptions#unacceptable", via: :all
+  match '/404', to: 'exceptions#not_found', via: :all
+  match '/500', to: 'exceptions#internal_error', via: :all
+  match '/422', to: 'exceptions#unacceptable', via: :all
 
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
+  devise_scope :user do
+    get '/registrations/wait', controller: :registrations, action: :wait
+  end
+  namespace :user do
+    root 'users#show' # creates user_root_path
+  end
+  get '/users:id' => 'users#show', as: 'user'
   mount Sidekiq::Web, at: '/sidekiq'
 
   resources :belief_types
   resources :tests
   resources :known_deads
   resources :relationships
-
-  devise_for :users
 
   resources :events
   resources :radio_archives
@@ -49,9 +56,6 @@ ForeverFamilyFoundation::Application.routes.draw do
   get '/images/SF2008IMAGES/SF2008ProgramPRG.pdf' => 'redirects#events'
   get '/bookreview' => 'redirects#recommended_books'
   get '/images/GuestHouse/TheGuestHouse-brochure' => 'redirects#guest_house_brochure'
-
-  resource :events
-
   get '/site/:action' => 'site#page', as: 'page'
   get '/site/page/:id' => 'site#page', as: 'page_by_id'
 end

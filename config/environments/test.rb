@@ -1,5 +1,6 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  # Host matches Capybara settings is spec/support/capybara-host.rb
+  config.action_mailer.default_url_options = { host: 'localhost:3001' }
 
   config.after_initialize do
     # Do not change -synced with browser stub in test.js

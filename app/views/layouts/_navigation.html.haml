@@ -1,3 +1,13 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
-  %a.navbar-brand{ href: '/' }
-    = image_tag 'header.jpg', width: :auto
+.masthead
+  = image_tag 'header.jpg'
+
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  #navbarSupportedContent.collapse.navbar-collapse
+    - if user_signed_in?
+      %ul.navbar-nav.mr-auto
+        %li.nav-item.active
+          %a.nav-link{:href => "#"}
+            = current_user.email
+        %li.nav-item
+          = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'
+

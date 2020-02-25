@@ -1,8 +1,9 @@
+
 .upcoming_events
   %h2 Upcoming Events
   %ul
     - @events.each do |event|
       - if !event.url.blank?
-        %li=link_to event.title, event.url, target: '_blank'
+        %li= link_to event.title, event.url, target: '_blank'
       - else
-        %li=link_to event.title, event
+        %li=# link_to event.title, event

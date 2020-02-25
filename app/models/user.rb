@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   # has_many :user_categories
   # has_many :categories, through: :user_categories
 
-  # has_one :address, :as => :addressable
-  # has_one :business
+  has_one :address, :as => :addressable
+  has_one :business
   # has_one :sitterform
   # has_one :mediumform
   # has_many :family_members

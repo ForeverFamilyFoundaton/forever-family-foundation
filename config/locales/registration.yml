@@ -1,0 +1,6 @@
+en:
+  devise:
+    registrations:
+      new:
+        confirmation_instructions_1: Thank you for your interest in Forever Family Foundation!
+        confirmation_instructions_2: Please enter your email and choose a password. You will immediatly receive a confiramion email with instructions on how to complete your registaration.
