@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # tmp fix for bootstrap integration only: [:registration]
+  layout :layout_by_resource
+
   helper :all
   protect_from_forgery
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
@@ -56,6 +59,14 @@ class ApplicationController < ActionController::Base
 
   def store_location
     session[:return_to] = request.fullpath
+  end
+
+   def layout_by_resource
+    if devise_controller?
+      'registration'
+    else
+      'application'
+    end
   end
 end
 

@@ -1,0 +1,30 @@
+!!!
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
+    %meta{content: 'width=device-width, initial-scale=1', name: 'viewport'}
+    / The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    %meta{content: '', name: 'description'}
+    %meta{content: '', name: 'author'}
+
+    = render 'layouts/icons'
+
+    %title Forever Family Foundation
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'registration'
+    = csrf_meta_tags
+
+  %body
+    .container
+      .row
+        .col-12
+          = render 'layouts/navigation'
+      - if flash
+        .row
+          .col-12
+            = render 'layouts/messages'
+      .row
+        .col-12.main
+          = yield

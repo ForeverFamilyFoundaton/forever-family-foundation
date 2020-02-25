@@ -1,11 +1,11 @@
-= render "shared/error_messages", :target => @user
-.form_section
-  %h2.form_section_header Sign in
-  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    .form_fields
-      = f.input :email
-      = f.input :password
-      = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-
-      = render :partial => 'shared/form_submit', :locals => { :text => t('login') }    
-      = render :partial => "devise/shared/links"
+.row
+  .col-sm-6
+    %h2 Log in
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-inputs
+        = f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" }
+        = f.input :password, required: false, input_html: { autocomplete: "current-password" }
+        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      .form-actions
+        = f.button :submit, "Log in", class: 'btn btn-primary'
+    = render "devise/shared/links"

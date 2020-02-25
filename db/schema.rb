@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_031859) do
+ActiveRecord::Schema.define(version: 2020_02_24_181134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -481,6 +481,7 @@ ActiveRecord::Schema.define(version: 2020_02_08_031859) do
     t.boolean "sitter_registration", default: false
     t.boolean "medium_registration", default: false
     t.datetime "discarded_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

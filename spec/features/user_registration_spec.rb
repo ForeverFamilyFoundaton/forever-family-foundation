@@ -2,7 +2,7 @@ RSpec.feature 'As a user' do
   scenario "I can register as an individual" do
     visit '/users/sign_up'
     fill_in_reg(email: 'qwe@example.com')
-    expect(page).to have_selector('h1', {text: 'Users: Show', visible: true})
+    expect(page).to have_selector('h1', { text: 'Users: Show', visible: true } )
   end
 
   scenario 'I can register as a business' do

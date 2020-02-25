@@ -15,21 +15,23 @@ gem 'rails-controller-testing'
 
 gem 'pg'
 gem 'puma'
+gem 'turbolinks'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'activeadmin'
 gem 'acts_as_tree'
 gem 'aws-sdk-s3'
 gem 'bootsnap'
-gem 'bourbon'
+gem 'bootstrap'
+# gem 'bourbon'
 gem 'cancancan'
 gem 'chronic'
 gem 'coffee-rails'
 gem "comma"
-gem 'compass-blueprint'
-gem 'compass-rails'
+# gem 'compass-blueprint'
+# gem 'compass-rails'
 gem 'country_select'
-gem 'css3buttons'
+# gem 'css3buttons'
 gem 'devise'
 gem 'discard'
 gem 'figaro'
@@ -45,7 +47,7 @@ gem 'ransack'
 gem 'recaptcha'
 gem 'redcarpet'
 gem 'rollbar'
-gem 'sass-rails', '5.0.7'
+gem 'sass-rails'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'simple_form'
@@ -71,9 +73,11 @@ group :test do
 end
 
 group :development do
+  gem 'pry'
   gem 'guard'
   gem 'guard-rspec'
   gem 'spring'
+  gem 'rails_layout'
 end
 
 group :development, :test do

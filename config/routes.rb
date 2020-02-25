@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 ForeverFamilyFoundation::Application.routes.draw do
+  root to: 'site#index'
+
   match "/404", to: "exceptions#not_found", via: :all
   match "/500", to: "exceptions#internal_error", via: :all
   match "/422", to: "exceptions#unacceptable", via: :all
@@ -14,17 +16,8 @@ ForeverFamilyFoundation::Application.routes.draw do
   resources :tests
   resources :known_deads
   resources :relationships
-  resources :relationships
-  resources :relationships
-  root to: 'site#index'
 
-
-  devise_for :users, controllers: { registrations: 'registration' }
-
-  devise_scope :user do
-    get '/login' => 'devise/sessions#new'
-    delete '/logout' => 'devise/sessions#destroy'
-  end
+  devise_for :users
 
   resources :events
   resources :radio_archives
@@ -37,9 +30,6 @@ ForeverFamilyFoundation::Application.routes.draw do
 
   get '/businesses/welcome/:id' => 'businesses#welcome', as: 'businesses_welcome'
   get '/users/welcome/:id' => 'users#welcome', as: 'users_welcome'
-
-
-  #get '/sitemap.xml', to: redirect("http://s3.amazonaws.com/fff_attached_files/attached_files/attachments/000/000/670/original/sitemap.xml?2016"), as: :sitemap
 
   # Redirects
   get '/sitemap' => 'redirects#sitemap' #'http://s3.amazonaws.com/fff_attached_files/attached_files/attachments/000/000/670/original/sitemap.xml?2016'
@@ -59,28 +49,6 @@ ForeverFamilyFoundation::Application.routes.draw do
   get '/images/SF2008IMAGES/SF2008ProgramPRG.pdf' => 'redirects#events'
   get '/bookreview' => 'redirects#recommended_books'
   get '/images/GuestHouse/TheGuestHouse-brochure' => 'redirects#guest_house_brochure'
-
-  resource :user, only: [:edit] do
-    collection do
-      patch 'update_password'
-    end
-  end
-
-  resources :users do
-    get :confirm
-    put :confirm
-    get :edit_password
-
-    resources :businesses do
-      get :payment
-      put :payment
-      post :payment
-      put :register
-      post :register
-      get :register
-      get :attachment
-    end
-  end
 
   resource :events
 
