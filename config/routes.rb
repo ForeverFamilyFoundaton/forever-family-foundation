@@ -9,7 +9,9 @@ ForeverFamilyFoundation::Application.routes.draw do
   match '/500', to: 'exceptions#internal_error', via: :all
   match '/422', to: 'exceptions#unacceptable', via: :all
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

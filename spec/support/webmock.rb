@@ -1,3 +1,5 @@
+include WebMock::API
+
 WebMock.disable_net_connect!(allow_localhost: true)
 
 WebMock.stub_request(

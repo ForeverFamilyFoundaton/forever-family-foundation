@@ -1,0 +1,19 @@
+homer:
+  email: homer@the_simpsons.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  confirmed_at: <%= Date.yesterday %>
+
+marge:
+  email: marge@the_simpsons.com
+  encrypted_password: <%= User.new.send(:password_digest, 'passwrord') %>
+  confirmed_at: <%= Date.yesterday %>
+
+moe:
+  email: moe@moes.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  confirmed_at: <%= Date.yesterday %>
+
+apu:
+  email: apu@kwiki_mart.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  confirmed_at: <%= Date.yesterday %>

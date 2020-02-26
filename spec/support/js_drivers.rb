@@ -18,17 +18,7 @@ RSpec.configure do |config|
     "#{File.basename(meta[:file_path])}-#{meta[:line_number]}.png"
   end
 
-  def capture_screenshot?(example)
-    example.metadata[:type] == :feature &&
-      example.exception.present? &&
-      example.metadata[:chrome]
-  end
-
   config.after do |example|
-    # rubocop:disable Lint/Debugger
-    if capture_screenshot?(example)
-      save_and_open_screenshot screenshot_filename(example.metadata)
-    end
     Capybara.reset_sessions!
     Capybara.use_default_driver
   end

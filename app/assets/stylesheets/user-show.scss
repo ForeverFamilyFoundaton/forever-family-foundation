@@ -1,29 +1,50 @@
 .user-show {
-  @extend %fa-icon;
-  @extend .fal;
-
   .personal-information {
-    .edit-pencil {
+    .edit {
       float: right;
       margin-left: 2em;
     }
 
     li {
-      height: 2.5em;
       position: relative;
       padding-left: 3rem;
-      &:before {
-        left: $margin;
+
+      i {
+        @extend .fal;
+        margin: auto;
         position: absolute;
+        height: 1em;
+        top: 0; left: $margin; bottom: 0; right: 0;
       }
-      &.email {
+
+      &.email i {
         &:before {
           content: fa-content($fa-var-envelope);
         }
       }
-      &.name {
+      &.name i {
         &:before {
           content: fa-content($fa-var-user-alt);
+        }
+      }
+      &.cell-phone i {
+        &:before {
+          content: fa-content($fa-var-mobile-alt);
+        }
+      }
+      &.home-phone i {
+        &:before {
+          content: fa-content($fa-var-phone);
+        }
+      }
+      &.work-phone i {
+        &:before {
+          content: fa-content($fa-var-phone-office);
+        }
+      }
+      &.address i {
+        &:before {
+          content: fa-content($fa-var-map-marker-alt);
         }
       }
     }

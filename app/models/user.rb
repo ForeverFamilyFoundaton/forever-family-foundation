@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # has_many :categories, through: :user_categories
 
   has_one :address, :as => :addressable
+  accepts_nested_attributes_for :address
   has_one :business
   # has_one :sitterform
   # has_one :mediumform
@@ -32,7 +33,6 @@ class User < ActiveRecord::Base
   #   source: :preference
 
   # accepts_nested_attributes_for :user_categories
-  # accepts_nested_attributes_for :address
   # accepts_nested_attributes_for :family_members
 
   # attr_accessible :email, :email_confirmation, :password, :password_confirmation

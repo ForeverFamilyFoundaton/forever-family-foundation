@@ -9,24 +9,22 @@
           .card-header
             Personal Information
           .card-body
-
             = f.input :email, required: true
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
               %p
                 Currently waiting confirmation for: #{resource.unconfirmed_email}
-
             = f.input :first_name
             = f.input :middle_name
             = f.input :last_name
             = f.input :cell_phone
             = f.input :home_phone
             = f.input :work_phone
+
       .col-sm-6
         .card
           .card-header
             Address
           .card-body
-
             = f.fields_for :address do |address|
               = address.input :address, label: 'Street'
               = address.input :city
