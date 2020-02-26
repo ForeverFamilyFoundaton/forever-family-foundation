@@ -1,7 +1,9 @@
 class UserMailer < ActionMailer::Base
   add_template_helper(ApplicationHelper)
 
-  default from: "admin@foreverfamilyfoundation.org"
+  default(
+     from: "Forever Family Foundation <info@foreverfamilyfoundation.org>",
+  )
 
   def welcome_email(user, welcome_email)
     @user = user
