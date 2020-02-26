@@ -7,7 +7,7 @@ RSpec.feature 'As a guest' do
     visit new_user_registration_path
   end
 
-  scenario 'I can register as a user', :chrome do
+  scenario 'I can register as a user' do
     expect(page).to have_content I18n.t 'devise.registrations.new.confirmation_instructions_1'
     expect(page).to have_content I18n.t 'devise.registrations.new.confirmation_instructions_2'
     fill_in 'Email', with: email
@@ -20,6 +20,8 @@ RSpec.feature 'As a guest' do
     fill_in 'Email', with: email
     fill_in 'Password', with: password
     click_on 'Log in'
-    expect(page).to have_content 'Foo'
+    expect(page).to have_content I18n.t 'devise.sessions.signed_in'
+    expect(page).to have_content I18n.t 'users.show.title'
+    expect(page).to have_content email
   end
 end

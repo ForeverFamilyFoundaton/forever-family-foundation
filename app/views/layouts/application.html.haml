@@ -28,10 +28,8 @@
           = render 'shared/partners'
 
         .col-sm-9.main
-          - if notice
-            %p.notice= notice
-          - if alert
-            %p.alert= alert
+          - if flash
+            = render 'layouts/messages'
 
           - if !@cms_page.title.blank?
             %h1= @cms_page.title

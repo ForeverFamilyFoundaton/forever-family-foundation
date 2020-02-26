@@ -1,24 +1,21 @@
 require 'sidekiq/web'
 
 ForeverFamilyFoundation::Application.routes.draw do
+  mount Sidekiq::Web, at: '/sidekiq'
+
   root to: 'site#index'
 
   match '/404', to: 'exceptions#not_found', via: :all
   match '/500', to: 'exceptions#internal_error', via: :all
   match '/422', to: 'exceptions#unacceptable', via: :all
 
-  devise_for :users, controllers: {
-    registrations: 'registrations'
-  }
+  devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_scope :user do
-    get '/registrations/wait', controller: :registrations, action: :wait
-  end
+
   namespace :user do
     root 'users#show' # creates user_root_path
   end
-  mount Sidekiq::Web, at: '/sidekiq'
 
   resources :businesses
   resources :users, only: :show

@@ -1,0 +1,8 @@
+en:
+  users:
+    show:
+      title: Profile information
+  devise:
+    registrations:
+      edit:
+        title: Edit profile
