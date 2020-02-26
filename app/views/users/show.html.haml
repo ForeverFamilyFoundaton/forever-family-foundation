@@ -8,22 +8,36 @@
       %ul.list-group.list-group-flush
         %li.list-group-item.name
           %i
-          - if current_user.full_name.present?
-            = current_user.full_name
-          - else
+          - if current_user.full_name.blank?
             %span.text-muted Name...
+          - else
+            = current_user.full_name
+
         %li.list-group-item.email
           %i
           = current_user.email
+
         %li.list-group-item.home-phone
           %i
-          = current_user.home_phone
+          - if current_user.home_phone.blank?
+            %span.text-muted Home phone...
+          - else
+            = current_user.home_phone.phony_formatted
+
         %li.list-group-item.cell-phone
           %i
-          = current_user.cell_phone
+          - if current_user.cell_phone.blank?
+            %span.text-muted Cell phone...
+          - else
+            = current_user.cell_phone.phony_formatted
+
         %li.list-group-item.work-phone
           %i
-          = current_user.work_phone
+          - if current_user.work_phone.blank?
+            %span.text-muted Work phone...
+          - else
+            = current_user.work_phone.phony_formatted
+
         %li.list-group-item.address
           %i
           - if current_user.address.present?

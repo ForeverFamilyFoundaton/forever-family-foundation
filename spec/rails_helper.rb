@@ -8,6 +8,7 @@ require 'webmock'
 require "paperclip/matchers"
 require 'support/fixtures'
 require 'support/js_drivers'
+require 'support/faker'
 require 'support/devise'
 require 'support/capybara-host'
 require 'support/sidekiq'

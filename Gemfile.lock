@@ -264,6 +264,10 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.2.2)
+    phony (2.18.12)
+    phony_rails (0.14.13)
+      activesupport (>= 3.0)
+      phony (> 2.15)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
@@ -464,6 +468,7 @@ DEPENDENCIES
   newrelic_rpm
   paperclip
   pg
+  phony_rails
   protected_attributes_continued
   pry
   puma

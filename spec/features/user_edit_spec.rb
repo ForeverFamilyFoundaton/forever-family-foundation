@@ -38,9 +38,9 @@ RSpec.feature 'As a authenticated User' do
     expect(page).to have_content first_name
     expect(page).to have_content middle_name
     expect(page).to have_content last_name
-    expect(page).to have_content cell_phone
-    expect(page).to have_content home_phone
-    expect(page).to have_content work_phone
+    expect(page).to have_content cell_phone.phony_formatted(normalize: :US)
+    expect(page).to have_content home_phone.phony_formatted(normalize: :US)
+    expect(page).to have_content work_phone.phony_formatted(normalize: :US)
     expect(page).to have_content address[:street]
     expect(page).to have_content address[:city]
     expect(page).to have_content address[:state]

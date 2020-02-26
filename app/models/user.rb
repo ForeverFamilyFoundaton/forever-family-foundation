@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
   has_one :address, :as => :addressable
   accepts_nested_attributes_for :address
   has_one :business
+
+  phony_normalize :cell_phone, default_country_code: 'US'
+  phony_normalize :home_phone, default_country_code: 'US'
+  phony_normalize :work_phone, default_country_code: 'US'
+
+  validates :cell_phone, phony_plausible: true
+  validates :home_phone, phony_plausible: true
+  validates :work_phone, phony_plausible: true
   # has_one :sitterform
   # has_one :mediumform
   # has_many :family_members
