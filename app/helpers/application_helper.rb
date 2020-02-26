@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def fa_icon(icon, opts = {})
+    content_tag :i, nil, class: ([:far, "fa-#{icon}"] << opts[:class])
+  end
+
   def setup_user(user)
     user.build_address if user.address.nil?
     user.family_members.build([{},{},{}]) if user.family_members.empty?
