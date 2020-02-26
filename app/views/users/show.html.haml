@@ -3,8 +3,13 @@
     .card.personal-information
       .card-header
         Personal Information
+        = link_to fa_icon('pencil'), edit_user_registration_path, class: 'edit-pencil'
       %ul.list-group.list-group-flush
-        %li.list-group-item.name= current_user.full_name
+        %li.list-group-item.name
+          - if current_user.full_name.present?
+            = current_user.full_name
+          - else
+            %span.text-muted Name...
         %li.list-group-item.email= current_user.email
         %li.list-group-item= current_user.home_phone
         %li.list-group-item= current_user.cell_phone

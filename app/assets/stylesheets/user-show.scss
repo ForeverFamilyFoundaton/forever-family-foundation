@@ -3,13 +3,28 @@
   @extend .fal;
 
   .personal-information {
-    li.email {
+    .edit-pencil {
+      float: right;
+      margin-left: 2em;
+    }
+
+    li {
+      height: 2.5em;
       position: relative;
       padding-left: 3rem;
       &:before {
         left: $margin;
         position: absolute;
-        content: fa-content($fa-var-envelope);
+      }
+      &.email {
+        &:before {
+          content: fa-content($fa-var-envelope);
+        }
+      }
+      &.name {
+        &:before {
+          content: fa-content($fa-var-user-alt);
+        }
       }
     }
   }
