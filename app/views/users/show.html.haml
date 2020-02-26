@@ -1,14 +1,14 @@
 .row.user-show
   .col
-    %h2 Personal Information
-    %ul
-      %li
-        = fa_icon 'envelope'
-        %strong= current_user.email
-      %li= current_user.full_name
-      %li= current_user.home_phone
-      %li= current_user.cell_phone
-      %li= current_user.work_phone
-      - if current_user.address.present?
-        %li= current_user.address.address
-        %li= [current_user.address.city, current_user.address.state].join(', ')  + ' ' + current_user.address.zip
+    .card.personal-information
+      .card-header
+        Personal Information
+      %ul.list-group.list-group-flush
+        %li.list-group-item.name= current_user.full_name
+        %li.list-group-item.email= current_user.email
+        %li.list-group-item= current_user.home_phone
+        %li.list-group-item= current_user.cell_phone
+        %li.list-group-item= current_user.work_phone
+        - if current_user.address.present?
+          %li.list-group-item= current_user.address.address
+          %li.list-group-item= [current_user.address.city, current_user.address.state].join(', ')  + ' ' + current_user.address.zip

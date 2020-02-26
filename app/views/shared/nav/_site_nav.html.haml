@@ -1,15 +1,15 @@
 %ul.nav#site_nav
   - if !current_user.nil? and current_user.medium_registration
     %li
-      = link_to "Medium Registration Form", new_mediumform_path, {:style=>"color:red;"}
+      = link_to "Medium Registration Form", new_mediumform_path, {style: "color:red;"}
   - if !current_user.nil? and current_user.sitter_registration
     %li
-      = link_to "Sitter Registration Form", new_sitterform_path, {:style=>"color:red;"}
+      = link_to "Sitter Registration Form", new_sitterform_path, {style: "color:red;"}
   - if current_user and !current_user.biz? || !current_user.business.registered?
     %li
-      = link_to t('navigation.site.business_registration'), new_user_business_path(current_user), :onclick => "business_membership_registration()"
+      = link_to t('navigation.site.business_registration'), new_business_path, onclick: "business_membership_registration()"
   %li
-    = link_to t('navigation.global.events'), events_path 
+    = link_to t('navigation.global.events'), events_path
   %li
     = link_to t('navigation.site.after_life_discussion_group'), '/site/after_life_discussion_group'
   %li
@@ -31,9 +31,8 @@
     = link_to t("navigation.Recommended_Books"), '/recommended_book'
   %li
   %li
-    = link_to t('navigation.global.volunteers'), '/site/volunteers', :onclick => "volunteer_email_click()"
+    = link_to t('navigation.global.volunteers'), '/site/volunteers', onclick: "volunteer_email_click()"
   %li
-    = link_to t('navigation.global.store'), '/site/store', :onclick => "store_cart()"
+    = link_to t('navigation.global.store'), '/site/store', onclick: "store_cart()"
   %li.last
-    = link_to t('navigation.global.contributions'), '/site/contributions', :onclick => "just_give_click()"
-      
+    = link_to t('navigation.global.contributions'), '/site/contributions', onclick: "just_give_click()"

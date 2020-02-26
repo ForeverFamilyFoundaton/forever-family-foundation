@@ -18,8 +18,11 @@ ForeverFamilyFoundation::Application.routes.draw do
   namespace :user do
     root 'users#show' # creates user_root_path
   end
-  get '/users:id' => 'users#show', as: 'user'
   mount Sidekiq::Web, at: '/sidekiq'
+
+  resources :businesses
+  resources :users, only: :show
+  # begin old routes
 
   resources :belief_types
   resources :tests

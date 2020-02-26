@@ -1,19 +1,33 @@
-= render 'layouts/header'
+!!!
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %meta{content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
+    %meta{content: 'width=device-width, initial-scale=1', name: 'viewport'}
+    / The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    %meta{content: '', name: 'description'}
+    %meta{content: '', name: 'author'}
 
-= render 'shared/announcement' unless no_announcement
-%body
-  #layout{class: ("bar" unless no_announcement)}
-    #logo
-      %a{href: root_url}
-    #container
+    = render 'layouts/icons'
 
-      #sidebar
-        = render 'shared/nav/user_nav'
-        = render 'shared/nav/site_nav'
-        = render 'shared/partners'
+    %title Forever Family Foundation
 
-      #content
-        #content_main
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'https://kit.fontawesome.com/51413862f8.js', crossorigin: :anonymous
+    = csrf_meta_tags
+
+  %body
+    .container
+      .row.header
+        .col
+          = render 'layouts/navigation'
+      .row.content
+        .col-sm-3
+          = render 'shared/nav/site_nav'
+          = render 'shared/partners'
+
+        .col-sm-9.main
           - if notice
             %p.notice= notice
           - if alert
@@ -26,5 +40,7 @@
           = yield if @cms_page.is_site_index?
           = blog @cms_page.body
           = yield if !@cms_page.is_site_index?
-    #footer_spacer
+
+      .row.footer
+
   = render 'layouts/footer'

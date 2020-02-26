@@ -1,3 +1,16 @@
 .user-show {
+  @extend %fa-icon;
+  @extend .fal;
 
+  .personal-information {
+    li.email {
+      position: relative;
+      padding-left: 3rem;
+      &:before {
+        left: $margin;
+        position: absolute;
+        content: fa-content($fa-var-envelope);
+      }
+    }
+  }
 }
