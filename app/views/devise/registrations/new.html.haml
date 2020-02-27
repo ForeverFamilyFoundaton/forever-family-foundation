@@ -8,7 +8,7 @@
       = f.error_notification
       .form-inputs
         = f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }
-        = f.input :password, append: fa_icon(:eye), required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" }
+        = f.input :password, append: fa_icon(:eye, class: 'toggle-password', data: { toggle: '#user_password'}), required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" }
       .form-actions
         = f.button :submit, "Sign up", class: 'btn btn-primary'
 .row
