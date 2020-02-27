@@ -48,6 +48,7 @@ gem 'sidekiq-failures'
 gem 'simple_form'
 gem 'state_machine'
 gem 'stripe'
+gem 'webpacker'
 
 group :test do
   gem 'capybara'
