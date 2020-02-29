@@ -2,15 +2,21 @@
 %p
   %strong= t('.confirmation_instructions_1')
 %p= t('.confirmation_instructions_2')
-.row
-  .col-sm-6
-    = simple_form_for resource, as: resource_name, url: registration_path(resource_name), wrapper: :input_group do |f|
+= simple_form_for resource, as: resource_name, url: registration_path(resource_name), wrapper: :input_group do |f|
+  .row
+    .col-sm-6
       = f.error_notification
       .form-inputs
         = f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }
         = f.input :password, append: fa_icon(:eye, class: 'toggle-password', data: { toggle: '#user_password'}), required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" }
       .form-actions
         = f.button :submit, "Sign up", class: 'btn btn-primary'
+    .col-sm-6
+      = f.input :stuff, as: :boolean
+      = f.input :stuff, as: :boolean
+      = f.input :stuff, as: :boolean
+      = f.input :terms_of_use, label: t('labels.terms_of_use_acceptance_html'), as: :boolean, require: true
+
 .row
   .col-sm-6
     = render "devise/shared/links"

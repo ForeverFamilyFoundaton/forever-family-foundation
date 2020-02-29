@@ -58,8 +58,9 @@ class User < ActiveRecord::Base
   # validates_associated :address
   # validates_presence_of :address
   # validates_presence_of :first_name, :last_name
-  # validates_acceptance_of :terms_of_use
-
+  validates :terms_of_use, acceptance: true
+  validates :stuff, acceptance: true
+  attr_accessor :stuff
   #TODO: remove if we begin using confirmable
   # before_validation :assign_membership_number
   # before_create :build_address

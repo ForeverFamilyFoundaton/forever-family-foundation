@@ -57,6 +57,7 @@ group :test do
   gem 'email_spec'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'fake_stripe'
   gem 'fuubar'
   gem 'rspec-rails'
   gem 'rspec_junit_formatter', '0.2.3'
