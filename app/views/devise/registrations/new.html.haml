@@ -1,21 +1,28 @@
 %h3 New Registration
+
 %p
   %strong= t('.confirmation_instructions_1')
+
+%p We have proudly offered free membership since our incorporation as a 501c3 nonprofit organization in 2004.  Alternatively, you can support our work by becoming a paid member which includes additional benefits.  Your participation as a paid member will enhance the opportunities to expand scientific exploration into Survival of Consciousness and the study of Afterlife Science while offering support to the bereaved.  Please keep in mind that because of the work we do, we do not receive the grants or funding that other nonprofits enjoy.
+
 %p= t('.confirmation_instructions_2')
+
 = simple_form_for resource, as: resource_name, url: registration_path(resource_name), wrapper: :input_group do |f|
   .row
-    .col-sm-6
+    .col
       = f.error_notification
+  .row
+    .col-sm-6
       .form-inputs
         = f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }
         = f.input :password, append: fa_icon(:eye, class: 'toggle-password', data: { toggle: '#user_password'}), required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" }
+        = f.input :terms_of_use, label: t('labels.terms_of_use_acceptance_html'), as: :boolean, require: true
       .form-actions
         = f.button :submit, "Sign up", class: 'btn btn-primary'
     .col-sm-6
-      = f.input :stuff, as: :boolean
-      = f.input :stuff, as: :boolean
-      = f.input :stuff, as: :boolean
-      = f.input :terms_of_use, label: t('labels.terms_of_use_acceptance_html'), as: :boolean, require: true
+      = f.input :refund_policy, as: :boolean, label: t('.refund_policy')
+      = f.input :email_policy, as: :boolean, label: t('.email_policy')
+      = f.input :volunteer_policy, as: :boolean, label: t('.volunteer_policy')
 
 .row
   .col-sm-6
