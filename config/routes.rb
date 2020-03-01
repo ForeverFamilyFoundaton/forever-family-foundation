@@ -19,10 +19,11 @@ ForeverFamilyFoundation::Application.routes.draw do
     root 'users#show' # creates user_root_path
   end
 
-  resources :businesses
   resources :users, only: :show
-  # begin old routes
+  resources :businesses
+  resources :subscriptions
 
+  # begin old routes
   resources :belief_types
   resources :tests
   resources :known_deads

@@ -1,0 +1,51 @@
+.card.personal-information
+  .card-header
+    Personal Information
+    = link_to fa_icon('pencil'), edit_user_registration_path, class: 'edit'
+  %ul.list-group.list-group-flush
+    %li.list-group-item.name
+      %i
+      - if current_user.full_name.blank?
+        %span.text-muted Name...
+      - else
+        = current_user.full_name
+
+    %li.list-group-item.email
+      %i
+      = current_user.email
+
+    %li.list-group-item.home-phone
+      %i
+      - if current_user.home_phone.blank?
+        %span.text-muted Home phone...
+      - else
+        = current_user.home_phone
+
+    %li.list-group-item.cell-phone
+      %i
+      - if current_user.cell_phone.blank?
+        %span.text-muted Cell phone...
+      - else
+        = current_user.cell_phone
+
+    %li.list-group-item.work-phone
+      %i
+      - if current_user.work_phone.blank?
+        %span.text-muted Work phone...
+      - else
+        = current_user.work_phone
+
+    %li.list-group-item.address
+      %i
+      - if current_user.address.present?
+        %address
+          = current_user.address.address
+          %br
+          = succeed ',' do
+            = current_user.address.city
+          = current_user.address.state
+          = current_user.address.zip
+          %br
+          = current_user.address.country
+      - else
+        %span.text-muted Address...
