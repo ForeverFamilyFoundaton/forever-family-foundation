@@ -15,7 +15,6 @@ gem 'rails-controller-testing'
 
 gem 'pg'
 gem 'puma'
-gem 'turbolinks'
 gem 'activeadmin'
 gem 'acts_as_tree'
 gem 'aws-sdk-s3'

@@ -1,3 +1,15 @@
 import { loadStripe } from '@stripe/stripe-js';
 
-const stripe = loadStripe('<%= Rails.application.credentials[:stripe_public_key] %>');
+$(function() {
+  async function f(req, res) {
+    const stripe = await loadStripe('<%= Rails.application.credentials[:stripe_public_key] %>');
+    let elements = stripe.elements();
+    // Create an instance of the card Element.
+    const card = elements.create('card');
+    console.log(card)
+    console.log($('#card-element'))
+    // Add an instance of the card Element into the `card-element` <div>.
+    card.mount('#card-element');
+  };
+  f();
+});
