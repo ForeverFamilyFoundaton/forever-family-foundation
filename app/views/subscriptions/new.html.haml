@@ -1,5 +1,8 @@
-%form#subscription-form
-  #card-element.MyCardElement
-  #card-errors{role: "alert"}
-  %button{type: "submit"} Subscribe
-%form
+= simple_form_for @subscription do |f|
+  .row
+    .col-6
+      .form-group
+        %label{ for: 'card-element'} Credit card details
+        #card-element.w-100
+        #card-errors{role: "alert"}
+      = f.submit 'Subscribe', class: 'btn btn-primary'

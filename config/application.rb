@@ -20,7 +20,6 @@ module ForeverFamilyFoundation
       g.assets false
       g.helper_specs false
       g.view_specs false
-      g.orm :active_record, primary_key_type: :uuid
     end
 
     config.exceptions_app = self.routes

@@ -5,8 +5,9 @@
     %meta{content: 'IE=edge', 'http-equiv' => 'X-UA-Compatible'}
     %meta{content: 'width=device-width, initial-scale=1', name: 'viewport'}
     / The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-    %meta{content: '', name: 'description'}
-    %meta{content: '', name: 'author'}
+    %meta{ content: '', name: 'description' }
+    %meta{ content: '', name: 'author' }
+    %meta{ content: Rails.application.credentials[Rails.env.to_sym][:stripe_public_key], name: 'stripe-public-key' }
 
     = render 'layouts/icons'
 
