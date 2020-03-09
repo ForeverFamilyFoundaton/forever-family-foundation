@@ -1,7 +1,7 @@
 class CmsImage < ActiveRecord::Base
   paperclip_opts = { styles: { thumb: '100x100>' } }
 
-  paperclip_opts.merge!({ bucket: ENV.fetch('AWS_S3_IMAGE_FILES') })
+  paperclip_opts.merge!({ bucket: ENV['AWS_S3_IMAGE_FILES'] })
 
   has_attached_file :attachment, paperclip_opts
 

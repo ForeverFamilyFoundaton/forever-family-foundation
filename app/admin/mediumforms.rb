@@ -1,11 +1,14 @@
-ActiveAdmin.register Mediumform do 
+ActiveAdmin.register Mediumform do
   menu false
   config.filters = false
 
   index do |mediumform|
-    column :id
-    column :user_id
-    column :email
+    column :name do |mediumform|
+      link_to mediumform.user.full_name, admin_user_path(mediumform.user)
+    end
+    column :email do |mediumform|
+      mediumform.user.email
+    end
     column :mobile
     column :created_at, sortable: :created_at do |mediumform|
       mediumform.created_at.localtime.strftime("%B %d, %Y %H:%M")
@@ -18,11 +21,14 @@ ActiveAdmin.register Mediumform do
 
   show do |medium|
     attributes_table do
-      row :user_id
+      row :user do |medium|
+        link_to medium.user.full_name, admin_user_path(medium.user)
+      end
       row :personalprofessional
       row :MEPC_Removed
       row :MEPC_Failed
       row :admin_notes
+
       panel "ALTERNATE INFORMATION" do
         attributes_table_for medium  do
           row :alt_first_name
@@ -132,7 +138,7 @@ ActiveAdmin.register Mediumform do
           row "5) Have you ever received formal education, training, or mentorship in Mediumship?" do
             medium.mediumship_training
           end
-  
+
           row "6) Are you certified with any other organizations?  If so, please provide details." do
             medium.other_certification
           end
@@ -203,7 +209,7 @@ ActiveAdmin.register Mediumform do
       end
       f.inputs 'SITTERS SET 1' do
         f.input :sitter1
-        f.input :sitter2  
+        f.input :sitter2
         f.input :sitter3
         f.input :sitter4
         f.input :sitter5
@@ -211,29 +217,29 @@ ActiveAdmin.register Mediumform do
 
       f.inputs 'SITTERS SET 2' do
         f.input :SitterA
-        f.input :SitterB  
+        f.input :SitterB
         f.input :SitterC
         f.input :SitterD
         f.input :SitterE
       end
-      
+
       f.inputs "OTHER ACTIVITIES"  do
         f.label "1) In the following space give contact information for any other businesses in which you are the primary owner:"
         f.input :other_primary_owner
-        f.label "2) Do you work in any other fields related to Health, Healing, or Spirituality? If so, please provide details:" 
+        f.label "2) Do you work in any other fields related to Health, Healing, or Spirituality? If so, please provide details:"
         f.input :other_related
         f.label "3) Do you do work in any other fields that are NOT related to Health, Healing, or Spirituality? Please provide details:"
         f.input :other_not_related
       end
 
       f.inputs "INTUITIVE INFORMATION"  do
-        f.label "1) When did you become aware that you were able to communicate with spirit?" 
+        f.label "1) When did you become aware that you were able to communicate with spirit?"
         f.input :became_aware
         f.label "2) Do you have immediate family members with the same ability?"
         f.input :immediate_family
         f.label "3) Did the recognition of this ability coincide with any particular event in your life? Please explain."
         f.input :life_event
-        f.label "4) Why do you wish to work with discarnate entities in the field of survival of consciousness? Is there a specific goal you hope to achieve in this work?" 
+        f.label "4) Why do you wish to work with discarnate entities in the field of survival of consciousness? Is there a specific goal you hope to achieve in this work?"
         f.input :specific_goal
         f.label "5) As a medium, is your first priority to bring forth evidence of survival or messages of love? Explain why."
         f.input :medium_priority
@@ -252,7 +258,7 @@ ActiveAdmin.register Mediumform do
         f.input :mediumform_preferences, as: :check_boxes, collection: MediumformPreference.selfclassify_preferences
         f.label "5) Have you ever received formal education, training, or mentorship in Mediumship?"
         f.input :mediumship_training
-        f.label "6) Are you certified with any other organizations?  If so, please provide details." 
+        f.label "6) Are you certified with any other organizations?  If so, please provide details."
         f.input :other_certification
       end
 
