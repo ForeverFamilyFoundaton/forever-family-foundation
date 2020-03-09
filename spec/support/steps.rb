@@ -55,5 +55,5 @@ def fill_in_payment_details
   fill_in "credit_card_number", with: "4242424242424242"
   fill_in "credit_card_cvc", with: "123"
   page.select('2', :from => 'credit_card_exp_month')
-  page.select(2.years.from_now.year, :from => 'credit_card_exp_year')
+  page.select(5.years.from_now.year, :from => 'credit_card_exp_year')
 end

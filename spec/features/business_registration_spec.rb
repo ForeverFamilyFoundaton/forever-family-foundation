@@ -40,7 +40,7 @@ RSpec.feature 'Business registration' do
     click_on "Submit Payment"
     click_on "Submit or Skip"
     click_on "Submit or Skip"
-    expect(page).to have_selector('h1', {text: 'Users: Show', visible: true})
+    expect(page).to have_selector('h1', {text: 'Users: Show'})
   end
 
   context 'payment screen' do
