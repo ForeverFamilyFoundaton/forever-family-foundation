@@ -39,7 +39,7 @@ gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'net-ssh'
 gem 'newrelic_rpm'
-gem 'paperclip'
+gem "kt-paperclip", "~> 6.3"
 gem 'ranked-model'
 gem 'ransack'
 gem 'recaptcha'
