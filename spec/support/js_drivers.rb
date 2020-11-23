@@ -2,7 +2,8 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
 require 'webdrivers'
-# Webdrivers.cache_time = 86_400
+Webdrivers.cache_time = 86_400
+Webdrivers::Chromedriver.required_version ='87.0.4280.20'
 
 RSpec.configure do |config|
   config.before do |example|

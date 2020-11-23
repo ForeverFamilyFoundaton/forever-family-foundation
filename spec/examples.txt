@@ -59,9 +59,9 @@ example_id                                                       | status  | run
 ./spec/features/admin/users_spec.rb[1:5]                         | passed  | 0.81159 seconds |
 ./spec/features/admin/users_spec.rb[1:6]                         | passed  | 1.38 seconds    |
 ./spec/features/admin/users_spec.rb[1:7]                         | passed  | 0.8684 seconds  |
-./spec/features/business_registration_spec.rb[1:1]               | passed  | 6.77 seconds    |
-./spec/features/business_registration_spec.rb[1:2]               | passed  | 1.45 seconds    |
-./spec/features/business_registration_spec.rb[1:3:1]             | passed  | 0.45598 seconds |
+./spec/features/business_registration_spec.rb[1:1]               | passed  | 14.48 seconds   |
+./spec/features/business_registration_spec.rb[1:2]               | passed  | 2.04 seconds    |
+./spec/features/business_registration_spec.rb[1:3:1]             | passed  | 0.46232 seconds |
 ./spec/features/cms_pages_spec.rb[1:1]                           | passed  | 0.03267 seconds |
 ./spec/features/medium_registration_spec.rb[1:1:1]               | passed  | 0.14044 seconds |
 ./spec/features/medium_registration_spec.rb[1:2:1]               | passed  | 0.29544 seconds |
