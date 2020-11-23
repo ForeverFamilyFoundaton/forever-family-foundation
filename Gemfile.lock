@@ -242,6 +242,12 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    kt-paperclip (6.3.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      mime-types
+      mimemagic (~> 0.3.0)
+      terrapin (~> 0.6.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.2.1)
@@ -258,7 +264,7 @@ GEM
     method_source (0.9.2)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.1009)
+    mime-types-data (3.2020.1104)
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
@@ -275,12 +281,6 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
-    paperclip (6.1.0)
-      activemodel (>= 4.2.0)
-      activesupport (>= 4.2.0)
-      mime-types
-      mimemagic (~> 0.3.0)
-      terrapin (~> 0.6.0)
     pg (1.2.2)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
@@ -481,9 +481,9 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   kaminari
+  kt-paperclip (~> 6.3)
   net-ssh
   newrelic_rpm
-  paperclip
   pg
   protected_attributes_continued
   puma
