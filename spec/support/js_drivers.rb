@@ -3,7 +3,6 @@ require 'capybara/rspec'
 require 'capybara/email/rspec'
 require 'webdrivers'
 Webdrivers.cache_time = 86_400
-Webdrivers::Chromedriver.required_version = '79.0.3945.36'
 
 RSpec.configure do |config|
   config.before do |example|
